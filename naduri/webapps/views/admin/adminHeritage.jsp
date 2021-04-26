@@ -190,7 +190,9 @@
                         </td>
                     </tr>
                 </table>
-
+                <div class="her_btn_area">
+				<button id="her_insert_btn" onclick="location.href='/naduri/views/admin/adminInsertHeritage.jsp'">문화재 등록</button>
+				</div>
             </div>
         </div>
 	

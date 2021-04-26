@@ -175,3 +175,17 @@ aside img {
 .her_btn_area{
     height: 32px;
 }
+
+
+#her_insert_btn{
+	    border-radius: 5px;
+    border: none;
+    background-color: var(--main-color);
+    width: 90px;
+    line-height: 25px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top:20px;
+}

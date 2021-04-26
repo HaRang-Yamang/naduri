@@ -130,15 +130,15 @@
                     </tr>
                     <tr class="photo_table">
                         <td class="review_title">관련 사진 &nbsp;</td>
-                        <td><img src="../resources/image/no-img.png" width="90px" style="cursor: pointer"></td>
-                        <td><img src="../resources/image/no-img.png" width="90px" style="cursor: pointer"></td>
-                        <td><img src="../resources/image/no-img.png" width="90px" style="cursor: pointer"></td>
+                        <td><img src="../../assets/images/no-img.png" width="90px" style="cursor: pointer"></td>
+                        <td><img src="../../assets/images/no-img.png" width="90px" style="cursor: pointer"></td>
+                        <td><img src="../../assets/images/no-img.png" width="90px" style="cursor: pointer"></td>
                     </tr>
                     <tr class="photo_table">
                         <td></td>
-                        <td><img src="../resources/image/no-img.png" width="90px" style="cursor: pointer"></td>
-                        <td><img src="../resources/image/no-img.png" width="90px" style="cursor: pointer"></td>
-                        <td><img src="../resources/image/no-img.png" width="90px" style="cursor: pointer"></td>
+                        <td><img src="../../assets/images/no-img.png" width="90px" style="cursor: pointer"></td>
+                        <td><img src="../../assets/images/no-img.png" width="90px" style="cursor: pointer"></td>
+                        <td><img src="../../assets/images/no-img.png" width="90px" style="cursor: pointer"></td>
                     </tr>
                 </table>
 

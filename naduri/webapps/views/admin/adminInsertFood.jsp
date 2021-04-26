@@ -35,74 +35,26 @@
                         <td class="data_title">장소명</td>
                         <td colspan="3">
                             <span class="box">
-                                <input type="text" id="her_title" size="70">
+                                <input type="text" id="food_title" size="70">
                             </span>
                         </td>
 
                     </tr>
                     <!-- PASSWORD -->
                     <tr>
-                        <td class="data_title">소재지</td>
-                        <td colspan="3">
-                            <span class="box">
-                                <input type="text" id="her_site" size="70">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
                         <td class="data_title">전화번호</td>
-                        <td colspan="3"><span class="box"><input type="text" id="her_tell" size="70"></span></td>
+                        <td colspan="3"><span class="box"><input type="text" id="food_tell" size="70"></span></td>
                     </tr>
                     <!-- NAME -->
                     <tr>
                         <td class="data_title">운영시간</td>
-                        <td colspan="3"><span class="box"><input type="text" id="her_time" size="70"></span></td>
+                        <td colspan="3"><span class="box"><input type="text" id="food_time" size="70"></span></td>
                     </tr>
-                    <!-- BIRTH -->
                     <tr>
-                        <td class="data_title">지정번호</td>
-                        <td colspan="3"><span class="box"><input type="text" id="her_num" size="70"></span></td>
-                    </tr>
-                    <!-- PHONE -->
-                    <tr>
-                        <td class="data_title">지정일</td>
-                        <td colspan="3"><span class="box"><input type="text" id="her_designationDate" size="70"></span></td>
-                    </tr>
-                    <!-- E-MAIL -->
-                    <tr>
-                        <td class="data_title">분류</td>
-                        <td colspan="3"><span class="box"><input type="text" id="her_class" size="70"></span></td>
-                    </tr>
-                    <!-- ADDRESS -->
-                    <tr>
-                        <td class="data_title">시대</td>
+                        <td class="data_title">위치</td>
                         <td colspan="3">
                             <span class="box">
-                                <input type="text" id="her_era" size="70">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="data_title">면적</td>
-                        <td colspan="3">
-                            <span class="box">
-                                 <input type="text" id="her_square" size="70">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="data_title">소유자</td>
-                        <td colspan="3">
-                            <span class="box">
-                                 <input type="text" id="her_owner" size="70">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="data_title">관리자</td>
-                        <td colspan="3">
-                            <span class="box">
-                                 <input type="text" id="her_manager" size="70">
+                                <input type="text" id="food_site" size="70">
                             </span>
                         </td>
                     </tr>
@@ -110,14 +62,14 @@
                         <td class="data_title">위도/경도</td>
                         <td colspan="3">
                             <span class="box">
-                                 <input type="text" id="her_location" size="70">
+                                 <input type="text" id="food_location" size="70">
                             </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="data_title">상세설명</td>
                         <td colspan="3">
-                             <input type="text" id="her_content" size="70">
+                             <input type="text" id="food_content" size="70">
                         </td>
                     </tr>
                     <tr class="photo_table">

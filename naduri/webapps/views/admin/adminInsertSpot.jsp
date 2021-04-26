@@ -25,7 +25,7 @@
 	
         <div class="adminArea">
             <div class="head_area">
-                <h2 class="notice_head">데이터 등록</h2>
+                <h2 class="notice_head">여행지 데이터 등록</h2>
                 <hr class="green_bar">
             </div>
             <div class="dtable_area">
@@ -35,82 +35,26 @@
                         <td class="data_title">장소명</td>
                         <td colspan="3">
                             <span class="box">
-                                <input type="text" id="join_id" size="70">
+                                <input type="text" id="spot_title" size="70">
                             </span>
                         </td>
 
                     </tr>
                     <!-- PASSWORD -->
                     <tr>
-                        <td class="data_title">소재지</td>
-                        <td colspan="3">
-                            <span class="box">
-                                <input type="password" id="join_pwd1" size="70">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
                         <td class="data_title">전화번호</td>
-                        <td colspan="3"><span class="box"><input type="password" id="join_pwd2" size="70"></span></td>
+                        <td colspan="3"><span class="box"><input type="text" id="spot_tell" size="70"></span></td>
                     </tr>
                     <!-- NAME -->
                     <tr>
                         <td class="data_title">운영시간</td>
-                        <td colspan="3"><span class="box"><input type="text" id="join_name" size="70"></span></td>
+                        <td colspan="3"><span class="box"><input type="text" id="spot_time" size="70"></span></td>
                     </tr>
-                    <!-- BIRTH -->
                     <tr>
-                        <td class="data_title">지정번호</td>
-                        <td colspan="3"><span class="box"><input type="text" id="join_name" size="70"></span></td>
-                    </tr>
-                    <!-- PHONE -->
-                    <tr>
-                        <td class="data_title">지정일</td>
-                        <td colspan="3"><span class="box"><input type="text" id="join_name" size="70"></span></td>
-                    </tr>
-                    <!-- E-MAIL -->
-                    <tr>
-                        <td class="data_title">분류</td>
-                        <td colspan="3"><span class="box"><input type="text" id="join_name" size="70"></span></td>
-                    </tr>
-                    <!-- ADDRESS -->
-                    <tr>
-                        <td class="data_title">시대</td>
+                        <td class="data_title">위치</td>
                         <td colspan="3">
                             <span class="box">
-                                <input type="text" id="phone2" size="70" class="int" maxlength="4">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="data_title">면적</td>
-                        <td colspan="3">
-                            <span class="box">
-                                <input type="text" id="phone2" size="70" class="int" maxlength="4">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="data_title">이동시간</td>
-                        <td colspan="3">
-                            <span class="box">
-                                <input type="text" id="phone2" size="70" class="int" maxlength="4">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="data_title">소유자</td>
-                        <td colspan="3">
-                            <span class="box">
-                                <input type="text" id="phone2" size="70" class="int" maxlength="4">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="data_title">관리자</td>
-                        <td colspan="3">
-                            <span class="box">
-                                <input type="text" id="phone2" size="70" class="int" maxlength="4">
+                                <input type="text" id="spot_site" size="70">
                             </span>
                         </td>
                     </tr>
@@ -118,14 +62,14 @@
                         <td class="data_title">위도/경도</td>
                         <td colspan="3">
                             <span class="box">
-                                <input type="text" id="phone2" size="70" class="int" maxlength="4">
+                                 <input type="text" id="spot_location" size="70">
                             </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="data_title">상세설명</td>
                         <td colspan="3">
-                            <textarea id="review_textArea" cols="70" rows="15" style="resize:none;"></textarea>
+                             <input type="text" id="spot_content" size="70">
                         </td>
                     </tr>
                     <tr class="photo_table">

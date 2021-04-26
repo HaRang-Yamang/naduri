@@ -54,6 +54,13 @@
     margin-top: 8px;
     line-height: 35px;
 }
+
+.profile_modify a{
+	color: #b7b7b7;
+	text-decoration : none;
+}
+
+
 .tabs_area{
     margin-left: auto;
     margin-right: auto;

@@ -25,7 +25,7 @@
         <nav class="navbar">
             <div></div> <!-- 지우지 마세요. -->
             <div class="logo">
-                <h1><a href="/naduri/index.jsp"><img src="/naduri/assets/images/header/logo.png" alt="로고 이미지"></a></h1>
+                <h1><a href="/naduri/index.jsp"><img src="/naduri/assets/images/logo_big.png" alt="로고 이미지"></a></h1>
             </div>
 
             <div class="profile">

@@ -37,6 +37,9 @@
     color: red;
     padding-right : 3px;
 }
+.joinArea input[type=radio]{
+	display : none;
+}
 
 /* 회원가입 소제목 */
 .joinTitleArea {
@@ -71,6 +74,7 @@
     padding : 45px 0 45px 0;
 }
 
+
 .btn_area{
     margin-left: center;
     margin-right: center;
@@ -79,7 +83,7 @@
     display: flex;
 }
 
-button{
+button, .submit_btn input[type=submit]{
 
    height : 25px;
    width: 73px;

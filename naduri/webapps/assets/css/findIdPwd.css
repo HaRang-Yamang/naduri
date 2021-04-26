@@ -4,7 +4,6 @@
 	padding-top : 150px;
 	padding-bottom : 150px;
 }
-
 .container {
     width: 355px;
     height: 344px;
@@ -17,18 +16,11 @@
      box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
-input[type="radio"] {
-    display: none;
-}
-
-.container {
-    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
-    background: var(--light-gray);
-    position: relative;
-}
-
 .find_tab {
     position: relative;
+}
+.find_tab input[type=radio]+label:before{
+	display : none;
 }
 
 .tab_item {
@@ -52,7 +44,6 @@ input[type="radio"] {
 #find_pw:checked~#pw_tab {
     display: block;
 }
-
 .find_tab input:checked+.tab_item {
     background: var(--light-gray);
     border-top: var(--main-color) solid 3px;

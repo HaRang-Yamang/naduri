@@ -24,7 +24,9 @@
 	    <div class="findArea">
 	        <form action="">
 	            <div class="container">
+	            
 	                <div class="find_tab">
+	                
 	                    <input id="find_id" type="radio" name="find" checked>
 	                    <label class="tab_item" for="find_id">아이디 찾기</label>
 	

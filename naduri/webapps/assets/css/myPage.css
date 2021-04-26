@@ -1,8 +1,7 @@
 @charset "utf-8";
 
 .profileArea{
-	padding-top : 150px;
-	padding-bottom : 150px;
+	margin: 0 auto !important;
 }
 .top_area{
     display: flex;
@@ -309,10 +308,6 @@
 
 
 /*slide CSS */
- * {margin:0;padding:0;box-sizing:border-box;}
- ul, li {list-style:none;}
- 
- 
  .slidebox {max-width:920px;margin:0 auto;position:relative;}
  .slidebox .slidelist {position:relative;white-space:nowrap;font-size:0;overflow:hidden;}
  .slidebox .slidelist .slideitem {position:relative;display:inline-block;vertical-align:middle;background-color:#fff;width:100%;transition:all 1s;}

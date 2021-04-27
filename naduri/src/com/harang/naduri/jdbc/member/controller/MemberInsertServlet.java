@@ -2,6 +2,7 @@ package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,6 +63,25 @@ public class MemberInsertServlet extends HttpServlet {
 		System.out.println("member : " + joinMember);
 		
 		MemberService service = new MemberService();
+		
+		int result = service.insertMember(joinMember);
+		
+		if( result > 0 ) {
+			// 회원 가입 성공 시
+			System.out.println("회원 가입 성공!");
+			
+			response.sendRedirect("/views/login.jsp");
+		} else {
+			// 회원 가입 실패 시
+			System.out.println("회원 가입 실패!");
+			
+			RequestDispatcher view 
+				= request.getRequestDispatcher("views/common/errorPage.jsp");
+			
+			request.setAttribute("error-msg", "회원 가입에 실패하였습니다!");
+			
+			view.forward(request, response);
+		}
 		
 	}
 

@@ -23,6 +23,21 @@ public Review() {
 	// TODO Auto-generated constructor stub
 }
 
+public Review(int rno, int r_rank, String r_title, String r_content, String r_period, int r_with, String r_date,
+		String r_update, int r_count, String r_status) {
+	super();
+	this.rno = rno;
+	this.r_rank = r_rank;
+	this.r_title = r_title;
+	this.r_content = r_content;
+	this.r_period = r_period;
+	this.r_with = r_with;
+	this.r_date = r_date;
+	this.r_update = r_update;
+	this.r_count = r_count;
+	this.r_status = r_status;
+}
+
 public Review(int rno, int l_no, int m_no, int r_rank, String r_title, String r_content, String r_period, int r_with,
 		String r_date, String r_update, int r_count, String r_status) {
 	super();
@@ -71,7 +86,7 @@ public void setM_no(int m_no) {
 	this.m_no = m_no;
 }
 
-public int getR_rank() {
+public double getR_rank() {
 	return r_rank;
 }
 

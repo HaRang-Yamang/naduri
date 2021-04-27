@@ -15,16 +15,19 @@ public class MemberService {
 		
 		con = getConnection();
 		
-		int result = dao.insertMember(con, joinMember);
+		// 회원 가입 저장
+		int result1 = dao.insertMember(con, joinMember);
 		
-		if( result <= 0 ) {
-			rollback(con);
+		if( result1 > 0 ) {
+			
 		} else {
 			commit(con);	
 		}
 		
 		close(con);		
 		
-		return result;
+		return result1;
 	}
+	
+	// 키워드 저장
 }

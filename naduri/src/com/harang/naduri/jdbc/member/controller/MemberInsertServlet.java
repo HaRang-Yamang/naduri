@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.harang.naduri.jdbc.member.model.service.KeywordService;
+import com.harang.naduri.jdbc.member.model.service.MemberService;
 import com.harang.naduri.jdbc.member.model.vo.Keyword;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
@@ -65,6 +67,15 @@ public class MemberInsertServlet extends HttpServlet {
 		
 		System.out.println("member : " + joinMember);
 		System.out.println("keyword : " + joinKeyword);
+		
+		
+		// 회원 서비스 객체 생성
+		MemberService mService = new MemberService();
+		KeywordService kService = new KeywordService();
+		
+		int mResult = mService.insertMember(joinMember);
+		int kResult = kService.insertKeyword(joinKeyword);
+		
 		
 	}
 

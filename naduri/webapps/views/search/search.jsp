@@ -11,10 +11,12 @@
 <link rel="stylesheet" href="/naduri/assets/css/common/footer.css" />
 <link rel="stylesheet" href="/naduri/assets/css/common/header.css" />
 
+
 <script src="/naduri/assets/js/jquery-3.6.0.min.js"></script>
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
+<script src="/naduri/assets/js/map.js"></script>
 <title>나드리</title>
 </head>
 <body>
@@ -27,10 +29,10 @@
         </div>
     </div>
 
-    <div id="map2"><img src="/naduri/assets/images/map.gif"></div>
+<!--<div id="map2"><img src="/naduri/assets/images/map.gif"></div> -->  
     <section class="map_box">
         <!-- 지도를 표시할 div 입니다 -->
-        <!-- <div id="map"></div> -->
+        <div id="map"> </div>
         
         
         

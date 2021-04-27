@@ -1,11 +1,13 @@
 package com.harang.naduri.jdbc.member.model.dao;
 
-import java.sql.*;
-import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.harang.naduri.jdbc.member.model.vo.Keyword;
 
 public class KeywordDAO {
-
+	
 	public int insertKeyword(Connection con, Keyword joinKeyword) {
 		
 		int result = 0;

@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,11 +58,13 @@ public class MemberInsertServlet extends HttpServlet {
 		String m_addressStr = String.join(" ", m_address);
 		
 		// 취미는 여러 개 선택 가능
-		String[] keyword_id = request.getParameterValues("keyword_id");
+		ArrayList<Keyword> list = new ArrayList<>();
+		
+//		String[] keyword_id = request.getParameterValues("keyword_id");
 
-		//for(int i = 0 ; i < keyword_id.length ; i++) {
-		//	String keyArr = request.getParameter(keyword_id[i]);
-		//}
+//		for(int i = 0 ; i < keyword_id.length ; i++) {
+//			String keyArr = request.getParameter(keyword_id[i]);
+//		}
 		
 		
 		// 받아온 정보를 하나의 vo로 묶기
@@ -69,7 +72,7 @@ public class MemberInsertServlet extends HttpServlet {
 		Member joinMember = new Member(m_id, m_pwd, m_name, m_birthStr, m_gender, 
 										m_addressStr, m_emailStr, m_phoneStr);
 				// 키워드
-		Keyword joinKeyword = new Keyword(keyword_id);
+		Keyword joinKeyword = new Keyword();
 		
 		System.out.println("member : " + joinMember);
 		System.out.println("keyword : " + joinKeyword);
@@ -77,7 +80,7 @@ public class MemberInsertServlet extends HttpServlet {
 		
 		// 회원 서비스 객체 생성
 		MemberService mService = new MemberService();
-//		KeywordService kService = new KeywordService();
+		KeywordService kService = new KeywordService();
 		
 		int mResult = mService.insertMember(joinMember);
 //		int kResult = kService.insertKeyword(joinKeyword);

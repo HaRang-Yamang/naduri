@@ -2,7 +2,7 @@ package com.harang.naduri.jdbc.mchoice.model.vo;
 
 import java.io.Serializable;
 
-public class mchoice implements Serializable{
+public class Mchoice implements Serializable{
 
 
 	private static final long serialVersionUID = 1008L;
@@ -10,9 +10,9 @@ public class mchoice implements Serializable{
 	private int m_no  ;	//회원번호
 	private int Keyword_Id ;	//키워드 식별자
 	
-	public mchoice() {}
+	public Mchoice() {}
 
-	public mchoice(int m_no, int keyword_Id) {
+	public Mchoice(int m_no, int keyword_Id) {
 		super();
 		this.m_no = m_no;
 		Keyword_Id = keyword_Id;

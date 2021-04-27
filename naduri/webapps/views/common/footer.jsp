@@ -14,7 +14,7 @@
 
 <script>
 	function goNotice(){
-		location.href="/myWeb/selectList.no";
+		location.href="/naduri/selectList.no";
 	}
 
 </script>

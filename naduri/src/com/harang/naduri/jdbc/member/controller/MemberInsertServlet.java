@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.harang.naduri.jdbc.member.model.service.MemberService;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
 /**
@@ -59,6 +60,9 @@ public class MemberInsertServlet extends HttpServlet {
 										m_phoneStr, m_emailStr, m_addressStr, keyword_idStr);
 		
 		System.out.println("member : " + joinMember);
+		
+		MemberService service = new MemberService();
+		
 	}
 
 	/**

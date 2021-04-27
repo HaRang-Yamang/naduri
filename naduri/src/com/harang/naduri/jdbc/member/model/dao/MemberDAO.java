@@ -9,25 +9,33 @@ public class MemberDAO {
 	public int insertMember(Connection con, Member joinMember) {
 		
 		int result = 0;
-		Statement st = null;
+
+		PreparedStatement ps = null;
+		
+		String sql = "INSERT INTO MEMBER VALUES "
+						+ "('no1', ?, '일반', ?, ?, ?, ?, ?, ?, ?, 'N', DEFAULT)";
 		
 		try {
-			st = con.createStatement();
 			
-			String sql = "INSERT INTO MEMBER "
-						+ "VALUES('" + joinMember.getM_id()
-						+ "', '" + joinMember.getM_pwd()
-						+ "', '" + joinMember.getM_name()
-						+ "', '" + joinMember.getM_gender()
-						+ "', '" + joinMember.getM_birth()
-						+ "', '" + joinMember.getM_phone()
-						+ "', '" + joinMember.getM_email()
-						+ "', '" + joinMember.getM_address()
-						+ "', '" + joinMember.getKeyword_id()
-						+ "', DEFAULT)";
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(2, joinMember.getM_id());
+			ps.setString(4, joinMember.getM_pwd());
+			ps.setString(5, joinMember.getM_name());
+			ps.setString(6, joinMember.getM_birth());
+			ps.setString(7, joinMember.getM_gender());
+			ps.setString(8, joinMember.getM_address());
+			ps.setString(9, joinMember.getM_email());
+			ps.setString(10, joinMember.getM_phone());
+
+
+			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			
+			close(ps);
 		}
 		
 		return result;

@@ -1,20 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@
+	page import="com.harang.naduri.jdbc.notice.model.vo.*, java.util.*"
+ %>
+    
+<%
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link href="/naduri/assets/images/naduri.ico" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="../../assets/css/common/reset.css" />
-<link rel="stylesheet" href="../../assets/css/common/header.css" />
-<link rel="stylesheet" href="../../assets/css/notice.css" />
-<link rel="stylesheet" href="../../assets/css/common/footer.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/reset.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/header.css" />
+<link rel="stylesheet" href="/naduri/assets/css/notice.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/footer.css" />
 
 <script src="/naduri/assets/js/jquery-3.6.0.min.js"></script>
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<title>나드리</title>
+<title>공지사항 목록</title>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -33,184 +40,27 @@
                         <th id='notice_writer'>작성자</th>
                         <th id='notice_date'>날짜</th>
                     </tr>
+                    <% for(Notice n : list) { %>             
                     <tr>
                         <td>
-                            <span class="notice_no">1</span>
+                            <span class="<%= n.getN_no() %>"><%= n.getN_no() %></span>
                         </td>
                         <td>
                             <span class="notice_title">
-                                <a href="noticeDetail.jsp">2021년 공휴일 휴무 안내</a>
+                                <%= n.getN_title() %>
                             </span>
                         </td>
                         <td>
                             <span class="notice_writer">관리자</span>
                         </td>
                         <td>
-                            <span class="write_date">2021.04.14</span>
+                            <span class="write_date"><%= n.getN_date() %></span>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="notice_no">1</span>
-                        </td>
-                        <td>
-                            <span class="notice_title">
-                                <a href="">2021년 공휴일 휴무 안내</a>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="notice_writer">관리자</span>
-                        </td>
-                        <td>
-                            <span class="write_date">2021.04.14</span>
-                        </td>
-                    </tr>
+                    <% } %>
+                   
                 </table>
-                <button class="write_btn" type="submit"><a href="noticeWrite.jsp">작성하기</a></button>
+                <button class="write_btn" type="submit" onclick="location.href='views/notice/noticeWrite.jsp'">작성하기</button>
             </div>
         </div>
 

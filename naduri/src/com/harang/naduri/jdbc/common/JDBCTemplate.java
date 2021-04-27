@@ -16,7 +16,7 @@ public class JDBCTemplate {
 			
 			con = DriverManager.getConnection(
 									"jdbc:oracle:thin:@localhost:1521:xe",
-									"JSP", "JSP");
+									"NADURI", "NADURI");
 			con.setAutoCommit(false);
 			
 		} catch (ClassNotFoundException | SQLException e) {

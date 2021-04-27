@@ -10,7 +10,8 @@ public class Notice implements Serializable {
 	private int n_no ;		// 글번호
 	private String n_title ;	// 제목
 	private String n_content ;	// 내용
-	private Date n_date ;       // 작성일 
+	private Date n_date ;       // 작성일
+
 	
 	
 	public Notice() {}
@@ -21,7 +22,10 @@ public class Notice implements Serializable {
 		this.n_title = n_title;
 		this.n_content = n_content;
 		this.n_date = n_date;
+
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -60,7 +64,7 @@ public class Notice implements Serializable {
 	public void setN_date(Date n_date) {
 		this.n_date = n_date;
 	}
-	
+
 	
 	
 	

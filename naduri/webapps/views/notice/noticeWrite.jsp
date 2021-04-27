@@ -14,13 +14,14 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<title>나드리</title>
+<title>[관리자 권한]공지사항 작성하기</title>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
 	
 	<section>
         <div class="noticeWriteArea">
+        <form action="/naduri/insert/noticeWrite.no" method="post">
             <div class="head_area">
                 <h2 class="notice_head">공지사항 작성하기</h2>
             </div>
@@ -50,10 +51,11 @@
                         </td>
                     </tr>
                 </table>
-
+         
                 <button class="submit_btn" type="submit">작성하기</button>
 
             </div>
+        </form>
         </div>
 	</section>		
 	

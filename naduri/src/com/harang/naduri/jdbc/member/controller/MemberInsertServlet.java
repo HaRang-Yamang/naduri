@@ -1,6 +1,8 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +36,7 @@ public class MemberInsertServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		String m_no = request.getParameter("m_no");
+
 		String m_id = request.getParameter("m_id");
 		String m_pwd = request.getParameter("m_pwd");
 		String m_name = request.getParameter("m_name");
@@ -56,6 +58,10 @@ public class MemberInsertServlet extends HttpServlet {
 		
 		// 취미는 여러 개 선택 가능
 		String[] keyword_id = request.getParameterValues("keyword_id");
+
+		//for(int i = 0 ; i < keyword_id.length ; i++) {
+		//	String keyArr = request.getParameter(keyword_id[i]);
+		//}
 		
 		
 		// 받아온 정보를 하나의 vo로 묶기
@@ -71,10 +77,27 @@ public class MemberInsertServlet extends HttpServlet {
 		
 		// 회원 서비스 객체 생성
 		MemberService mService = new MemberService();
-		KeywordService kService = new KeywordService();
+//		KeywordService kService = new KeywordService();
 		
 		int mResult = mService.insertMember(joinMember);
-		int kResult = kService.insertKeyword(joinKeyword);
+//		int kResult = kService.insertKeyword(joinKeyword);
+		
+		if(mResult > 0) {
+			// 회원 가입 성공!
+			System.out.println("회원 가입 성공!");
+			
+			response.sendRedirect("views/login.jsp");
+		} else {
+			// 회원 가입 실패
+			System.out.println("회원 가입 실패!");
+			
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+		
+			request.setAttribute("error-msg", "회원 가입에 실패하였습니다");
+			
+			view.forward(request, response);
+		
+		}
 		
 		
 	}

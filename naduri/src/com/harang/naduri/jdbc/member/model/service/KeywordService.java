@@ -11,21 +11,21 @@ public class KeywordService {
 	private Connection con;
 	private KeywordDAO dao = new KeywordDAO();
 	
-	public int insertKeyword(Keyword joinKeyword) {
+//	public int insertKeyword(Keyword joinKeyword) {
 		
-		con = getConnection();
-		
-		int result = dao.insertKeyword(con, joinKeyword);
-		
-		if( result <= 0 ) {
-			rollback(con);
-		} else {
-			commit(con);
-		}
-		
-		close(con);
-		
-		return result;
-	}
+//		con = getConnection();
+//		
+//		int result = dao.insertKeyword(con, joinKeyword);
+//		
+//		if( result <= 0 ) {
+//			rollback(con);
+//		} else {
+//			commit(con);
+//		}
+//		
+//		close(con);
+//		
+//		return result;
+//	}
 
 }

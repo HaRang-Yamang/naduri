@@ -9,10 +9,16 @@ public class KeywordDAO {
 	public int insertKeyword(Connection con, Keyword joinKeyword) {
 		
 		int result = 0;
-		Statement st = null;
+		PreparedStatement ps = null;
+		
+		String sql = "INSERT INTO MCHOICE VALUES "
+						+ "(SEQ_M_NO.NEXTVAL, ?)";
 		
 		try {
-			st = con.createStatement();
+			ps = con.prepareStatement(sql);
+			
+			//ps.setString(1, joinKeyword.getKeyword_id());
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();

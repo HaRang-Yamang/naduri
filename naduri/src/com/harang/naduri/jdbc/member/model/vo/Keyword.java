@@ -7,6 +7,7 @@ public class Keyword implements Serializable {
 
 	private static final long serialVersionUID = 10091L;
 
+	// private String m_no; 만들어야하나??
 	private String[] keyword_id;
 	
 	public Keyword() {}

@@ -16,7 +16,11 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<script src="/naduri/assets/js/map.js"></script>
+
+<!-- 지도 api 사용 위한 스크립트 영역 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6005fc94dc9f6c5072c2ef8a64151536"></script>
+<script defer src="/naduri/assets/js/map.js"></script>
+
 <title>나드리</title>
 </head>
 <body>

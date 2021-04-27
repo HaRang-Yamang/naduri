@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.model.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 // VO = Value Object
 // 데이터 전달용 그릇 역할을 하는 클래스
@@ -19,39 +20,32 @@ public class Member implements Serializable{
 	private String m_address;
 	private String m_email;
 	private String m_phone;
-	private String keyword_id;
+	private ArrayList<KeywordId> keyList;
 	
 	
 	public Member() {}
 
 
-	public Member(String m_id, String m_pwd, String m_name, String m_gender, String m_birth,
-			String m_phone, String m_email, String m_address, String keyword_id) {
+	public Member(String m_id, String m_pwd, String m_name, String m_birth, String m_gender, String m_address,
+			String m_email, String m_phone, ArrayList<KeywordId> keyList) {
 		super();
 		this.m_id = m_id;
 		this.m_pwd = m_pwd;
 		this.m_name = m_name;
-		this.m_gender = m_gender;
 		this.m_birth = m_birth;
-		this.m_phone = m_phone;
-		this.m_email = m_email;
+		this.m_gender = m_gender;
 		this.m_address = m_address;
-		this.keyword_id = keyword_id;
-	}
-
-
-	public Member(String m_id, String m_pwd) {
-		super();
-		this.m_id = m_id;
-		this.m_pwd = m_pwd;
+		this.m_email = m_email;
+		this.m_phone = m_phone;
+		this.keyList = keyList;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Member [m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name="
-				+ m_name + ", m_gender= " + m_gender + ", m_birth=" + m_birth + ", m_phone=" + m_phone + ", m_email="
-				+ m_email + ", m_address= " + m_address + ", keyword_id=" + keyword_id + "]";
+		return "Member [m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_birth=" + m_birth
+				+ ", m_gender=" + m_gender + ", m_address=" + m_address + ", m_email=" + m_email + ", m_phone="
+				+ m_phone + ", keyList=" + keyList + "]";
 	}
 
 
@@ -63,6 +57,7 @@ public class Member implements Serializable{
 	public void setM_id(String m_id) {
 		this.m_id = m_id;
 	}
+
 
 	public String getM_pwd() {
 		return m_pwd;
@@ -134,17 +129,16 @@ public class Member implements Serializable{
 	}
 
 
-	public String getKeyword_id() {
-		return keyword_id;
+	public ArrayList<KeywordId> getKeyList() {
+		return keyList;
 	}
 
 
-	public void setKeyword_id(String keyword_id) {
-		this.keyword_id = keyword_id;
+	public void setKeyList(ArrayList<KeywordId> keyList) {
+		this.keyList = keyList;
 	}
 	
 	
 	
-	
-	
+
 }

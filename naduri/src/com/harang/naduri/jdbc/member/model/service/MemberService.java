@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.model.service;
 
 import java.sql.Connection;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.close;
 
 import com.harang.naduri.jdbc.member.model.dao.MemberDAO;
 import com.harang.naduri.jdbc.member.model.vo.Member;
@@ -19,15 +20,24 @@ public class MemberService {
 		int result1 = dao.insertMember(con, joinMember);
 		
 		if( result1 > 0 ) {
+			int m_no = dao.getCurrentM_no(con);
 			
-		} else {
-			commit(con);	
+			for(int i = 0 ; i < list.size(); i++) {
+				list.get(i).setM_no(m_no);
+			}
 		}
 		
-		close(con);		
+		// 키워드 저장
 		
-		return result1;
+		int result2 = 0;
+		
+		for(int i = 0 ; i < list.size() ; i++) {
+			if(list.get(i) != null && list.get(i).getKeyword() != null) {
+				
+			}
+		}
+
 	}
 	
-	// 키워드 저장
+
 }

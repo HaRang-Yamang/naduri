@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,17 +53,17 @@ public class MemberInsertServlet extends HttpServlet {
 		String m_address[] = request.getParameterValues("m_address");
 		String m_addressStr = String.join(" ", m_address);
 		
-		String[] keyword_id = request.getParameterValues("keyword_id");
-		// 배열을 문자열로 변환
-		String keyword_idStr = String.join(", ", keyword_id);
+		ArrayList<Member> list = new ArrayList<>();
+		MemberService service = new MemberService();
 		
+		list = service.selectList();
 		
 		Member joinMember = new Member(m_id, m_pwd, m_name, m_gender, m_birthStr,
-										m_phoneStr, m_emailStr, m_addressStr, keyword_idStr);
+										m_phoneStr, m_emailStr, m_addressStr, );
 		
 		System.out.println("member : " + joinMember);
 		
-		MemberService service = new MemberService();
+
 		
 		int result = service.insertMember(joinMember);
 		

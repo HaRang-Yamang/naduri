@@ -13,20 +13,20 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		
 		String sql = "INSERT INTO MEMBER VALUES "
-						+ "('no1', ?, '일반', ?, ?, ?, ?, ?, ?, ?, 'N', DEFAULT)";
+						+ "(SEQ_M_NO.NEXTVAL, ?, '일반', ?, ?, ?, ?, ?, ?, ?, DEFAULT)";
 		
 		try {
 			
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(2, joinMember.getM_id());
-			ps.setString(4, joinMember.getM_pwd());
-			ps.setString(5, joinMember.getM_name());
-			ps.setString(6, joinMember.getM_birth());
-			ps.setString(7, joinMember.getM_gender());
-			ps.setString(8, joinMember.getM_address());
-			ps.setString(9, joinMember.getM_email());
-			ps.setString(10, joinMember.getM_phone());
+			ps.setString(1, joinMember.getM_id());
+			ps.setString(2, joinMember.getM_pwd());
+			ps.setString(3, joinMember.getM_name());
+			ps.setString(4, joinMember.getM_birth());
+			ps.setString(5, joinMember.getM_gender());
+			ps.setString(6, joinMember.getM_address());
+			ps.setString(7, joinMember.getM_email());
+			ps.setString(8, joinMember.getM_phone());
 
 
 			result = ps.executeUpdate();

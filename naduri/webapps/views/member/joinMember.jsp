@@ -237,55 +237,55 @@
                                 </tr>
                                 <tr>
                             
-                                    <td><input type="checkbox" class="check-box" id="check-box19"><label for="check-box19" name="keyword_id" value="19"><span id="int">궁궐</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box20"><label for="check-box20" name="keyword_id" value="20"><span id="int">유적지</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box21"><label for="check-box21" name="keyword_id" value="21"><span id="int">교육기관</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box22"><label for="check-box22" name="keyword_id" value="22"><span id="int">인물</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box23"><label for="check-box23" name="keyword_id" value="23"><span id="int">한옥</span></label></td>
-                                    
-                                <tr>    
-                                    
-                                    <td><input type="checkbox" class="check-box" id="check-box24"><label for="check-box24" name="keyword_id" value="24"><span id="int">전통</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box25"><label for="check-box25" name="keyword_id" value="25"><span id="int">교과서</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box26"><label for="check-box26" name="keyword_id" value="26"><span id="int">무덤</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box27"><label for="check-box27" name="keyword_id" value="27"><span id="int">건축</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box28"><label for="check-box28" name="keyword_id" value="28"><span id="int">종교</span></label></td>
-                                    
-                                </tr>
-                                <tr>     
-                                    
-                                    <td><input type="checkbox" class="check-box" id="check-box29"><label for="check-box29" name="keyword_id" value="29"><span id="int">술</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box30"><label for="check-box30" name="keyword_id" value="30"><span id="int">먹방</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box31"><label for="check-box31" name="keyword_id" value="31"><span id="int">카페</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box32"><label for="check-box32" name="keyword_id" value="32"><span id="int">데이트</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box33"><label for="check-box33" name="keyword_id" value="33"><span id="int">장터</span></label></td>
-                                    
-                                </tr>
-                                <tr>     
-                                    
-                                    <td><input type="checkbox" class="check-box" id="check-box34"><label for="check-box34"><span id="int" name="keyword_id" value="34">미슐랭</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box35"><label for="check-box35"><span id="int" name="keyword_id" value="35">골목식당</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box36"><label for="check-box36"><span id="int" name="keyword_id" value="36">먹킷리스트</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box37"><label for="check-box37"><span id="int" name="keyword_id" value="37">노포</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box38"><label for="check-box38"><span id="int" name="keyword_id" value="38">나만알고픈</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box19" name="keyword_id" value="19"><label for="check-box19"><span id="int">궁궐</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box20" name="keyword_id" value="20"><label for="check-box20"><span id="int">유적지</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box21" name="keyword_id" value="21"><label for="check-box21"><span id="int">교육기관</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box22" name="keyword_id" value="22"><label for="check-box22"><span id="int">인물</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box23" name="keyword_id" value="23"><label for="check-box23"><span id="int">한옥</span></label></td>
+                                                                                                                              
+                                <tr>                                                                                          
+                                                                                                                              
+                                    <td><input type="checkbox" class="check-box" id="check-box24" name="keyword_id" value="24"><label for="check-box24"><span id="int">전통</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box25" name="keyword_id" value="25"><label for="check-box25"><span id="int">교과서</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box26" name="keyword_id" value="26"><label for="check-box26"><span id="int">무덤</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box27" name="keyword_id" value="27"><label for="check-box27"><span id="int">건축</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box28" name="keyword_id" value="28"><label for="check-box28"><span id="int">종교</span></label></td>
+                                                                                                                              
+                                </tr>                                                                                         
+                                <tr>                                                                                          
+                                                                                                                              
+                                    <td><input type="checkbox" class="check-box" id="check-box29" name="keyword_id" value="29"><label for="check-box29"><span id="int">술</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box30" name="keyword_id" value="30"><label for="check-box30"><span id="int">먹방</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box31" name="keyword_id" value="31"><label for="check-box31"><span id="int">카페</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box32" name="keyword_id" value="32"><label for="check-box32"><span id="int">데이트</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box33" name="keyword_id" value="33"><label for="check-box33"><span id="int">장터</span></label></td>
                                     
                                 </tr>
                                 <tr>     
                                     
-                                    <td><input type="checkbox" class="check-box" id="check-box39"><label for="check-box39"><span id="int" name="keyword_id" value="39">당일치기</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box40"><label for="check-box40"><span id="int" name="keyword_id" value="40">즉흥</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box41"><label for="check-box41"><span id="int" name="keyword_id" value="41">레트로</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box42"><label for="check-box42"><span id="int" name="keyword_id" value="42">힐링</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box43"><label for="check-box43"><span id="int" name="keyword_id" value="43">캠핑</span></label></td>
-                                    
-                                </tr>
-                                <tr> 
-                                    
-                                    <td><input type="checkbox" class="check-box" id="check-box44"><label for="check-box44"><span id="int" name="keyword_id" value="44">바다</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box45"><label for="check-box45"><span id="int" name="keyword_id" value="45">자연</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box46"><label for="check-box46"><span id="int" name="keyword_id" value="46">패키지</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box47"><label for="check-box47"><span id="int" name="keyword_id" value="47">기차</span></label></td>
-                                    <td><input type="checkbox" class="check-box" id="check-box48"><label for="check-box48"><span id="int" name="keyword_id" value="48">도심</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box34" name="keyword_id" value="34"><label for="check-box34"><span id="int">미슐랭</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box35" name="keyword_id" value="35"><label for="check-box35"><span id="int">골목식당</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box36" name="keyword_id" value="36"><label for="check-box36"><span id="int">먹킷리스트</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box37" name="keyword_id" value="37"><label for="check-box37"><span id="int">노포</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box38" name="keyword_id" value="38"><label for="check-box38"><span id="int">나만알고픈</span></label></td>
+                                                                                                                              
+                                </tr>                                                                                         
+                                <tr>                                                                                          
+                                                                                                                              
+                                    <td><input type="checkbox" class="check-box" id="check-box39" name="keyword_id" value="39"><label for="check-box39"><span id="int">당일치기</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box40" name="keyword_id" value="40"><label for="check-box40"><span id="int">즉흥</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box41" name="keyword_id" value="41"><label for="check-box41"><span id="int">레트로</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box42" name="keyword_id" value="42"><label for="check-box42"><span id="int">힐링</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box43" name="keyword_id" value="43"><label for="check-box43"><span id="int">캠핑</span></label></td>
+                                                                                                                              
+                                </tr>                                                                                         
+                                <tr>                                                                                          
+                                                                                                                              
+                                    <td><input type="checkbox" class="check-box" id="check-box44" name="keyword_id" value="44"><label for="check-box44"><span id="int">바다</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box45" name="keyword_id" value="45"><label for="check-box45"><span id="int">자연</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box46" name="keyword_id" value="46"><label for="check-box46"><span id="int">패키지</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box47" name="keyword_id" value="47"><label for="check-box47"><span id="int">기차</span></label></td>
+                                    <td><input type="checkbox" class="check-box" id="check-box48" name="keyword_id" value="48"><label for="check-box48"><span id="int">도심</span></label></td>
                                     
                                 </tr>
 

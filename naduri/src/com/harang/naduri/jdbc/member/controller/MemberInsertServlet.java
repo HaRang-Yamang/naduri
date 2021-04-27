@@ -1,16 +1,13 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.harang.naduri.jdbc.member.model.service.MemberService;
+import com.harang.naduri.jdbc.member.model.vo.Keyword;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
 /**
@@ -35,54 +32,39 @@ public class MemberInsertServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		
+		String m_no = request.getParameter("m_no");
 		String m_id = request.getParameter("m_id");
 		String m_pwd = request.getParameter("m_pwd");
 		String m_name = request.getParameter("m_name");
 		String m_gender = request.getParameter("m_gender");
 		
+		// 입력 칸이 여러 개이므로 배열로 정보값을 받아온다.
 		String[] m_birth = request.getParameterValues("m_birth");
+		// 배열 -> 문자열 변경
 		String m_birthStr = String.join("-", m_birth);
 		
 		String[] m_phone = request.getParameterValues("m_phone");
 		String m_phoneStr = String.join("-", m_phone);
 		
-		String m_email[] = request.getParameterValues("m_email");
-		String m_emailStr = String.join("@" , m_email);
-
-		String m_address[] = request.getParameterValues("m_address");
+		String[] m_email = request.getParameterValues("m_email");
+		String m_emailStr = String.join("@", m_email);
+		
+		String[] m_address = request.getParameterValues("m_address");
 		String m_addressStr = String.join(" ", m_address);
 		
-		ArrayList<Member> list = new ArrayList<>();
-		MemberService service = new MemberService();
+		// 취미는 여러 개 선택 가능
+		String[] keyword_id = request.getParameterValues("keyword_id");
 		
-		list = service.selectList();
 		
-		Member joinMember = new Member(m_id, m_pwd, m_name, m_gender, m_birthStr,
-										m_phoneStr, m_emailStr, m_addressStr, );
+		// 받아온 정보를 하나의 vo로 묶기
+				// 가입 정보
+		Member joinMember = new Member(m_id, m_pwd, m_name, m_birthStr, m_gender, 
+										m_addressStr, m_emailStr, m_phoneStr);
+				// 키워드
+		Keyword joinKeyword = new Keyword(keyword_id);
 		
 		System.out.println("member : " + joinMember);
-		
-
-		
-		int result = service.insertMember(joinMember);
-		
-		if( result > 0 ) {
-			// 회원 가입 성공 시
-			System.out.println("회원 가입 성공!");
-			
-			response.sendRedirect("/views/login.jsp");
-		} else {
-			// 회원 가입 실패 시
-			System.out.println("회원 가입 실패!");
-			
-			RequestDispatcher view 
-				= request.getRequestDispatcher("views/common/errorPage.jsp");
-			
-			request.setAttribute("error-msg", "회원 가입에 실패하였습니다!");
-			
-			view.forward(request, response);
-		}
+		System.out.println("keyword : " + joinKeyword);
 		
 	}
 

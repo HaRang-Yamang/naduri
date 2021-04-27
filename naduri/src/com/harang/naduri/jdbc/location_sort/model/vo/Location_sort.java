@@ -2,7 +2,7 @@ package com.harang.naduri.jdbc.location_sort.model.vo;
 
 import java.io.Serializable;
 
-public class location_sort implements Serializable{
+public class Location_sort implements Serializable{
 	
 
 	private static final long serialVersionUID = 1007L;
@@ -10,9 +10,9 @@ public class location_sort implements Serializable{
 	private int ls_code ;	//장소코드
 	private String ls_name ;	//장소분류명
 	
-	public location_sort() {}
+	public Location_sort() {}
 
-	public location_sort(int ls_code, String ls_name) {
+	public Location_sort(int ls_code, String ls_name) {
 		super();
 		this.ls_code = ls_code;
 		this.ls_name = ls_name;

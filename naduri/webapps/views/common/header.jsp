@@ -12,6 +12,7 @@
         <div class="headerArea">
             <h1><a href="/naduri/index.jsp"><img src="/naduri/assets/images/header/logo.png" alt="나드리 로고"></a></h1>
         </div>
+
         <div class="profile">
             <img src="/naduri/assets/images/header/profile.png" alt="로그인" >
             
@@ -43,7 +44,7 @@
            </script>
         <% } %>
         </div>
-        
+
     </nav>
 
 </header>

@@ -7,6 +7,7 @@ public class Member implements Serializable{
 	private static final long serialVersionUID = 1009L;
 	
 	// 1. 필드 변수
+	private int m_no;
 	private String m_id;
 	private String m_pwd;
 	private String m_name;
@@ -15,6 +16,8 @@ public class Member implements Serializable{
 	private String m_address;
 	private String m_email;
 	private String m_phone;
+	private int m_auth;
+	private String m_status;
 
 	
 	// 2. 생성자
@@ -42,9 +45,17 @@ public class Member implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Member [m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_birth=" + m_birth
-				+ ", m_gender=" + m_gender + ", m_address=" + m_address + ", m_email=" + m_email + ", m_phone="
-				+ m_phone + "]";
+		return "Member [m_no=" + m_no + ", m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_birth="
+				+ m_birth + ", m_gender=" + m_gender + ", m_address=" + m_address + ", m_email=" + m_email
+				+ ", m_phone=" + m_phone + ", m_auth=" + m_auth + ", m_status=" + m_status + "]";
+	}
+
+	public int getM_no() {
+		return m_no;
+	}
+
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
 	}
 
 	public String getM_id() {
@@ -110,14 +121,24 @@ public class Member implements Serializable{
 	public void setM_phone(String m_phone) {
 		this.m_phone = m_phone;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
+	public int getM_auth() {
+		return m_auth;
+	}
+
+	public void setM_auth(int m_auth) {
+		this.m_auth = m_auth;
+	}
+
+	public String getM_status() {
+		return m_status;
+	}
+
+	public void setM_status(String m_status) {
+		this.m_status = m_status;
+	}
 
 }
+
+
+	

@@ -13,6 +13,7 @@ header .navbar {
 header .profile {
     transform: translateY(15px);
     width : 36px;
+    z-index : 1;
 }
 header .profile img{
 	cursor : pointer;
@@ -34,7 +35,7 @@ header .user_menu {
     visibility: hidden;
     opacity: 0;
     transform: translate(7px, -17px);
-    z-index : 10000000;
+
 }
 header .user_menu.active {
     visibility: visible;

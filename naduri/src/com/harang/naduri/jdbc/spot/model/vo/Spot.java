@@ -18,13 +18,15 @@ private	String s_status;
 private	String spot_date;
 private	int spot_count;
 
+private String spot_file;
+
 public Spot() {
 	super();
 	// TODO Auto-generated constructor stub
 }
 
 public Spot(int spot_id, int l_no, String spot_name, String spot_type, String spot_tel, String spot_time,
-		String spot_location, int spot_lat, int spot_long, String s_status, String spot_date, int spot_count) {
+		String spot_location, int spot_lat, int spot_long, String s_status, String spot_date, int spot_count, String spot_file) {
 	super();
 	this.spot_id = spot_id;
 	this.l_no = l_no;
@@ -38,6 +40,12 @@ public Spot(int spot_id, int l_no, String spot_name, String spot_type, String sp
 	this.s_status = s_status;
 	this.spot_date = spot_date;
 	this.spot_count = spot_count;
+	this.spot_file = spot_file;
+}
+
+public Spot(String spot_file) {
+	super();
+	this.spot_file = spot_file;
 }
 
 @Override
@@ -45,7 +53,7 @@ public String toString() {
 	return "Spot [spot_id=" + spot_id + ", l_no=" + l_no + ", spot_name=" + spot_name + ", spot_type=" + spot_type
 			+ ", spot_tel=" + spot_tel + ", spot_time=" + spot_time + ", spot_location=" + spot_location + ", spot_lat="
 			+ spot_lat + ", spot_long=" + spot_long + ", s_status=" + s_status + ", spot_date=" + spot_date
-			+ ", spot_count=" + spot_count + "]";
+			+ ", spot_count=" + spot_count + ", spot_file=" + spot_file + "]";
 }
 
 public int getSpot_id() {
@@ -58,6 +66,14 @@ public void setSpot_id(int spot_id) {
 
 public int getL_no() {
 	return l_no;
+}
+
+public String getSpot_file() {
+	return spot_file;
+}
+
+public void setSpot_file(String spot_file) {
+	this.spot_file = spot_file;
 }
 
 public void setL_no(int l_no) {

@@ -39,9 +39,9 @@ public class NoticeSelectList extends HttpServlet {
 		
 		list = service.selectList();
 		
-		System.out.println("list결과 : " + list);
+		//System.out.println("list결과 : " + list);
 		
-		//request.setAttribute("list", list);
+		request.setAttribute("list", list);
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/notice/noticeList.jsp");
 		

@@ -60,7 +60,9 @@
                     <% } %>
                    
                 </table>
-                <button class="write_btn" type="submit" onclick="location.href='views/notice/noticeWrite.jsp'">작성하기</button>
+                <% if( m != null ) { %>
+                <button class="write_btn" type="submit" style="cursor: pointer;" onclick="location.href='views/notice/noticeWrite.jsp'">작성하기</button>
+                <% } %>
             </div>
         </div>
 

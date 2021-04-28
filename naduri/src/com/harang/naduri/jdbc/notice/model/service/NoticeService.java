@@ -23,4 +23,17 @@ public class NoticeService {
 		return list;
 	}
 
+	public int insertNotice(Notice n) {
+		con = getConnection();
+		
+		int result = dao.insertNotice(con, n);
+		
+		if( result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
 }

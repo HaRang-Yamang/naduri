@@ -15,14 +15,15 @@ public class Member implements Serializable{
 	private String m_address;
 	private String m_email;
 	private String m_phone;
-
+	private String m_auth;
+	
 	
 	// 2. 생성자
 	public Member() {}
 
 		// 전체용
 	public Member(String m_id, String m_pwd, String m_name, String m_birth, String m_gender, String m_address,
-			String m_email, String m_phone) {
+			String m_email, String m_phone, String m_auth) {
 		super();
 		this.m_id = m_id;
 		this.m_pwd = m_pwd;
@@ -32,6 +33,7 @@ public class Member implements Serializable{
 		this.m_address = m_address;
 		this.m_email = m_email;
 		this.m_phone = m_phone;
+		this.m_auth = m_auth;
 	}
 		// 아이디, 비밀번호
 	public Member(String m_id, String m_pwd) {
@@ -40,11 +42,13 @@ public class Member implements Serializable{
 		this.m_pwd = m_pwd;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Member [m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_birth=" + m_birth
 				+ ", m_gender=" + m_gender + ", m_address=" + m_address + ", m_email=" + m_email + ", m_phone="
-				+ m_phone + "]";
+				+ m_phone + ", m_auth=" + m_auth + "]";
 	}
 
 	public String getM_id() {
@@ -109,6 +113,14 @@ public class Member implements Serializable{
 
 	public void setM_phone(String m_phone) {
 		this.m_phone = m_phone;
+	}
+
+	public String getM_auth() {
+		return m_auth;
+	}
+
+	public void setM_auth(String m_auth) {
+		this.m_auth = m_auth;
 	}
 	
 	

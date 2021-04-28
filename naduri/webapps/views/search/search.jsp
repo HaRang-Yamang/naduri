@@ -16,7 +16,11 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<script src="/naduri/assets/js/map.js"></script>
+
+<!-- 지도 api 사용 위한 스크립트 영역 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6005fc94dc9f6c5072c2ef8a64151536"></script>
+<script defer src="/naduri/assets/js/map.js"></script>
+
 <title>나드리</title>
 </head>
 <body>
@@ -33,19 +37,18 @@
     <section class="map_box">
         <!-- 지도를 표시할 div 입니다 -->
         <div id="map"> </div>
-        
-        
-        
+        </section>
+        <section>
         <!-- 위치 정보 -->
         <div class="info">
                 <div class="title">
-                <ul id="location_title">
-                    <li id="list_title">위치</li>
-                    <li>주소</li>
-                    <li>전화번호</li>
-                    <li>영업시간</li>
-                    <li>웹사이트</li>
-                </ul>
+	                <ul id="location_title">
+	                    <li id="list_title">위치</li>
+	                    <li>주소</li>
+	                    <li>전화번호</li>
+	                    <li>영업시간</li>
+	                    <li>웹사이트</li>
+	                </ul>
                 </div>
 
                 <div class="data">
@@ -56,7 +59,7 @@
                         <li>9 a.m - 5 p.m.</li>
                         <li><i class="fas fa-home"></i></li>
                     </ul>
-                    </div>
+                </div>
         </div>
         
         <!-- 주변 둘러보기 -->

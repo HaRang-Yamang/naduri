@@ -50,8 +50,6 @@ public class MemberDAO {
 			result = ps.executeUpdate();
 //			result = st.executeUpdate(sql);
 			
-			
-			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -59,6 +57,50 @@ public class MemberDAO {
 			
 			close(ps);
 //			close(st);
+		}
+		
+		return result;
+	}
+
+	
+	// 회원 조회
+	public Member selectMember(Connection con, Member loginMember) {
+		
+		Member result = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM MEMBER WHERE M_ID = ? AND M_PWD = ?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, loginMember.getM_id());
+			ps.setString(2, loginMember.getM_pwd());
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = new Member();
+				
+				result.setM_id(rs.getString("m_id"));
+				result.setM_pwd(rs.getString("m_pwd"));
+				result.setM_name(rs.getString("m_name"));
+				result.setM_gender(rs.getString("m_gender"));
+				result.setM_address(rs.getString("m_address"));
+				result.setM_email(rs.getString("m_email"));
+				result.setM_phone(rs.getString("m_phone"));
+				result.setM_birth(rs.getString("m_birth"));
+				
+			}
+			
+			System.out.println("조회 결과 : " + result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
 		}
 		
 		return result;

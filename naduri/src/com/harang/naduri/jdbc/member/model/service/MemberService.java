@@ -33,4 +33,17 @@ public class MemberService {
 		return result;
 	}
 
+	// 로그인
+	public Member selectMember(Member loginMember) {
+		
+		con = getConnection();
+		
+		Member result = dao.selectMember(con, loginMember);
+		
+		close(con);
+		
+		return result;
+		
+	}
+
 }

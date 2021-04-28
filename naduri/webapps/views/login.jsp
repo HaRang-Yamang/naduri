@@ -22,14 +22,14 @@
 	<section>
 	
 		<div class="loginArea">
-            <form action="">
+            <form action="/naduri/login.do" method="post">
                 <div class="container">
                     <h2 id="login_title">로그인</h2>
                     <span class="input_box">
-                        <input class="inp_text" checked type="text" name="id" id="id" maxlength="20" placeholder="아이디">
+                        <input class="inp_text" checked type="text" name="m_id" id="id" maxlength="20" placeholder="아이디">
                     </span>
                     <span class="input_box">
-                        <input class="inp_text" type="password" name="pw" id="pw" placeholder="비밀번호">
+                        <input class="inp_text" type="password" name="m_pwd" id="pw" placeholder="비밀번호">
                     </span>
                     <div class="keep_and_find">
                         <div class="login_check">

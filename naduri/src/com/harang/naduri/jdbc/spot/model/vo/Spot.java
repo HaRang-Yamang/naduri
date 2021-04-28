@@ -5,18 +5,19 @@ import java.io.Serializable;
 public class Spot implements Serializable {
 	
 	private static final long serialVersionUID = 1014L;
-private	int spot_id;
-private	int l_no;
-private	String spot_name;
-private	String spot_type;
-private	String spot_tel;
-private	String spot_time;
-private	String spot_location;
-private	int spot_lat;
-private	int spot_long;
-private	String s_status;
-private	String spot_date;
-private	int spot_count;
+	
+	private	int spot_id;
+	private	int l_no;
+	private	String spot_name;
+	private	String spot_type;
+	private	String spot_tel;
+	private	String spot_time;
+	private	String spot_location;
+	private	double spot_lat;
+	private	double spot_long;
+	private	String s_status;
+	private	String spot_date;
+	private	int spot_count;
 
 public Spot() {
 	super();
@@ -39,6 +40,18 @@ public Spot(int spot_id, int l_no, String spot_name, String spot_type, String sp
 	this.spot_date = spot_date;
 	this.spot_count = spot_count;
 }
+
+
+
+
+public Spot(String spot_name, int spot_lat, int spot_long) {
+	super();
+	this.spot_name = spot_name;
+	this.spot_lat = spot_lat;
+	this.spot_long = spot_long;
+}
+
+
 
 @Override
 public String toString() {
@@ -104,19 +117,19 @@ public void setSpot_location(String spot_location) {
 	this.spot_location = spot_location;
 }
 
-public int getSpot_lat() {
+public double getSpot_lat() {
 	return spot_lat;
 }
 
-public void setSpot_lat(int spot_lat) {
+public void setSpot_lat(double spot_lat) {
 	this.spot_lat = spot_lat;
 }
 
-public int getSpot_long() {
+public double getSpot_long() {
 	return spot_long;
 }
 
-public void setSpot_long(int spot_long) {
+public void setSpot_long(double spot_long) {
 	this.spot_long = spot_long;
 }
 

@@ -100,6 +100,7 @@
     font-size: 14px;
     margin: 30px auto 30px auto;
     display: block;
+    cursor: pointer;
 }
 
 #input_notice{

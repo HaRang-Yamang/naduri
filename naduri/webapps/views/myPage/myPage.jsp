@@ -64,7 +64,7 @@
 	                    <tbody>
 	                        <tr>
 	                            <td class="profile_first">이름</td>
-	                            <td><%= m.getM_name() %></td>
+	                            <td>홍길동</td>
 	                        </tr>
 	                        <tr>
 	                            <td>생년월일</td>
@@ -163,6 +163,20 @@
 	       <div id="tab-content"></div>
 	    </div>
 	</section>		
+	<div id="topBtn" href="#">TOP</div>
+
+	<script>
+    $(function() {
+       
+        
+        $("#topBtn").click(function() {
+            $('html, body').animate({
+                scrollTop : 0
+            }, 400);
+            return false;
+        });
+    });
+	</script>
 	
 	<%@ include file="../common/footer.jsp" %>
 </body>

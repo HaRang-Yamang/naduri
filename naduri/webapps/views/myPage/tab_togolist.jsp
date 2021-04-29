@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.harang.naduri.jdbc.member.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*, java.util.*" %>
+<%
+   Member m = (Member)session.getAttribute("member");
+   ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list");
+%>
+
 
     <div id="tab_togolist" class="tab-content current">
 	            <div class="current_tab">

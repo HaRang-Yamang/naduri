@@ -401,11 +401,20 @@
     <div id = "tab_qna" class="tab-content">
         <!-- QnA 질문하기 버튼 -->
         <div class = "filter">
-            <div class="write_btn">
-                <input type="button" value = "질문하기">
+        <form id="insertForm" action="/naduri/insert.qn" method="post">
+            <div class=qnatitle >
+            <span>질문 제목: </span>
+            <input type="text" name="q_title" />
             </div>
-        </div>
-	
+            <div class=qnacontent>
+            <span>질문 내용: </span>
+             <textarea id="qna_textArea"  name="q_content" cols="150" rows="10" style="resize:none;"></textarea>
+             </div>
+             <div class="write_btn">
+                   <button type="submit"  form='insertForm' id="submit_btn" >질문하기</button>
+            </div>
+	</form>
+	  </div>
         <!-- 전체 QnA -->
         <div class="content mouse">
             <!-- 질문 확인 -->

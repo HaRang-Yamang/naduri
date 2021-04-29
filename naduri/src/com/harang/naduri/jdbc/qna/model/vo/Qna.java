@@ -7,6 +7,7 @@ public class Qna implements Serializable {
 	
 private  int qno;
 private 	int m_no;
+private String q_title;
 private 	String q_content;
 private 	String q_date;
 private 	String q_update;
@@ -14,6 +15,14 @@ private 	String q_update;
 public Qna() {
 	super();
 }
+
+public Qna(String q_title, String q_content) {
+	super();
+	this.q_title = q_title;
+	this.q_content = q_content;
+}
+
+
 
 public Qna(int qno, int m_no, String q_content, String q_date, String q_update) {
 	super();
@@ -70,7 +79,13 @@ public void setQ_update(String q_update) {
 	this.q_update = q_update;
 }
 	
+public String getQ_title() {
+	return q_title;
+}
 
+public void setQ_title(String q_title) {
+	this.q_title = q_title;
+}
 	
 	
 	

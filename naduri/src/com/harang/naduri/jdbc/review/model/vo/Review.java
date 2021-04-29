@@ -1,10 +1,14 @@
 package com.harang.naduri.jdbc.review.model.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.ArrayList;
+
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 
 public class Review implements Serializable{
 	private static final long serialVersionUID = 1013L;
-	
+	private ArrayList<Attach>attList;
 private	int rno;
 private	int l_no;
 private	int m_no;
@@ -13,8 +17,8 @@ private	String r_title;
 private	String r_content;
 private	String r_period;
 private	int r_with;
-private	String r_date;
-private	String r_update;
+private	Date r_date;
+private	Date r_update;
 private int r_count;
 private	String r_status;
 
@@ -23,8 +27,8 @@ public Review() {
 	// TODO Auto-generated constructor stub
 }
 
-public Review(int rno, int r_rank, String r_title, String r_content, String r_period, int r_with, String r_date,
-		String r_update, int r_count, String r_status) {
+public Review(int rno, int r_rank, String r_title, String r_content, String r_period, int r_with, Date r_date,
+		Date r_update, int r_count, String r_status) {
 	super();
 	this.rno = rno;
 	this.r_rank = r_rank;
@@ -38,22 +42,18 @@ public Review(int rno, int r_rank, String r_title, String r_content, String r_pe
 	this.r_status = r_status;
 }
 
-public Review(int rno, int l_no, int m_no, int r_rank, String r_title, String r_content, String r_period, int r_with,
-		String r_date, String r_update, int r_count, String r_status) {
+
+
+public Review(int r_rank, String r_title, String r_content, String r_period, int r_with) {
 	super();
-	this.rno = rno;
-	this.l_no = l_no;
-	this.m_no = m_no;
 	this.r_rank = r_rank;
 	this.r_title = r_title;
 	this.r_content = r_content;
 	this.r_period = r_period;
 	this.r_with = r_with;
-	this.r_date = r_date;
-	this.r_update = r_update;
-	this.r_count = r_count;
-	this.r_status = r_status;
 }
+
+
 
 @Override
 public String toString() {
@@ -86,7 +86,7 @@ public void setM_no(int m_no) {
 	this.m_no = m_no;
 }
 
-public double getR_rank() {
+public int getR_rank() {
 	return r_rank;
 }
 
@@ -126,19 +126,19 @@ public void setR_with(int r_with) {
 	this.r_with = r_with;
 }
 
-public String getR_date() {
+public Date getR_date() {
 	return r_date;
 }
 
-public void setR_date(String r_date) {
+public void setR_date(Date r_date) {
 	this.r_date = r_date;
 }
 
-public String getR_update() {
+public Date getR_update() {
 	return r_update;
 }
 
-public void setR_update(String r_update) {
+public void setR_update(Date r_update) {
 	this.r_update = r_update;
 }
 
@@ -158,6 +158,13 @@ public void setR_status(String r_status) {
 	this.r_status = r_status;
 }
 
+public ArrayList<Attach> getAttList() {
+	return attList;
+}
+
+public void setAttList(ArrayList<Attach> attList) {
+	this.attList = attList;
+}
 public static long getSerialversionuid() {
 	return serialVersionUID;
 }

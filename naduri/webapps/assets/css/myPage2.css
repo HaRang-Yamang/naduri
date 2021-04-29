@@ -1,13 +1,13 @@
-@charset "utf-8";
+/* @charset "utf-8"; */
+
+
 
 /* 리뷰, qna 작성자 프로필 */
 .content{
     padding : 75px 0 25px 0;
 }
 /* 마우스 호버 */
-.content.mouse:hover{
-    background : var(--light-gray);
-}
+
 .review, .qna{
     width : 700px;
 }

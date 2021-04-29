@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.Thumbnail.model.vo.Attach;
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 
 public class ThumbnailDAO {
@@ -46,6 +47,7 @@ public class ThumbnailDAO {
 			
 			while(rs.next()) {
 				Thumbnail t = new Thumbnail();
+				Attach a = new Attach();
 				
 				t.setSpot_id(      rs.getInt("spot_id"));
 				t.setL_no(      rs.getInt("l_no"));
@@ -60,7 +62,10 @@ public class ThumbnailDAO {
 				t.setSpot_count(  rs.getInt("spot_count"));
 				t.setSpot_file(rs.getString("spot_file"));
 				
+				a.setAttach_name(rs.getString("a_name"));
+				
 				list.add(t);
+				
 			}
 			
 		} catch (SQLException e) {
@@ -69,6 +74,11 @@ public class ThumbnailDAO {
 		} finally {
 			close(rs);
 			close(ps);			
+			
+			
+
+			
+			
 		}
 		
 		return list;

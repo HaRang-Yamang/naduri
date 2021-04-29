@@ -32,6 +32,10 @@ public class Attach implements Serializable {
 		this.spot_id = spot_id;
 		this.n_no = n_no;
 	}
+	
+	public Attach(String attach_name) {
+		this.attach_name = attach_name;
+	}
 
 
 	@Override

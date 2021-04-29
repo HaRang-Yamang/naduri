@@ -21,8 +21,6 @@ public class MemberService {
 	
 		con = getConnection();
 		
-		int result = 0;
-		
 		// 1. 기본 정보 저장
 		int result1 = dao.insertMember(con, joinMember);
 		
@@ -35,7 +33,7 @@ public class MemberService {
 			int m_no = dao.selectMno(con, joinMember.getM_id());
 			
 			// m_no의 값이 0이거나 keyword_id 배열의 길이가 0 이하라면 롤백.
-			if(m_no == 0 || keyword_id.length <= 0) {
+			if(keyword_id.length <= 0) {
 				rollback(con);
 			}
 			// 2. m_no 값이 0 이상이라면, MCHOICE 테이블에
@@ -44,6 +42,7 @@ public class MemberService {
 				
 				// result2의 초기값은 0
 				int result2 = 0;
+				// Keyword key = new Keyword();
 				
 				// 입력된 keyword_id 배열의 처음부터 끝까지 이하의 구문을 반복
 				for( int i = 0 ; i < keyword_id.length ; i++ ) {
@@ -51,6 +50,9 @@ public class MemberService {
 					// key = m_no와 keyword_id 배열을 차례대로 사용 하여
 					// KeywordDAO 클래스의 insertKeyword 함수(sql 입력 함수)가 작동되는 횟수는 result2
 					Keyword key = new Keyword(m_no, Integer.parseInt(keyword_id[i]));
+//					key.setM_no(m_no);
+//					key.setKeyword_id(i);
+					
 					result2 = dao.insertKeyword(con, key);
 					
 					commit(con);
@@ -60,14 +62,15 @@ public class MemberService {
 						rollback(con);
 						break;
 					}
+					commit(con);
 				}
 			}	// MCHOICE 테이블에 SQL 입력이 끝나고
 	
 		}	// MEMBER 테이블에 데이터 입력이 끝난 뒤에
-		commit(con);
+		
 		close(con);
 		
-		return result;
+		return result1;
 	}
 	
 	

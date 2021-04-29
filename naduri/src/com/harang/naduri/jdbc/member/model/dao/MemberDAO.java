@@ -1,13 +1,35 @@
 package com.harang.naduri.jdbc.member.model.dao;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
+
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
+import com.harang.naduri.jdbc.member.model.dao.MemberDAO;
 import com.harang.naduri.jdbc.member.model.vo.Keyword;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
 public class MemberDAO {
-
+	
+	 private Properties prop;
+	   
+	   public MemberDAO() {
+	      prop = new Properties();
+	      
+	      String filePath = MemberDAO.class
+	                      .getResource("/config/member.properties")
+	                      .getPath();
+	      
+	      try {
+	         prop.load( new FileReader(filePath));
+	         
+	      } catch (IOException e) {
+	      
+	         e.printStackTrace();
+	      } 
+	   }
 	// DB의 Member 테이블에 jsp에서 받아온 정보값 입력
 	public int insertMember(Connection con, Member joinMember) {
 		// 실행 결과 추가된 행의 개수
@@ -15,8 +37,7 @@ public class MemberDAO {
 //		Statement st = null;
 		PreparedStatement ps = null;
 		
-		String sql = "INSERT INTO MEMBER VALUES "
-						+ "(SEQ_M_NO.NEXTVAL, ?, DEFAULT, ?, ?, ?, ?, ?, ?, DEFAULT, ?)";
+		String sql = prop.getProperty("insertMember");
 		
 		try {
 			
@@ -65,24 +86,66 @@ public class MemberDAO {
 		return result;
 	}
 	
+	// m_no를 m_id로 조회하여 가져오는 함수
+		public int selectMno(Connection con, String m_id) {
+
+			int result = 0;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			// SQL에 들어가는 구문
+			String sql = prop.getProperty("selectMno");
+			
+			try {
+				
+				// 준비된 구문의
+				ps = con.prepareStatement(sql);
+				
+				// 첫 번째 ?에 m_id 입력
+				ps.setString(1, m_id);
+				
+				// rs에 ps("SELECT M_NO FROM MEMBER WHERE M_ID = '입력된 m_id'의 결과값)을 담는다
+				rs = ps.executeQuery();
+
+				if(rs.next()){
+					
+					result = rs.getInt("m_no");
+		
+				}
+				// console 창에 나타남
+				System.out.println("m_no : " + rs.getInt("m_no"));
+				
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} finally {
+				// ResultSet 객체를 닫고, PreparedStatement 객체를 닫는다. 
+				close(rs);
+				close(ps);
+			}
+			
+			// m_no값 반환
+			return result;
+		}
+		
+	
 	// DB의 MCHOICE 테이블에 jsp에서 받아온 정보값(keyword_id) 입력
-	public int insertKeyword(Connection con, Keyword joinKeyword) {
+	public int insertKeyword(Connection con, Keyword key) {
+		
 		
 		int result = 0;
 		PreparedStatement ps = null;
 		
-		String sql = "INSERT INTO MCHOICE VALUES "
-
-				+ "(?, ?)";
+		String sql = prop.getProperty("insertKeyword");
 
 
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, joinKeyword.getM_no());
-			ps.setInt(2, joinKeyword.getKeyword_id());
+			ps.setInt(1, key.getM_no());
+			ps.setInt(2, key.getKeyword_id());
 			
-			System.out.println(sql);
+			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
 		
@@ -91,9 +154,12 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	
+	
 
 	
-	// 회원 조회
+	// 회원번호 조회
 	public Member selectMember(Connection con, Member loginMember) {
 		
 		Member result = null;
@@ -136,40 +202,6 @@ public class MemberDAO {
 		return result;
 	}
 
-	// m_no를 m_id로 조회하여 가져오는 함수
-	public int selectMno(Connection con, String m_id) {
-		int result = 0;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		// SQL에 들어가는 구문
-		String sql = "SELECT M_NO FROM MEMBER WHERE M_ID = ?";
-		
-		try {
-			
-			// 준비된 구문의
-			ps = con.prepareStatement(sql);
-			
-			// 첫 번째 ?에 m_id 입력
-			ps.setString(1, m_id);
-			
-			// rs에 ps("SELECT M_NO FROM MEMBER WHERE M_ID = '입력된 m_id'의 결과값을 담는다
-			rs = ps.executeQuery();
-			
-			// console 창에 나타남
-			System.out.println("m_no : " + result);
-			
-		} catch (SQLException e) {
 
-			e.printStackTrace();
-		} finally {
-			// ResultSet 객체를 닫고, PreparedStatement 객체를 닫는다. 
-			close(rs);
-			close(ps);
-		}
-		
-		// m_no값 반환
-		return result;
-	}
 
 }

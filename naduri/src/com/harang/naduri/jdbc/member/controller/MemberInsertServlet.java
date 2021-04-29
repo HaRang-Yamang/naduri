@@ -1,7 +1,7 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.harang.naduri.jdbc.member.model.service.KeywordService;
 import com.harang.naduri.jdbc.member.model.service.MemberService;
-import com.harang.naduri.jdbc.member.model.vo.Keyword;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
 /**
@@ -57,10 +55,7 @@ public class MemberInsertServlet extends HttpServlet {
 		String[] m_address = request.getParameterValues("m_address");
 		String m_addressStr = String.join(" ", m_address);
 		
-		// 취미는 여러 개 선택 가능
-		ArrayList<Keyword> list = new ArrayList<>();
-		
-//		String[] keyword_id = request.getParameterValues("keyword_id");
+		String[] keyword_id = request.getParameterValues("keyword_id");
 
 //		for(int i = 0 ; i < keyword_id.length ; i++) {
 //			String keyArr = request.getParameter(keyword_id[i]);
@@ -71,21 +66,16 @@ public class MemberInsertServlet extends HttpServlet {
 				// 가입 정보
 		Member joinMember = new Member(m_id, m_pwd, m_name, m_birthStr, m_gender, 
 										m_addressStr, m_emailStr, m_phoneStr);
-				// 키워드
-		Keyword joinKeyword = new Keyword();
-		
+
+
 		System.out.println("member : " + joinMember);
-		System.out.println("keyword : " + joinKeyword);
-		
+		System.out.println("keyword_id : " + Arrays.toString(keyword_id));
 		
 		// 회원 서비스 객체 생성
-		MemberService mService = new MemberService();
-		KeywordService kService = new KeywordService();
-		
-		int mResult = mService.insertMember(joinMember);
-//		int kResult = kService.insertKeyword(joinKeyword);
-		
-		if(mResult > 0) {
+		MemberService service = new MemberService();
+		int result = service.insertMember(joinMember, keyword_id);
+
+		if(result > 0) {
 			// 회원 가입 성공!
 			System.out.println("회원 가입 성공!");
 			

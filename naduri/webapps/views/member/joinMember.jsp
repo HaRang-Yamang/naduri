@@ -160,7 +160,7 @@
                                     </td>
                                     <td>
                                         <span class="box">
-                                            <input type="text" name="m_address" size="40" class="int" maxlength="4">
+                                            <input type="text" name="m_address" size="40" class="int" maxlength="40">
                                         </span>
                                     </td>
                                 </tr>
@@ -170,7 +170,7 @@
                                     </td>
                                     <td>
                                         <span class="box">
-                                            <input type="text" name="m_address" size="40" class="int" maxlength="4">
+                                            <input type="text" name="m_address" size="40" class="int" maxlength="40">
                                         </span>
                                     </td>
                                 </tr>

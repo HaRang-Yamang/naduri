@@ -1,18 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="com.harang.naduri.jdbc.review.model.vo.*, java.util.*, com.harang.naduri.jdbc.member.model.vo.*" %>
+<%
+	ArrayList<Review> rlist = (ArrayList<Review>)request.getAttribute("list");
+	Member m = (Member)session.getAttribute("member");
+%>   
     <div id="tab_p_reviews" class="tab-content">
 	            <div class="current_tab">
 	                <div class="like_content">
 	                    <div class="like_nameArea">
-	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName">홍길동 <span id="p_like_coment">님의
+	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName"><%= m.getM_name() %><span id="p_like_coment">님의
 	                                리뷰</span></span>
 	                    </div>
 	                    <div class="like_titleArea">
-	                        <h4>경복궁</h4><span>5.0</span>
+	                        <h4><%= rlist.get(0).getR_title() %></h4><span><%= rlist.get(0).getR_rank() %></span>
 	                    </div>
-	                    <p class="like_date">2021년 04월 12일 방문</p>
-	                    <p>리뷰내용리뷰내용리뷰내용리리뷰내용내용리뷰내내용리뷰내용내용리뷰내내용뷰내용내용리뷰내내용리뷰내...</p>
+	                    <p class="like_date"><%= rlist.get(0).getR_period() %> 방문</p>
+	                    <p class="myReview_content"><%= rlist.get(0).getR_content() %></p>
+	                    
+	                    <script>
+	                    $(document).ready(function(){ 
+	                    	$('.myReview_content').each(function(){ 
+	                    		if ($(this).text().length > 30) $(this).html($(this).text().substr(0,70)+"..."); }); });
+
+	                 
+	                    </script>
+	                    
 	                    <div class="like_photo">
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
@@ -171,3 +184,5 @@
 	                </div>
 	            </div>
 	        </div>
+	        
+	       

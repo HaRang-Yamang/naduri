@@ -435,4 +435,8 @@ column-gap: 5px;
 
 
 
-
+.myReview_content{
+	width:270px;
+	height:auto;
+	margin: 0;
+}

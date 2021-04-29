@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
@@ -89,6 +90,41 @@ public ReviewDAO() {
 			close(ps);
 		}
 		return result;
+	}
+	public ArrayList<Review> selectMyReview(Connection con, int m_no) {
+		ArrayList<Review> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectMyReview");
+		
+		try {
+			ps = con.prepareStatement(sql);
+		
+			ps.setInt(1, m_no);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Review r = new Review();
+				// R_TITLE, R_CONTENT, R_PERIOD, R_LIKE
+				r.setR_title(rs.getString("r_title"));
+				r.setR_content(rs.getString("r_content"));
+				r.setR_period(rs.getString("r_period"));
+				r.setR_rank(rs.getInt("r_rank"));
+				// r.setR_like(rs.getInt("r_like"));
+				
+				list.add(r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
 	}
 
 }

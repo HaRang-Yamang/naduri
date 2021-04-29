@@ -9,7 +9,7 @@ header{
 header .navbar {
     display: flex;
     width: 1000px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 header .profile {
     transform: translateY(15px);

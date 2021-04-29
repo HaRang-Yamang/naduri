@@ -187,3 +187,20 @@ input[type=reset]{
     border : 1px solid var(--gray-color);
     background : var(--white-color);
 }
+
+
+#topBtn {
+	width:40px;
+	height:40px;
+    position: fixed;
+    bottom:500px;
+ 	background: #636363;
+ 	color: white;
+ 	text-align:center;
+ 	font-sizs:14px;
+ 	font-weight: 600;
+    padding-top:10px;
+    z-index: 10;
+    top:90%;
+    left:90%;
+}

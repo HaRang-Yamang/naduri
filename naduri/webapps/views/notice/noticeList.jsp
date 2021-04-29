@@ -33,7 +33,7 @@
                 <h2 class="notice_head">공지사항</h2>
             </div>
             <div class="table_area">
-                <table class="notice_table">
+                <table class="notice_table" id="listArea">
                     <tr>
                         <th id="notice_no">글번호</th>
                         <th id='notice_title'>제목</th>
@@ -43,7 +43,7 @@
                     <% for(Notice n : list) { %>             
                     <tr>
                         <td>
-                            <span class="<%= n.getN_no() %>"><%= n.getN_no() %></span>
+                            <span id="<%= n.getN_no() %>"><%= n.getN_no() %></span>
                         </td>
                         <td>
                             <span class="notice_title">
@@ -58,11 +58,27 @@
                         </td>
                     </tr>
                     <% } %>
-                   
+               
                 </table>
+                
                 <% if( m != null ) { %>
                 <button class="write_btn" type="submit" style="cursor: pointer;" onclick="location.href='views/notice/noticeWrite.jsp'">작성하기</button>
+               
                 <% } %>
+      
+      			<script>
+               		$('#listArea td').on('mouseenter', function(){
+               			$(this).parent().css({'background' : 'rgba(178, 191, 80, 0.1)', 'cursor' : 'pointer'});
+               		}).on('mouseout', function(){
+               			$(this).parent().css({'background' : 'white'});
+               		}).on('click', function() {
+               			var n_no = $(this).parent().children().first().children().attr('id');
+               			
+               			//console.log(n_no);
+               			location.href = "/naduri/selectOne.no?n_no=" + n_no;
+               		});
+               	</script>
+      
             </div>
         </div>
 

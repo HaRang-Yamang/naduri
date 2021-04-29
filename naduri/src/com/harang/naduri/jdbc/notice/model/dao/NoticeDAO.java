@@ -93,4 +93,43 @@ public class NoticeDAO {
 		return result;
 	}
 
+	public Notice selectOne(Connection con, int n_no) {
+		
+		Notice n = null;	// 게시물의 번호를 받아줘야하니까 공간 만들어주기
+		PreparedStatement ps = null;	// properties에서 ?로 받아올거니까 ps선언해주고
+		ResultSet rs = null;	// 데이터베이스에서 결과를 가져오니까 rs 공간 만들어즘
+		
+		String sql = prop.getProperty("selectOne");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, n_no);
+			
+			rs = ps.executeQuery();
+			
+			// 데이터를 가져올 때 머리글도 가져오기 때문에 .next로 가져옴!
+			if(rs.next()) {
+				n = new Notice();
+				
+				n.setN_no(n_no);
+				n.setN_title(rs.getString("n_title"));
+				n.setN_content(rs.getString("n_content"));
+				n.setN_date(rs.getDate("n_date"));
+				n.setM_no(rs.getInt("m_no"));
+				n.setN_file(rs.getString("n_file"));
+				
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return n;
+	}
+
 }

@@ -35,5 +35,21 @@ public class NoticeService {
 		
 		return result;
 	}
+	
+	// 공지사항 게시글 1개 조회 시
+	public Notice selectOne(int n_no) {
+		con = getConnection();
+		
+		int result = 0;
+		
+		Notice n = dao.selectOne(con, n_no);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return n;	// 여기서 이제 서블릿으로 다시 이동!
+	}
 
 }

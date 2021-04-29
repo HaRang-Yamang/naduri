@@ -13,6 +13,7 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
+<script type="text/javascript" src="/naduri/assets/js/emailSelect.js"></script>
 <title>나드리 - 회원 수정</title>
 </head>
 <body>
@@ -127,15 +128,15 @@
                                     </td>
                                     <td class="join_email">
                                         <input type="text" name="m_email" size="15" placeholder="example"> @
-                                        <input type="text" name="m_email" size="15" placeholder="example.com">
-                                        <select name="email" style="width: 75px;">
-                                            <option value="">직접입력</option>
-                                            <option value="@gmail.com">구글 메일</option>
-                                            <option value="@naver.com">네이버 메일</option>
-                                            <option value="@zoom.com">줌 메일</option>
-                                            <option value="@daum.net">다음 메일</option>
-                                            <option value="@nate.com">네이트 메일</option>
-                                            <option value="@hanmail.net">한 메일</option>
+                                        <input type="text" name="m_email" size="15" placeholder="example.com" id="email_result">
+                                        <select name="email_select" style="width: 75px;" onchange="emailSelect(this.form);">
+                                            <option value="0">직접입력</option>
+                                            <option value="1">구글 메일</option>
+                                            <option value="2">네이버 메일</option>
+                                            <option value="3">줌 메일</option>
+                                            <option value="4">다음 메일</option>
+                                            <option value="5">네이트 메일</option>
+                                            <option value="6">한 메일</option>
                                         </select>
                                     </td>
                                 </tr>

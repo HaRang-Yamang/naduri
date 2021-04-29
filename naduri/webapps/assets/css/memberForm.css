@@ -22,7 +22,9 @@
     font-weight : 400;
 }
 /* 정보 입력 창에 대한 css */
-.joinArea input{
+.joinArea input[type=text],
+.joinArea input[type=password],
+.joinArea input[type=number]{
     border : 1px solid #636363;
     text-align : left;
 }
@@ -96,8 +98,7 @@
 .join_phone input[type=number]{
 	width : 78.5px;
 }
-
-#phone_btn, #join_btn{
+ #join_btn, #phone_btn{
 	height : 25px;
 	width: 73px;
 	background : var(--main-color);
@@ -105,6 +106,9 @@
 	border : 0;
 	border-radius: 5px;
 	cursor : pointer;
+}
+.join_email input{
+	width : 98px;
 }
 
 
@@ -129,11 +133,9 @@
 .submit_btn{
 	width : 1000px;
 }
-.submit_btn input{
-	display : inline-block;
-}
 .submit_btn input[type=submit],
 .submit_btn input[type=button]{
+	display : block;
     width: 300px;
     height: 50px;
     padding: 5px;
@@ -143,4 +145,7 @@
 	color : white;
     font-size: 21px;
     cursor : pointer;
+}
+#leave_btn{
+	margin-top : 10px;
 }

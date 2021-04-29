@@ -21,6 +21,7 @@
 .joinArea h4{
     font-weight : 400;
 }
+/* 정보 입력 창에 대한 css */
 .joinArea input{
     border : 1px solid #636363;
     text-align : left;
@@ -29,17 +30,23 @@
 .joinArea input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.joinArea input::-webkit-input-placeholder{
+.joinArea input[type=text]::-webkit-input-placeholder,
+.joinArea input[type=password]::-webkit-input-placeholder,
+.joinArea input[type=number]::-webkit-input-placeholder{
     text-align : left;
     padding-left : 3px;
-}
-.joinArea .red{
-    color: red;
-    padding-right : 3px;
 }
 .joinArea input[type=radio]{
 	display : none;
 }
+
+
+/* 필수 영역 알림 '*'에 대한 css */
+.joinArea .red{
+    color: red;
+    padding-right : 3px;
+}
+
 
 /* 회원가입 소제목 */
 .joinTitleArea {
@@ -51,13 +58,8 @@
 }
 .join_guide{
     margin-left: 25%;
-    font-size: 16px;
 }
-.join_title{
-    font-size: 14px;
-    text-align: right;
-    padding: 10px;
-}
+
 .join_red {
     position: absolute;
     top: 8px;
@@ -70,32 +72,44 @@
 }
 
 
+/* 정보 입력 공간 */
 .join_container {
     padding : 45px 0 45px 0;
-}
-
-
-.btn_area{
-    margin-left: center;
-    margin-right: center;
 }
 .join_table {
     display: flex;
 }
-
-button, .submit_btn input[type=submit]{
-
-   height : 25px;
-   width: 73px;
-   color: white;
-   background : #b2bf50;
-   border : none;
-   text-align: center;
-   border-radius: 5px;
-   cursor: pointer;
-
+.join_title{
+    font-size: 14px;
+    text-align: right;
+    padding: 10px;
+}
+.join_gender input[value="F"]+label{
+	margin-left : 12px;
+}
+.join_birth input{
+	width : 69px;
+}
+.join_phone select{
+	width : 50px;
+}
+.join_phone input[type=number]{
+	width : 78.5px;
 }
 
+#phone_btn, #join_btn{
+	height : 25px;
+	width: 73px;
+	background : var(--main-color);
+	color: white;
+	border : 0;
+	border-radius: 5px;
+	cursor : pointer;
+}
+
+
+
+/* 관심사 체크 영역 */
 .check_table{
     margin-top: 15px;
     text-align: left;
@@ -106,15 +120,27 @@ button, .submit_btn input[type=submit]{
 .check-box{
     margin-left: 10px;
 }
-
-#submit_btn{
-    margin-left: 25%;
-    margin-top: 5%;
-    width: 50%;
-    height: 50px;
-    padding: 5px;
-    font-size: 20px;
-}
 #int {
     color : #b7b7b7;
+}
+
+
+/* 하단 버튼 */
+.submit_btn{
+	width : 1000px;
+}
+.submit_btn input{
+	display : inline-block;
+}
+.submit_btn input[type=submit],
+.submit_btn input[type=button]{
+    width: 300px;
+    height: 50px;
+    padding: 5px;
+    background : var(--main-color);
+	border-radius : 5px;
+	text-align : center;
+	color : white;
+    font-size: 21px;
+    cursor : pointer;
 }

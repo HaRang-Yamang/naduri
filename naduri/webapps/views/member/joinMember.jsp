@@ -44,9 +44,7 @@
                                         <h4><span class="red">*</span>아이디</h4>
                                     </td>
                                     <td>
-                                        <span class="box">
-                                            <input type="text" name="m_id" size="40" placeholder="영문, 숫자 허용">
-                                        </span>
+                                        <input type="text" name="m_id" size="40" placeholder="영문, 숫자 허용">
                                         <button type="button" id="join_btn">중복확인</button>
                                     </td>
                                     
@@ -57,32 +55,32 @@
                                         <h4><span class="red">*</span>비밀번호</h4>
                                     </td>
                                     <td>
-                                        <span class="box">
-                                            <input type="password" name="m_pwd" size="40" placeholder="6자리 이상, 영문 숫자 포함">
-                                        </span>
+                                        <input type="password" name="m_pwd" size="40" placeholder="6자리 이상, 영문 숫자 포함">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="join_title"><h4><span class="red">*</span>비밀번호 확인</h4></td>
-                                    <td><span class="box"><input type="password" name="m_pwd2" size="40"></span></td>
+                                    <td>
+                                    	<input type="password" name="m_pwd2" size="40">
+                                    </td>
                                 </tr>
                                 <!-- NAME -->
                                 <tr>
                                     <td class="join_title">
                                         <h4><span class="red">*</span>이름</h4>
                                     </td>
-                                    <td><span class="box"><input type="text" name="m_name" size="40"></span></td>
+                                    <td>
+                                    	<input type="text" name="m_name" size="40">
+                                    </td>
                                 </tr>
                                 <!-- GENDER -->
                                 <tr>
                                 	<td class="join_title">
                                 		<h4><span class="red">*</span>성별</h4>
                                 	</td>
-                                	<td>
-										<span class="box">
-											<input type="radio" name="m_gender" id="gender_M" value="M" /> <label for="gender_M">남성</label>
-											<input type="radio" name="m_gender" id="gender_F" value="F" /> <label for="gender_F">여성</label>
-										</span>
+                                	<td class="join_gender">
+										<input type="radio" name="m_gender" id="gender_M" value="M" /> <label for="gender_M">남성</label>
+										<input type="radio" name="m_gender" id="gender_F" value="F" /> <label for="gender_F">여성</label>
                                 	</td>
                                 </tr>
                                 <!-- BIRTH -->
@@ -91,15 +89,9 @@
                                         <h4><span class="red">*</span>생년월일</h4>
                                     </td>
                                     <td class="join_birth">
-                                        <span class="box">
-                                        	<input type="text" name="m_birth" class="int" size="10" maxlength="4" placeholder="2021">
-                                        </span>
-                                        <span class="box">
-                                            <input type="text" name="m_birth" class="int" size="9" maxlength="2" placeholder="월">
-                                        </span>
-                                        <span class="box">
-                                        	<input type="text" name="m_birth" class="int" size="9" maxlength="2" placeholder="일">
-                                        </span>
+                                    	<input type="text" name="m_birth" class="int" size="10" maxlength="4" placeholder="2021">
+										<input type="text" name="m_birth" class="int" size="9" maxlength="2" placeholder="월">
+                                		<input type="text" name="m_birth" class="int" size="9" maxlength="2" placeholder="일">
                                     </td>
                                 </tr>
                                 <!-- PHONE -->
@@ -107,8 +99,8 @@
                                     <td class="join_title">
                                         <h4><span class="red">*</span>연락처</h4>
                                     </td>
-                                    <td>
-                                        <select name="m_phone" style="width: 50px;">
+                                    <td class="join_phone">
+                                        <select name="m_phone">
                                             <option value="010">
                                                 010
                                             </option>
@@ -125,12 +117,8 @@
                                                 02
                                             </option>	
                                         </select>
-                                        <span class="box">
-                                            <input type="number" name="m_phone" style="width: 50px;" class="int" maxlength="4">
-                                        </span>
-                                        <span class="box">
-                                            <input type="number" name="m_phone" style="width: 50px;" class="int" maxlength="4">
-                                        </span>
+                                            <input type="number" name="m_phone" maxlength="4">
+                                            <input type="number" name="m_phone" maxlength="4">
                                         <button type="button" id="phone_btn">번호인증</button>
                                     </td>
                                 </tr>
@@ -139,7 +127,7 @@
                                     <td class="join_title">
                                         <h4><span class="red">*</span>이메일</h4>
                                     </td>
-                                    <td>
+                                    <td class="join_email">
                                         <input type="text" name="m_email" size="15" placeholder="example"> @
                                         <input type="text" name="m_email" size="15" placeholder="example.com">
                                         <select name="email" style="width: 75px;">
@@ -159,9 +147,7 @@
                                         <h4><span class="red">*</span>주소</h4>
                                     </td>
                                     <td>
-                                        <span class="box">
-                                            <input type="text" name="m_address" size="40" class="int" maxlength="40">
-                                        </span>
+                                    	<input type="text" name="m_address" size="40" class="int" maxlength="40">
                                     </td>
                                 </tr>
                                 <tr>
@@ -169,9 +155,7 @@
                                         <h4>상세주소</h4>
                                     </td>
                                     <td>
-                                        <span class="box">
-                                            <input type="text" name="m_address" size="40" class="int" maxlength="40">
-                                        </span>
+                                    	<input type="text" name="m_address" size="40" class="int" maxlength="40">
                                     </td>
                                 </tr>
                             </table>

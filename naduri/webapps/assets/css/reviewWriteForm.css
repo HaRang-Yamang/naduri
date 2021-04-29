@@ -79,3 +79,6 @@ cursor: pointer;
 .slider{
     width: 280px;
 }
+[id*=ImgArea]:hover {
+		cursor: pointer;
+	}

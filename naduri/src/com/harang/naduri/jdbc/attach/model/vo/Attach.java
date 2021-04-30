@@ -1,17 +1,18 @@
 package com.harang.naduri.jdbc.attach.model.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Attach implements Serializable {
 
 	private static final long serialVersionUID = 1001L;
-	
+
 	private int attach_no;
 	private String attach_name;
 	private String a_status;
 	private String a_path;
-	private String a_type;
-	private int rno;
+	private char a_type;
+	private int r_no;
 	private int m_no;
 	private int spot_id;
 	private int n_no;
@@ -21,7 +22,7 @@ public class Attach implements Serializable {
 	@Override
 	public String toString() {
 		return "Attach [attach_no=" + attach_no + ", attach_name=" + attach_name + ", a_status=" + a_status
-				+ ", a_path=" + a_path + ", a_type=" + a_type + ", rno=" + rno + ", m_no=" + m_no + ", spot_id="
+				+ ", a_path=" + a_path + ", a_type=" + a_type + ", r_no=" + r_no + ", m_no=" + m_no + ", spot_id="
 				+ spot_id + ", n_no=" + n_no + "]";
 	}
 
@@ -57,20 +58,20 @@ public class Attach implements Serializable {
 		this.a_path = a_path;
 	}
 
-	public String getA_type() {
+	public char getA_type() {
 		return a_type;
 	}
 
-	public void setA_type(String a_type) {
+	public void setA_type(char a_type) {
 		this.a_type = a_type;
 	}
 
 	public int getRno() {
-		return rno;
+		return r_no;
 	}
 
 	public void setRno(int rno) {
-		this.rno = rno;
+		this.r_no = rno;
 	}
 
 	public int getM_no() {
@@ -101,6 +102,6 @@ public class Attach implements Serializable {
 		return serialVersionUID;
 	}
 
-	
+
 	
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-	        <div id="tab_p_like" class="tab-content">
+	        <div id="tab_p_reviews" class="tab-content">
 	            <div class="current_tab">
 	                <div class="like_content">
 	                    <div class="like_nameArea">
@@ -18,7 +18,6 @@
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
 	                        <p class="like_photo_arrow">></p>
 	                    </div>
 	                    <div class="like_btnArea">
@@ -43,8 +42,6 @@
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <p class="like_photo_arrow">></p>
 	                    </div>
 	                    <div class="like_btnArea">
 	                        <div class="like_likeBtn"><i class="fas fa-heart"></i><span style="color: var(--black-color);">
@@ -53,6 +50,7 @@
 	                                style="color: var(--black-color)"> 5</span></div>
 	                    </div>
 	                </div>
+	               
 	                <div class="like_content">
 	                    <div class="like_nameArea">
 	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName">홍길동 <span id="p_like_coment">님의
@@ -64,32 +62,6 @@
 	                    <p class="like_date">2021년 04월 12일 방문</p>
 	                    <p>리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내...</p>
 	                    <div class="like_photo">
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <p class="like_photo_arrow">></p>
-	                    </div>
-	                    <div class="like_btnArea">
-	                        <div class="like_likeBtn"><i class="fas fa-heart"></i><span style="color: var(--black-color);">
-	                                5</span></div>
-	                        <div class="like_comentBtn"><i class="far fa-comment-dots"></i><span
-	                                style="color: var(--black-color)"> 5</span></div>
-	                    </div>
-	                </div>
-	                <div class="like_content">
-	                    <div class="like_nameArea">
-	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName">홍길동 <span id="p_like_coment">님의
-	                                리뷰</span></span>
-	                    </div>
-	                    <div class="like_titleArea">
-	                        <h4>경복궁</h4><span>5.0</span>
-	                    </div>
-	                    <p class="like_date">2021년 04월 12일 방문</p>
-	                    <p>리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내...</p>
-	                    <div class="like_photo">
-	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
@@ -118,7 +90,6 @@
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
 	                        <p class="like_photo_arrow">></p>
 	                    </div>
 	                    <div class="like_btnArea">
@@ -139,32 +110,6 @@
 	                    <p class="like_date">2021년 04월 12일 방문</p>
 	                    <p>리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내...</p>
 	                    <div class="like_photo">
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
-	                        <p class="like_photo_arrow">></p>
-	                    </div>
-	                    <div class="like_btnArea">
-	                        <div class="like_likeBtn"><i class="fas fa-heart"></i><span style="color: var(--black-color);">
-	                                5</span></div>
-	                        <div class="like_comentBtn"><i class="far fa-comment-dots"></i><span
-	                                style="color: var(--black-color)"> 5</span></div>
-	                    </div>
-	                </div>
-	                <div class="like_content">
-	                    <div class="like_nameArea">
-	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName">홍길동 <span id="p_like_coment">님의
-	                                리뷰</span></span>
-	                    </div>
-	                    <div class="like_titleArea">
-	                        <h4>경복궁</h4><span>5.0</span>
-	                    </div>
-	                    <p class="like_date">2021년 04월 12일 방문</p>
-	                    <p>리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내...</p>
-	                    <div class="like_photo">
-	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
@@ -193,6 +138,29 @@
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
+	                        <p class="like_photo_arrow">></p>
+	                    </div>
+	                    <div class="like_btnArea">
+	                        <div class="like_likeBtn"><i class="fas fa-heart"></i><span style="color: var(--black-color);">
+	                                5</span></div>
+	                        <div class="like_comentBtn"><i class="far fa-comment-dots"></i><span
+	                                style="color: var(--black-color)"> 5</span></div>
+	                    </div>
+	                </div>
+	                <div class="like_content">
+	                    <div class="like_nameArea">
+	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName">홍길동 <span id="p_like_coment">님의
+	                                리뷰</span></span>
+	                    </div>
+	                    <div class="like_titleArea">
+	                        <h4>경복궁</h4><span>5.0</span>
+	                    </div>
+	                    <p class="like_date">2021년 04월 12일 방문</p>
+	                    <p>리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내...</p>
+	                    <div class="like_photo">
+	                        <div class="like_photo_sample"></div>
+	                        <div class="like_photo_sample"></div>
+	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <p class="like_photo_arrow">></p>
 	                    </div>
@@ -218,7 +186,6 @@
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
 	                        <div class="like_photo_sample"></div>
-	                        <div class="like_photo_sample"></div>
 	                        <p class="like_photo_arrow">></p>
 	                    </div>
 	                    <div class="like_btnArea">
@@ -228,13 +195,12 @@
 	                                style="color: var(--black-color)"> 5</span></div>
 	                    </div>
 	                </div>
-	
 	
 	
 	            </div>
-	            
+	            <script src="/naduri/assets/js/modal.js"></script>
 	            <div class="modal">
-	                <div class="modal_content" title="클릭하면 창이 닫힙니다.">
+	                <div class="modal_content" title="리뷰 상세보기">
 	
 	                    <div class="like_nameArea">
 	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName">홍길동 <span id="p_like_coment">님의

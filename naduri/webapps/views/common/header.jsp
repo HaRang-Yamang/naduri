@@ -10,7 +10,7 @@
     
     <nav class="navbar">
         <div class="headerArea">
-            <h1><a href="/naduri/index.jsp"><img src="/naduri/assets/images/header/logo.png" alt="나드리 로고"></a></h1>
+            <h1 class="logo"><a href="/naduri/index.jsp"><img src="/naduri/assets/images/header/logo.png" alt="나드리 로고"></a></h1>
         </div>
 
         <div class="profile">

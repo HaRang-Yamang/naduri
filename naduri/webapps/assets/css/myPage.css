@@ -108,22 +108,24 @@
 .tabs li.current>h3{
     color: #262626;
 }
-.tab-content{
+#tab-content{
     display : none;
 }
-.tab-content.current{
-    display : inherit;
+#tab-content{
+    display : inline-block;
     
 }
 .current_tab{
     width: 1000px;
-    height: 1000px;
+    height: auto;
     background: #fafafa;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+row-gap: 10px;
+column-gap: 5px; 
     flex-wrap:wrap;
     padding: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
 
 }
 
@@ -132,10 +134,11 @@
     width: 310px;
     height: 300px;
     padding: 20px;
+    margin-bottom:10px;
     
 }
 .like_content>p{
-    line-height: 30px;
+    line-height: 20px;
 }
 .keword li{
     list-style: none;
@@ -164,7 +167,7 @@
 
 .profile_content{
     height: 100px;
-    margin-top: 35px;
+
 }
 
 .profile_content td{
@@ -187,6 +190,8 @@
     color: var(--black-color);
     margin-left: 14px;
     position: absolute;
+    font-size:14px;
+    top:5px;
 }
 #p_like_coment{
     color:  #b7b7b7;
@@ -219,7 +224,7 @@
     color: var(--black-color);
     text-align: center;
     line-height: 25px;
-    top: -6px;
+    top: 3px;
     left: 200px;
 }
 .like_date{
@@ -227,13 +232,13 @@
     font-size: 12px;
 }
 .like_photo{
-    display: flex;
-    justify-content: space-between;
+    
     width: 280px;
     margin-top: 15px;
     margin-bottom: 10px;
 }
 .like_photo_sample{
+	display: inline-block;
     width: 40px;
     height: 40px;
     background: black;
@@ -344,7 +349,7 @@
     bottom: 10px;
     right: 10px;
 
-    color: red;
+    color: #a5b874;
     cursor: pointer;
 }
 
@@ -368,7 +373,6 @@
     height: 300px;
     margin-bottom: 20px;
     overflow: hidden;
-
     background: #000000;
     color: #ffffff;
     text-align: center;
@@ -403,25 +407,36 @@
 
 .spotInfo{
     position: absolute;
-    align-items: center;
     width: 300px;
     height: 300px;
 }
 
 .spotInfo h4{
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     text-shadow: 10px 10px 10px var(--black-color);
     font-weight: 500;
-    transform: translate(120px, 110px);
+    transform: translate(0, 700%);
+    text-align: center;
     margin-bottom : 10px;
     
+}
+.spotInfoKeyword{
+	transform: translate(0%, 300%);
+	text-align: center;
 }
 .spotInfo p{
     color: white;
     font-size: 12px;
     text-shadow: 5px 5px 5px var(--black-color);
-    display: inline-block;
     text-align: center;
-    transform: translate(100px, 100px);
+    display: inline-block;
+}
+
+
+
+.myReview_content{
+	width:270px;
+	height:auto;
+	margin: 0;
 }

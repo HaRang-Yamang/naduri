@@ -45,5 +45,14 @@ public class ReviewService {
 		return result;
 	}
 
+	public ArrayList<Review> selectMyReview(int m_no) {
+		con = getConnection();
+		ArrayList<Review> list = dao.selectMyReview(con, m_no);
+		
+		close(con);
+		
+		return list;
+	}
+
 	
 }

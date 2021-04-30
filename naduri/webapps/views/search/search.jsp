@@ -25,7 +25,7 @@
 
 <!-- 지도 api 사용 위한 스크립트 영역 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6005fc94dc9f6c5072c2ef8a64151536"></script>
-<script defer src="/naduri/assets/js/map.js"></script>
+<!-- <script defer src="/naduri/assets/js/map.js"></script> -->
 <!-- -------------------------------------------------------- -->
 
 <title>나드리</title>
@@ -163,78 +163,114 @@
         </div>
        </section>
        
-       <script>
+       <script> 
+       <!--
 			$(function(){		
 				$.ajax({
 					url : '/naduri/getloc.sp',
 					type : 'get',
 					success: function( data ) {
 						console.log(data);
+
+						
+						var positions = [];
+						
+						for(var i in data){
+							var result = { content : "<div>" + data[i].spot_name + "<div>",
+									     latlng: new kakao.maps.LatLng(data[i].spot_lat, data[i].spot_long)};
+							positions.push(result);
+							  
+						} console.log(positions);	
+					
+					// map script //
+					
+					
 					},
 					error : function( error ) { }
 				});
 			});
-		</script>
+       -->
+		</script> 
+		
 		
 		<script>
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-		    mapOption = { 
-		        center: new kakao.maps.LatLng(<%= list.get(0).getSpot_lat() %>, <%= list.get(0).getSpot_long() %>), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
-		    };
-		
-			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+			var positions = [];
 			 
 			// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-			var positions = [
-			    {
-			        content: '<div><%= list.get(0).getSpot_name() %><div>', 
-			        latlng: new kakao.maps.LatLng(<%= list.get(0).getSpot_lat() %>, <%= list.get(0).getSpot_long() %>)
-			    },
-			   
-			];
-			
-		
-			<%-- 자바스크립트 반복문 무엇.,.,
-				var positions = [
-				for(Spot s : list){
-				    content: '<div><%= s.getSpot_name() %><div>', 
-			        latlng: new kakao.maps.LatLng(<%= s.getSpot_lat() %>, <%= s.getSpot_long()%>)
-			    }
-			 ]; --%>
+			$(function(){		
+				$.ajax({
+					url : '/naduri/getloc.sp',
+					type : 'get',
+					success: function( data ) {
+						console.log(data);
 
-			for (var i = 0; i < positions.length; i ++) {
-			    // 마커를 생성합니다
-			    var marker = new kakao.maps.Marker({
-			        map: map, // 마커를 표시할 지도
-			        position: positions[i].latlng // 마커의 위치
-			    });
+						
+						// Gson 배열에 있는 데이터를 반복문을 통해 positions 배열 저장하기  
+						for(var i in data){
+							var result = { content : "<div>" + data[i].spot_name + "<div>",
+									     latlng: new kakao.maps.LatLng(data[i].spot_lat, data[i].spot_long)};
+							positions.push(result);
+							  
+						} console.log(positions);	
+					
+					// map script //
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+				    mapOption = { 
+				        center: new kakao.maps.LatLng(data[0].spot_lat, data[0].spot_long), // 지도의 중심좌표
+				        level: 4 // 지도의 확대 레벨
+				    };
+				
+					var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다					
+							
+					for (var i = 0; i < positions.length; i ++) {
+					    // 마커를 생성합니다
+					    var marker = new kakao.maps.Marker({
+					        map: map, // 마커를 표시할 지도
+					        position: positions[i].latlng // 마커의 위치
+					    });
+				
+					    // 마커에 표시할 인포윈도우를 생성합니다 
+					    var infowindow = new kakao.maps.InfoWindow({
+					        content: positions[i].content // 인포윈도우에 표시할 내용
+					    });
+				
+					    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+					    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+					    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+					    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+					    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+					}
+				
+					// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+					function makeOverListener(map, marker, infowindow) {
+					    return function() {
+					        infowindow.open(map, marker);
+					    };
+					}
+				
+					// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+					function makeOutListener(infowindow) {
+					    return function() {
+					        infowindow.close();
+					    };
+					}
+						
+						},
+						error : function( error ) { }
+					});
+				});
+				// 자바 배열을 이용하여 positions 배열을 만드는 반복문
+				<%-- var positions = [
+					<%
+					for(Spot s : list){
+						out.println("{ content : '<div>" + s.getSpot_name() + "</div>', "
+					   + " latlng: new kakao.maps.LatLng(" + s.getSpot_lat() + ", " + s.getSpot_long() + ") }, ");
+					}
+					%>
+				]; --%>
 		
-			    // 마커에 표시할 인포윈도우를 생성합니다 
-			    var infowindow = new kakao.maps.InfoWindow({
-			        content: positions[i].content // 인포윈도우에 표시할 내용
-			    });
-		
-			    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-			    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-			    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-			    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-			    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-			}
-		
-			// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-			function makeOverListener(map, marker, infowindow) {
-			    return function() {
-			        infowindow.open(map, marker);
-			    };
-			}
-		
-			// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-			function makeOutListener(infowindow) {
-			    return function() {
-			        infowindow.close();
-			    };
-			}
+
 		</script>
        
     

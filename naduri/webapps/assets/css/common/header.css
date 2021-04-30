@@ -7,15 +7,22 @@ header{
     box-shadow: 0px 0.5px 5px 0px rgba(0,0,0,0.5);
 }
 header .navbar {
-    display: flex;
     width: 1000px;
-    justify-content: space-around;
+}
+.logo{
+	width: 100px;
+	float: left;
+	margin-top:10px;
 }
 header .profile {
     transform: translateY(15px);
     width : 36px;
     z-index : 1;
+    right:0px;
+    float:right;
+   
 }
+
 header .profile img{
 	cursor : pointer;
 }
@@ -103,4 +110,6 @@ header .user_menu ul li a:hover {
 
 .headerArea{
 	margin-top:8px;
+ 	width:100px;
+ 	margin-left:0px;
 }

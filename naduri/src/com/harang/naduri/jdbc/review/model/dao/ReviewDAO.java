@@ -107,11 +107,13 @@ public ReviewDAO() {
 			
 			while(rs.next()) {
 				Review r = new Review();
+				//Attach a = new Attach();
 				// R_TITLE, R_CONTENT, R_PERIOD, R_LIKE
 				r.setR_title(rs.getString("r_title"));
 				r.setR_content(rs.getString("r_content"));
 				r.setR_period(rs.getString("r_period"));
 				r.setR_rank(rs.getInt("r_rank"));
+				//a.setA_path(rs.getString("a_path"));
 				// r.setR_like(rs.getInt("r_like"));
 				
 				list.add(r);

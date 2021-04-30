@@ -166,7 +166,7 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM MEMBER WHERE M_ID = ? AND M_PWD = ?";
+		String sql = prop.getProperty("selectMember");
 		
 		try {
 			ps = con.prepareStatement(sql);

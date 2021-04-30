@@ -68,10 +68,10 @@ public class MemberInsertServlet extends HttpServlet {
 		
 		
 		// 받아온 정보를 하나의 vo로 묶기
-				// 가입 정보
+		// 가입 정보
 		Member joinMember = new Member(m_id, m_pwd, m_name, m_birthStr, m_gender, 
-										m_addressStr, m_emailStr, m_phoneStr);
-				// 키워드
+											m_addressStr, m_emailStr, m_phoneStr);
+		// 키워드
 		Keyword joinKeyword = new Keyword();
 		
 		System.out.println("member : " + joinMember);

@@ -119,6 +119,7 @@ public class NoticeDAO {
 				n.setM_no(rs.getInt("m_no"));
 				n.setN_file(rs.getString("n_file"));
 				
+				
 			}
 			
 		} catch (SQLException e) {
@@ -130,6 +131,56 @@ public class NoticeDAO {
 		}
 		
 		return n;
+	}
+
+	public int updateList(Connection con, Notice n) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("updateList");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, n.getN_title());
+			ps.setString(2, n.getN_content());
+			ps.setString(3, n.getN_file());
+			ps.setInt(4, n.getN_no());
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int deleteNotice(Connection con, int n_no) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, n_no);
+			
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
 	}
 
 }

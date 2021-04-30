@@ -23,6 +23,7 @@ public class NoticeService {
 		return list;
 	}
 
+	// 공지사항 작성 시
 	public int insertNotice(Notice n) {
 		con = getConnection();
 		
@@ -50,6 +51,56 @@ public class NoticeService {
 		close(con);
 		
 		return n;	// 여기서 이제 서블릿으로 다시 이동!
+	}
+
+	// 게시물 수정
+	public Notice noticeUpdate(int n_no) {
+		// 수정하고자 하는 내용이 들어있어야 거기서 수정이 가능!
+		// 위의 게시글 1개 조회 시 사용한 서비스와 동일하게 작성
+		con = getConnection();
+		
+		int result = 0;
+		
+		Notice n = dao.selectOne(con, n_no);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return n;
+		
+	}
+
+	public int updateList(Notice n) {
+		con = getConnection();
+		
+		int result = dao.updateList(con, n);
+		
+		if( result > 0 ) commit(con);
+		else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int deleteNotice(int n_no) {
+		
+		con = getConnection();
+		
+		int result = dao.deleteNotice(con, n_no);
+		
+		if ( result > 0) {
+			commit(con);
+			
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
 	}
 
 }

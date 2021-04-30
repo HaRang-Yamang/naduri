@@ -45,7 +45,8 @@
                         	<%-- 파일이 있을때만 보여주도록 함 --%>
                         	<% if( n.getN_file() != null && n.getN_file().length() > 0 ) { %>
                             <img class="att_icon" src="../../assets/images/icon/attachment.png">
-                            <span class="notice_att">첨부파일 : <%= n.getN_file() %></span>
+                            <span class="notice_att"><a href="/naduri/resources/noticeFiles/<%= n.getN_file() %>">첨부파일 : <%= n.getN_file() %></a></span>
+                            <a href="/naduri/resources/noticeFiles/<%= n.getN_file() %>" download>파일 다운로드</a>
                             <% } %>
                         </td>
                     </tr>
@@ -60,14 +61,24 @@
                         </td>
                     </tr>
                 </table>
-
-                <button class="gotoList_btn" onclick="goSelectLsit();">목록으로 돌아가기</button>
+				<div class="btn_area">
+	                <button class="gotoList_btn" onclick="goSelectLsit();">목록으로 돌아가기</button>
+	                
+	                <!-- 관리자만 볼 수 있는 버튼을 만들고 싶어요... -->
+	                <% if (m.getM_auth() == 0) { %>
+	                <button class="goupdate_btn" onclick="goUpdatePage();">수정하기</button>
+                <% } %>
+                </div>
                 
+
 			<script>
 				function goSelectLsit(){
 					location.href = '/naduri/selectList.no';
 				}
-
+	
+				function goUpdatePage(){
+					location.href = '/naduri/noticeUpdate.no?n_no=' + <%= n.getN_no() %>;
+				}
 			</script>
 
 

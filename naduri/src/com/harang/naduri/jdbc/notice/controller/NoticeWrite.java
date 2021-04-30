@@ -62,7 +62,7 @@ public class NoticeWrite extends HttpServlet {
 		String title = mr.getParameter("n_title");
 		String content = mr.getParameter("n_content");
 		
-		System.out.println("확인 : " +title + ", " + content);
+		//System.out.println("확인 : " +title + ", " + content);
 		
 		// 6. 함게 저장된 파일의 이름 추출하기
 		String filename = mr.getFilesystemName("n_file");

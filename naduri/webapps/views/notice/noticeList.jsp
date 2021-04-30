@@ -61,7 +61,7 @@
                
                 </table>
                 
-                <% if( m != null ) { %>
+                <% if( m != null&& m.getM_auth() == 0 ) { %>
                 <button class="write_btn" type="submit" style="cursor: pointer;" onclick="location.href='views/notice/noticeWrite.jsp'">작성하기</button>
                
                 <% } %>

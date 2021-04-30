@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.harang.naduri.jdbc.member.model.vo.*" %>
+<%@ page import="com.harang.naduri.jdbc.member.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*, java.util.*" %>
 <%
 	Member m = (Member)session.getAttribute("member");
+	ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,120 +99,23 @@
             <!-- featured images -->
             <div class="featured">
                 <div class="small-container">
-
+					<% for(Thumbnail t : list) { %>
                     <div class="row">
-                        <div class="hotSpot date">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_1.jpg"></a>
+                        <div class="hotSpot <%= t.getSpot_type() %>">
+                         <% if(t.getSpot_file() != null) { %>
+                            <a href="/naduri/resources/thumb/<%= t.getSpot_id() %>"><img src="/naduri/resources/thumb/<%= t.getSpot_file() %>"/></a>
+                             
                             <div class="spotInfo">
-                                <h4>한옥마을</h4>
+                                <h4><%= t.getSpot_name() %></h4>
                                 <p>#데이트</p> <p>#데이트</p> <p>#데이트</p>
                             </div>
                             <div class="markIcon">
                                 <i class="fas fa-heart"></i>
                             </div>
                         </div>
-
-                        <div class="hotSpot palace">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_2.jpg"></a>
-
-                            <div class="spotInfo">
-                                <h4>수원화성</h4>
-                                <p>#궁궐</p> <p>#궁궐</p> <p>#궁궐</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-
-                        <div class="hotSpot heritage">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_3.jpg"></a>
-
-                            <div class="spotInfo">
-                                <h4>수원화성</h4>
-                                <p>#역사</p> <p>#역사</p> <p>#역사</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
                     </div>
-                        
-                    <div class="row">
-
-                        <div class="hotSpot date">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_1.jpg"></a>
-
-                            <div class="spotInfo">
-                            <h4>한옥마을</h4>
-                            <p>#데이트</p> <p>#데이트</p> <p>#데이트</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-
-                        <div class="hotSpot palace">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_2.jpg"></a>
-
-                            <div class="spotInfo">
-                                <h4>수원화성</h4>
-                                <p>#궁궐</p> <p>#궁궐</p> <p>#궁궐</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-
-                        <div class="hotSpot heritage">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_3.jpg"></a>
-
-                            <div class="spotInfo">
-                                <h4>수원화성</h4>
-                                <p>#역사</p> <p>#역사</p> <p>#역사</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="hotSpot date">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_1.jpg"></a>
-
-                            <div class="spotInfo">
-                                <h4>한옥마을</h4>
-                                <p>#데이트</p> <p>#데이트</p> <p>#데이트</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-
-                        <div class="hotSpot palace">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_2.jpg"></a>
-
-                            <div class="spotInfo">
-                                <h4>수원화성</h4>
-                                <p>#궁궐</p> <p>#궁궐</p> <p>#궁궐</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-
-                        <div class="hotSpot heritage">
-                            <a href=""><img src="/naduri/assets/images/main/featured_img_3.jpg"></a>
-
-                            <div class="spotInfo">
-                                <h4>수원화성</h4>
-                                <p>#역사</p> <p>#역사</p> <p>#역사</p>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <% } %>
+                    <% } %>
                 </div>
             </div>
             <!-- featured images end -->

@@ -1,3 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/com/harang/naduri/jdbc/comment/model/dao/ReviewCommentDAO.java=UTF-8
+encoding//src/com/harang/naduri/jdbc/comment/model/service/ReviewCommentService.java=UTF-8
+encoding//src/config/board.properties=UTF-8
+encoding//src/config/comment.properties=UTF-8
+encoding//src/config/search.properties=UTF-8
+encoding//src/config/thumbnail.properties=UTF-8
 encoding//webapps/views/common/footer.jsp=UTF-8
 encoding//webapps/views/common/header.jsp=UTF-8

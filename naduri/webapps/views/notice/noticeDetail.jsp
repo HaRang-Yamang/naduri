@@ -45,7 +45,7 @@
                         	<%-- 파일이 있을때만 보여주도록 함 --%>
                         	<% if( n.getN_file() != null && n.getN_file().length() > 0 ) { %>
                             <img class="att_icon" src="../../assets/images/icon/attachment.png">
-                            <span class="notice_att">첨부파일 : <%= n.getN_file() %></span>
+                            <span class="notice_att"><a href="/naduri/resources/noticeFiles/<%= n.getN_file() %>" download>첨부파일 : <%= n.getN_file() %></a></span>
                             <% } %>
                         </td>
                     </tr>
@@ -62,6 +62,8 @@
                 </table>
 
                 <button class="gotoList_btn" onclick="goSelectLsit();">목록으로 돌아가기</button>
+
+                
                 
 			<script>
 				function goSelectLsit(){

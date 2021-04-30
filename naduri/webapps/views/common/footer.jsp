@@ -8,7 +8,7 @@
     <!--
     	<a href="/naduri/views/notice/noticeList.jsp" style="float: right;">공지사항</a>
     -->
-    <div class="footerInfo" style="float: right;" onclick="goNotice();">공지사항</div>
+    <div class="footerInfo" style="float: right; cursor: pointer;" onclick="goNotice();">공지사항</div>
 
 </div>
 

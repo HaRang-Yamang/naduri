@@ -24,7 +24,6 @@ public class Member implements Serializable{
 	public Member() {}
 
 		// 전체용
-
 	public Member(int m_no, String m_id, String m_pwd, String m_name, String m_birth, String m_gender,
 				String m_address, String m_email, String m_phone, int m_auth, String m_status) {
 			super();
@@ -39,22 +38,7 @@ public class Member implements Serializable{
 			this.m_phone = m_phone;
 			this.m_auth = m_auth;
 			this.m_status = m_status;
-		}
-	
-		// 회원 가입용
-	
-	public Member(String m_id, String m_pwd, String m_name, String m_birth, String m_gender, String m_address,
-			String m_email, String m_phone) {
-		super();
-		this.m_id = m_id;
-		this.m_pwd = m_pwd;
-		this.m_name = m_name;
-		this.m_birth = m_birth;
-		this.m_gender = m_gender;
-		this.m_address = m_address;
-		this.m_email = m_email;
-		this.m_phone = m_phone;
-	}	
+		}	
 
 		// 아이디, 비밀번호
 	public Member(String m_id, String m_pwd) {
@@ -62,7 +46,6 @@ public class Member implements Serializable{
 		this.m_id = m_id;
 		this.m_pwd = m_pwd;
 	}
-
 
 
 	@Override
@@ -160,7 +143,8 @@ public class Member implements Serializable{
 		this.m_status = m_status;
 	}
 
-}
+	
 
+}
 
 	

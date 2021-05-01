@@ -16,6 +16,7 @@ footer{
 .footerInfo{
     color: white;
     font-size: 10pt;
+    margin-top:10px;
 }
 .footerArea > a{
     color: white;

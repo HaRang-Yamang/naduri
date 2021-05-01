@@ -38,6 +38,12 @@
     	align-items: inherit;
     	padding-top: 0px;
 	}
+	header .profile {
+	 	margin : 0;
+	}
+	header .headerArea {
+		margin : 0;
+	}
 	
 	img, svg {
     	vertical-align: baseline;
@@ -53,8 +59,35 @@
 	        <h2 class="hidden">프로필 페이지</h2>
 	        
 	        <!-- 프로필 영역 -->
-	        <div class="top_area">
-	            <div class="profile_img"></div>
+
+	        <form class="top_area" action = "/naduri/profileImgInsert.do" method="post" enctype="multipart/form-data">
+	        
+	            <div class="profile_img">
+	            	<img src="/naduri/assets/images/no-img.png" id="profileImg" width="350px" height="295px" alt="프로필사진" />
+	            </div>
+	            <input type="file" class="hidden" accept="image/*" name="profileImg" id="profileImg1" onchange="readURL(input)" />
+	          
+	        <script>
+	        	$('.profile_img').on('click', function(){
+	        		$('#profileImg1').click();
+	        	})
+	        	
+	         // 사진 미리보기 구현
+	        	 function readURL(input) {
+      				  if (input.files && input.files[0]) {
+         				  var reader = new FileReader();
+          				  reader.onload = function(e) {
+        	     		   $('#profileImg').attr('src', e.target.result);
+          			  }
+         		   reader.readAsDataURL(input.files[0]);
+      			  }
+   					 }
+
+    				$("#profileImg1").change(function() {
+       				 readURL(this);
+   				 });
+
+	        </script>
 	            <div class="profile_area">
 	                <div>
 	                    <span class="green_title"></span>
@@ -64,11 +97,11 @@
 	                    <tbody>
 	                        <tr>
 	                            <td class="profile_first">이름</td>
-	                            <td>홍길동</td>
+	                            <td><%= m.getM_name() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>생년월일</td>
-	                            <td>1995년 2월 19일</td>
+	                            <td><%= m.getM_birth() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>좋아하는 여행 테마</td>
@@ -105,10 +138,13 @@
 	                        </tr>
 	                    </tbody>
 	                </table>
+	                <div class="modify_Area">
+	                <div class="profileImg_modify"><button type="submit">프로필 사진 등록</button></div>
 	                <div class="profile_modify"><a href="../member/joinMember.jsp">프로필 수정하기</a></div>
+	                </div>
 	            </div>
-	        </div>
 
+ </form> 
 			<!-- 탭 영역 -->	
 	        <div class="tabs_area">
 	            <ul class="tabs">
@@ -162,7 +198,7 @@
 	                  alert('통신실패!');
 	                 },
 	                 success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
-	                 	console.log(data);
+	                 	
 	                	 $("#tab-content").html(data);
 	                 	console.log( "통신성공");
 	                 }

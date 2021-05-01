@@ -1,9 +1,12 @@
 package com.harang.naduri.jdbc.review.model.service;
-import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
-
+import static com.harang.naduri.jdbc.common.JDBCTemplate.close;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.commit;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.getConnection;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.review.model.dao.ReviewDAO;
@@ -45,13 +48,22 @@ public class ReviewService {
 		return result;
 	}
 
-	public ArrayList<Review> selectMyReview(int m_no) {
+	public HashMap<String , Object> selectMyReview(int m_no) {
 		con = getConnection();
-		ArrayList<Review> list = dao.selectMyReview(con, m_no);
+		HashMap<String , Object> map = dao.selectMyReview(con, m_no);
 		
 		close(con);
 		
-		return list;
+		return map;
+	}
+
+	public HashMap<String, Object> selectLikeReview(int m_no) {
+		con = getConnection();
+		HashMap<String , Object> map = dao.selectLikeReview(con, m_no);
+		
+		close(con);
+		
+		return map;
 	}
 
 	

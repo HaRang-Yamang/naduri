@@ -13,10 +13,10 @@ public class NoticeService {
 	private Connection con;
 	private NoticeDAO dao = new NoticeDAO();
 
-	public ArrayList<Notice> selectList() {
+	public ArrayList<Notice> selectList(int currentPage) {
 		con = getConnection();
 		
-		ArrayList<Notice> list = dao.selectList(con);
+		ArrayList<Notice> list = dao.selectList(con, currentPage);
 		
 		close(con);
 		
@@ -97,6 +97,17 @@ public class NoticeService {
 		} else {
 			rollback(con);
 		}
+		
+		close(con);
+		
+		return result;
+	}
+	
+	// 페이지네이션을 위한 서비스 생성
+	public int getListCount() {
+		con = getConnection();
+		
+		int result = dao.getListCount(con);
 		
 		close(con);
 		

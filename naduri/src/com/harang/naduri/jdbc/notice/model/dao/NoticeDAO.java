@@ -31,15 +31,20 @@ public class NoticeDAO {
 		}
 	}
 	
-	public ArrayList<Notice> selectList(Connection con) {
+	public ArrayList<Notice> selectList(Connection con, int currentPage) {
 		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectList");
 		
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
+		
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
 			
 			rs = ps.executeQuery();
 			
@@ -177,6 +182,32 @@ public class NoticeDAO {
 			
 			e.printStackTrace();
 		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int getListCount(Connection con) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
 			close(ps);
 		}
 		

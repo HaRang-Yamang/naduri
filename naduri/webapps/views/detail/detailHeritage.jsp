@@ -50,7 +50,9 @@
 	        <%@ include file="nearArea.jsp" %>
 	        
 	        <!-- 탭 -->
-			<%@ include file="tab_review_qna.jsp" %>
+
+ 			<%@ include file="tab_review_qna.jsp" %>
+
 	
 	        <!-- 비슷한 장소 추천 -->
 	        <%@ include file="recommendPlace.jsp" %>

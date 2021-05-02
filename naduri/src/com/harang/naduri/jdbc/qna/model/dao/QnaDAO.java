@@ -29,8 +29,9 @@ public QnaDAO() {
 		
 		try {
 			ps=con.prepareStatement(sql);
-			ps.setString(1, qn.getQ_content());
-			ps.setString(2, qn.getQ_title());
+			ps.setInt(1, qn.getM_no());
+			ps.setString(2, qn.getQ_content());
+			ps.setString(3, qn.getQ_title());
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

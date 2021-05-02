@@ -49,14 +49,14 @@ public class InsertReview extends HttpServlet {
 		
 		ArrayList<String>changeNames = new ArrayList<>();
 	//정보 받아오기
-		
+		int m_no = Integer.parseInt(mr.getParameter("m_no"));
 		int r_rank = Integer.parseInt(mr.getParameter("r_rank"));
 		String[]r_period =  mr.getParameterValues("r_period");
 		String r_periodStr = String.join("-", r_period);
 		int r_with = Integer.parseInt(mr.getParameter("r_with"));
 		String r_title = mr.getParameter("r_title");
 		String r_content =mr.getParameter("r_content"); 
-		Review r = new Review(r_rank, r_title,r_content,r_periodStr, r_with);
+		Review r = new Review(m_no, r_rank, r_title,r_content,r_periodStr, r_with);
 		
 		System.out.println(r_rank+r_title+r_content+r_periodStr+r_with);
 		//첨부파일 목록
@@ -90,7 +90,13 @@ public class InsertReview extends HttpServlet {
 		
 		ReviewService rReview = new ReviewService();
 		int rResult = rReview.insertReview(r);
-		
+		if(rResult>0) {
+			response.sendRedirect("selectList.re");
+		}else {
+			request.setAttribute("error-msg", "게시글 작성 실패.");
+			request.getRequestDispatcher("views/common/errorPage.jsp")
+			.forward(request, response);
+		}
 	
 	}
 

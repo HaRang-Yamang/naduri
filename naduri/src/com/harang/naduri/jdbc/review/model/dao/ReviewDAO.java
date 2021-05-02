@@ -1,5 +1,7 @@
 package com.harang.naduri.jdbc.review.model.dao;
 
+import static com.harang.naduri.jdbc.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,10 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
-import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
 import com.harang.naduri.jdbc.attach.model.vo.Attach;
+import com.harang.naduri.jdbc.member.model.vo.Member;
 import com.harang.naduri.jdbc.review.model.vo.Review;
 
 public class ReviewDAO {
@@ -34,11 +37,12 @@ public ReviewDAO() {
 	String sql = prop.getProperty("insertReview");
 	try {
 		ps = con.prepareStatement(sql);
-		ps.setInt(1, r.getR_rank());
-		ps.setString(2, r.getR_title());
-		ps.setString(3, r.getR_content());
-		ps.setString(4,r.getR_period());
-		ps.setInt(5, r.getR_with());
+		ps.setInt(1, r.getM_no());
+		ps.setInt(2, r.getR_rank());
+		ps.setString(3, r.getR_title());
+		ps.setString(4, r.getR_content());
+		ps.setString(5,r.getR_period());
+		ps.setInt(6, r.getR_with());
 				result = ps.executeUpdate();
 				
 	} catch (SQLException e) {
@@ -80,7 +84,7 @@ public ReviewDAO() {
 		
 		try {
 			ps= con.prepareStatement(sql);
-			ps.setString(1, attach.getAttach_name());
+			ps.setString(1, attach.getA_name());
 			
 		 result =ps.executeUpdate();
 					} catch (SQLException e) {
@@ -128,5 +132,48 @@ public ReviewDAO() {
 		
 		return list;
 	}
-
+	public HashMap<String, Object> selectReviewList(Connection con) {
+		HashMap<String, Object>review = new HashMap<>();
+		ArrayList<Attach>list = new ArrayList<>();
+		Review r = null;
+		Member m = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectReviewList");
+		
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				r = new Review();
+				r.setR_title(rs.getString("r_title"));
+				r.setR_content(rs.getString("r_content"));
+				r.setR_period(rs.getString("r_period"));
+				r.setR_rank(rs.getInt("r_rank"));
+				r.setR_with(rs.getInt("r_with"));
+				r.setR_date(rs.getDate("r_date"));
+				// 리뷰
+				
+				Attach a = new Attach();
+				a.setA_no(rs.getInt("a_no"));
+				a.setA_name(rs.getString("a_name"));
+			
+				list.add(a);
+				//첨부파일	
+				 m = new Member();
+				 m.setM_name(rs.getString("m_name"));
+			}
+			review.put("review", r);
+			review.put("list", list);
+			review.put("member", m);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
+		}
+		return review;
+	}
+	
 }

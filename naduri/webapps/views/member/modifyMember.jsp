@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/naduri/assets/css/memberForm.css">
 <link rel="stylesheet" href="/naduri/assets/css/common/footer.css" />
 <script src="/naduri/assets/js/jquery-3.6.0.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
@@ -51,14 +52,14 @@
                                 <!-- PASSWORD -->
                                 <tr>
                                     <td class="join_title">
-                                        <h4><span class="red">*</span>비밀번호 변경</h4>
+                                        <h4><span class="red visiNone">*</span>비밀번호 변경</h4>
                                     </td>
                                     <td>
                                     	<input type="password" id="m_pwd1" name="m_pwd" size="40" placeholder="6자리 이상, 영문 숫자 포함">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="join_title"><h4><span class="red">*</span>비밀번호 확인</h4></td>
+                                    <td class="join_title"><h4><span class="red visiNone">*</span>비밀번호 확인</h4></td>
                                     <td>
                                     	<input type="password" id="m_pwd2" name="m_pwd2" size="40">
 									</td>
@@ -101,7 +102,7 @@
                                         <h4><span class="red">*</span>연락처</h4>
                                     </td>
                                     <td class="join_phone">
-                                        <select name="m_phone">
+                                        <select name="m_phone" id="m_phone">
                                             <option value="010">
                                                 010
                                             </option>
@@ -118,9 +119,9 @@
                                                 02
                                             </option>	
                                         </select>
-                                            <input type="number" name="m_phone" maxlength="4">
-                                            <input type="number" name="m_phone" maxlength="4">
-                                        <button type="button" id="phone_btn">번호인증</button>
+                                            <input type="number" name="m_phone" id="m_phone" maxlength="4">
+                                            <input type="number" name="m_phone" id="m_phone" maxlength="4">
+                                        <button type="button" id="phone_btn">번호 인증</button>
                                     </td>
                                 </tr>
                                 <!-- E-MAIL -->
@@ -129,8 +130,8 @@
                                         <h4><span class="red">*</span>이메일</h4>
                                     </td>
                                     <td class="join_email">
-                                        <input type="text" name="m_email" size="15" placeholder="example"> @
-                                        <input type="text" name="m_email" size="15" placeholder="example.com" id="email_result">
+                                        <input type="text" name="m_email" id="m_email" size="15" placeholder="example"> @
+                                        <input type="text" name="m_email" id="m_email" size="15" placeholder="example.com" id="email_result">
                                         <select name="email_select" style="width: 75px;" onchange="emailSelect(this.form);">
                                             <option value="0">직접입력</option>
                                             <option value="1">구글 메일</option>
@@ -153,11 +154,20 @@
                                 </tr>
                                 <tr>
                                     <td class="join_title">
+                                        <h4><span class="red">*</span>우편번호</h4>
+                                    </td>
+                                    <td>
+                                    	<input type="text" name="m_address" id="zipCode" size="40" maxlength="40">
+                                    	<button type="button" id="address_btn" onclick="addrSearch();">번호 검색</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="join_title">
                                         <h4><span class="red">*</span>주소 수정</h4>
                                     </td>
                                     <td>
-                                    	<input type="text" name="m_address" size="40" maxlength="40"> <br>
-                                    	<input type="text" name="m_address" size="40" maxlength="40" style="margin-top : 10px;">
+                                    	<input type="text" name="m_address" id="m_address1" size="40" maxlength="40"> <br>
+                                    	<input type="text" name="m_address" id="m_address2" size="40" maxlength="40" style="margin-top : 10px;">
                                     </td>
                                 </tr>
                             </table>
@@ -293,7 +303,8 @@
 
 	<%@ include file="../common/footer.jsp" %>
 	
-	<script type="text/javascript" src="/naduri/assets/js/member.js"></script>
+	<script type="text/javascript" defer src="/naduri/assets/js/member.js"></script>
+	<script type="text/javascript" defer src="/naduri/assets/js/interest.js"></script>
 	<script>
 	// 성별 값 받아오기
 	$('input:radio').each(function(){
@@ -306,12 +317,11 @@
 
 	});
 	
+	
+	// 관심사 값 받아오기
 
 	
-	// 회원 탈퇴
-	function memberDelete(){
-		location.href = '/naduri/memberDelete.do';
-	}
+
 	
 	</script>
 

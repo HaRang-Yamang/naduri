@@ -74,6 +74,18 @@ public class MemberService {
 	}
 	
 	
+	
+	// 중복 아이디 검색
+	public int idCheck(String m_id) {
+		con = getConnection();
+		
+		int result = dao.idCheck(con, m_id);
+		
+		close(con);
+		return result;
+	}
+	
+	
 	// 로그인
 	public Member selectMember(Member loginMember) {
 		
@@ -123,6 +135,8 @@ public class MemberService {
 		close(con);
 		return result;
 	}
+
+
 	
 	
 

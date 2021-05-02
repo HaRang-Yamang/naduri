@@ -34,7 +34,7 @@ public class MemberDAO {
 
 
 	// DB의 Member 테이블에 jsp에서 받아온 정보값 입력
-	// 회원 가입
+	// 회원 가입 - 회원 기본 정보
 	public int insertMember(Connection con, Member joinMember) {
 		// 실행 결과 추가된 행의 개수
 		int result = 0;
@@ -95,7 +95,7 @@ public class MemberDAO {
 	}
 		
 	
-	// 회원 가입 - MCHOICE 테이블에 관심사 입력
+	// 회원 가입 - 관심사 (MCHOICE 테이블)
 	public int insertKeyword(Connection con, Keyword key) {		
 		
 		int result = 0;
@@ -117,6 +117,34 @@ public class MemberDAO {
 		return result;
 	}
 
+	
+	// 아이디 중복 확인
+	public int idCheck(Connection con, String m_id) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("idCheck");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, m_id);
+			rs = ps.executeQuery();
+			
+			if( rs.next() ) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+	
 	
 	// 로그인 - 회원번호 조회
 	public Member selectMember(Connection con, Member loginMember) {
@@ -198,7 +226,6 @@ public class MemberDAO {
 
 	
 	// 키워드 정보 수정
-	/*
 	public int updateKeyword(Connection con, Keyword key) {
 		
 		int result = 0;
@@ -209,8 +236,8 @@ public class MemberDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setString(1, .getKeyword_id());
-			ps.setString(2,  .getM_no());
+			ps.setInt(1, key.getKeyword_id());
+			ps.setInt(2,  key.getM_no());
 			
 			result = ps.executeUpdate();
 			
@@ -221,10 +248,9 @@ public class MemberDAO {
 		} finally {
 			close(ps);
 		}
-		
 		return result;
 	}
-	*/
+
 	
 	// 회원 삭제
 	public int deleteMember(Connection con, String m_id) {
@@ -247,6 +273,9 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+
+
 
 
 }

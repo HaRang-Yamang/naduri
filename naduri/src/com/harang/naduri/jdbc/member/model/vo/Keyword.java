@@ -15,6 +15,7 @@ public class Keyword implements Serializable {
 		super();
 		this.keyword_id = keyword_id;
 	}
+	
 
 	public Keyword(int m_no, int keyword_id) {
 		super();

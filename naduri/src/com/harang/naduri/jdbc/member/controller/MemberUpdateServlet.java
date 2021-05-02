@@ -40,23 +40,30 @@ public class MemberUpdateServlet extends HttpServlet {
 		// 회원 정보 수정 데이터
 		String m_pwd = request.getParameter("m_pwd");
 		String m_gender = request.getParameter("m_gender");
+		
 		String[] m_phone = request.getParameterValues("m_phone");
 		String m_phoneStr = String.join("-", m_phone);
+		
 		String[] m_email = request.getParameterValues("m_email");
 		String m_emailStr = String.join("-", m_email);
+		
 		String[] m_address = request.getParameterValues("m_address");
 		String m_addressStr = String.join("-", m_address);
+		
 		String[] keyword_id = request.getParameterValues("keyword_id");
-		String keyword_idStr = String.join(" ", keyword_id);
+		String keyword_idStr = String.join(", ", keyword_id);
+
 		
 		// 회원의 변경 전 정보 가져오기
+			// 서버에 생성된 세션이 있다면 세션을 반환, 없다면 NULL 반환
 		HttpSession session = request.getSession(false);
-		
+			// member.java를 통해 저장되어 있던 정보
 		Member updateMember = (Member)session.getAttribute("member");
-		//Keyword updateKeyword = (Keyword)session.getAttribute("keyword_id");
+			// keyword.java를 통해 저장되어 있던 정보
+		Keyword updateKeyword = (Keyword)session.getAttribute("keyword");
 		
 		System.out.println("member 원본 정보 : " + updateMember);
-		System.out.println("keyword_id 원본 정보 : " + keyword_id);
+		System.out.println("keyword_id 원본 정보 : " + updateKeyword);
 
 		
 		// 변경할 회원 정보 처리
@@ -66,6 +73,9 @@ public class MemberUpdateServlet extends HttpServlet {
 		updateMember.setM_phone(m_phoneStr);
 		updateMember.setM_email(m_emailStr);
 		updateMember.setM_address(m_addressStr);
+		
+		//updateKeyword.setKeyword_id(keyword_idStr);
+
 
 		System.out.println("member 변경 정보 : " + updateMember);
 		

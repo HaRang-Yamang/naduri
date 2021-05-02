@@ -48,7 +48,7 @@
     color: red;
     padding-right : 3px;
 }
-.joinArea .red+.visiNone{
+.joinArea .red.visiNone{
 	visibility : none;
 }
 
@@ -101,7 +101,7 @@
 .join_phone input[type=number]{
 	width : 78.5px;
 }
- #join_btn, #phone_btn{
+ #idCheck_btn, #phone_btn, #address_btn{
 	height : 25px;
 	width: 73px;
 	background : var(--main-color);

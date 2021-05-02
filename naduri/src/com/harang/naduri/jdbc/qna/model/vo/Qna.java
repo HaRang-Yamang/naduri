@@ -16,12 +16,12 @@ public Qna() {
 	super();
 }
 
-public Qna(String q_title, String q_content) {
+public Qna(int m_no, String q_title, String q_content) {
 	super();
+	this.m_no = m_no;
 	this.q_title = q_title;
 	this.q_content = q_content;
 }
-
 
 
 public Qna(int qno, int m_no, String q_content, String q_date, String q_update) {

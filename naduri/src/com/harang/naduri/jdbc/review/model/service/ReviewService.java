@@ -1,9 +1,12 @@
 package com.harang.naduri.jdbc.review.model.service;
-import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
-
+import static com.harang.naduri.jdbc.common.JDBCTemplate.close;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.commit;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.getConnection;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.review.model.dao.ReviewDAO;
@@ -22,14 +25,14 @@ public class ReviewService {
 		if(result1>0) {
 			int r_no =dao.getCurrentRno(con);
 			for(int i=0; i<list.size(); i++) {
-				list.get(i).setRno(r_no);
+				list.get(i).setR_no(r_no);
 			}
 		}
 		//첨부 파일 저장
 		int result2 = 0;
 		
 		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i) !=null && list.get(i).getAttach_name() !=null) {
+			if(list.get(i) !=null && list.get(i).getA_name() !=null) {
 				result2= dao.insertAttach(con,list.get(i));
 				if(result2 ==0)break;
 			}else {
@@ -53,6 +56,15 @@ public class ReviewService {
 		
 		return list;
 	}
+
+	public HashMap<String, Object> selectReviewList() {
+		con = getConnection();
+		HashMap<String, Object>review = dao.selectReviewList(con);
+		close(con);
+		return review;
+	}
+
+
 
 	
 }

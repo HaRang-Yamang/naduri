@@ -30,14 +30,22 @@ public class QnaInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int m_no = Integer.parseInt(request.getParameter("m_no"));
 		String q_title = request.getParameter("q_title");
 		String q_content =request.getParameter("q_content");
 		System.out.println(q_title+","+q_content);
-		Qna qn = new Qna(q_title, q_content);
+		Qna qn = new Qna(m_no, q_title, q_content);
 		
 		QnaService qna = new QnaService();
-		int qResutl =qna.insertQna(qn);
+		int qResult =qna.insertQna(qn);
+		
+		if(qResult>0) {
+			response.sendRedirect("selectList.qn");
+		}else {
+			request.setAttribute("error-msg", "게시글 작성 실패.");
+			request.getRequestDispatcher("views/common/errorPage.jsp")
+			.forward(request, response);
+		}
 	}
 
 	/**

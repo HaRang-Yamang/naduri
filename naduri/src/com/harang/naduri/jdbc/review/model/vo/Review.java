@@ -43,16 +43,15 @@ public Review(int rno, int r_rank, String r_title, String r_content, String r_pe
 }
 
 
-
-public Review(int r_rank, String r_title, String r_content, String r_period, int r_with) {
+public Review(int m_no, int r_rank, String r_title, String r_content, String r_period, int r_with) {
 	super();
+	this.m_no = m_no;
 	this.r_rank = r_rank;
 	this.r_title = r_title;
 	this.r_content = r_content;
 	this.r_period = r_period;
 	this.r_with = r_with;
 }
-
 
 
 @Override

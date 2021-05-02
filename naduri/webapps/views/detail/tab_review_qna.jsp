@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+ 
 <div id = "container">
 	
     <!-- 상단 tab 영역 -->
@@ -26,7 +26,7 @@
                         <th>평가</th>
                         <th>방문유형</th>
                         <th>방문시기</th>
-                        <th>키워드</th>
+
                     </tr>
                     <tr>
                         <td>
@@ -145,11 +145,7 @@
                                 <td>방문유형</td>
                                 <td>혼자</td>
                             </tr>
-                            <tr>
-                                <td>키워드</td>
-                                <td>#한식 #국밥</td>
-                            </tr>
-                        </table>
+                     </table>
                     </div>
     
                     <!-- 이미지 -->
@@ -402,6 +398,7 @@
         <!-- QnA 질문하기 버튼 -->
         <div class = "filter">
         <form id="insertForm" action="/naduri/insert.qn" method="post">
+           
             <div class=qnatitle >
             <span>질문 제목: </span>
             <input type="text" name="q_title" />

@@ -53,7 +53,7 @@ public class MemberIoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();	
 			session.setAttribute("member", loginMember);
 			
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("index.do");
 		} else {
 			// 로그인 실패!
 			request.setAttribute("error-msg", "로그인 실패!");

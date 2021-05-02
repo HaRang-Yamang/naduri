@@ -27,7 +27,7 @@
             <h2>회원 가입</h2>
             <!-- 회원가입 폼 -->
             <div class="joinFormArea">
-                <form id="joinForm" action="/naduri/memberInsert.do" method="post">
+                <form id="memberForm" action="/naduri/memberInsert.do" method="post">
 
                     <div class="join_baisc">
                         <div class="joinTitleArea">
@@ -55,14 +55,18 @@
                                         <h4><span class="red">*</span>비밀번호</h4>
                                     </td>
                                     <td>
-                                        <input type="password" name="m_pwd" size="40" placeholder="6자리 이상, 영문 숫자 포함">
+                                        <input type="password" id="m_pwd1" name="m_pwd" size="40" placeholder="6자리 이상, 영문 숫자 포함">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="join_title"><h4><span class="red">*</span>비밀번호 확인</h4></td>
                                     <td>
-                                    	<input type="password" name="m_pwd2" size="40">
+                                    	<input type="password" id="m_pwd2" name="m_pwd2" size="40">
                                     </td>
+                                </tr>
+                                <tr>
+                                	<td></td>
+                                	<td colspan="2" id="pwdValidate" class="red"></td>
                                 </tr>
                                 <!-- NAME -->
                                 <tr>
@@ -289,5 +293,6 @@
 	</section>		
 	
 	<%@ include file="../common/footer.jsp" %>
+	<script type="text/javascript" src="/naduri/assets/js/member.js"></script>
 </body>
 </html>

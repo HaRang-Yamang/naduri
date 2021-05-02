@@ -34,7 +34,6 @@ public class MemberDAO {
 	public int insertMember(Connection con, Member joinMember) {
 		// 실행 결과 추가된 행의 개수
 		int result = 0;
-//		Statement st = null;
 		PreparedStatement ps = null;
 		
 		String sql = prop.getProperty("insertMember");
@@ -53,26 +52,8 @@ public class MemberDAO {
 			ps.setString(7, joinMember.getM_phone());
 			ps.setString(8, joinMember.getM_birth());
 			
-//			st = con.createStatement();
-//			
-//			String sql = "INSERT INTO MEMBER "
-//						+ " VALUES(SEQ_M_NO.NEXTVAL" 
-//						+ ", '" + joinMember.getM_id()
-//						+ "', DEFAULT"
-//						+ ", '" + joinMember.getM_pwd()
-//						+ "', '" + joinMember.getM_name()
-//						+ "', '" + joinMember.getM_gender()
-//						+ "', '" + joinMember.getM_address()
-//						+ "', '" + joinMember.getM_email()
-//						+ "', '" + joinMember.getM_phone()
-//						+ "', DEFAULT"
-//						+ ", '" + joinMember.getM_birth()
-//						+"')";
-//			
-//			System.out.println(sql);
-			
 			result = ps.executeUpdate();
-//			result = st.executeUpdate(sql);
+
 			
 		} catch (SQLException e) {
 
@@ -80,7 +61,6 @@ public class MemberDAO {
 		} finally {
 			
 			close(ps);
-//			close(st);
 		}
 		
 		return result;
@@ -154,9 +134,6 @@ public class MemberDAO {
 		
 		return result;
 	}
-	
-	
-	
 
 	
 	// 회원번호 조회
@@ -202,7 +179,92 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	
+	// 회원 정보 수정
+	public int updateMember(Connection con, Member updateMember) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, updateMember.getM_pwd());
+			ps.setString(2, updateMember.getM_gender());
+			ps.setString(3, updateMember.getM_email());
+			ps.setString(4, updateMember.getM_phone());
+			ps.setString(5, updateMember.getM_address());
+			ps.setString(6, updateMember.getM_id());
+	
+			result = ps.executeUpdate();
 
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+
+		}
+		
+		return result;
+	}
+
+	
+	// 키워드 정보 수정
+	/*
+	public int updateKeyword(Connection con, Keyword key) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("updateKeyword");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, .getKeyword_id());
+			ps.setString(2,  .getM_no());
+			
+			result = ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+	*/
+	
+	// 회원 삭제
+	public int deleteMember(Connection con, String m_id) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1,  m_id);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		return result;
+	}
 
 
 }

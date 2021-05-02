@@ -14,16 +14,16 @@ import com.harang.naduri.jdbc.member.model.service.MemberService;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberIoginServlet
+ * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/login.do")
-public class MemberIoginServlet extends HttpServlet {
+@WebServlet("/memberDelete.do")
+public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberIoginServlet() {
+    public MemberDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,35 +32,26 @@ public class MemberIoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
-		String m_id = request.getParameter("m_id");
-		String m_pwd = request.getParameter("m_pwd");
+		HttpSession session = request.getSession(false);
 		
-		System.out.println("서블릿 : " + m_id + "/" + m_pwd);
+		Member m = (Member)session.getAttribute("member");
 		
-		Member loginMember = new Member(m_id, m_pwd);
+		String m_id = m.getM_id();
 		
-		// 로그인 서비스 수행 (업무 로직 : biz logic)
 		MemberService service = new MemberService();
+		int result = service.deleteMember(m_id);
 		
-		loginMember = service.selectMember(loginMember);
-		
-		if(loginMember != null) {
-			// 로그인 성공!
-			
-			HttpSession session = request.getSession();	
-			session.setAttribute("member", loginMember);
-			
+		if( result > 0 ) {
+			session.invalidate();
 			response.sendRedirect("index.do");
-		} else {
-			// 로그인 실패!
-			request.setAttribute("error-msg", "로그인 실패!");
+		}else {
+			request.setAttribute("error-msg", "회원 탈퇴 실패!");
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
 			
+			view.forward(request, response);
 		}
-		
-		
 		
 	}
 

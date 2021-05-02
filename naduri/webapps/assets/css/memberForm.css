@@ -48,6 +48,9 @@
     color: red;
     padding-right : 3px;
 }
+.joinArea .red+.visiNone{
+	visibility : none;
+}
 
 
 /* 회원가입 소제목 */

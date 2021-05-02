@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +13,8 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<script type="text/javascript" src="/naduri/assets/js/emailSelect.js"></script>
-<title>나드리 - 회원 수정</title>
+
+<title>나드리 - 회원 정보 수정</title>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -23,11 +23,11 @@
 	
         <div class="joinArea">
 
-            <!-- 회원가입 타이틀 영역-->
-            <h2>회원 수정</h2>
-            <!-- 회원가입 폼 -->
+            <!-- 회원 정보 수정 타이틀 영역-->
+            <h2>회원 정보 수정</h2>
+            <!-- 회원 정보 수정 폼 -->
             <div class="joinFormArea">
-                <form id="joinForm" method="post">
+                <form id="memberForm" action="/naduri/memberUpdate.do" method="post">
 
                     <div class="join_baisc">
                         <div class="joinTitleArea">
@@ -42,26 +42,30 @@
                                 <tr>
                                     <tr>
                                         <td class="join_title">
-                                            <h4><span class="red">*</span>아이디</h4>
+                                            <h4><span class="red visiNone">*</span>아이디</h4>
                                             </td>
                                         <td>
-                                        	test1111
+                                        	<%= m.getM_id() %>
                                         </td>
                                     </tr>
                                 <!-- PASSWORD -->
                                 <tr>
                                     <td class="join_title">
-                                        <h4><span class="red">*</span>비밀번호</h4>
+                                        <h4><span class="red">*</span>비밀번호 변경</h4>
                                     </td>
                                     <td>
-                                    	<input type="password" name="m_pwd" size="40" placeholder="6자리 이상, 영문 숫자 포함">
+                                    	<input type="password" id="m_pwd1" name="m_pwd" size="40" placeholder="6자리 이상, 영문 숫자 포함">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="join_title"><h4><span class="red">*</span>비밀번호 확인</h4></td>
                                     <td>
-                                    	<input type="password" name="m_pwd2" size="40">
+                                    	<input type="password" id="m_pwd2" name="m_pwd2" size="40">
 									</td>
+                                </tr>
+                                <tr>
+                                	<td></td>
+                                	<td colspan="2" id="pwdValidate" class="red"></td>
                                 </tr>
                                 <!-- NAME -->
                                 <tr>
@@ -69,7 +73,7 @@
                                         <h4><span class="red">*</span>이름</h4>
                                     </td>
                                     <td>
-                                    	<input type="text" name="m_name" size="40">
+                                    	<%= m.getM_name() %>
                                    	</td>
                                 </tr>
                                 <!-- GENDER -->
@@ -88,9 +92,7 @@
                                         <h4><span class="red">*</span>생년월일</h4>
                                     </td>
                                     <td class="join_birth">
-                                        <input type="text" name="m_birth" size="10" maxlength="4" placeholder="2021">
-										<input type="text" name="m_birth" size="9" maxlength="2" placeholder="월">
-                                        <input type="text" name="m_birth" size="9" maxlength="2" placeholder="일">
+                                        <%= m.getM_birth() %>
                                     </td>
                                 </tr>
                                 <!-- PHONE -->
@@ -143,18 +145,19 @@
                                 <!-- ADDRESS -->
                                 <tr>
                                     <td class="join_title">
-                                        <h4><span class="red">*</span>주소</h4>
+                                        <h4><span class="red visiNone">*</span>주소</h4>
                                     </td>
                                     <td>
-                                    	<input type="text" name="m_address" size="40" maxlength="40">                                     
+                                    	<%= m.getM_address() %>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="join_title">
-                                        <h4>상세주소</h4>
+                                        <h4><span class="red">*</span>주소 수정</h4>
                                     </td>
                                     <td>
-                                    	<input type="text" name="m_address" size="40" maxlength="40">
+                                    	<input type="text" name="m_address" size="40" maxlength="40"> <br>
+                                    	<input type="text" name="m_address" size="40" maxlength="40" style="margin-top : 10px;">
                                     </td>
                                 </tr>
                             </table>
@@ -279,7 +282,7 @@
                     <!-- 회원 정보 수정 버튼 -->
                     <div class="submit_btn">
                         <input type="submit" id="submit_btn" value="회원정보 수정">
-                        <input type="button" id="leave_btn" value="탈퇴하기">
+                        <input type="button" id="leave_btn" value="회원 탈퇴" onclick="memberDelete();">
                     </div>
                 </form>
             </div>
@@ -287,7 +290,35 @@
         </div>
         
 	</section>		
-	
+
 	<%@ include file="../common/footer.jsp" %>
+	
+	<script type="text/javascript" src="/naduri/assets/js/member.js"></script>
+	<script>
+	// 성별 값 받아오기
+	$('input:radio').each(function(){
+
+		if($(this).val() == '<%= m.getM_gender() %>' ) {
+			$(this).prop('checked', true);
+		} else {
+			$(this).prop('checked', false);
+		}
+
+	});
+	
+	// 관심사 값 받아오기
+	var keywordArr = '<%= k.getKeyword_id() %>'.split(', ');
+	$('input:checkbox').each(function(){
+		if($.inArray($(this).val(),keywordArr) > -1)
+		$(this).prop('checked', true);
+	});
+	
+	// 회원 탈퇴
+	function memberDelete(){
+		location.href = '/naduri/memberDelete.do';
+	}
+	
+	</script>
+
 </body>
 </html>

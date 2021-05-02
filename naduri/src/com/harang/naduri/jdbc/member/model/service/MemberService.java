@@ -87,4 +87,43 @@ public class MemberService {
 		
 	}
 
+	
+	// 회원 수정
+	public int updateMember(Member updateMember) {
+		
+		con = getConnection();
+
+		int result1 = dao.updateMember(con, updateMember);
+
+		// updateMember 정보를 가지고 MemberDAO의 updateMember가 한 번 이상 시행 됐다면 커밋
+		if(result1 > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		return result1;
+	}
+
+	
+	// 회원 삭제
+	public int deleteMember(String m_id) {
+		
+		con = getConnection();
+		
+		int result = dao.deleteMember(con, m_id);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		return result;
+	}
+	
+	
+
 }

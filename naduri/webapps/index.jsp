@@ -19,7 +19,7 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<script defer src="/naduri/assets/js/icon.js"></script>
+<!-- <script defer src="/naduri/assets/js/icon.js"></script> -->
        
 <title>나드리</title>
 </head>

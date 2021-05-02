@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.harang.naduri.jdbc.member.model.dao.MemberDAO;
 import com.harang.naduri.jdbc.member.model.vo.Member;
@@ -45,5 +46,17 @@ public class MemberService {
 		return result;
 		
 	}
+
+	public ArrayList<Member> memberList() {
+		con = getConnection();
+		
+		ArrayList<Member> list = dao.memberList(con);
+		
+		close(con);
+		
+		return list;
+	}
+
+	
 
 }

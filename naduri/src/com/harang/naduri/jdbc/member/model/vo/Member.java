@@ -71,6 +71,17 @@ public class Member implements Serializable{
 		this.m_pwd = m_pwd;
 	}
 
+	
+	// 관리자페이지 회원관리
+	public Member(int m_no, String m_id, String m_name, String m_phone, String m_email,  String m_status) {
+		super();
+		this.m_no = m_no;
+		this.m_id = m_id;
+		this.m_name = m_name;
+		this.m_phone = m_phone;
+		this.m_email = m_email;
+		this.m_status = m_status;
+	}
 
 	@Override
 	public String toString() {

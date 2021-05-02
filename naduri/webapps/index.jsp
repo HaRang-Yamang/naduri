@@ -72,7 +72,7 @@
         </div>
 
         <div class="search">
-            <input type="text" placeholder="가고 싶은 곳을 검색하세요">
+            <input type="text" placeholder="가고 싶은 곳을 검색하세요" id="sLoc">
             <i class="fas fa-search" aria-hidden="true"></i>
         </div>
     

@@ -52,6 +52,11 @@ public Spot(String spot_name, int spot_lat, int spot_long) {
 }
 
 
+public Spot(double spot_lat, double spot_long) {
+	super();
+	this.spot_lat = spot_lat;
+	this.spot_long = spot_long;
+}
 
 @Override
 public String toString() {

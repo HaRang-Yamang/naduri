@@ -32,16 +32,13 @@ public class SpotSelectList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("application/json; charset=UTF-8");
+		response.setContentType("UTF-8");
 		
 		// Spot 목록 처리하는 변수 
 		ArrayList<Spot> list = new ArrayList<>();		
 		SpotService service = new SpotService();
-		
+				
 		list = service.selectList();
-		
-		// Gson 트라이중		
-		// new Gson().toJson(list, response.getWriter());
 		
 		System.out.println("list : " + list);
 		

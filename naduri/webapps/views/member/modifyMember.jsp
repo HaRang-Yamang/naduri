@@ -306,12 +306,7 @@
 
 	});
 	
-	// 관심사 값 받아오기
-	var keywordArr = '<%= k.getKeyword_id() %>'.split(', ');
-	$('input:checkbox').each(function(){
-		if($.inArray($(this).val(),keywordArr) > -1)
-		$(this).prop('checked', true);
-	});
+
 	
 	// 회원 탈퇴
 	function memberDelete(){

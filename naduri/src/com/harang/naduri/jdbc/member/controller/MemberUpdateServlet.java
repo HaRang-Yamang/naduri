@@ -46,8 +46,8 @@ public class MemberUpdateServlet extends HttpServlet {
 		String m_emailStr = String.join("-", m_email);
 		String[] m_address = request.getParameterValues("m_address");
 		String m_addressStr = String.join("-", m_address);
-		
-		String keyword_id = String.join(", ", request.getParameterValues("keyword_id"));
+		String[] keyword_id = request.getParameterValues("keyword_id");
+		String keyword_idStr = String.join(" ", keyword_id);
 		
 		// 회원의 변경 전 정보 가져오기
 		HttpSession session = request.getSession(false);

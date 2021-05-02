@@ -2,6 +2,8 @@ package com.harang.naduri.jdbc.notice.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
+import com.harang.naduri.jdbc.common.MyRenamePolicy;
 import com.harang.naduri.jdbc.notice.model.service.*;
 import com.harang.naduri.jdbc.notice.model.vo.*;
 import com.oreilly.servlet.MultipartRequest;
@@ -56,8 +60,13 @@ public class NoticeWrite extends HttpServlet {
 		
 		// 4. MultipartRequest 작성
 		MultipartRequest mr = new MultipartRequest(request, savePath, maxSize, 
-										   "UTF-8", new DefaultFileRenamePolicy());
-
+										   "UTF-8", new MyRenamePolicy());
+		
+		// 추가된 파일 객체
+		ArrayList<String> changeNames = new ArrayList<>();
+		
+		Enumeration<String> tagNames = mr.getFileNames();
+		
 		// 5. 전송값 처리
 		String title = mr.getParameter("n_title");
 		String content = mr.getParameter("n_content");
@@ -65,10 +74,33 @@ public class NoticeWrite extends HttpServlet {
 		//System.out.println("확인 : " +title + ", " + content);
 		
 		// 6. 함게 저장된 파일의 이름 추출하기
-		String filename = mr.getFilesystemName("n_file");
-		
+			
+		while( tagNames.hasMoreElements()) {
+			
+			String tagName = tagNames.nextElement();
+			
+			changeNames.add(mr.getFilesystemName(tagName));
+			
+			// System.out.println(tagName + ":" + changeNames);
+		}
 		// 7. VO 작성하기
-		Notice n = new Notice(title, content, filename);
+		Notice n = new Notice();
+		
+		n.setN_title(mr.getParameter("n_title"));
+		n.setN_content(mr.getParameter("n_content"));
+		
+		// 여기서 이제 첨부파일 목록 생성
+		ArrayList<Attach> list = new ArrayList<>();
+		
+		for( int i = changeNames.size() - 1; i >= 0 ; i--) {
+			Attach a = new Attach();
+			
+			a.setA_name(changeNames.get(i));
+			
+			list.add(a);
+		}
+		
+		n.setAttlist(list);
 		
 		// 8. 서비스 시작
 		NoticeService service = new NoticeService();
@@ -78,11 +110,14 @@ public class NoticeWrite extends HttpServlet {
 		if(result > 0 ) {
 			response.sendRedirect("selectList.no");
 		} else {
+			
 			request.setAttribute("error-msg", "공지글 작성 실패!");
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp")
 			       .forward(request, response);
 		}
+		
+		
 	}
 		
 		

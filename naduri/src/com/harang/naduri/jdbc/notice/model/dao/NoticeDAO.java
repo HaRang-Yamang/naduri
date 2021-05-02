@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.notice.model.vo.Notice;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
@@ -208,6 +209,58 @@ public class NoticeDAO {
 			e.printStackTrace();
 		} finally {
 			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int getCurrentN_no(Connection con) {
+		int result = 0 ;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("currentN_no");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int insertAttachment(Connection con, Attach attachment) {
+		
+		int result = 0 ;
+		PreparedStatement ps = null;
+		String sql = prop.getProperty("insertAttach");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, attachment.getA_name());
+			ps.setInt(2, attachment.getN_no());
+			
+			result = ps.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
 			close(ps);
 		}
 		

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.harang.naduri.jdbc.notice.model.dao.NoticeDAO;
+import com.harang.naduri.jdbc.attach.model.vo.*;
 import com.harang.naduri.jdbc.notice.model.vo.Notice;
 
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
@@ -26,12 +27,40 @@ public class NoticeService {
 	// 공지사항 작성 시
 	public int insertNotice(Notice n) {
 		con = getConnection();
+		ArrayList<Attach> list = n.getAttList();
 		
+		// 1. 게시글 저장
 		int result = dao.insertNotice(con, n);
 		
-		if( result > 0) commit(con);
-		else rollback(con);
+		if(result > 0) {
+			int n_no = dao.getCurrentN_no(con);
+			
+			for(int i = 0; i < list.size(); i++ ) {
+				list.get(i).setN_no(n_no);
+			}
+			
+		} 
 		
+		// 2. 첨부파일 저장
+		int result2 = 0;
+		
+		for( int i = 0; i < list.size(); i++) {
+			if(list.get(i) != null && list.get(i).getA_name() != null) {
+				
+				result2 = dao.insertAttachment(con, list.get(i));
+				
+				if(result2 == 0 ) break;
+			} else {
+				result2 = 1;
+			}
+		}
+		
+		if (result > 0 && result2 > 0 ) {
+			commit(con);
+			result = 1;
+		}else {
+			rollback(con);
+		}
 		close(con);
 		
 		return result;

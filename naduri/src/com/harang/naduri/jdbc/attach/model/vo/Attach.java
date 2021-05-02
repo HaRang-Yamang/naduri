@@ -6,39 +6,52 @@ public class Attach implements Serializable {
 
 	private static final long serialVersionUID = 1001L;
 	
-	private int attach_no;
-	private String attach_name;
+	private int a_no;
+	private String a_name;
 	private String a_status;
 	private String a_path;
 	private String a_type;
 	private int rno;
 	private int m_no;
-	private int spot_id;
+	private int L_no;
 	private int n_no;
 
 	public Attach() { }
 
 	@Override
 	public String toString() {
-		return "Attach [attach_no=" + attach_no + ", attach_name=" + attach_name + ", a_status=" + a_status
-				+ ", a_path=" + a_path + ", a_type=" + a_type + ", rno=" + rno + ", m_no=" + m_no + ", spot_id="
-				+ spot_id + ", n_no=" + n_no + "]";
+		return "Attach [a_no=" + a_no + ", a_name=" + a_name + ", a_status=" + a_status + ", a_path=" + a_path
+				+ ", a_type=" + a_type + ", rno=" + rno + ", m_no=" + m_no + ", L_no=" + L_no + ", n_no=" + n_no + "]";
 	}
 
-	public int getAttach_no() {
-		return attach_no;
+	public Attach(int a_no, String a_name, String a_status, String a_path, String a_type, int rno, int m_no, int l_no,
+			int n_no) {
+		super();
+		this.a_no = a_no;
+		this.a_name = a_name;
+		this.a_status = a_status;
+		this.a_path = a_path;
+		this.a_type = a_type;
+		this.rno = rno;
+		this.m_no = m_no;
+		L_no = l_no;
+		this.n_no = n_no;
 	}
 
-	public void setAttach_no(int attach_no) {
-		this.attach_no = attach_no;
+	public int getA_no() {
+		return a_no;
 	}
 
-	public String getAttach_name() {
-		return attach_name;
+	public void setA_no(int a_no) {
+		this.a_no = a_no;
 	}
 
-	public void setAttach_name(String attach_name) {
-		this.attach_name = attach_name;
+	public String getA_name() {
+		return a_name;
+	}
+
+	public void setA_name(String a_name) {
+		this.a_name = a_name;
 	}
 
 	public String getA_status() {
@@ -81,12 +94,12 @@ public class Attach implements Serializable {
 		this.m_no = m_no;
 	}
 
-	public int getSpot_id() {
-		return spot_id;
+	public int getL_no() {
+		return L_no;
 	}
 
-	public void setSpot_id(int spot_id) {
-		this.spot_id = spot_id;
+	public void setL_no(int l_no) {
+		L_no = l_no;
 	}
 
 	public int getN_no() {
@@ -97,10 +110,6 @@ public class Attach implements Serializable {
 		this.n_no = n_no;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
-	
 	
 }

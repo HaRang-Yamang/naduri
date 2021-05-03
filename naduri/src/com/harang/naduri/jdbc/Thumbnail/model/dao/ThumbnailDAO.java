@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
-import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.attach.model.vo.Attach;
+import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;
 
@@ -35,20 +35,22 @@ public class ThumbnailDAO {
 			e.printStackTrace();
 		} 
 	}
+	
 
+	
 
-	// ì¸ê¸°ëª…ì†Œ ë‘˜ëŸ¬ë³´ê¸° ëª©ë¡ ì¡°íšŒ  // 0503 spot & heritage & location & keyword ì—°ê²° ì¶”ê°€
+	// ÀÎ±â¸í¼Ò µÑ·¯º¸±â ¸ñ·Ï Á¶È¸  // 0503 spot & heritage & location & keyword ¿¬°á Ãß°¡
 	public HashMap<String, Object> selectList(Connection con) {
-		// í•´ì‹œë§µ ì¤€ë¹„
+		// ÇØ½Ã¸Ê ÁØºñ
 		HashMap<String, Object> map = new HashMap<>();
 		
-		// ë§›ì§‘ê³¼ ì—¬í–‰ì§€ ì •ë³´ ì €ì¥ ê°ì²´
+		// ¸ÀÁı°ú ¿©ÇàÁö Á¤º¸ ÀúÀå °´Ã¼
 		ArrayList<Thumbnail> list = new ArrayList<>();
-		// ì²¨ë¶€íŒŒì¼ ì €ì¥ ê°ì²´
+		// Ã·ºÎÆÄÀÏ ÀúÀå °´Ã¼
 		ArrayList<Attach> list2 = new ArrayList<>();
-		// ë¬¸í™”ì¬ ì •ë³´ ì €ì¥ ê°ì²´
+		// ¹®È­Àç Á¤º¸ ÀúÀå °´Ã¼
 		ArrayList<Heritage> listHeri = new ArrayList<>();
-		// ì¥ì†Œì™€ í‚¤ì›Œë“œ ì •ë³´ ì €ì¥ ê°ì²´
+		// Àå¼Ò¿Í Å°¿öµå Á¤º¸ ÀúÀå °´Ã¼
 		ArrayList<Location> lo_key = new ArrayList<>();
 		
 		
@@ -76,6 +78,7 @@ public class ThumbnailDAO {
 				t.setSpot_long(  rs.getInt("spot_long"));
 				t.setS_status(  rs.getString("s_status"));
 				t.setSpot_count(  rs.getInt("spot_count"));
+
 				
 				
 				a.setA_name(rs.getString("a_name"));
@@ -89,8 +92,8 @@ public class ThumbnailDAO {
 				
 			}
 			
-			map.put("list", list); // ê¸€ ì •ë³´
-			map.put("list2", list2); // ì‚¬ì§„ ì •ë³´
+			map.put("list", list); // ±Û Á¤º¸
+			map.put("list2", list2); // »çÁø Á¤º¸
 			
 		} catch (SQLException e) {
 			
@@ -106,19 +109,19 @@ public class ThumbnailDAO {
 	
 	
 	
-	//-------------------- ê²€ìƒ‰ HASH MAPìœ¼ë¡œ ì •ë³´ ë‹¤ ë°›ì•„ì˜¤ê¸° ----------------//
-	// ì¸ê¸°ëª…ì†Œ ë‘˜ëŸ¬ë³´ê¸° ëª©ë¡ ì¡°íšŒ  // 0503 spot & heritage & location & keyword ì—°ê²° ì¶”ê°€
+	//-------------------- °Ë»ö HASH MAPÀ¸·Î Á¤º¸ ´Ù ¹Ş¾Æ¿À±â ----------------//
+	// ÀÎ±â¸í¼Ò µÑ·¯º¸±â ¸ñ·Ï Á¶È¸  // 0503 spot & heritage & location & keyword ¿¬°á Ãß°¡
 		public HashMap<String, Object> selectListCollection(Connection con, String spotName) {
-			// í•´ì‹œë§µ ì¤€ë¹„
+			// ÇØ½Ã¸Ê ÁØºñ
 			HashMap<String, Object> map = new HashMap<>();
 			
-			// ë§›ì§‘ê³¼ ì—¬í–‰ì§€ ì •ë³´ ì €ì¥ ê°ì²´
+			// ¸ÀÁı°ú ¿©ÇàÁö Á¤º¸ ÀúÀå °´Ã¼
 			ArrayList<Thumbnail> list = new ArrayList<>();
-			// ì²¨ë¶€íŒŒì¼ ì €ì¥ ê°ì²´
+			// Ã·ºÎÆÄÀÏ ÀúÀå °´Ã¼
 			ArrayList<Attach> list2 = new ArrayList<>();
-			// ë¬¸í™”ì¬ ì •ë³´ ì €ì¥ ê°ì²´
+			// ¹®È­Àç Á¤º¸ ÀúÀå °´Ã¼
 			ArrayList<Heritage> listHeri = new ArrayList<>();
-			// ì¥ì†Œì™€ í‚¤ì›Œë“œ ì •ë³´ ì €ì¥ ê°ì²´
+			// Àå¼Ò¿Í Å°¿öµå Á¤º¸ ÀúÀå °´Ã¼
 			ArrayList<Location> lo_key = new ArrayList<>();
 			
 			
@@ -143,7 +146,7 @@ public class ThumbnailDAO {
 					Location l = new Location();
 					
 					
-					// ë§›ì§‘, ì—¬í–‰ì§€ ì •ë³´ ì €ì¥
+					// ¸ÀÁı, ¿©ÇàÁö Á¤º¸ ÀúÀå
 					t.setSpot_id(      rs.getInt("spot_id"));
 					t.setL_no(      rs.getInt("l_no"));
 					t.setSpot_name(   rs.getString("spot_name"));
@@ -156,13 +159,13 @@ public class ThumbnailDAO {
 					t.setSpot_count(  rs.getInt("spot_count"));
 					
 					
-					// ì²¨ë¶€íŒŒì¼ ì •ë³´ ì €ì¥
+					// Ã·ºÎÆÄÀÏ Á¤º¸ ÀúÀå
 					a.setA_name(rs.getString("a_name"));
 					a.setSpot_id(rs.getInt("spot_id"));
 					
 					list2.add(a);
 					
-					// ë¬¸í™”ì¬ ì •ë³´ ì €ì¥
+					// ¹®È­Àç Á¤º¸ ÀúÀå
 					h.setH_events(      rs.getString("h_events"));
 					h.setH_serial(      rs.getString("h_serial"));
 					h.setH_zipcode(      rs.getString("h_zipcode"));
@@ -170,7 +173,7 @@ public class ThumbnailDAO {
 					
 					listHeri.add(h);
 					
-					// ì¥ì†Œì™€ í‚¤ì›Œë“œ ì •ë³´ ì €ì¥
+					// Àå¼Ò¿Í Å°¿öµå Á¤º¸ ÀúÀå
 					l.setL_no(rs.getInt("l_no"));
 					l.setLs_code(rs.getInt("ls_code"));
 					l.setKeyword_id(rs.getInt("keyword_id"));
@@ -185,10 +188,10 @@ public class ThumbnailDAO {
 					
 				}
 				
-				map.put("list", list); // ë§›ì§‘, ì—¬í–‰ì§€ ì •ë³´ ì €ì¥
-				map.put("list2", list2); // ì²¨ë¶€íŒŒì¼ ì •ë³´ ì €ì¥
-				map.put("listHeri", listHeri); // ë§›ì§‘, ì—¬í–‰ì§€ ì •ë³´ ì €ì¥
-				map.put("lo_key", lo_key); // ì²¨ë¶€íŒŒì¼ ì •ë³´ ì €ì¥
+				map.put("list", list); // ¸ÀÁı, ¿©ÇàÁö Á¤º¸ ÀúÀå
+				map.put("list2", list2); // Ã·ºÎÆÄÀÏ Á¤º¸ ÀúÀå
+				map.put("listHeri", listHeri); // ¸ÀÁı, ¿©ÇàÁö Á¤º¸ ÀúÀå
+				map.put("lo_key", lo_key); // Ã·ºÎÆÄÀÏ Á¤º¸ ÀúÀå
 				
 			} catch (SQLException e) {
 				
@@ -219,12 +222,13 @@ public class ThumbnailDAO {
 		
 		
 	
-	//----------------------- ê²€ìƒ‰ì„ ìœ„í•œ 3ë‹¨ê³„ -------------------------//
-	// 1. ì¥ì†Œ ì½”ë“œ ì¡°íšŒ (ì‚¬ìš©ì ì…ë ¥ ê°’ì— ë”°ë¼ì„œ l_no, ls_codeë¥¼ ë°›ì•„ê°„ë‹¤.)
+	//----------------------- °Ë»öÀ» À§ÇÑ 3´Ü°è -------------------------//
+	// 1. Àå¼Ò ÄÚµå Á¶È¸ (»ç¿ëÀÚ ÀÔ·Â °ª¿¡ µû¶ó¼­ l_no, ls_code¸¦ ¹Ş¾Æ°£´Ù.)
 		public ArrayList<Location> selectLocationCode(Connection con, String spotName) {
-			// ê²Œì‹œê¸€ ì½”ë“œ ê°€ì§€ê³  ê°ˆ ë¦¬ìŠ¤íŠ¸ ì¤€ë¹„ 
-			ArrayList<Location> list = new ArrayList<>();
-			
+			// °Ô½Ã±Û ÄÚµå °¡Áö°í °¥ ¸®½ºÆ® ÁØºñ 
+			ArrayList<Location> list = new ArrayList();
+			// Àå¼Ò °´Ã¼ ÁØºñ
+			Location location = new Location();
 
 			PreparedStatement ps = null;
 			ResultSet rs = null;
@@ -242,7 +246,6 @@ public class ThumbnailDAO {
 
 				
 				while(rs.next()) {
-					// ì¥ì†Œ ê°ì²´ ì¤€ë¹„
 					Location l = new Location();
 					
 					l.setL_no( rs.getInt("l_no"));
@@ -270,16 +273,16 @@ public class ThumbnailDAO {
 
 
 
-	// 2. ì¥ì†Œ ì½”ë“œì— ë”°ë¼ì„œ l_no ì¡°íšŒ 
+	// 2. Àå¼Ò ÄÚµå¿¡ µû¶ó¼­ l_no Á¶È¸ 
 		
-	// ì‚¬ìš©ì ì…ë ¥ ê°’ì„ ë°›ì•„ì„œ ls_code, l_no ë°›ì•„ê°€ê¸°.
+	// »ç¿ëÀÚ ÀÔ·Â °ªÀ» ¹Ş¾Æ¼­ ls_code, l_no ¹Ş¾Æ°¡±â.
 	public HashMap<String, Object> selectThumnail(Connection con, String spotName) {
 		
-			// í•´ì‹œë§µ ì¤€ë¹„
+			// ÇØ½Ã¸Ê ÁØºñ
 			HashMap<String, Object> map = new HashMap<>();
-			// ê²Œì‹œê¸€ ì €ì¥ ê°ì²´
+			// °Ô½Ã±Û ÀúÀå °´Ã¼
 			ArrayList<Thumbnail> list = new ArrayList<>();
-			// ì²¨ë¶€íŒŒì¼ ì €ì¥ ê°ì²´
+			// Ã·ºÎÆÄÀÏ ÀúÀå °´Ã¼
 			ArrayList<Attach> list2 = new ArrayList<>();
 			PreparedStatement ps = null;
 			ResultSet rs = null;
@@ -305,9 +308,10 @@ public class ThumbnailDAO {
 					t.setSpot_long(  rs.getInt("spot_long"));
 					t.setS_status(  rs.getString("s_status"));
 					t.setSpot_count(  rs.getInt("spot_count"));
+					t.setSpot_file(rs.getString("spot_file"));
 					
 					
-					a.setA_name(rs.getString("a_name"));
+					a.setAttach_name(rs.getString("a_name"));
 					a.setSpot_id(rs.getInt("spot_id"));
 					
 					list2.add(a);
@@ -318,8 +322,8 @@ public class ThumbnailDAO {
 					
 				}
 				
-				map.put("list", list); // ê¸€ ì •ë³´
-				map.put("list2", list2); // ì‚¬ì§„ ì •ë³´
+				map.put("list", list); // ±Û Á¤º¸
+				map.put("list2", list2); // »çÁø Á¤º¸
 				
 			} catch (SQLException e) {
 				
@@ -340,16 +344,16 @@ public class ThumbnailDAO {
 
 
 	public HashMap<String, Object> selectThumnailOne(Connection con, int l_no2) {
-		// í•´ì‹œë§µ ì¤€ë¹„
+		// ÇØ½Ã¸Ê ÁØºñ
 		HashMap<String, Object> map = new HashMap<>();
 		
-		// ë§›ì§‘ê³¼ ì—¬í–‰ì§€ ì •ë³´ ì €ì¥ ê°ì²´
+		// ¸ÀÁı°ú ¿©ÇàÁö Á¤º¸ ÀúÀå °´Ã¼
 		ArrayList<Thumbnail> list = new ArrayList<>();
-		// ì²¨ë¶€íŒŒì¼ ì €ì¥ ê°ì²´
+		// Ã·ºÎÆÄÀÏ ÀúÀå °´Ã¼
 		ArrayList<Attach> list2 = new ArrayList<>();
-		// ë¬¸í™”ì¬ ì •ë³´ ì €ì¥ ê°ì²´
+		// ¹®È­Àç Á¤º¸ ÀúÀå °´Ã¼
 		ArrayList<Heritage> listHeri = new ArrayList<>();
-		// ì¥ì†Œì™€ í‚¤ì›Œë“œ ì •ë³´ ì €ì¥ ê°ì²´
+		// Àå¼Ò¿Í Å°¿öµå Á¤º¸ ÀúÀå °´Ã¼
 		ArrayList<Location> lo_key = new ArrayList<>();
 		
 		
@@ -373,7 +377,7 @@ public class ThumbnailDAO {
 				Location l = new Location();
 				
 				
-				// ë§›ì§‘, ì—¬í–‰ì§€ ì •ë³´ ì €ì¥
+				// ¸ÀÁı, ¿©ÇàÁö Á¤º¸ ÀúÀå
 				t.setSpot_id(      rs.getInt("spot_id"));
 				t.setL_no(      rs.getInt("l_no"));
 				t.setSpot_name(   rs.getString("spot_name"));
@@ -383,16 +387,15 @@ public class ThumbnailDAO {
 				t.setSpot_lat(  rs.getInt("spot_lat"));
 				t.setSpot_long(  rs.getInt("spot_long"));
 				t.setS_status(  rs.getString("s_status"));
-				t.setSpot_count(  rs.getInt("spot_count"));
+				t.setSpot_count(  rs.getInt("spot_count"));			
 				
-				
-				// ì²¨ë¶€íŒŒì¼ ì •ë³´ ì €ì¥
+				// Ã·ºÎÆÄÀÏ Á¤º¸ ÀúÀå
 				a.setA_name(rs.getString("a_name"));
 				a.setSpot_id(rs.getInt("spot_id"));
 				
 				list2.add(a);
 				
-				// ë¬¸í™”ì¬ ì •ë³´ ì €ì¥
+				// ¹®È­Àç Á¤º¸ ÀúÀå
 				h.setH_events(      rs.getString("h_events"));
 				h.setH_serial(      rs.getString("h_serial"));
 				h.setH_zipcode(      rs.getString("h_zipcode"));
@@ -400,7 +403,7 @@ public class ThumbnailDAO {
 				
 				listHeri.add(h);
 				
-				// ì¥ì†Œì™€ í‚¤ì›Œë“œ ì •ë³´ ì €ì¥
+				// Àå¼Ò¿Í Å°¿öµå Á¤º¸ ÀúÀå
 				l.setL_no(rs.getInt("l_no"));
 				l.setLs_code(rs.getInt("ls_code"));
 				l.setKeyword_id(rs.getInt("keyword_id"));
@@ -415,10 +418,10 @@ public class ThumbnailDAO {
 				
 			}
 			
-			map.put("list", list); // ë§›ì§‘, ì—¬í–‰ì§€ ì •ë³´ ì €ì¥
-			map.put("list2", list2); // ì²¨ë¶€íŒŒì¼ ì •ë³´ ì €ì¥
-			map.put("listHeri", listHeri); // ë§›ì§‘, ì—¬í–‰ì§€ ì •ë³´ ì €ì¥
-			map.put("lo_key", lo_key); // ì²¨ë¶€íŒŒì¼ ì •ë³´ ì €ì¥
+			map.put("list", list); // ¸ÀÁı, ¿©ÇàÁö Á¤º¸ ÀúÀå
+			map.put("list2", list2); // Ã·ºÎÆÄÀÏ Á¤º¸ ÀúÀå
+			map.put("listHeri", listHeri); // ¸ÀÁı, ¿©ÇàÁö Á¤º¸ ÀúÀå
+			map.put("lo_key", lo_key); // Ã·ºÎÆÄÀÏ Á¤º¸ ÀúÀå
 			
 		} catch (SQLException e) {
 			

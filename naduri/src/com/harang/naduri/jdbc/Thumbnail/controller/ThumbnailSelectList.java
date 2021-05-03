@@ -17,7 +17,7 @@ import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 /**
  * Servlet implementation class boardSelect
  */
-@WebServlet("/index.do")
+@WebServlet("/index222.do")
 public class ThumbnailSelectList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,25 +33,25 @@ public class ThumbnailSelectList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 장소들의 썸네일을 받아올 객체 필요
+		// �옣�냼�뱾�쓽 �뜽�꽕�씪�쓣 諛쏆븘�삱 媛앹껜 �븘�슂
 		// HashMap<String, Object> list = new HashMap<>();
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
-		// 서비스 준비
+		// �꽌鍮꾩뒪 以�鍮�
 		ThumbnailService service = new ThumbnailService();
 		
-		// 결과를 list 객체에 저장
+		// 寃곌낵瑜� list 媛앹껜�뿉 ���옣
 		map = service.selectList();
 		
 //		System.out.println(list);
 		
-		// request에 list 객체 담아서 보냄
+		// request�뿉 list 媛앹껜 �떞�븘�꽌 蹂대깂
 		if ( map != null) {
-			request.setAttribute("list", map.get("list")); // 맛집/여행지 정보 ( spot )
-			request.setAttribute("list2", map.get("list2")); // 사진 ( attach )
-			request.setAttribute("listHeri", map.get("listHeri")); // 문화재 정보 ( Heritage )
-			request.setAttribute("lo_key", map.get("lo_key")); // 장소and키워드 정보 (location and keyword)
+			request.setAttribute("list", map.get("list")); // 留쏆쭛/�뿬�뻾吏� �젙蹂� ( spot )
+			request.setAttribute("list2", map.get("list2")); // �궗吏� ( attach )
+			request.setAttribute("listHeri", map.get("listHeri")); // 臾명솕�옱 �젙蹂� ( Heritage )
+			request.setAttribute("lo_key", map.get("lo_key")); // �옣�냼and�궎�썙�뱶 �젙蹂� (location and keyword)
 			
 			
 			System.out.println(map.get("list"));

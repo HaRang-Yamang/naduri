@@ -1,7 +1,6 @@
 package com.harang.naduri.jdbc.attach.model.vo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Attach implements Serializable {
 
@@ -29,15 +28,18 @@ public class Attach implements Serializable {
 
 	public int getA_no() {
 		return a_no;
+
 	}
 
 	public void setA_no(int a_no) {
 		this.a_no = a_no;
+
 	}
 
 	public String getA_name() {
 		return a_name;
 	}
+
 
 	public void setA_name(String a_name) {
 		this.a_name = a_name;
@@ -53,10 +55,12 @@ public class Attach implements Serializable {
 
 	public int getR_no() {
 		return r_no;
+
 	}
 
 	public void setR_no(int r_no) {
 		this.r_no = r_no;
+
 	}
 
 	public int getM_no() {
@@ -67,14 +71,13 @@ public class Attach implements Serializable {
 		this.m_no = m_no;
 	}
 
+
 	public int getSpot_id() {
 		return spot_id;
-
 	}
 
 	public void setSpot_id(int spot_id) {
 		this.spot_id = spot_id;
-
 	}
 
 	public int getN_no() {

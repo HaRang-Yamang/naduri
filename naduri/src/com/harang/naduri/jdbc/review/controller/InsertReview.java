@@ -76,12 +76,8 @@ public class InsertReview extends HttpServlet {
 		ArrayList<Attach>list = new ArrayList<>();
 		for(int i = changeNames.size()-1; i>0; i--) {
 			Attach a = new Attach();
-			a.setAttach_name(changeNames.get(i));
-			if(i==changeNames.size()-1) {
-				a.setA_type('1');
-			}else {
-				a.setA_type('2');
-			}
+			a.setA_name(changeNames.get(i));
+			
 			list.add(a);
 		}
 		r.setAttList(list);

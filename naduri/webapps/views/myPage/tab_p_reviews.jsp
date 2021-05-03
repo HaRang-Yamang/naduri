@@ -41,7 +41,7 @@
 	                    	<% if( a.getRno() == rlist.get(i).getRno()) { %>
 	                        
 	                        <div class="like_photo_sample">
-	                        		<img src="/naduri/assets/images/review/<%= a.getAttach_name() %>" alt="" />
+	                        		<img src="/naduri/assets/images/review/<%= a.getA_name() %>" alt="" />
 	                        </div>
 	                        <% } %>
 	                   <% } %>

@@ -20,9 +20,7 @@ public class Member implements Serializable{
    private int m_auth;
    private String m_status;
 
-
-
-
+   
    // 2. 생성자
    public Member() {}
 
@@ -85,6 +83,7 @@ public class Member implements Serializable{
 		this.m_status = m_status;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Member [m_no=" + m_no + ", m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_birth="

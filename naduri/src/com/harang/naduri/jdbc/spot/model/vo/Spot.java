@@ -6,18 +6,18 @@ public class Spot implements Serializable {
 	
 	private static final long serialVersionUID = 1014L;
 	
-	private	int spot_id;
+	private	int s_id;
 	private	int l_no;
-	private	String spot_name;
-	private	String spot_type;
-	private	String spot_tel;
-	private	String spot_time;
-	private	String spot_location;
-	private	double spot_lat;
-	private	double spot_long;
+	private	String s_name;
+	private	String s_type;
+	private	String s_tel;
+	private	String s_time;
+	private	String s_address;
+	private	double s_lat;
+	private	double s_lng;
 	private	String s_status;
-	private	String spot_date;
-	private	int spot_count;
+	private	String s_date;
+	private	int s_count;
 	
 	
 	public Spot() {
@@ -25,145 +25,229 @@ public class Spot implements Serializable {
 	}	
 
 	
-	public Spot(String spot_name, double spot_lat, double spot_long) {
+	
+	
+	public Spot(String s_name, double s_lat, double st_lng) {
 		super();
-		this.spot_name = spot_name;
-		this.spot_lat = spot_lat;
-		this.spot_long = spot_long;
+		this.s_name = s_name;
+		this.s_lat = s_lat;
+		this.s_lng = st_lng;
 	}
 
 
-	public Spot(double spot_lat, double spot_long) {
+	public Spot(double s_lat, double st_lng) {
 		super();
-		this.spot_lat = spot_lat;
-		this.spot_long = spot_long;
+		this.s_lat = s_lat;
+		this.s_lng = st_lng;
 	}
+
+
 
 
 	// 전체 생성자
-	public Spot(int spot_id, int l_no, String spot_name, String spot_type, String spot_tel, String spot_time,
-			String spot_location, double spot_lat, double spot_long, String s_status, String spot_date,
-			int spot_count) {
+	public Spot(int s_id, int l_no, String s_name, String s_type, String s_tel, String s_time, String s_address,
+			double s_lat, double s_lng, String s_status, String s_date, int s_count) {
 		super();
-		this.spot_id = spot_id;
+		this.s_id = s_id;
 		this.l_no = l_no;
-		this.spot_name = spot_name;
-		this.spot_type = spot_type;
-		this.spot_tel = spot_tel;
-		this.spot_time = spot_time;
-		this.spot_location = spot_location;
-		this.spot_lat = spot_lat;
-		this.spot_long = spot_long;
+		this.s_name = s_name;
+		this.s_type = s_type;
+		this.s_tel = s_tel;
+		this.s_time = s_time;
+		this.s_address = s_address;
+		this.s_lat = s_lat;
+		this.s_lng = s_lng;
 		this.s_status = s_status;
-		this.spot_date = spot_date;
-		this.spot_count = spot_count;
+		this.s_date = s_date;
+		this.s_count = s_count;
 	}
-	
-	
 
+	
 	@Override
 	public String toString() {
-		return "Spot [spot_id=" + spot_id + ", l_no=" + l_no + ", spot_name=" + spot_name + ", spot_type=" + spot_type
-				+ ", spot_tel=" + spot_tel + ", spot_time=" + spot_time + ", spot_location=" + spot_location
-				+ ", spot_lat=" + spot_lat + ", spot_long=" + spot_long + ", s_status=" + s_status + ", spot_date="
-				+ spot_date + ", spot_count=" + spot_count + "]";
+		return "Spot [s_id=" + s_id + ", l_no=" + l_no + ", s_name=" + s_name + ", s_type=" + s_type + ", s_tel="
+				+ s_tel + ", s_time=" + s_time + ", s_address=" + s_address + ", s_lat=" + s_lat + ", s_lng=" + s_lng
+				+ ", s_status=" + s_status + ", s_date=" + s_date + ", s_count=" + s_count + "]";
 	}
 
-	public int getSpot_id() {
-		return spot_id;
+
+
+
+	public int getS_id() {
+		return s_id;
 	}
 
-	public void setSpot_id(int spot_id) {
-		this.spot_id = spot_id;
+
+
+
+	public void setS_id(int s_id) {
+		this.s_id = s_id;
 	}
+
+
+
 
 	public int getL_no() {
 		return l_no;
 	}
 
+
+
+
 	public void setL_no(int l_no) {
 		this.l_no = l_no;
 	}
 
-	public String getSpot_name() {
-		return spot_name;
+
+
+
+	public String getS_name() {
+		return s_name;
 	}
 
-	public void setSpot_name(String spot_name) {
-		this.spot_name = spot_name;
+
+
+
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
 	}
 
-	public String getSpot_type() {
-		return spot_type;
+
+
+
+	public String getS_type() {
+		return s_type;
 	}
 
-	public void setSpot_type(String spot_type) {
-		this.spot_type = spot_type;
+
+
+
+	public void setS_type(String s_type) {
+		this.s_type = s_type;
 	}
 
-	public String getSpot_tel() {
-		return spot_tel;
+
+
+
+	public String getS_tel() {
+		return s_tel;
 	}
 
-	public void setSpot_tel(String spot_tel) {
-		this.spot_tel = spot_tel;
+
+
+
+	public void setS_tel(String s_tel) {
+		this.s_tel = s_tel;
 	}
 
-	public String getSpot_time() {
-		return spot_time;
+
+
+
+	public String getS_time() {
+		return s_time;
 	}
 
-	public void setSpot_time(String spot_time) {
-		this.spot_time = spot_time;
+
+
+
+	public void setS_time(String s_time) {
+		this.s_time = s_time;
 	}
 
-	public String getSpot_location() {
-		return spot_location;
+
+
+
+	public String getS_address() {
+		return s_address;
 	}
 
-	public void setSpot_location(String spot_location) {
-		this.spot_location = spot_location;
+
+
+
+	public void setS_address(String s_address) {
+		this.s_address = s_address;
 	}
 
-	public double getSpot_lat() {
-		return spot_lat;
+
+
+
+	public double getS_lat() {
+		return s_lat;
 	}
 
-	public void setSpot_lat(double spot_lat) {
-		this.spot_lat = spot_lat;
+
+
+
+	public void setS_lat(double s_lat) {
+		this.s_lat = s_lat;
 	}
 
-	public double getSpot_long() {
-		return spot_long;
+
+
+
+	public double getS_lng() {
+		return s_lng;
 	}
 
-	public void setSpot_long(double spot_long) {
-		this.spot_long = spot_long;
+
+
+
+	public void setS_lng(double s_lng) {
+		this.s_lng = s_lng;
 	}
+
+
+
 
 	public String getS_status() {
 		return s_status;
 	}
 
+
+
+
 	public void setS_status(String s_status) {
 		this.s_status = s_status;
 	}
 
-	public String getSpot_date() {
-		return spot_date;
+
+
+
+	public String getS_date() {
+		return s_date;
 	}
 
-	public void setSpot_date(String spot_date) {
-		this.spot_date = spot_date;
+
+
+
+	public void setS_date(String s_date) {
+		this.s_date = s_date;
 	}
 
-	public int getSpot_count() {
-		return spot_count;
+
+
+
+	public int getS_count() {
+		return s_count;
 	}
 
-	public void setSpot_count(int spot_count) {
-		this.spot_count = spot_count;
+
+
+
+	public void setS_count(int s_count) {
+		this.s_count = s_count;
 	}
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+
 
 	
 }

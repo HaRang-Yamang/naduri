@@ -97,7 +97,7 @@
 		            	<div class="hotSpot date">
 		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">
 		            		 <div class="spotInfo">
-			            		 <h4><%= p.getSpot_name() %></h4>
+			            		 <h4><%= p.getS_name() %></h4>
 			            		 <p>#데이트</p> <p>#데이트</p> <p>#데이트</p>
 		            		 </div>
 		           		</div>
@@ -117,15 +117,15 @@
 							out.println("{ content : '"+"<div class="+'"'+"lmark"+'"' +" id="+ '"'+s.getL_no()+'"'+
 									"style="+'"'+"text-align:center; width:150px;"+'"' +
 									
-									">" + s.getSpot_name() + "</div>', "
-						   + " latlng: new kakao.maps.LatLng(" + s.getSpot_lat() + ", " + s.getSpot_long() + ") }, ");
+									">" + s.getS_name() + "</div>', "
+						   + " latlng: new kakao.maps.LatLng(" + s.getS_lat() + ", " + s.getS_lng() + ") }, ");
 						}
 						%>
 					];
 			
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 			    mapOption = { 
-			        center: new kakao.maps.LatLng(<%= list.get(0).getSpot_lat() +", " + list.get(0).getSpot_long()%>), // 지도의 중심좌표(제주향교])
+			        center: new kakao.maps.LatLng(<%= list.get(0).getS_lat() +", " + list.get(0).getS_lng()%>), // 지도의 중심좌표(제주향교])
 			        level: 4 // 지도의 확대 레벨
 			        
 			    };
@@ -209,9 +209,9 @@
 							
 							<% for(Spot s : list) { %>
 								
-							slatArr.push(<%= s.getSpot_lat() %>);
-							slngArr.push(<%= s.getSpot_long() %>);
-							snameArr.push('<%= s.getSpot_name() %>');
+							slatArr.push(<%= s.getS_lat() %>);
+							slngArr.push(<%= s.getS_lng() %>);
+							snameArr.push('<%= s.getS_name() %>');
 							
 								<%-- var sid = <%= s.getSpot_id() %>;
 								var slat = <%= s.getSpot_lat() %>;

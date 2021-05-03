@@ -53,18 +53,18 @@ public class SpotDAO {
 				
 				Spot s = new Spot();
 				
-				s.setSpot_id(rs.getInt("Spot_id"));
+				s.setS_id(rs.getInt("s_id"));
 				s.setL_no(rs.getInt("l_no"));
-				s.setSpot_name(rs.getString("spot_name"));
-				s.setSpot_type(rs.getString("spot_type"));
-				s.setSpot_tel(rs.getString("spot_tel"));
-				s.setSpot_time(rs.getString("spot_time"));
-				s.setSpot_location(rs.getString("spot_location"));
-				s.setSpot_lat(rs.getDouble("spot_lat"));
-				s.setSpot_long(rs.getDouble("spot_long"));
+				s.setS_name(rs.getString("s_name"));
+				s.setS_type(rs.getString("s_type"));
+				s.setS_tel(rs.getString("s_tel"));
+				s.setS_time(rs.getString("s_time"));
+				s.setS_address(rs.getString("s_address"));
+				s.setS_lat(rs.getDouble("s_lat"));
+				s.setS_lng(rs.getDouble("s_lng"));
 				s.setS_status(rs.getString("s_status"));
-				s.setSpot_date(rs.getString("spot_date"));
-				s.setSpot_count(rs.getInt("spot_count"));
+				s.setS_date(rs.getString("s_date"));
+				s.setS_count(rs.getInt("s_count"));
 								
 				list.add(s);
 				
@@ -98,9 +98,9 @@ public class SpotDAO {
 				
 				Spot s = new Spot();
 				
-				s.setSpot_name(rs.getString("spot_name"));
-				s.setSpot_lat(rs.getDouble("spot_lat"));
-				s.setSpot_long(rs.getDouble("spot_long"));
+				s.setS_name(rs.getString("s_name"));
+				s.setS_lat(rs.getDouble("s_lat"));
+				s.setS_lng(rs.getDouble("s_lng"));
 			
 				list.add(s);
 			}

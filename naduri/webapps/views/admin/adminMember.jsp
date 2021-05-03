@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ page import="com.harang.naduri.jdbc.admin.model.vo.*, java.util.*"%>    
  
 <%
@@ -27,7 +28,9 @@
     width: 850px;
     height: auto;
 	}
-
+	#m_btn_ban{
+	cursor : pointer;
+	}
 </style>
 <title>나드리</title>
 </head>
@@ -57,27 +60,37 @@
                         
                     </tr>
 					
-				
+					<% for(Member mm : list) { %> 
                     <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
+                        <td id="m_no"><%= mm.getM_no() %></td>
+                        <td id="m_id"><%= mm.getM_id() %></td>
+                        <td id="m_name"><%= mm.getM_name() %></td>
+                        <td id="m_phone"><%= mm.getM_phone() %></td>
+                        <td id="m_email"><%= mm.getM_email() %></td>
+                        <td id="m_status"><%= mm.getM_status() %></td>
                    
                         <td colspan='2'>
                             <div class="btn_area">
-                                <button id="m_btn_ban">이용권한 정지</button>
+                            <% if( mm.getM_status().equals("Y")) { %>
+                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= mm.getM_no() %>,'<%= mm.getM_status() %>')">이용권한 정지</button>
+                            <% } else { %>
+                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= mm.getM_no() %>,'<%= mm.getM_status() %>')">정지 해제</button>
+                            <% } %>
                             </div>
                         </td>
                     </tr>
-               
+               		<% } %>
 
                 </table>
+                <script>
+                	function banMember(m_no, m_status) {
+                		location.href = '/naduri/memberUpdate.ad?m_no='+ m_no + '&m_status=' + m_status;
+                	}
+                </script>
 
             </div>
         </div>
+       
 	
 	</section>
 

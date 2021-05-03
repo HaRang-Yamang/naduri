@@ -13,19 +13,7 @@ public class MemberDAO {
 	
 	private Properties prop;
 	
-	public MemberDAO() {
-		prop = new Properties();
-		
-		String filePath = MemberDAO.class.getResource("/config/admin.properies").getPath();
-		
-		try {
-			prop.load(new FileReader(filePath));
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-	}
+
 
 	public int insertMember(Connection con, Member joinMember) {
 		// 실행 결과 추가된 행의 개수
@@ -134,7 +122,7 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("adminMember");
+		String sql = "SELECT * FROM MEMBER";
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -170,6 +158,40 @@ public class MemberDAO {
 		
 		return list;
 	}
+
+	// 관리자페이지 회원정보 업데이트 부분
+	public int memberUpdateList(Connection con, int m_no, String m_status) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = "UPDATE MEMBER SET M_STATUS = ? WHERE M_NO = ?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, m_status);
+			ps.setInt(2, m_no);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+		}
+		
+		return result;
+		
+	}
+
+
+	
+
+
+
 
 
 

@@ -1,17 +1,16 @@
 package com.harang.naduri.jdbc.attach.model.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Attach implements Serializable {
 
 	private static final long serialVersionUID = 1001L;
-	
+
 	private int a_no;
 	private String a_name;
 	private String a_status;
-	private String a_path;
-	private String a_type;
-	private int rno;
+	private int r_no;
 	private int m_no;
 	private int L_no;
 	private int n_no;
@@ -20,19 +19,16 @@ public class Attach implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Attach [a_no=" + a_no + ", a_name=" + a_name + ", a_status=" + a_status + ", a_path=" + a_path
-				+ ", a_type=" + a_type + ", rno=" + rno + ", m_no=" + m_no + ", L_no=" + L_no + ", n_no=" + n_no + "]";
+		return "Attach [a_no=" + a_no + ", a_name=" + a_name + ", a_status=" + a_status + ", r_no=" + r_no + ", m_no="
+				+ m_no + ", L_no=" + L_no + ", n_no=" + n_no + "]";
 	}
 
-	public Attach(int a_no, String a_name, String a_status, String a_path, String a_type, int rno, int m_no, int l_no,
-			int n_no) {
+	public Attach(int a_no, String a_name, String a_status, int r_no, int m_no, int l_no, int n_no) {
 		super();
 		this.a_no = a_no;
 		this.a_name = a_name;
 		this.a_status = a_status;
-		this.a_path = a_path;
-		this.a_type = a_type;
-		this.rno = rno;
+		this.r_no = r_no;
 		this.m_no = m_no;
 		L_no = l_no;
 		this.n_no = n_no;
@@ -62,28 +58,12 @@ public class Attach implements Serializable {
 		this.a_status = a_status;
 	}
 
-	public String getA_path() {
-		return a_path;
+	public int getR_no() {
+		return r_no;
 	}
 
-	public void setA_path(String a_path) {
-		this.a_path = a_path;
-	}
-
-	public String getA_type() {
-		return a_type;
-	}
-
-	public void setA_type(String a_type) {
-		this.a_type = a_type;
-	}
-
-	public int getRno() {
-		return rno;
-	}
-
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setR_no(int r_no) {
+		this.r_no = r_no;
 	}
 
 	public int getM_no() {
@@ -109,6 +89,9 @@ public class Attach implements Serializable {
 	public void setN_no(int n_no) {
 		this.n_no = n_no;
 	}
+
+
+
 
 
 	

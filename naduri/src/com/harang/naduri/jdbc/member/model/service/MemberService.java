@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import com.harang.naduri.jdbc.member.model.dao.MemberDAO;
 import com.harang.naduri.jdbc.member.model.vo.Member;
+import com.harang.naduri.jdbc.notice.model.vo.Notice;
+
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
 /*
@@ -46,7 +48,8 @@ public class MemberService {
 		return result;
 		
 	}
-
+	
+	// 관리자 회원관리 리스트
 	public ArrayList<Member> memberList() {
 		con = getConnection();
 		
@@ -56,6 +59,31 @@ public class MemberService {
 		
 		return list;
 	}
+	
+	// 관리자페이지 회원정보 수정 리스트
+	public int MemberUpdateList(int m_no, String m_status) {
+		con = getConnection();
+		
+		int result = 0;
+		
+		//만약 m_status가 y이면 n으로 바꾸고
+		// else if m_status가 n이라면 y로 바꿔라
+		if(m_status.equals("Y")) {
+			m_status = "N";
+		} else {
+			m_status = "Y";
+		}
+		result = dao.memberUpdateList(con, m_no, m_status);
+		
+		 if(result > 0) commit(con);
+		 else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+
 
 	
 

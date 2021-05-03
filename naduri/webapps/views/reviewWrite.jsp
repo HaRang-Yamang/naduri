@@ -20,7 +20,7 @@
 	<%@ include file="common/header.jsp" %>
 	
 	<section>
-	<form id="insertForm"action="/naduri/insert.vi" method="post"
+	<form id="insertForm" action="/naduri/insert.re" method="post"
 						enctype="multipart/form-data">
 		        <div class="reviewWriteArea">
             <h2>리뷰 작성</h2>

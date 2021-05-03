@@ -57,11 +57,11 @@ public class ReviewService {
 		return list;
 	}
 
-	public HashMap<String, Object> selectReviewList() {
+	public ArrayList<Review> selectReviewList(int lno) {
 		con = getConnection();
-		HashMap<String, Object>review = dao.selectReviewList(con);
+		ArrayList<Review> reviewList = dao.selectReviewList(con, lno);
 		close(con);
-		return review;
+		return reviewList;
 	}
 
 

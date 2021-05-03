@@ -21,6 +21,7 @@ private	Date r_date;
 private	Date r_update;
 private int r_count;
 private	String r_status;
+private String m_id;
 
 public Review() {
 	super();
@@ -167,12 +168,13 @@ public void setAttList(ArrayList<Attach> attList) {
 public static long getSerialversionuid() {
 	return serialVersionUID;
 }
-	
-	
-	
-	
-	
-	
-	
+
+public String getM_id() {
+	return m_id;
+}
+
+public void setM_id(String m_id) {
+	this.m_id = m_id;
+}
 	
 }

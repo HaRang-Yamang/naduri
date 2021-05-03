@@ -85,7 +85,7 @@ public ReviewDAO() {
 		try {
 			ps= con.prepareStatement(sql);
 			ps.setString(1, attach.getA_name());
-			
+			ps.setInt(2,attach.getM_no() );
 		 result =ps.executeUpdate();
 					} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -132,40 +132,55 @@ public ReviewDAO() {
 		
 		return list;
 	}
-	public HashMap<String, Object> selectReviewList(Connection con) {
-		HashMap<String, Object>review = new HashMap<>();
-		ArrayList<Attach>list = new ArrayList<>();
-		Review r = null;
-		Member m = null;
+	public ArrayList<Review> selectReviewList(Connection con, int lno) {
+		ArrayList<Review> reviewList = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = prop.getProperty("selectReviewList");
 		
 		try {
 			ps=con.prepareStatement(sql);
-			rs=ps.executeQuery();
-			while(rs.next()) {
-				r = new Review();
-				r.setR_title(rs.getString("r_title"));
-				r.setR_content(rs.getString("r_content"));
-				r.setR_period(rs.getString("r_period"));
-				r.setR_rank(rs.getInt("r_rank"));
-				r.setR_with(rs.getInt("r_with"));
-				r.setR_date(rs.getDate("r_date"));
-				// 리뷰
-				
-				Attach a = new Attach();
-				a.setA_no(rs.getInt("a_no"));
-				a.setA_name(rs.getString("a_name"));
+			ps.setInt(1, lno);
 			
-				list.add(a);
-				//첨부파일	
-				 m = new Member();
-				 m.setM_name(rs.getString("m_name"));
+			rs=ps.executeQuery();
+			
+			Review r = new Review();
+			ArrayList<Attach>list = new ArrayList<>();
+			
+			while(rs.next()) {
+				if(r.getRno() == rs.getInt("r_no")) {
+					// 첨부파일
+					Attach a = new Attach();
+					a.setA_no(rs.getInt("a_no"));
+					a.setA_name(rs.getString("a_name"));
+				
+					list.add(a);
+					
+					r.setAttList(list);
+				} else {
+					r = new Review();
+					r.setRno(rs.getInt("r_no"));
+					r.setR_title(rs.getString("r_title"));
+					r.setR_content(rs.getString("r_content"));
+					r.setR_period(rs.getString("r_period"));
+					r.setR_rank(rs.getInt("r_rank"));
+					r.setR_with(rs.getInt("r_with"));
+					r.setR_date(rs.getDate("r_date"));
+					r.setM_id(rs.getString("m_name"));
+					
+					list = new ArrayList<>();
+					
+					Attach a = new Attach();
+					a.setA_no(rs.getInt("a_no"));
+					a.setA_name(rs.getString("a_name"));
+					
+					list.add(a);
+					
+					r.setAttList(list);
+				}
+				reviewList.add(r);
 			}
-			review.put("review", r);
-			review.put("list", list);
-			review.put("member", m);
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -173,7 +188,7 @@ public ReviewDAO() {
 			close(rs);
 			close(ps);
 		}
-		return review;
+		return reviewList;
 	}
 	
 }

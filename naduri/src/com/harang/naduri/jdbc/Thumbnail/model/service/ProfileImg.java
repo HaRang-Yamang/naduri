@@ -2,10 +2,10 @@ package com.harang.naduri.jdbc.Thumbnail.model.service;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import com.harang.naduri.jdbc.Thumbnail.model.dao.ProfileImgDAO;
-import com.harang.naduri.jdbc.Thumbnail.model.vo.Attach;
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
+
 
 public class ProfileImg {
 	

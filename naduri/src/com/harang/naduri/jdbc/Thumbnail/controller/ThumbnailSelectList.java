@@ -2,6 +2,7 @@ package com.harang.naduri.jdbc.Thumbnail.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.harang.naduri.jdbc.Thumbnail.model.service.ThumbnailService;
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 
 /**
@@ -31,23 +33,37 @@ public class ThumbnailSelectList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Àå¼ÒµéÀÇ ½æ³×ÀÏÀ» ¹Ş¾Æ¿Ã °´Ã¼ ÇÊ¿ä
-		ArrayList<Thumbnail> list = new ArrayList<>();
+		// ì¥ì†Œë“¤ì˜ ì¸ë„¤ì¼ì„ ë°›ì•„ì˜¬ ê°ì²´ í•„ìš”
+		// HashMap<String, Object> list = new HashMap<>();
 		
-		// ¼­ºñ½º ÁØºñ
+		HashMap<String, Object> map = new HashMap<>();
+		
+		// ì„œë¹„ìŠ¤ ì¤€ë¹„
 		ThumbnailService service = new ThumbnailService();
 		
-		// °á°ú¸¦ list °´Ã¼¿¡ ÀúÀå
-		list = service.selectList();
+		// ê²°ê³¼ë¥¼ list ê°ì²´ì— ì €ì¥
+		map = service.selectList();
 		
 //		System.out.println(list);
 		
-		// request¿¡ list °´Ã¼ ´ã¾Æ¼­ º¸³¿
-		request.setAttribute("list", list);
+		// requestì— list ê°ì²´ ë‹´ì•„ì„œ ë³´ëƒ„
+		if ( map != null) {
+			request.setAttribute("list", map.get("list")); // ë§›ì§‘/ì—¬í–‰ì§€ ì •ë³´ ( spot )
+			request.setAttribute("list2", map.get("list2")); // ì‚¬ì§„ ( attach )
+			request.setAttribute("listHeri", map.get("listHeri")); // ë¬¸í™”ì¬ ì •ë³´ ( Heritage )
+			request.setAttribute("lo_key", map.get("lo_key")); // ì¥ì†Œandí‚¤ì›Œë“œ ì •ë³´ (location and keyword)
+			
+			
+			System.out.println(map.get("list"));
+			System.out.println(map.get("list2"));
+			System.out.println(map.get("listHeri"));
+			System.out.println(map.get("lo_key"));
 		
 		request.getRequestDispatcher("index.jsp")
 		       .forward(request, response);
+		}
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.harang.naduri.jdbc.Thumbnail.model.vo.Attach;
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
 

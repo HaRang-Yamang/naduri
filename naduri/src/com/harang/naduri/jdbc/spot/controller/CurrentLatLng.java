@@ -59,7 +59,7 @@ public class CurrentLatLng extends HttpServlet {
 		obj.put("nelng", curl.get(0).getNelng());
 		
 		
-		System.out.println(obj);
+//		System.out.println(obj);
 		
 		response.setContentType("application/json");
 		response.getWriter().print(obj.toJSONString());

@@ -1,9 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.harang.naduri.jdbc.member.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*, java.util.*" %>
+<%@ page import="com.harang.naduri.jdbc.heritage.model.vo.*
+,com.harang.naduri.jdbc.member.model.vo.*
+,com.harang.naduri.jdbc.Thumbnail.model.vo.*
+,com.harang.naduri.jdbc.location.model.vo.*
+, java.util.*" %>
 <%
 	Member m = (Member)session.getAttribute("member");
+	
+	// spot 정보
 	ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list");
+	// Heritage 정보
+	ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri");
+	// 첨부파일 정보
+	ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2");
+	// Location & Keyword 정보
+	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
+	
+	
+	Heritage heri = new Heritage();
+
+	
 %>
 
 <!DOCTYPE html>
@@ -47,7 +64,7 @@
                     <li><i class="fas fa-sign-out-alt"></i><a href="/naduri/views/login.jsp">로그인</a></li>
                 </ul>
             </div>
-		<% } else { %>
+		<% } else if ( m.getM_id() == "0"  ) { %>
 			<div class="user_menu">
 
                 <h3><%= m.getM_name() %>님<br><span>일반회원</span></h3>
@@ -57,15 +74,23 @@
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
-                                
+            <% } else if ( m.getM_id() == "1" ) { %>
+                  			<div class="user_menu">
+
+                <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>
+                <ul>
+                    <li><i class="far fa-user-circle"></i><a href="/naduri/views/myPage/myPage.jsp">내 기행록</a></li>
+                    <li><i class="far fa-edit"></i><a href="/naduri/views/member/modifyMember.jsp">회원정보 수정</a></li>
+                    <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
+                </ul>
+            </div>
+                <% }  %>          
            <script>
            	function logout(){
            		location.href='/naduri/logout.do';
            	}
            </script>
-        <% } %>
             </div>    
-
         </nav>
 
         <div class="main_typo">
@@ -74,10 +99,11 @@
         </div>
 
         <div class="search">
-            <input type="text" placeholder="가고 싶은 곳을 검색하세요">
-            <i class="fas fa-search" aria-hidden="true"></i>
+            <input class="search_val"type="text" placeholder="가고 싶은 곳을 검색하세요">
+            <div id='searchResult'></div>
+            <i class="fas fa-search" aria-hidden="true" onclick="goSearch();"></i>
         </div>
-    
+
         
     </header>
 
@@ -88,9 +114,9 @@
                 <h2>인기명소 골라보기</h2>
                 <ul class="tag">
                     <li class="list active" data-filter="All">전체보기</li>
-                    <li class="list" data-filter="date">#데이트</li>
-                    <li class="list" data-filter="palace">#궁궐</li>
-                    <li class="list" data-filter="heritage">#역사</li>
+                    <li class="list" data-filter="1">#문화재</li>
+                    <li class="list" data-filter="2">#맛집</li>
+                    <li class="list" data-filter="2">#여행</li>
                 </ul>
             </div>
         </div>
@@ -99,27 +125,45 @@
             <!-- featured images -->
             <div class="featured">
                 <div class="small-container">
-					<% for(Thumbnail t : list) { %>
+					
+					
+					
                     <div class="row">
-                        <div class="hotSpot <%= t.getSpot_type() %>">
-                         <% if(t.getSpot_file() != null) { %>
-                            <a href="/naduri/resources/thumb/<%= t.getSpot_id() %>"><img src="/naduri/resources/thumb/<%= t.getSpot_file() %>"/></a>
+                    <% for(int i=0 ; i < lo_key.size(); i++) { %>
+                        <div class="hotSpot <%= lo_key.get(i).getLs_code() %>">
+                         <% } %>
+                         <% for(int i=0 ; i < list2.size(); i++) { %>
+                         <% if( list2.get(i).getAttach_name() != null ) { %>
+                            <img src="/naduri/resources/thumb/<%= list2.get(i).getAttach_name() %>" id=<%= list2.get(i).getL_no() %>/>
                              
                             <div class="spotInfo">
-                                <h4><%= t.getSpot_name() %></h4>
-                                <p>#데이트</p> <p>#데이트</p> <p>#데이트</p>
+                                <h4><%= list2.get(i).getAttach_name() %></h4>
+                                 <% } %>
+                                  <% } %>
+                                  
+                                  
+                                  <!--  썸네일에 따른 태그 값 가져오는 부분 location list 반복 돌리기 -->
+                                <% for(int i=0 ; i < lo_key.size(); i++) { %>
+                                 <% if( list2.get(i).getAttach_name() != null ) { %>
+                                <p>#<%= lo_key.get(i).getKeyword() %></p>
+                                <% } %>
+                                <% } %>
                             </div>
                             <div class="markIcon">
                                 <i class="fas fa-heart"></i>
                             </div>
                         </div>
                     </div>
-                    <% } %>
-                    <% } %>
+                   
+                    
                 </div>
             </div>
             <!-- featured images end -->
         </div>
+       
+
+
+
         
     </section>
 	

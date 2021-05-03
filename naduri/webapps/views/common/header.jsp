@@ -36,7 +36,7 @@
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
-                                
+
            <script>
            	function logout(){
            		location.href='/naduri/logout.do';

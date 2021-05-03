@@ -1,5 +1,6 @@
 package com.harang.naduri.jdbc.Thumbnail.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -61,12 +62,23 @@ public class ProfileImgInsert extends HttpServlet {
 			
 		}
 		
+		int m_no = Integer.parseInt(request.getParameter("m_no"));
+		
 		Attach a = new Attach();
 		
-		a.setAttach_name(mr.getParameter("attach_name"));
-		a.setM_no(Integer.parseInt(mr.getParameter("m_no")));
-		a.setAttach_no(Integer.parseInt(mr.getParameter("attach_no")));
+		try {
+		
+		a.setA_no(Integer.parseInt(mr.getParameter("a_no")));
+		a.setA_name(mr.getParameter("a_name"));
 		a.setA_status(mr.getParameter("a_status"));
+		a.setM_no(Integer.parseInt(mr.getParameter("m_no")));
+		
+		}
+		catch(NumberFormatException e) {
+			
+		}
+		
+		System.out.println(mr.getParameter("m_no"));
 		
 		// 첨부파일 목록 생성
 		ArrayList<Attach> list = new ArrayList<>();
@@ -75,7 +87,7 @@ public class ProfileImgInsert extends HttpServlet {
 		// 리스트에 파일 이름 저장하기
 		for(int i = changeNames.size() -1 ; i >=0 ; i--) {
 			
-			a.setAttach_name(changeNames.get(i));
+			a.setA_name(changeNames.get(i));
 			
 			list.add(a);
 			
@@ -86,7 +98,20 @@ public class ProfileImgInsert extends HttpServlet {
 		ProfileImg service = new ProfileImg();
 		int result = service.insertProfileImg(a);
 		
-		
+		if(result > 0) {
+			response.sendRedirect("views/myPage/myPage.jsp");
+			
+		}else {
+			
+			// 등록 실패시 저장된 파일 삭제
+			for (int i = 0 ; i < changeNames.size(); i++) {
+				new File(savePath + "/" + changeNames.get(i)).delete();
+			}
+			
+			request.setAttribute("error-msg", "사진 게시글 등록 실패");
+			
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
 		
 	}
 

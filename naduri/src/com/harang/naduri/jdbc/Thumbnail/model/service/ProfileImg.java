@@ -1,6 +1,8 @@
 package com.harang.naduri.jdbc.Thumbnail.model.service;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
+
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.harang.naduri.jdbc.Thumbnail.model.dao.ProfileImgDAO;
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Attach;
@@ -12,13 +14,25 @@ public class ProfileImg {
 
 	public int insertProfileImg(Attach a) {
 		con = getConnection();
+		ArrayList<Attach> list = new ArrayList();
 		
 		int result = 0;
 		
-		// 사진 저장
-		int result1 = dao.insertProfileImg(con, a);
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i) != null && list.get(i).getA_name() != null) {
+				
+				result = dao.insertProfileImg(con, list.get(i));
+				
+				if(result == 0) break;
+				
+			}else {
+				result = 1;
+			}
+		}
 		
-		return 0;
+		close(con);
+		
+		return result;
 	}
 
 }

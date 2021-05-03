@@ -48,11 +48,22 @@
     height: 40px;
         margin-top: 8px;
         display:grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr 2fr;
         column-gap: 5px; 
         
 }
 .profileImg_modify{
+	border: 2px solid #b7b7b7;
+
+    float: left;
+    text-align: center;
+    color: #b7b7b7;
+    background: white;
+	margin:0px;
+    line-height: 35px;
+}
+
+.profileImg_delete{
 	border: 2px solid #b7b7b7;
 
     float: left;

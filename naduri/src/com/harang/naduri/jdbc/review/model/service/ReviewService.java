@@ -32,7 +32,7 @@ public class ReviewService {
 		int result2 = 0;
 		
 		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i) !=null && list.get(i).getAttach_name() !=null) {
+			if(list.get(i) !=null && list.get(i).getA_name() !=null) {
 				result2= dao.insertAttach(con,list.get(i));
 				if(result2 ==0)break;
 			}else {

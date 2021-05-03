@@ -84,7 +84,7 @@ public ReviewDAO() {
 		
 		try {
 			ps= con.prepareStatement(sql);
-			ps.setString(1, attach.getAttach_name());
+			ps.setString(1, attach.getA_name());
 			
 		 result =ps.executeUpdate();
 					} catch (SQLException e) {
@@ -115,7 +115,7 @@ public ReviewDAO() {
 			
 			while(rs.next()) {
 				Attach a = new Attach();
-				a.setAttach_name(rs.getString("a_name"));
+				a.setA_name(rs.getString("a_name"));
 				a.setRno(rs.getInt("r_no"));
 				// r.setR_like(rs.getInt("r_like"));
 				
@@ -174,7 +174,7 @@ public ReviewDAO() {
 			
 			while(rs.next()) {
 				Attach a = new Attach();
-				a.setAttach_name(rs.getString("a_name"));
+				a.setA_name(rs.getString("a_name"));
 				a.setRno(rs.getInt("r_no"));
 				// r.setR_like(rs.getInt("r_like"));
 				

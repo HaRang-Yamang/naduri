@@ -2,6 +2,7 @@ package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +18,7 @@ import com.harang.naduri.jdbc.review.model.vo.Review;
  */
 @WebServlet("/tab_p_reviews.do")
 public class Tab_MyReview extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1032L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,11 +35,15 @@ public class Tab_MyReview extends HttpServlet {
 		
 		int m_no = Integer.parseInt(request.getParameter("m_no"));
 		
-		ArrayList<Review> list = new ReviewService().selectMyReview(m_no);
+		HashMap<String, Object> map = new ReviewService().selectMyReview(m_no);
 		
-		if ( list != null) {
-			request.setAttribute("list", list);
-			
+		
+		
+		if ( map != null) {
+			request.setAttribute("list", map.get("list")); // 리뷰들
+			request.setAttribute("list2", map.get("list2")); // 사진
+			System.out.println(map.get("list"));
+			System.out.println(map.get("list2"));
 			request.getRequestDispatcher("views/myPage/tab_p_reviews.jsp")
 			.forward(request, response);
 		}

@@ -9,28 +9,31 @@ import com.harang.naduri.jdbc.attach.model.vo.Attach;
 public class Review implements Serializable{
 	private static final long serialVersionUID = 1013L;
 	private ArrayList<Attach>attList;
-private	int rno;
-private	int l_no;
-private	int m_no;
-private	int r_rank;
-private	String r_title;
-private	String r_content;
-private	String r_period;
-private	int r_with;
-private	Date r_date;
-private	Date r_update;
-private int r_count;
-private	String r_status;
+	private	int rno;
+	private	int l_no;
+	private	int m_no;
+	private String m_name;
+	private	int r_rank;
+	private	String r_title;
+	private	String r_content;
+	private	String r_period;
+	private	int r_with;
+	private	Date r_date;
+	private	Date r_update;
+	private int r_count;
+	private	String r_status;
+	
+	public Review() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-public Review() {
-	super();
-	// TODO Auto-generated constructor stub
-}
-
-public Review(int rno, int r_rank, String r_title, String r_content, String r_period, int r_with, Date r_date,
+public Review(int rno, int m_no, String m_name, int r_rank, String r_title, String r_content, String r_period, int r_with, Date r_date,
 		Date r_update, int r_count, String r_status) {
 	super();
 	this.rno = rno;
+	this.m_no = m_no;
+	this.m_name = m_name;
 	this.r_rank = r_rank;
 	this.r_title = r_title;
 	this.r_content = r_content;
@@ -40,12 +43,13 @@ public Review(int rno, int r_rank, String r_title, String r_content, String r_pe
 	this.r_update = r_update;
 	this.r_count = r_count;
 	this.r_status = r_status;
+
 }
 
 
-public Review(int m_no, int r_rank, String r_title, String r_content, String r_period, int r_with) {
+
+public Review(int r_rank, String r_title, String r_content, String r_period, int r_with) {
 	super();
-	this.m_no = m_no;
 	this.r_rank = r_rank;
 	this.r_title = r_title;
 	this.r_content = r_content;
@@ -53,12 +57,20 @@ public Review(int m_no, int r_rank, String r_title, String r_content, String r_p
 	this.r_with = r_with;
 }
 
-
 @Override
 public String toString() {
-	return "Review [rno=" + rno + ", l_no=" + l_no + ", m_no=" + m_no + ", r_rank=" + r_rank + ", r_title=" + r_title
-			+ ", r_content=" + r_content + ", r_period=" + r_period + ", r_with=" + r_with + ", r_date=" + r_date
-			+ ", r_update=" + r_update + ", r_count=" + r_count + ", r_status=" + r_status + "]";
+	return "Review [attList=" + attList + ", rno=" + rno + ", l_no=" + l_no + ", m_no=" + m_no + ", m_name=" + m_name
+			+ ", r_rank=" + r_rank + ", r_title=" + r_title + ", r_content=" + r_content + ", r_period=" + r_period
+			+ ", r_with=" + r_with + ", r_date=" + r_date + ", r_update=" + r_update + ", r_count=" + r_count
+			+ ", r_status=" + r_status + "]";
+}
+
+public ArrayList<Attach> getAttList() {
+	return attList;
+}
+
+public void setAttList(ArrayList<Attach> attList) {
+	this.attList = attList;
 }
 
 public int getRno() {
@@ -83,6 +95,14 @@ public int getM_no() {
 
 public void setM_no(int m_no) {
 	this.m_no = m_no;
+}
+
+public String getM_name() {
+	return m_name;
+}
+
+public void setM_name(String m_name) {
+	this.m_name = m_name;
 }
 
 public int getR_rank() {
@@ -157,22 +177,9 @@ public void setR_status(String r_status) {
 	this.r_status = r_status;
 }
 
-public ArrayList<Attach> getAttList() {
-	return attList;
-}
-
-public void setAttList(ArrayList<Attach> attList) {
-	this.attList = attList;
-}
 public static long getSerialversionuid() {
 	return serialVersionUID;
 }
-	
-	
-	
-	
-	
-	
-	
-	
 }
+
+

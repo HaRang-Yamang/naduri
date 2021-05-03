@@ -10,10 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Properties;
+import java.util.Set;
 
 import com.harang.naduri.jdbc.attach.model.vo.Attach;
-import com.harang.naduri.jdbc.member.model.vo.Member;
 import com.harang.naduri.jdbc.review.model.vo.Review;
 
 public class ReviewDAO {
@@ -37,12 +38,11 @@ public ReviewDAO() {
 	String sql = prop.getProperty("insertReview");
 	try {
 		ps = con.prepareStatement(sql);
-		ps.setInt(1, r.getM_no());
-		ps.setInt(2, r.getR_rank());
-		ps.setString(3, r.getR_title());
-		ps.setString(4, r.getR_content());
-		ps.setString(5,r.getR_period());
-		ps.setInt(6, r.getR_with());
+		ps.setInt(1, r.getR_rank());
+		ps.setString(2, r.getR_title());
+		ps.setString(3, r.getR_content());
+		ps.setString(4,r.getR_period());
+		ps.setInt(5, r.getR_with());
 				result = ps.executeUpdate();
 				
 	} catch (SQLException e) {
@@ -95,8 +95,10 @@ public ReviewDAO() {
 		}
 		return result;
 	}
-	public ArrayList<Review> selectMyReview(Connection con, int m_no) {
+	public HashMap<String, Object> selectMyReview(Connection con, int m_no) {
+		HashMap<String, Object> map = new HashMap<>();
 		ArrayList<Review> list = new ArrayList<>();
+		ArrayList<Attach> list2 = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -109,19 +111,39 @@ public ReviewDAO() {
 			
 			rs = ps.executeQuery();
 			
+			Review r = new Review();
+			
 			while(rs.next()) {
-				Review r = new Review();
-				//Attach a = new Attach();
-				// R_TITLE, R_CONTENT, R_PERIOD, R_LIKE
-				r.setR_title(rs.getString("r_title"));
-				r.setR_content(rs.getString("r_content"));
-				r.setR_period(rs.getString("r_period"));
-				r.setR_rank(rs.getInt("r_rank"));
-				//a.setA_path(rs.getString("a_path"));
+				Attach a = new Attach();
+				a.setA_name(rs.getString("a_name"));
+				a.setRno(rs.getInt("r_no"));
 				// r.setR_like(rs.getInt("r_like"));
 				
-				list.add(r);
+				
+				list2.add(a);
+
+				System.out.println("rno : " + r.getRno() + " / "+ rs.getInt("r_no"));
+				System.out.println("rno : " +( r.getRno() != rs.getInt("r_no")));
+				
+				if(r.getRno() != rs.getInt("r_no")) {
+					Review temp = new Review();
+					
+					r.setRno( rs.getInt("r_no"));
+					
+					temp.setRno( rs.getInt("r_no"));
+					temp.setR_title(rs.getString("r_title"));
+					temp.setR_content(rs.getString("r_content"));
+					temp.setR_period(rs.getString("r_period"));
+					temp.setR_rank(rs.getInt("r_rank"));
+					
+					list.add(temp);
+				}
+				
 			}
+			
+			
+			map.put("list",  list);  // 1, 2, 3 ...
+			map.put("list2",  list2); // 1-1, 1-2, 1-3, 2-1, 2-2, 2-3 . . . .
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -130,50 +152,63 @@ public ReviewDAO() {
 			close(ps);
 		}
 		
-		return list;
+		return map;
 	}
-	public HashMap<String, Object> selectReviewList(Connection con) {
-		HashMap<String, Object>review = new HashMap<>();
-		ArrayList<Attach>list = new ArrayList<>();
-		Review r = null;
-		Member m = null;
+	public HashMap<String, Object> selectLikeReview(Connection con, int m_no) {
+		HashMap<String, Object> map = new HashMap<>();
+		ArrayList<Review> list = new ArrayList<>();
+		ArrayList<Attach> list2 = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = prop.getProperty("selectReviewList");
+		
+		String sql = prop.getProperty("selectLikeReview");
 		
 		try {
-			ps=con.prepareStatement(sql);
-			rs=ps.executeQuery();
+			ps = con.prepareStatement(sql);
+		
+			ps.setInt(1, m_no);
+			
+			rs = ps.executeQuery();
+			
+			Review r = new Review();
+			
 			while(rs.next()) {
-				r = new Review();
-				r.setR_title(rs.getString("r_title"));
-				r.setR_content(rs.getString("r_content"));
-				r.setR_period(rs.getString("r_period"));
-				r.setR_rank(rs.getInt("r_rank"));
-				r.setR_with(rs.getInt("r_with"));
-				r.setR_date(rs.getDate("r_date"));
-				// 리뷰
-				
 				Attach a = new Attach();
-				a.setA_no(rs.getInt("a_no"));
 				a.setA_name(rs.getString("a_name"));
-			
-				list.add(a);
-				//첨부파일	
-				 m = new Member();
-				 m.setM_name(rs.getString("m_name"));
+				a.setRno(rs.getInt("r_no"));
+				// r.setR_like(rs.getInt("r_like"));
+				
+				
+				list2.add(a);
+
+				if(r.getRno() != rs.getInt("r_no")) {
+					Review temp = new Review();
+					
+					r.setRno( rs.getInt("r_no"));
+					temp.setM_no(rs.getInt("m_no"));
+					temp.setM_name(rs.getString("m_name"));
+					temp.setR_title(rs.getString("r_title"));
+					temp.setR_content(rs.getString("r_content"));
+					temp.setR_period(rs.getString("r_period"));
+					temp.setR_rank(rs.getInt("r_rank"));
+					
+					list.add(temp);
+				}
+				
 			}
-			review.put("review", r);
-			review.put("list", list);
-			review.put("member", m);
-		} catch (SQLException e) {
 			
+			
+			map.put("list",  list);  // 1, 2, 3 ...
+			map.put("list2",  list2); // 1-1, 1-2, 1-3, 2-1, 2-2, 2-3 . . . .
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rs);
 			close(ps);
 		}
-		return review;
+		
+		return map;
 	}
-	
+
 }

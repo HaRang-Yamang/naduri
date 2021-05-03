@@ -43,15 +43,34 @@
     font-weight: 700;
 }
 
-.profile_modify{
-    border: 2px solid #b7b7b7;
-    width: 620px;
+.modify_Area{
+	    width: 620px;
     height: 40px;
+        margin-top: 8px;
+        display:grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 5px; 
+        
+}
+.profileImg_modify{
+	border: 2px solid #b7b7b7;
+
     float: left;
     text-align: center;
     color: #b7b7b7;
     background: white;
-    margin-top: 8px;
+	margin:0px;
+	
+    line-height: 35px;
+}
+.profile_modify{
+    border: 2px solid #b7b7b7;
+
+    float: left;
+    text-align: center;
+    color: #b7b7b7;
+    background: white;
+	margin:0px;
     line-height: 35px;
 }
 
@@ -237,11 +256,22 @@ column-gap: 5px;
     margin-top: 15px;
     margin-bottom: 10px;
 }
+
+.like_photo{
+	display: flex;
+	justify-content:start;
+}
 .like_photo_sample{
-	display: inline-block;
     width: 40px;
     height: 40px;
-    background: black;
+    margin-left:0px;
+    margin-right:10px;
+}
+
+.like_photo_sample img{
+    width: 40px;
+    height: 40px;
+    margin:0px;
 }
 .like_btnArea{
     position: relative;

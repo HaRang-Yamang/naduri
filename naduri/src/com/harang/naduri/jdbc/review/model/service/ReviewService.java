@@ -48,13 +48,22 @@ public class ReviewService {
 		return result;
 	}
 
-	public ArrayList<Review> selectMyReview(int m_no) {
+	public HashMap<String , Object> selectMyReview(int m_no) {
 		con = getConnection();
-		ArrayList<Review> list = dao.selectMyReview(con, m_no);
+		HashMap<String , Object> map = dao.selectMyReview(con, m_no);
 		
 		close(con);
 		
-		return list;
+		return map;
+	}
+
+	public HashMap<String, Object> selectLikeReview(int m_no) {
+		con = getConnection();
+		HashMap<String , Object> map = dao.selectLikeReview(con, m_no);
+		
+		close(con);
+		
+		return map;
 	}
 
 	public HashMap<String, Object> selectReviewList() {

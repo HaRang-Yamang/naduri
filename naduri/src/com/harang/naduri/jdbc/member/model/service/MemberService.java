@@ -1,7 +1,9 @@
 package com.harang.naduri.jdbc.member.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
+import com.harang.naduri.jdbc.admin.controller.model.dao.AdminDAO;
 import com.harang.naduri.jdbc.member.model.dao.MemberDAO;
 import com.harang.naduri.jdbc.member.model.vo.Keyword;
 import com.harang.naduri.jdbc.member.model.vo.Member;
@@ -15,6 +17,7 @@ public class MemberService {
 	
 	private Connection con;
 	private MemberDAO dao = new MemberDAO();
+	private AdminDAO aDao = new AdminDAO();
 	
 	// 회원 가입
 	public int insertMember(Member joinMember, String[] keyword_id) {
@@ -137,7 +140,16 @@ public class MemberService {
 	}
 
 
-	
+	public ArrayList<Member> memberList() {
+		con = getConnection();
+		
+		ArrayList<Member> list = aDao.memberList(con);
+		
+		close(con);
+		
+		return list;
+	}
+
 	
 
 }

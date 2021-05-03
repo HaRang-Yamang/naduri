@@ -2,10 +2,15 @@ package com.harang.naduri.jdbc.notice.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 
 public class Notice implements Serializable {
 
 	private static final long serialVersionUID = 1010L;
+	
+	private ArrayList<Attach> attList;
 	
 	private int n_no ;		// 글번호
 	private String n_title ;	// 제목
@@ -31,6 +36,7 @@ public class Notice implements Serializable {
 	}
 
 
+
 	// 공지사항 게시글 작성할 때
 	public Notice(String n_title, String n_content, String n_file) {
 		super();
@@ -39,23 +45,17 @@ public class Notice implements Serializable {
 		this.n_file = n_file;
 	}
 	
-	// 게시물 하나 조회할 때
-	
-
-
-	
-	
-
-	@Override
-	public String toString() {
-		return "Notice [n_no=" + n_no + ", n_title=" + n_title + ", n_content=" + n_content + ", n_date=" + n_date
-				+ ", m_no=" + m_no + ", n_file=" + n_file + "]";
-	}
-
 
 	public int getN_no() {
 		return n_no;
 	}
+
+	@Override
+	public String toString() {
+		return "Notice [attList=" + attList + ", n_no=" + n_no + ", n_title=" + n_title + ", n_content=" + n_content
+				+ ", n_date=" + n_date + ", m_no=" + m_no + ", n_file=" + n_file + "]";
+	}
+
 
 	public void setN_no(int n_no) {
 		this.n_no = n_no;
@@ -102,9 +102,16 @@ public class Notice implements Serializable {
 	public void setM_no(int m_no) {
 		this.m_no = m_no;
 	}
-	
-	
-	
+
+
+	public ArrayList<Attach> getAttList() {
+		return attList;
+	}
+
+
+	public void setAttlist(ArrayList<Attach> attlist) {
+		this.attList = attlist;
+	}
 	
 	
 }

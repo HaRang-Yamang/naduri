@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.notice.model.vo.Notice;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
@@ -31,15 +32,20 @@ public class NoticeDAO {
 		}
 	}
 	
-	public ArrayList<Notice> selectList(Connection con) {
+	public ArrayList<Notice> selectList(Connection con, int currentPage) {
 		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectList");
 		
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
+		
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
 			
 			rs = ps.executeQuery();
 			
@@ -119,6 +125,7 @@ public class NoticeDAO {
 				n.setM_no(rs.getInt("m_no"));
 				n.setN_file(rs.getString("n_file"));
 				
+				
 			}
 			
 		} catch (SQLException e) {
@@ -130,6 +137,134 @@ public class NoticeDAO {
 		}
 		
 		return n;
+	}
+
+	public int updateList(Connection con, Notice n) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("updateList");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, n.getN_title());
+			ps.setString(2, n.getN_content());
+			ps.setString(3, n.getN_file());
+			ps.setInt(4, n.getN_no());
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int deleteNotice(Connection con, int n_no) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, n_no);
+			
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int getListCount(Connection con) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int getCurrentN_no(Connection con) {
+		int result = 0 ;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("currentN_no");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int insertAttachment(Connection con, Attach attachment) {
+		
+		int result = 0 ;
+		PreparedStatement ps = null;
+		String sql = prop.getProperty("insertAttach");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, attachment.getA_name());
+			ps.setInt(2, attachment.getN_no());
+			
+			result = ps.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
 	}
 
 }

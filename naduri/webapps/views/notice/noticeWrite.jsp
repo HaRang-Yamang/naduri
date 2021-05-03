@@ -22,10 +22,10 @@
 <head>
 <meta charset="UTF-8">
 <link href="/naduri/assets/images/naduri.ico" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="../../assets/css/common/reset.css" />
-<link rel="stylesheet" href="../../assets/css/common/header.css" />
-<link rel="stylesheet" href="../../assets/css/notice.css" />
-<link rel="stylesheet" href="../../assets/css/common/footer.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/reset.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/header.css" />
+<link rel="stylesheet" href="/naduri/assets/css/notice.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/footer.css" />
 
 <script src="/naduri/assets/js/jquery-3.6.0.min.js"></script>
 
@@ -66,7 +66,7 @@
                     <tr>
                         <td colspan="4">
                             <div id="textArea">
-                                <textarea name="n_content" id="notice_input" rows="30"></textarea>
+                                <textarea name="n_content" id="notice_input" rows="30" style="resize:none"></textarea>
                             </div>
                         </td>
                     </tr>
@@ -75,6 +75,14 @@
 	              
             </div>
         </form>
+        	<%-- form태그 밖에 목록으로 돌아가는 버튼 생성 --%>
+        	<button class="gotoList_btn" onclick="goSelectLsit();">작성취소</button>
+        	<script>
+					function goSelectLsit(){
+						location.href = '/naduri/selectList.no';
+					}
+		
+			</script>
         </div>
 	</section>		
 	

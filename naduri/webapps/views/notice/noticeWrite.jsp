@@ -53,7 +53,10 @@
                         <th id='notice_title input'>
                             <input type="text" name="n_title" id="input_title" placeholder="공지 제목">
                         </th>
-                        <th id='notice_writer'>관리자</th>
+                        <th id='notice_writer'>
+                        관리자
+                        <input type="hidden" name="m_no" value="<%= m.getM_no() %>"/>
+                        </th>
                         <th id='notice_date' name="n_date"><%= sf.format(nowTime) %></th>
                     </tr>
                     <tr>

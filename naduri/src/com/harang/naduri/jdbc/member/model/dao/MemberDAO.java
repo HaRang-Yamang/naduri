@@ -92,6 +92,7 @@ public class MemberDAO {
 			if(rs.next()) {
 				result = new Member();
 				
+				result.setM_no(rs.getInt("m_no"));
 				result.setM_id(rs.getString("m_id"));
 				result.setM_pwd(rs.getString("m_pwd"));
 				result.setM_name(rs.getString("m_name"));

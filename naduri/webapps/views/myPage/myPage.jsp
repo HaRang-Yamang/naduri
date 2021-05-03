@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import = "com.harang.naduri.jdbc.attach.model.vo.*, java.util.*" %>
+    <% Attach a = (Attach)request.getAttribute("Attach"); %>
 
 <!DOCTYPE html>
 <html>
@@ -48,6 +50,7 @@
 	img, svg {
     	vertical-align: baseline;
 	}
+
 </style>
 <title>나드리</title>
 </head>
@@ -61,9 +64,13 @@
 	        <!-- 프로필 영역 -->
 
 	        <form class="top_area" action = "/naduri/profileImgInsert.do" method="post" enctype="multipart/form-data">
-	        
+	        	<input type="hidden" name="m_no" value="<%= m.getM_no() %>"/>
 	            <div class="profile_img">
+	            <% if ( a == null) { %>
 	            	<img src="/naduri/assets/images/no-img.png" id="profileImg" width="350px" height="295px" alt="프로필사진" />
+	            	<% } else { %>
+	            	<img src="/naduri/assets/images/profile/<%= a.getA_name() %>" id="profileImg" width="350px" height="295px" alt="프로필사진" />
+	            	<% } %>
 	            </div>
 	            <input type="file" class="hidden" accept="image/*" name="profileImg" id="profileImg1" onchange="readURL(input)" />
 	          
@@ -97,11 +104,11 @@
 	                    <tbody>
 	                        <tr>
 	                            <td class="profile_first">이름</td>
-	                            <td>ddd</td>
+	                            <td><%= m.getM_name() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>생년월일</td>
-	                            <td>ddd</td>
+	                            <td><%= m.getM_birth() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>좋아하는 여행 테마</td>
@@ -140,7 +147,6 @@
 	                </table>
 	                <div class="modify_Area">
 	                <div class="profileImg_modify"><button type="submit">프로필 사진 등록</button></div>
-	                <div class="profileImg_delete"><button type="reset">프로필 사진 삭제</button></div>
 	                <div class="profile_modify"><a href="../member/joinMember.jsp">프로필 수정하기</a></div>
 	                </div>
 	            </div>

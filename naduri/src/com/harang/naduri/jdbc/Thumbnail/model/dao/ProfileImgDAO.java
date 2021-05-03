@@ -43,6 +43,8 @@ public class ProfileImgDAO {
 			
 			result = ps.executeUpdate();
 			
+			System.out.println(result);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

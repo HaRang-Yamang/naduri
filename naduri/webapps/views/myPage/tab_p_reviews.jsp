@@ -5,16 +5,18 @@
 	ArrayList<Review> rlist = (ArrayList<Review>)request.getAttribute("list");
 	ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2");
 	Member m = (Member)session.getAttribute("member");
+	Review re = (Review)request.getAttribute("review");
+	
 %>   
     <div id="tab_p_reviews" class="tab-content">
 	            <div class="current_tab">
 	            <% for(int i=0 ; i < rlist.size(); i++) { %>
-	                <div class="like_content">
+	                <div class="like_content" onclick="test(<%=rlist.get(i).getRno() %>);">
 	                    <div class="like_nameArea">
 	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName"><%= m.getM_name() %><span id="p_like_coment">님의 리뷰</span></span>
 	                    </div>
 	                    <div class="like_titleArea">
-	                        <h4 class = "myReview_title"><%= rlist.get(i).getR_title() %></h4><span><%= rlist.get(i).getR_rank() %></span>
+	                        <h4 class = "myReview_title"><%= rlist.get(i).getR_title() %></h4><span id="review_rank"><%= rlist.get(i).getR_rank() %></span>
 	                    </div>
 	                    <p class="like_date"><%= rlist.get(i).getR_period() %> 방문</p>
 	                    
@@ -32,10 +34,9 @@
 	                    	$('.myReview_content').each(function(){ 
 	                    		if ($(this).text().length > 30) $(this).html($(this).text().substr(0,65)+"..."); }); });
 
-	                 
 	                    </script>
 	                    
-	                    <div class="like_photo">
+	                    <div class="like_photo" style="margin: 10px 0;">
 	                    
 	                    <% for(Attach a : list2) { %>
 	                    	<% if( a.getRno() == rlist.get(i).getRno()) { %>
@@ -60,23 +61,24 @@
 	
 	            </div>
 	            <script src="/naduri/assets/js/modal.js"></script>
-	            <div class="modal">
+	            <div class="modal" >
 	                <div class="modal_content" title="리뷰 상세보기">
 	
 	                    <div class="like_nameArea">
-	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName">홍길동 <span id="p_like_coment">님의
-	                                리뷰</span></span><span class="modal_content_close">X</span>
+	                        <img src="/naduri/assets/images/header/profile.png"><span id="p_like_userName_modal"></span><span class="modal_content_close">X</span>
 	                    </div>
-	                    <div class="madal_like_titleArea">
-	                        <h4>경복궁</h4><span>5.0</span>
+	                    <div class="modal_like_titleArea">
+	                    <br>
+	                        <h4 id="review_title_modal"></h4><br><span id="review_rank_modal"></span>
 	                    </div>
-	                    <p class="like_date">2021년 04월 12일 방문</p>
+	                    
 	                    <p class="madal_review">리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내<br>
 	                        리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내<br>
 	                        리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내리뷰내용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내리뷰내
-	                        용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내<br></p>
-	
-	
+	                        용리뷰내용리뷰내용리뷰내용내용리뷰내내용리뷰내</p>
+	                      
+	<span class="like_date_modal"></span><span id="like_date_coment"> 방문</span>
+	 <br><br>
 	                    <div class="like_btnArea">
 	                        <div class="like_likeBtn"><i class="fas fa-heart"></i><span style="color: var(--black-color);">
 	                                5</span></div>
@@ -99,7 +101,7 @@
 	                            </div>
 	                            
 	                            
-	                            <div class="carousel-inner">
+	                            <div class="carousel-inner" id="review_img">
 	                                <div class="carousel-item active">
 	                                    <img src="/naduri/assets/images/main/featured_img_1.jpg" width="920px" height="536px"
 	                                        class="d-block w-100" alt="...">
@@ -132,74 +134,44 @@
 	                    
 	                    
 	                    
-	                    
-	                    <!-- 내가 작성한 문의 -->
-	                    <div class="comment">
-	                        <div class="comment_user">
-	                            <div class="comment_user_img">
-	                                <a href="">
-	                                    <img src="/naduri/assets/images/header/profile.png" lat="댓글 작성자">
-	                                </a>
-	                            </div>
-	                            <div class="user_text">
-	                                <p>user_id</p>
-	                                <p>작성 날짜</p>
-	                            </div>
-	                        </div>
-	                        <!-- 작성된 댓글 -->
-	                        <div class="written_comment_area">
-	                            <p>작성된 댓글입니다.</p>
-	                        </div>
-	                    </div>
-	
-	                    <hr class="green_bar short">
-	
-	                    <!-- 작성된 댓글2 -->
-	                    <div class="comment">
-	                        <div class="comment_user">
-	                            <div class="comment_user_img">
-	                                <a href="">
-	                                    <img src="/naduri/assets/images/header/profile.png" lat="댓글 작성자">
-	                                </a>
-	                            </div>
-	                            <div class="user_text">
-	                                <p>user_id</p>
-	                                <p>작성 날짜</p>
-	                            </div>
-	                        </div>
-	                        <!-- 작성된 댓글 -->
-	                        <div class="written_comment_area">
-	                            <p>작성된 댓글입니다.</p>
-	                        </div>
-	                    </div>
-	
-	                    <!-- 댓글 -->
-	                    <div class="comment">
-	                        <!-- 댓글 작성자 프로필 -->
-	                        <div class="comment_user">
-	                            <div class="comment_user_img">
-	                                <a href="#">
-	                                    <img src="/naduri/assets/images/header/profile.png" alt="댓글 사용이미지">
-	                                </a>
-	                                <div class="user_text">
-	                                    <p>user_id</p>
-	                                    <p>작성 날짜</p>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <!-- 댓글 작성 내용 -->
-	                        <div class="write_comment_area">
-	                            <form action="" class="write_comment" method="post">
-	                                <textarea name="comment_area" id="comment_area" cols="88" row="5"></textarea>
-	                                <div class="comment_btn">
-	                                    <input type="submit" value="전송하기">
-	                                    <input type="reset" value="취소하기">
-	                                </div>
-	                            </form>
-	                        </div>
-	                    </div>
 	                </div>
 	            </div>
 	        </div>
-	        
+	        <script>
+	        function test( r_no ) {
+            	$.ajax({
+            		url : "/naduri/reviewSelectOne.do",
+            		data : { r_no : r_no, m_no : '<%= m.getM_no() %>' },
+            		success : function(data){  
+            			console.log(data);
+            			$('#p_like_userName_modal').html('<%= m.getM_name() %><span id="p_like_coment">님의 리뷰</span>');
+            			$('#review_title_modal').html(data.r_title); 
+            			$('#review_rank_modal').html(data.r_rank); 
+            			$('.like_date_modal').html(data.r_period); 
+            			$('.madal_review').html(data.r_content);
+            			
+            			$('#review_img>.carousel-item').remove();
+            			
+            			for( var i in data.attList){
+            				if(i == 0){
+            					var divImg = '<div class="carousel-item active">' +
+                                             '<img src="/naduri/assets/images/review/' + data.attList[i].a_name + '" width="920px" height="536px"' +
+                                             'class="d-block w-100" alt="..."></div>'; 
+            					$('#review_img').prepend(divImg);
+            				} else {
+            					var divImg = '<div class="carousel-item">' +
+                                    '<img src="/naduri/assets/images/review/' + data.attList[i].a_name + '" width="920px" height="536px"' +
+                                    'class="d-block w-100" alt="..."></div>'; 
+   								$('#review_img>.carousel-item').after(divImg);
+            				}
+            			}
+            			
+            			// $('#carouselExampleIndicators').carousel();
+            		/* 	$(".carousel-item").children().attr("src",data.a_name"); */
+            			
+            		},
+            		error : function( error ) { alert("전송 실패!"); }
+            	});
+            }
+	        </script>
 	       

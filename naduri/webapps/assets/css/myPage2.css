@@ -203,4 +203,5 @@ input[type=reset]{
     z-index: 10;
     top:90%;
     left:90%;
+    cursor: pointer;
 }

@@ -185,6 +185,7 @@ public ReviewDAO() {
 					Review temp = new Review();
 					
 					r.setRno( rs.getInt("r_no"));
+					temp.setRno( rs.getInt("r_no"));
 					temp.setM_no(rs.getInt("m_no"));
 					temp.setM_name(rs.getString("m_name"));
 					temp.setR_title(rs.getString("r_title"));

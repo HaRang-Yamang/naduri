@@ -14,21 +14,11 @@ public class ProfileImg {
 
 	public int insertProfileImg(Attach a) {
 		con = getConnection();
-		ArrayList<Attach> list = new ArrayList();
 		
-		int result = 0;
-		
-		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i) != null && list.get(i).getA_name() != null) {
+		int result = dao.insertProfileImg(con, a);
 				
-				result = dao.insertProfileImg(con, list.get(i));
-				
-				if(result == 0) break;
-				
-			}else {
-				result = 1;
-			}
-		}
+		if(result > 0) commit(con);
+		else rollback(con);
 		
 		close(con);
 		

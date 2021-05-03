@@ -59,26 +59,13 @@ public class ProfileImgInsert extends HttpServlet {
 			String tagName = tagNames.nextElement();
 			changeNames.add(mr.getFilesystemName(tagName));
 			
-			
 		}
-		
-		int m_no = Integer.parseInt(request.getParameter("m_no"));
 		
 		Attach a = new Attach();
 		
-		try {
-		
-		a.setA_no(Integer.parseInt(mr.getParameter("a_no")));
-		a.setA_name(mr.getParameter("a_name"));
-		a.setA_status(mr.getParameter("a_status"));
+		a.setA_name(mr.getFilesystemName("profileImg"));
 		a.setM_no(Integer.parseInt(mr.getParameter("m_no")));
 		
-		}
-		catch(NumberFormatException e) {
-			
-		}
-		
-		System.out.println(mr.getParameter("m_no"));
 		
 		// 첨부파일 목록 생성
 		ArrayList<Attach> list = new ArrayList<>();
@@ -99,9 +86,10 @@ public class ProfileImgInsert extends HttpServlet {
 		int result = service.insertProfileImg(a);
 		
 		if(result > 0) {
-			response.sendRedirect("views/myPage/myPage.jsp");
+			request.setAttribute("list", list);			
+			request.getRequestDispatcher("views/myPage/myPage.jsp").forward(request, response);
 			
-		}else {
+		} else {
 			
 			// 등록 실패시 저장된 파일 삭제
 			for (int i = 0 ; i < changeNames.size(); i++) {

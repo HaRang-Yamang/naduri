@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Member implements Serializable{
 
+<<<<<<< HEAD
    private static final long serialVersionUID = 1009L;
    
    // 1. 필드 변수
@@ -18,6 +19,7 @@ public class Member implements Serializable{
    private String m_phone;
    private int m_auth;
    private String m_status;
+
 
    // 2. 생성자
    public Member() {}
@@ -70,6 +72,7 @@ public class Member implements Serializable{
 		this.m_pwd = m_pwd;
 	}
 
+
    @Override
    public String toString() {
       return "Member [m_no=" + m_no + ", m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_birth="
@@ -77,13 +80,16 @@ public class Member implements Serializable{
             + ", m_phone=" + m_phone + ", m_auth=" + m_auth + ", m_status=" + m_status + "]";
    }
 
+
    public int getM_no() {
       return m_no;
    }
 
+
    public void setM_no(int m_no) {
       this.m_no = m_no;
    }
+
 
    public String getM_id() {
       return m_id;
@@ -164,6 +170,7 @@ public class Member implements Serializable{
    public void setM_status(String m_status) {
       this.m_status = m_status;
    }
+
 
    
 

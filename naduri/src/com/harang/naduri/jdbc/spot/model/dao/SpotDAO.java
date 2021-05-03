@@ -99,8 +99,8 @@ public class SpotDAO {
 				Spot s = new Spot();
 				
 				s.setSpot_name(rs.getString("spot_name"));
-				s.setSpot_lat(rs.getInt("spot_lat"));
-				s.setSpot_long(rs.getInt("spot_long"));
+				s.setSpot_lat(rs.getDouble("spot_lat"));
+				s.setSpot_long(rs.getDouble("spot_long"));
 			
 				list.add(s);
 			}

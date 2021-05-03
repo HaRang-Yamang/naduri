@@ -62,7 +62,7 @@ public class ThumbnailDAO {
 				t.setSpot_count(  rs.getInt("spot_count"));
 				t.setSpot_file(rs.getString("spot_file"));
 				
-				a.setAttach_name(rs.getString("a_name"));
+				a.setA_name(rs.getString("a_name"));
 				
 				list.add(t);
 				

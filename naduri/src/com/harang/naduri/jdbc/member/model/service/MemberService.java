@@ -2,6 +2,7 @@ package com.harang.naduri.jdbc.member.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.harang.naduri.jdbc.admin.controller.model.dao.AdminDAO;
 import com.harang.naduri.jdbc.member.model.dao.MemberDAO;
@@ -90,15 +91,29 @@ public class MemberService {
 	
 	
 	// 로그인
-	public Member selectMember(Member loginMember) {
+	public HashMap<String, Object> selectMember(Member loginMember) {
 		
 		con = getConnection();
 		
-		Member result = dao.selectMember(con, loginMember);
-		
+		Member result1 = dao.selectMember(con, loginMember);
+		ArrayList<Keyword> result2 = null;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		if( result1 != null ) {
+			int m_no = dao.selectMno(con, loginMember.getM_id());
+			
+			if( m_no > 0 ) {
+				
+				result2 = dao.selectKeyword(con, m_no);
+
+			}
+		}
 		close(con);
 		
-		return result;
+		map.put("member", result1);
+		map.put("keyword", result2);
+		
+		return map;
 		
 	}
 

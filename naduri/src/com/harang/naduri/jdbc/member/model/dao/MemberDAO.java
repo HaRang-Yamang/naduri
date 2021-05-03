@@ -3,6 +3,7 @@ package com.harang.naduri.jdbc.member.model.dao;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
@@ -189,6 +190,45 @@ public class MemberDAO {
 		}
 		
 		return result;
+	}
+	
+	public ArrayList<Keyword> selectKeyword(Connection con, int m_no) {
+		ArrayList<Keyword> list = new ArrayList<Keyword>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectKeyword");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, m_no);
+			
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				
+				Keyword key = new Keyword();
+				
+				key.setM_no(rs.getInt("m_no"));
+				key.setKeyword_id(rs.getInt("keyword_id"));
+				
+				list.add(key);				
+			}
+			
+			System.out.println("keyword_id 조회 결과 : " + list);
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}	
+		
+		return list;
+
+		
 	}
 	
 	

@@ -132,8 +132,8 @@
                                     <td class="join_email">
                                         <input type="text" name="m_email" id="m_email" size="15" placeholder="example"> @
                                         <input type="text" name="m_email" id="m_email" size="15" placeholder="example.com" id="email_result">
-                                        <select name="email_select" style="width: 75px;" onchange="emailSelect(this.form);">
-                                            <option value="0">직접입력</option>
+                                        <select name="emailSelect" style="width: 75px;" onchange="emailDisplay(this.form);">
+                                            <option selected value="0">직접입력</option>
                                             <option value="1">구글 메일</option>
                                             <option value="2">네이버 메일</option>
                                             <option value="3">줌 메일</option>
@@ -306,6 +306,10 @@
 	<script type="text/javascript" defer src="/naduri/assets/js/member.js"></script>
 	<script type="text/javascript" defer src="/naduri/assets/js/interest.js"></script>
 	<script>
+	// 관심사 값 받아오기
+	
+
+	console.log('<%= m.getM_id() %>');
 	// 성별 값 받아오기
 	$('input:radio').each(function(){
 

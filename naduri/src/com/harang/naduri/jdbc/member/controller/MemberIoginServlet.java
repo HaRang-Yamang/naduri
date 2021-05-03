@@ -1,6 +1,9 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.harang.naduri.jdbc.member.model.service.MemberService;
+import com.harang.naduri.jdbc.member.model.vo.Keyword;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
 /**
@@ -38,18 +42,21 @@ public class MemberIoginServlet extends HttpServlet {
 		
 		System.out.println("서블릿 : " + m_id + "/" + m_pwd);
 		
+		
 		Member loginMember = new Member(m_id, m_pwd);
+		HashMap<String, Object> mapMember = new HashMap<>();
 		
 		// 로그인 서비스 수행 (업무 로직 : biz logic)
 		MemberService service = new MemberService();
 		
-		loginMember = service.selectMember(loginMember);
+		mapMember = service.selectMember(loginMember);
 		
-		if(loginMember != null) {
+		if(mapMember != null) {
 			// 로그인 성공!
 			
-			HttpSession session = request.getSession();	
-			session.setAttribute("member", loginMember);
+			HttpSession session = request.getSession();
+			session.setAttribute("member", mapMember.get("member"));
+			session.setAttribute("keywords", mapMember.get("keyword"));
 			
 			response.sendRedirect("index.do");
 		} else {

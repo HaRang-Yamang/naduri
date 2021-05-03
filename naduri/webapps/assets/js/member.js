@@ -45,8 +45,8 @@ $('#memberForm').submit(function(event){
 
 // 이메일 선택
 
-function emailSelect(e){
-	var m_email = e.email_select.selectedIndex;
+function emailDisplay(e){
+	var m_email = e.emailSelect.selectedIndex;
 	
 	switch(m_email){
 		case 0 :

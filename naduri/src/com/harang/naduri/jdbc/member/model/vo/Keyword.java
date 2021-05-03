@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.model.vo;
 
 import java.io.Serializable;
+//import java.util.ArrayList;
 
 public class Keyword implements Serializable {
 
@@ -8,6 +9,7 @@ public class Keyword implements Serializable {
 
 	private int m_no;
 	private int keyword_id;
+	//private ArrayList<Keyword> Keylist;
 	
 	public Keyword() {}
 

@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.harang.naduri.jdbc.member.model.vo.*" %>
+<%@ page import="com.harang.naduri.jdbc.member.model.vo.*, java.util.*" %>
 <%
 	Member m = (Member)session.getAttribute("member");
-	Keyword k = (Keyword)session.getAttribute("keyword");
+	ArrayList<Keyword> k = (ArrayList<Keyword>)session.getAttribute("keywords");
 %>
 <header>
     <!-- 페이지 설명 -->
     <h2 class="hidden">나드리</h2>
-    
     <nav class="navbar">
         <div class="headerArea">
             <h1 class="logo"><a href="/naduri/index.do"><img src="/naduri/assets/images/header/logo.png" alt="나드리 로고"></a></h1>

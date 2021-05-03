@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.harang.naduri.jdbc.Thumbnail.model.vo.Attach;
+
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;

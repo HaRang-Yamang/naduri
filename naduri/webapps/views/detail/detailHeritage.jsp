@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
++<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,8 +51,58 @@
 	        <%@ include file="nearArea.jsp" %>
 	        
 	        <!-- 탭 -->
+<div id = "container">
+	
+    <!-- 상단 tab 영역 -->
+    <ul class = "tabs">
+        <li class="tab-link current" data-tab="tab_review">
+            <div class="chk"></div>
+           <h3>리뷰</h3></li>
+        <li class="tab-link" data-tab="tab_qna">
+            <div class="chk"></div>
+            <h3>QnA</h3></li>
+    </ul>
+    <div id="tab-content"></div>
+	
+ <script>
+ $(function() {
+     // tab operation
+     $('.tab-link').click(function() {
+        var tab_id = $(this).attr("data-tab");
 
- 			<%@ include file="tab_review_qna.jsp" %>
+         $(".tabs li").removeClass("current");
+         $(".tab-content").removeClass("current");
+
+         $(this).addClass("current");
+         $("#"+tab_id).addClass("current");
+   var urlPath = "";
+   
+   if ( tab_id == 'tab_review' ) {
+      urlPath = '/naduri/selectList.re';
+   } else if( tab_id == 'tab_qna') {
+      urlPath = '/naduri/selectList.qn';
+   }
+ 
+      $.ajax({
+           type : 'GET',                 //get방식으로 통신
+           url : urlPath,    //탭의 data-tab속성의 값으로 된 html파일로 통신
+           dataType : "html",//html형식으로 값 읽기 
+           data: { m_no : '<%= m.getM_no() %>' } ,
+           error : function() {          //통신 실패시
+            alert('통신실패!');
+           },
+           success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+              
+              $("#tab-content").html(data);
+              console.log( "통신성공");
+           }
+      });
+     });
+ });
+ </script>
+	
+</div> 
+ 			
 
 	
 	        <!-- 비슷한 장소 추천 -->

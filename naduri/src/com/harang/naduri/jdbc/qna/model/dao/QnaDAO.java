@@ -1,14 +1,19 @@
 package com.harang.naduri.jdbc.qna.model.dao;
 
+import static com.harang.naduri.jdbc.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.member.model.vo.Member;
 import com.harang.naduri.jdbc.qna.model.vo.Qna;
-import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 public class QnaDAO {
 private Properties prop;
 public QnaDAO() {
@@ -26,7 +31,6 @@ public QnaDAO() {
 		int result = 0;
 		PreparedStatement ps = null;
 		String sql = prop.getProperty("insertQna");
-		
 		try {
 			ps=con.prepareStatement(sql);
 			ps.setInt(1, qn.getM_no());
@@ -40,6 +44,38 @@ public QnaDAO() {
 			close(ps);
 		}
 		return result;
+	}
+	public ArrayList<Qna> SelectQnaList(Connection con, int mno) {
+		ArrayList<Qna>list = new ArrayList<>();
+		Member m = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectQnaList");
+		
+		try {
+			ps= con.prepareStatement(sql);
+			ps.setInt(1, mno);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Qna q = new Qna();
+				q.setQ_title(rs.getString("q_title"));
+				q.setQ_content(rs.getString("q_content"));
+				q.setQ_date(rs.getDate("q_date"));
+				q.setM_id(rs.getString("m_id"));
+				list.add(q);
+				
+			}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
+		}
+		return list;
 	}
 
 }

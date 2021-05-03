@@ -21,7 +21,7 @@ import com.oreilly.servlet.MultipartRequest;
 /**
  * Servlet implementation class InsertReview
  */
-@WebServlet("/insert.vi")
+@WebServlet("/insert.re")
 public class InsertReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -58,7 +58,7 @@ public class InsertReview extends HttpServlet {
 		String r_content =mr.getParameter("r_content"); 
 		Review r = new Review(m_no, r_rank, r_title,r_content,r_periodStr, r_with);
 		
-		System.out.println(r_rank+r_title+r_content+r_periodStr+r_with);
+		System.out.println(m_no+","+r_rank+","+r_title+","+r_content+","+r_periodStr+","+r_with);
 		//첨부파일 목록
 		Enumeration<String>tagNames= mr.getFileNames();
 		while( tagNames.hasMoreElements()) {
@@ -74,10 +74,16 @@ public class InsertReview extends HttpServlet {
 		
 		//첨부파일 목록 생성
 		ArrayList<Attach>list = new ArrayList<>();
-		for(int i = changeNames.size()-1; i>0; i--) {
+		for(int i = changeNames.size()-1; i>=0; i--) {
 			Attach a = new Attach();
 			a.setA_name(changeNames.get(i));
-			
+			a.setM_no(m_no);
+//			if(i==changeNames.size()-1) {
+//				a.setA_no('1');
+//			}else {
+//				a.setA_no('2');
+//			}
+//			a.setM_no(m_no);
 			list.add(a);
 		}
 		r.setAttList(list);

@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.qna.model.vo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Qna implements Serializable {
 	private static final long serialVersionUID = 1011L;
@@ -9,8 +10,10 @@ private  int qno;
 private 	int m_no;
 private String q_title;
 private 	String q_content;
-private 	String q_date;
-private 	String q_update;
+private 	Date q_date;
+private 	Date q_update;
+private String m_id;
+
 
 public Qna() {
 	super();
@@ -24,7 +27,7 @@ public Qna(int m_no, String q_title, String q_content) {
 }
 
 
-public Qna(int qno, int m_no, String q_content, String q_date, String q_update) {
+public Qna(int qno, int m_no, String q_content, Date q_date, Date q_update) {
 	super();
 	this.qno = qno;
 	this.m_no = m_no;
@@ -63,19 +66,19 @@ public void setQ_content(String q_content) {
 	this.q_content = q_content;
 }
 
-public String getQ_date() {
+public Date getQ_date() {
 	return q_date;
 }
 
-public void setQ_date(String q_date) {
+public void setQ_date(Date q_date) {
 	this.q_date = q_date;
 }
 
-public String getQ_update() {
+public Date getQ_update() {
 	return q_update;
 }
 
-public void setQ_update(String q_update) {
+public void setQ_update(Date q_update) {
 	this.q_update = q_update;
 }
 	
@@ -86,7 +89,13 @@ public String getQ_title() {
 public void setQ_title(String q_title) {
 	this.q_title = q_title;
 }
-	
+public String getM_id() {
+	return m_id;
+}
+
+public void setM_id(String m_id) {
+	this.m_id = m_id;
+}
 	
 	
 	

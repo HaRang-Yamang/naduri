@@ -217,7 +217,7 @@
 								var slat = <%= s.getSpot_lat() %>;
 								var slng = <%= s.getSpot_long() %>;
 								var sname = '<%= s.getSpot_name() %>';
-								 --%>
+								 dd --%>
 
 								
 						

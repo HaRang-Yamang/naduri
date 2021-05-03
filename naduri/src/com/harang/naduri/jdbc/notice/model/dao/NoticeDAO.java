@@ -83,7 +83,8 @@ public class NoticeDAO {
 			
 			ps.setString(1, n.getN_title());
 			ps.setString(2, n.getN_content());
-			ps.setString(3, n.getN_file());
+			ps.setInt(3, n.getM_no());
+			ps.setString(4, n.getN_file());
 			
 			result = ps.executeUpdate();
 			

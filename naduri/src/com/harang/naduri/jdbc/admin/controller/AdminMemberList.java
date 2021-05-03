@@ -45,8 +45,7 @@ public class AdminMemberList extends HttpServlet {
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminMember.jsp");
 		
-		view.forward(request, response);
-		
+		view.forward(request, response);  
 	}
 
 	/**

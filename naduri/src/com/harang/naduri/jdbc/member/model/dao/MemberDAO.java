@@ -16,7 +16,6 @@ public class MemberDAO {
 	
 	private Properties prop;
 
-	
 	public MemberDAO() {
 	   prop = new Properties();
 	   
@@ -32,7 +31,6 @@ public class MemberDAO {
 	      e.printStackTrace();
 	   } 
 	}
-
 
 	// DB의 Member 테이블에 jsp에서 받아온 정보값 입력
 	// 회원 가입 - 회원 기본 정보
@@ -167,6 +165,7 @@ public class MemberDAO {
 			if(rs.next()) {
 				result = new Member();
 				
+				result.setM_no(rs.getInt("m_no"));
 				result.setM_id(rs.getString("m_id"));
 				result.setM_no(rs.getInt("m_no"));
 				result.setM_pwd(rs.getString("m_pwd"));
@@ -198,7 +197,7 @@ public class MemberDAO {
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectKeyword");
-		
+	
 		try {
 			ps = con.prepareStatement(sql);
 			
@@ -315,12 +314,76 @@ public class MemberDAO {
 		return result;
 	}
 
-
-
-
-
-
-
+	// 관리자 페이지  회원관리 부분
+	public ArrayList<Member> memberList(Connection con) {
+		ArrayList<Member> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("adminMember");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				Member m = new Member();
+				
+				m.setM_no(rs.getInt("m_no"));
+				m.setM_id(rs.getString("m_id"));
+				m.setM_name(rs.getString("m_name"));
+				m.setM_phone(rs.getString("m_phone"));
+				m.setM_email(rs.getString("m_email"));
+				m.setM_status(rs.getString("m_status"));
+				
+				list.add(m);
+				
+			}
+			
+			System.out.println("조회 결과 : " + list);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
+		
+	// 관리자페이지 회원정보 업데이트 부분
+	public int memberUpdateList(Connection con, int m_no, String m_status) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, m_status);
+			ps.setInt(2, m_no);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+		}
+		
+		return result;
+		
+	}
 
 
 }

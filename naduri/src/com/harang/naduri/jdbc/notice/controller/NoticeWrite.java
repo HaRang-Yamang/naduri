@@ -70,6 +70,7 @@ public class NoticeWrite extends HttpServlet {
 		// 5. 전송값 처리
 		String title = mr.getParameter("n_title");
 		String content = mr.getParameter("n_content");
+		int m_no = Integer.parseInt(mr.getParameter("m_no"));
 		
 		//System.out.println("확인 : " +title + ", " + content);
 		
@@ -86,8 +87,9 @@ public class NoticeWrite extends HttpServlet {
 		// 7. VO 작성하기
 		Notice n = new Notice();
 		
-		n.setN_title(mr.getParameter("n_title"));
-		n.setN_content(mr.getParameter("n_content"));
+		n.setN_title(title);
+		n.setN_content(content);
+		n.setM_no(m_no);
 		
 		// 여기서 이제 첨부파일 목록 생성
 		ArrayList<Attach> list = new ArrayList<>();

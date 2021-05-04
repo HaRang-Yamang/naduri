@@ -110,6 +110,17 @@ public class HeritageService {
 
 	}
 
+	// 관리자페이지 문화재 리스트
+	public ArrayList<Heritage> heritageList() {
+		con = getConnection();
+		
+		ArrayList<Heritage> list = dao.heritageList(con);
+		
+		close(con);
+		
+		return list;
+	}
+
 
 
 

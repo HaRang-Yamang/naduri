@@ -342,7 +342,7 @@ public class MemberDAO {
 				
 			}
 			
-			System.out.println("조회 결과 : " + list);
+			//System.out.println("조회 결과 : " + list);
 			
 		} catch (SQLException e) {
 			

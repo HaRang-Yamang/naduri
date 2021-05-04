@@ -113,7 +113,7 @@ public class SelectOneDAO {
 				
 				Attach a = new Attach();
 				a.setA_name(rs.getString("a_name"));
-				a.setRno(rs.getInt("r_no"));
+				a.setR_no(rs.getInt("r_no"));
 				
 				review.getAttList().add(a);
 				

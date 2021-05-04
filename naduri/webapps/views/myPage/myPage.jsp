@@ -69,7 +69,7 @@
 	            <% if ( a == null) { %>
 	            	<img src="/naduri/assets/images/no-img.png" id="profileImg" width="350px" height="295px" alt="프로필사진" />
 	            	<% } else { %>
-	            	<img src="/naduri/assets/images/profile/<%= a.getA_name() %>" id="profileImg" width="350px" height="295px" alt="프로필사진" />
+	            	<img src="/naduri/resources/profileImg/<%= a.getA_name() %>" id="profileImg" width="350px" height="295px" alt="프로필사진" />
 	            	<% } %>
 	            </div>
 	            <input type="file" class="hidden" accept="image/*" name="profileImg" id="profileImg1" onchange="readURL(input)" />

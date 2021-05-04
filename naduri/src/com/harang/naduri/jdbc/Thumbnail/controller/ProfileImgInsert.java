@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.harang.naduri.jdbc.Thumbnail.model.service.ProfileImg;
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.common.MyRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -86,7 +87,7 @@ public class ProfileImgInsert extends HttpServlet {
 		
 		if(result > 0) {
 			request.setAttribute("list", list);			
-			request.getRequestDispatcher("views/myPage/myPage.jsp").forward(request, response);
+			request.getRequestDispatcher("myPage.do").forward(request, response);
 			
 		} else {
 			

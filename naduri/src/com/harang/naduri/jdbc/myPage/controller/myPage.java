@@ -17,7 +17,7 @@ import com.harang.naduri.jdbc.myPage.model.service.myPageService;
  */
 @WebServlet("/myPage.do")
 public class myPage extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 10300L;
        
     /**
      * @see HttpServlet#HttpServlet()

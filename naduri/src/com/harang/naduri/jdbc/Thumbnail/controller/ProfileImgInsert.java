@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.harang.naduri.jdbc.Thumbnail.model.service.ProfileImg;
-import com.harang.naduri.jdbc.Thumbnail.model.vo.Attach;
 import com.harang.naduri.jdbc.common.MyRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -37,7 +36,7 @@ public class ProfileImgInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String savePath = request.getServletContext().getRealPath("/assets/images/profile");
+		String savePath = request.getServletContext().getRealPath("/resources/profileImg");
 		
 		int maxSize = 1024 * 1024 * 10;
 		

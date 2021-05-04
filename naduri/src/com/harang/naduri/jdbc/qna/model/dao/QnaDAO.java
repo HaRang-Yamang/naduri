@@ -77,5 +77,37 @@ public QnaDAO() {
 		}
 		return list;
 	}
+	public ArrayList<Qna> SelectMyQnaList(Connection con, int m_no) {
+		ArrayList<Qna>list = new ArrayList<>();
+		Member m = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectQnaList");
+		
+		try {
+			ps= con.prepareStatement(sql);
+			ps.setInt(1, m_no);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Qna q = new Qna();
+				q.setQ_title(rs.getString("q_title"));
+				q.setQ_content(rs.getString("q_content"));
+				q.setQ_date(rs.getDate("q_date"));
+				q.setM_id(rs.getString("m_id"));
+				list.add(q);
+				
+			}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
+		}
+		return list;
+	}
 
 }

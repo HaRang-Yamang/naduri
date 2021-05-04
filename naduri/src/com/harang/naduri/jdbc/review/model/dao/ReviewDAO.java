@@ -132,8 +132,7 @@ private Properties prop;
 				
 				list2.add(a);
 
-				System.out.println("rno : " + r.getRno() + " / "+ rs.getInt("r_no"));
-				System.out.println("rno : " +( r.getRno() != rs.getInt("r_no")));
+	
 				
 				if(r.getRno() != rs.getInt("r_no")) {
 					Review temp = new Review();

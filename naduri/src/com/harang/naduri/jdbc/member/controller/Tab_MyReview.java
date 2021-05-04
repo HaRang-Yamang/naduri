@@ -42,8 +42,7 @@ public class Tab_MyReview extends HttpServlet {
 		if ( map != null) {
 			request.setAttribute("list", map.get("list")); // 리뷰들
 			request.setAttribute("list2", map.get("list2")); // 사진
-			System.out.println(map.get("list"));
-			System.out.println(map.get("list2"));
+
 			request.getRequestDispatcher("views/myPage/tab_p_reviews.jsp")
 			.forward(request, response);
 		}

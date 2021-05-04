@@ -13,7 +13,7 @@ public class Attach implements Serializable {
 	private int m_no;
 	private int L_no;
 	private int n_no;
-	private int spot_id;
+	private int s_id;
 	private int flevel;
 	
 	
@@ -24,7 +24,7 @@ public class Attach implements Serializable {
 		this.a_name = a_name;
 	}
 
-	public Attach(int a_no, String a_name, String a_status, int r_no, int m_no, int l_no, int n_no, int spot_id,
+	public Attach(int a_no, String a_name, String a_status, int r_no, int m_no, int l_no, int n_no, int s_id,
 			int flevel) {
 		super();
 		this.a_no = a_no;
@@ -34,7 +34,7 @@ public class Attach implements Serializable {
 		this.m_no = m_no;
 		L_no = l_no;
 		this.n_no = n_no;
-		this.spot_id = spot_id;
+		this.s_id = s_id;
 		this.flevel = flevel;
 	}
 
@@ -42,7 +42,7 @@ public class Attach implements Serializable {
 	@Override
 	public String toString() {
 		return "Attach [a_no=" + a_no + ", a_name=" + a_name + ", a_status=" + a_status + ", r_no=" + r_no + ", m_no="
-				+ m_no + ", L_no=" + L_no + ", n_no=" + n_no + ", spot_id=" + spot_id + ", flevel=" + flevel + "]";
+				+ m_no + ", L_no=" + L_no + ", n_no=" + n_no + ", spot_id=" + s_id + ", flevel=" + flevel + "]";
 	}
 
 	
@@ -102,12 +102,12 @@ public class Attach implements Serializable {
 		this.n_no = n_no;
 	}
 
-	public int getSpot_id() {
-		return spot_id;
+	public int getS_id() {
+		return s_id;
 	}
 
-	public void setSpot_id(int spot_id) {
-		this.spot_id = spot_id;
+	public void setS_id(int spot_id) {
+		this.s_id = spot_id;
 	}
 
 	public int getFlevel() {

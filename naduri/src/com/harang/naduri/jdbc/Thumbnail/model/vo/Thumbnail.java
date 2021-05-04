@@ -16,19 +16,25 @@ public class Thumbnail extends Spot implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	public Thumbnail(int spot_id, int l_no, String spot_name, String spot_tel, String spot_time,
-			String spot_location, int spot_lat, int spot_long, String s_status, String spot_date, int spot_count, String spot_file) {
-		super(spot_id, l_no, spot_name, spot_tel, spot_time, spot_location, spot_lat, spot_long, s_status, spot_date,
-				spot_count, spot_file);
+	public Thumbnail(int s_id, int l_no, String s_name, String s_type, String s_tel, String s_time, String s_address,
+			double s_lat, double s_lng, String s_status, String s_date, int s_count) {
+		super(s_id, l_no, s_name, s_type, s_tel, s_time, s_address, s_lat, s_lng, s_status, s_date, s_count);
 		// TODO Auto-generated constructor stub
 	}
-	
+
+
+
+//	public Thumbnail(int spot_id, int l_no, String spot_name, String spot_tel, String spot_time,
+//			String spot_location, int spot_lat, int spot_long, String s_status, String spot_date, int spot_count, String spot_file) {
+//		super(spot_id, l_no, spot_name, spot_tel, spot_time, spot_location, spot_lat, spot_long, s_status, spot_date,
+//				spot_count, spot_file);
+		// TODO Auto-generated constructor stub
+//	}
 	
 
-	public Thumbnail(String spot_file) {
-		super(spot_file);
-	}
 
 	@Override
 	public String toString() {
@@ -43,3 +49,6 @@ public class Thumbnail extends Spot implements Serializable {
 		this.attList = attList;
 	}
 }
+
+
+

@@ -5,7 +5,6 @@
 
 <%
 		ArrayList<Spot> list = (ArrayList<Spot>)request.getAttribute("list");
-		
 %>
 
 <!DOCTYPE html>
@@ -52,16 +51,20 @@
             <i class="fas fa-search" aria-hidden="true"></i>
         </div>
     </div>
-
-<!--<div id="map2"><img src="/naduri/assets/images/map.gif"></div> -->  
+    
     <section class="map_box">
         <!-- 지도를 표시할 div 입니다 -->
+        
+        
+        <!-- 검색 결과에서 받아올 값에 따라 결과창에 결과 표시 or 검색 결과 없음 표시하기위한 if 조건문 시작 -->
+        <% if(true) { %>
         <div id="map"> </div>
         
         </section>
 			
         <!-- hot keword -->
         <section class="main_body">
+        
             <div class="hot_keword">
             	<h2>검색 결과</h2>
                <div id="s_result"> <!--  검색 결과 불러오는 div -->
@@ -108,7 +111,20 @@
             
             </div>
         </div>
-       </section>		
+        
+        <!-- 만약 검색 결과가 없을 때 나오는 else 구문 -->
+        <% } else { %>
+        	
+        	<div class='not_found'>
+        	<p class='not_found_message'> 
+        		   나드리 데이터베이스에서 검색 결과를 찾을 수 없습니다.<br>
+        		   문화재, 음식점, 여행지 이름으로 다시 검색해 주세요.</p>
+        	</div>
+        	
+        <% } %>
+       </section>
+       
+       		
 		<script>
 			$(function(){
 				// 자바 배열을 이용하여 positions 배열을 만드는 반복문
@@ -213,15 +229,6 @@
 							slatArr.push(<%= s.getS_lat() %>);
 							slngArr.push(<%= s.getS_lng() %>);
 							snameArr.push('<%= s.getS_name() %>');
-							
-								<%-- var sid = <%= s.getSpot_id() %>;
-								var slat = <%= s.getSpot_lat() %>;
-								var slng = <%= s.getSpot_long() %>;
-								var sname = '<%= s.getSpot_name() %>';
-								 dd --%>
-
-								
-						
 							<% } %>	
 							
 							
@@ -249,14 +256,14 @@
 										);
 									}
 								};
-									// .ready와 on('mouseup') 을 동시에 적용할 수는 없나?
-				// 왜 반복문인데 마지막 혹은 첫번째 html만 나오는지???
-				    	},
+			    	},
 					    error : function(error){alert("전송 실패");}
 				    });
 				};
 				$('#map').on('mouseup mousewheel mouseleave', myFunc);
 				myFunc();
+				
+				// myFunc()은 페이지 바로 시작과 on 이벤트를 모두 실행하고자 하여 변수로 선언한 것
 			}); 
 			
 			    

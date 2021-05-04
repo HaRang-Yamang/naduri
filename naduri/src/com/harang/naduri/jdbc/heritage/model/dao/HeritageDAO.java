@@ -55,7 +55,6 @@ public class HeritageDAO {
 			// Debug
 			System.out.println("쿼리문 실행 결과 : " + rs);
 			
-
 			// 결과데이터 반복문돌려서 리스트에 담기 (객체 배열 생성)
 						while(rs.next()) {
 							Heritage h = new Heritage();
@@ -66,13 +65,12 @@ public class HeritageDAO {
 							h.setH_name(      rs.getString("h_name"));
 							
 							// Debug
-
-							System.out.println("DAO 반복문 결과 : " + h);							
+							System.out.println("DAO 반복문 결과 : " + h);
+							
 							list.add(h);
 						}
 						// Debug
 						System.out.println("DAO 반복문 결과2 : " + list);
-
 						
 		} catch (SQLException e) {
 			
@@ -186,34 +184,27 @@ public class HeritageDAO {
 
 	public ArrayList<Heritage> selectList(Connection con) {
 		
-
 		// 문화재 데이터 담을 리스트
 		ArrayList<Heritage> list = new ArrayList<>();
 		
-
 		// 쿼리문 준비
 		PreparedStatement ps = null;
 		
-
 		// 결과 데이터
 		ResultSet rs = null;
 		
-
 		// properties 변수에 담기
 		String sql = prop.getProperty("selectHeritage");
 		
 		try {
 			
-
 			// 쿼리문 실행
 			ps = con.prepareStatement(sql);
 			
-
 			// 실행결과 결과데이터에 담기
 			rs = ps.executeQuery();
 			
 			
-
 			// 결과데이터 반복문돌려서 리스트에 담기 (객체 배열 생성)
 			while(rs.next()) {
 				Heritage h = new Heritage();
@@ -236,6 +227,7 @@ public class HeritageDAO {
 		} finally {
 			close(rs);
 			close(ps);			
+
 		}
 		
 		return list;
@@ -243,40 +235,76 @@ public class HeritageDAO {
 
 
 	// 문화재 리스트 부분
-	public ArrayList<Heritage> heritageList(Connection con) {
-		
-		ArrayList<Heritage> list = new ArrayList<>();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("heritageList");
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				Heritage h = new Heritage();
-				
-				h.setH_id(rs.getInt("h_id"));
-				h.setH_name(rs.getString("h_name"));
-				
-				list.add(h);
-			
-			}
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(ps);
-		}
-		return list;
-	}
+	   public ArrayList<Heritage> heritageList(Connection con) {
+	      
+	      ArrayList<Heritage> list = new ArrayList<>();
+	      PreparedStatement ps = null;
+	      ResultSet rs = null;
+	      
+	      String sql = prop.getProperty("heritageList");
+	      
+	      try {
+	         ps = con.prepareStatement(sql);
+	         
+	         rs = ps.executeQuery();
+	         
+	         while(rs.next()) {
+	            Heritage h = new Heritage();
+	            
+	            h.setH_id(rs.getInt("h_id"));
+	            h.setH_name(rs.getString("h_name"));
+	            
+	            list.add(h);
+	         
+	         }
+	         
+	      } catch (SQLException e) {
+	         
+	         e.printStackTrace();
+	      }finally {
+	         close(rs);
+	         close(ps);
+	      }
+	      return list;
+	   }
 
 
-	
+	   public ArrayList<Heritage> getHerCode(Connection con) {
+		   
+		   ArrayList<Heritage> list = new ArrayList<>();
+		   
+		   PreparedStatement ps = null;
+		   ResultSet rs = null;
+		   String sql = prop.getProperty("heritageInfo");
+		   
+		   try {
+		      ps = con.prepareStatement(sql);
+		      
+		      rs = ps.executeQuery();
+		      
+		      
+		      while(rs.next()) {
+		         Heritage hh = new Heritage();
+		         
+		         hh.setH_events(      rs.getString("h_events"));
+		         hh.setH_name(   rs.getString("h_name"));
+		         hh.setH_zipcode(      rs.getString("h_zipcode"));
+		         hh.setH_serial(      rs.getString("h_serial"));
+		         
+		         list.add(hh);
+		         
+		      }         
+		      
+		   } catch (SQLException e) {
+		      // TODO Auto-generated catch block
+		      e.printStackTrace();
+		   } finally {
+		      close(rs);
+		      close(ps);
+		   }
+		   
+		   return list;
+
+	   }
+
 }
-

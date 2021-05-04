@@ -13,7 +13,6 @@
     font-size: 14px;
     color: var(--black-color);
     text-align: center;
-
 }
 
 /* �룊�젏 踰꾪듉 �뵒�옄�씤 */
@@ -99,6 +98,21 @@
     width: 100%;
     height: 500px;
 }
+
+/* not_found Page */
+.not_found {
+	width: 80%;
+	height: 500px;
+	margin-top: 220px;
+}
+
+.not_found_message {
+	font-size: 30px;
+	text-align: center;
+	line-height: 50px;
+}
+
+
 
 /* info */
 .info {

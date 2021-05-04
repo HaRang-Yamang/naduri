@@ -19,11 +19,14 @@ public class Thumbnail extends Spot implements Serializable {
 	
 	
 
+
 	public Thumbnail(int s_id, int l_no, String s_name, String s_type, String s_tel, String s_time, String s_address,
 			double s_lat, double s_lng, String s_status, String s_date, int s_count) {
 		super(s_id, l_no, s_name, s_type, s_tel, s_time, s_address, s_lat, s_lng, s_status, s_date, s_count);
+
 		// TODO Auto-generated constructor stub
 	}
+
 
 
 
@@ -33,6 +36,7 @@ public class Thumbnail extends Spot implements Serializable {
 //				spot_count, spot_file);
 		// TODO Auto-generated constructor stub
 //	}
+
 	
 
 
@@ -48,7 +52,5 @@ public class Thumbnail extends Spot implements Serializable {
 	public void setAttList(ArrayList<Attach> attList) {
 		this.attList = attList;
 	}
+
 }
-
-
-

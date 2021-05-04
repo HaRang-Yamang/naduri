@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
+import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 
 public class HeritageDAO {
@@ -51,9 +53,9 @@ public class HeritageDAO {
 			rs = ps.executeQuery();
 			
 			// Debug
-			System.out.println("ì¿¼ë¦¬ë¬¸ ì‹¤í–‰ ê²°ê³¼ : " + rs);
+			System.out.println("Äõ¸®¹® ½ÇÇà °á°ú : " + rs);
 			
-			// ê²°ê³¼ë°ì´í„° ë°˜ë³µë¬¸ëŒë ¤ì„œ ë¦¬ìŠ¤íŠ¸ì— ë‹´ê¸° (ê°ì²´ ë°°ì—´ ìƒì„±)
+			// °á°úµ¥ÀÌÅÍ ¹İº¹¹®µ¹·Á¼­ ¸®½ºÆ®¿¡ ´ã±â (°´Ã¼ ¹è¿­ »ı¼º)
 						while(rs.next()) {
 							Heritage h = new Heritage();
 							
@@ -63,12 +65,12 @@ public class HeritageDAO {
 							h.setH_name(      rs.getString("h_name"));
 							
 							// Debug
-							System.out.println("DAO ë°˜ë³µë¬¸ ê²°ê³¼ : " + h);
+							System.out.println("DAO ¹İº¹¹® °á°ú : " + h);
 							
 							list.add(h);
 						}
 						// Debug
-						System.out.println("DAO ë°˜ë³µë¬¸ ê²°ê³¼2 : " + list);
+						System.out.println("DAO ¹İº¹¹® °á°ú2 : " + list);
 						
 		} catch (SQLException e) {
 			
@@ -182,28 +184,28 @@ public class HeritageDAO {
 
 	public ArrayList<Heritage> selectList(Connection con) {
 		
-		// ë¬¸í™”ì¬ ë°ì´í„° ë‹´ì„ ë¦¬ìŠ¤íŠ¸
+		// ¹®È­Àç µ¥ÀÌÅÍ ´ãÀ» ¸®½ºÆ®
 		ArrayList<Heritage> list = new ArrayList<>();
 		
-		// ì¿¼ë¦¬ë¬¸ ì¤€ë¹„
+		// Äõ¸®¹® ÁØºñ
 		PreparedStatement ps = null;
 		
-		// ê²°ê³¼ ë°ì´í„°
+		// °á°ú µ¥ÀÌÅÍ
 		ResultSet rs = null;
 		
-		// properties ë³€ìˆ˜ì— ë‹´ê¸°
+		// properties º¯¼ö¿¡ ´ã±â
 		String sql = prop.getProperty("selectHeritage");
 		
 		try {
 			
-			// ì¿¼ë¦¬ë¬¸ ì‹¤í–‰
+			// Äõ¸®¹® ½ÇÇà
 			ps = con.prepareStatement(sql);
 			
-			// ì‹¤í–‰ê²°ê³¼ ê²°ê³¼ë°ì´í„°ì— ë‹´ê¸°
+			// ½ÇÇà°á°ú °á°úµ¥ÀÌÅÍ¿¡ ´ã±â
 			rs = ps.executeQuery();
 			
 			
-			// ê²°ê³¼ë°ì´í„° ë°˜ë³µë¬¸ëŒë ¤ì„œ ë¦¬ìŠ¤íŠ¸ì— ë‹´ê¸° (ê°ì²´ ë°°ì—´ ìƒì„±)
+			// °á°úµ¥ÀÌÅÍ ¹İº¹¹®µ¹·Á¼­ ¸®½ºÆ®¿¡ ´ã±â (°´Ã¼ ¹è¿­ »ı¼º)
 			while(rs.next()) {
 				Heritage h = new Heritage();
 				
@@ -225,17 +227,10 @@ public class HeritageDAO {
 		} finally {
 			close(rs);
 			close(ps);			
-			
-			
 
-			
-			
 		}
 		
 		return list;
 	}
 
-
-	
-	
 }

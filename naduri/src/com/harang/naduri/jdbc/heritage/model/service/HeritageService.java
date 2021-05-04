@@ -112,10 +112,10 @@ public class HeritageService {
 
 	
 	// 관리자페이지 문화재 리스트 부분
-	public ArrayList<Heritage> heritageList() {
+	public ArrayList<Heritage> heritageList(int currentPage) {
 	   con = getConnection();
 	   
-	   ArrayList<Heritage> list = dao.heritageList(con);
+	   ArrayList<Heritage> list = dao.heritageList(con, currentPage);
 	   
 	   close(con);
 	   
@@ -134,6 +134,16 @@ public class HeritageService {
 	   return list;
 	}
 
+	// 페이지네이션을 위한 서비스 생성
+		public int getListCount() {
+			con = getConnection();
+			
+			int result = dao.getListCount(con);
+			
+			close(con);
+			
+			return result;
+		}
 
 
 

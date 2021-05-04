@@ -32,6 +32,7 @@ public class NoticeDAO {
 		}
 	}
 	
+	// 공지사항 리스트 부분
 	public ArrayList<Notice> selectList(Connection con, int currentPage) {
 		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -190,6 +191,7 @@ public Notice selectOne(Connection con, int n_no) {
 		return result;
 	}
 
+	// 페이지네이션을 위한 DAO
 	public int getListCount(Connection con) {
 		int result = 0;
 		PreparedStatement ps = null;

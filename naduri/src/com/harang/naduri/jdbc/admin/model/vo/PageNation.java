@@ -1,4 +1,4 @@
-package com.harang.naduri.jdbc.notice.model.vo;
+package com.harang.naduri.jdbc.admin.model.vo;
 
 import java.io.Serializable;
 
@@ -7,7 +7,8 @@ public class PageNation implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 98L;
+	private static final long serialVersionUID = 99L;
+	
 	private int startPage;
 	private int endPage;
 	private int maxPage;

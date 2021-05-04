@@ -339,15 +339,22 @@ public class MemberDAO {
 	}
 
 	// 관리자 페이지  회원관리 부분
-	public ArrayList<Member> memberList(Connection con) {
+	public ArrayList<Member> memberList(Connection con, int currentPage) {
 		ArrayList<Member> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("adminMember");
 		
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
+		
+		
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
+			
 			
 			rs = ps.executeQuery();
 			
@@ -366,7 +373,8 @@ public class MemberDAO {
 				
 			}
 			
-			//System.out.println("조회 결과 : " + list);
+			
+		System.out.println("조회 결과 : " + list);
 			
 		} catch (SQLException e) {
 			
@@ -453,5 +461,32 @@ public class MemberDAO {
 	      return result;
 	   }
 
+	// 페이지네이션을 위한 DAO
+	public int getListCount(Connection con) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+	
 
 }

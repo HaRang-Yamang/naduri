@@ -67,7 +67,7 @@
                     <li><i class="fas fa-sign-out-alt"></i><a href="/naduri/views/login.jsp">로그인</a></li>
                 </ul>
             </div>
-		<% } else if ( m.getM_id() == "0"  ) { %>
+		<% } else if( m.getM_auth() == 0 ) { %>
 			<div class="user_menu">
 
                 <h3><%= m.getM_name() %>님<br><span>일반회원</span></h3>
@@ -77,7 +77,7 @@
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
-            <% } else if ( m.getM_id() == "1" ) { %>
+            <% } else if (m.getM_auth() == 1) { %>
                   			<div class="user_menu">
 
                 <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>

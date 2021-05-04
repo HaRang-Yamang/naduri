@@ -235,7 +235,7 @@ public class HeritageDAO {
 
 
 	// 문화재 리스트 부분
-	   public ArrayList<Heritage> heritageList(Connection con) {
+	   public ArrayList<Heritage> heritageList(Connection con, int currentPage) {
 	      
 	      ArrayList<Heritage> list = new ArrayList<>();
 	      PreparedStatement ps = null;
@@ -243,10 +243,16 @@ public class HeritageDAO {
 	      
 	      String sql = prop.getProperty("heritageList");
 	      
-	      try {
-	         ps = con.prepareStatement(sql);
-	         
-	         rs = ps.executeQuery();
+			int startRow = (currentPage - 1) * 10 + 1;
+			int endRow = currentPage * 10;
+			
+			try {
+				ps = con.prepareStatement(sql);
+				
+				ps.setInt(1, endRow);
+				ps.setInt(2, startRow);
+				
+				rs = ps.executeQuery();
 	         
 	         while(rs.next()) {
 	            Heritage h = new Heritage();
@@ -306,5 +312,32 @@ public class HeritageDAO {
 		   return list;
 
 	   }
+
+		// 페이지네이션을 위한 DAO
+		public int getListCount(Connection con) {
+			int result = 0;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			String sql = prop.getProperty("listCount");
+			
+			try {
+				ps = con.prepareStatement(sql);
+				
+				rs = ps.executeQuery();
+				
+				if( rs.next()) {
+					result = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			} finally {
+				close(rs);
+				close(ps);
+			}
+			
+			return result;
+		}
 
 }

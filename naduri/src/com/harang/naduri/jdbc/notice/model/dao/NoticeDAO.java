@@ -100,7 +100,7 @@ public class NoticeDAO {
 		return result;
 	}
 
-	public Notice selectOne(Connection con, int n_no) {
+public Notice selectOne(Connection con, int n_no) {
 		
 		Notice n = null;	// 게시물의 번호를 받아줘야하니까 공간 만들어주기
 		PreparedStatement ps = null;	// properties에서 ?로 받아올거니까 ps선언해주고
@@ -124,7 +124,7 @@ public class NoticeDAO {
 				n.setN_content(rs.getString("n_content"));
 				n.setN_date(rs.getDate("n_date"));
 				n.setM_no(rs.getInt("m_no"));
-				n.setN_file(rs.getString("n_file"));
+				n.setN_file(rs.getString("a_name"));	// n_file이 a_name으로 변경!
 				
 				
 			}
@@ -248,12 +248,10 @@ public class NoticeDAO {
 		int result = 0 ;
 		PreparedStatement ps = null;
 		String sql = prop.getProperty("insertAttach");
-		
 		try {
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, attachment.getA_name());
-			ps.setInt(2, attachment.getN_no());
 			
 			result = ps.executeUpdate();
 

@@ -6,17 +6,21 @@ public class Heritage implements Serializable{
 	
 	private static final long serialVersionUID = 1003L;
 	
+
 	// 서버 데이터 베이스 테이블과 매칭되는 vo입니다.
 	private int h_id;
 	private int l_no;
+
 	private String h_events; // 종목코드
+
 	private String h_name;
+
 	private String h_zipcode; // 시도코드
 	private String h_serial; // 지정번호
+
 	private String h_status;
 	private int h_count;
 
-	
 	
 	// 여기서부터는 공공데이터 api에서 받아올 데이터 입니다.
 	private String ccmaName; // 문화재종목
@@ -28,9 +32,10 @@ public class Heritage implements Serializable{
 	private String ccbaAdmin; // 관리자
 	private String imageUrl; // 메인노출이미지URL
 	private String content; // 내용
-	
+
 	private String longitude; // 경도
 	private String latitude; // 위도
+
 
 	
 	public Heritage() {	}
@@ -76,6 +81,13 @@ public class Heritage implements Serializable{
 	}
 	
 	
+
+	// 관리자페이지 문화재리스트 부분
+	public Heritage(int h_id, String h_name) {
+		super();
+		this.h_id = h_id;
+		this.h_name = h_name;
+	}
 
 
 	@Override

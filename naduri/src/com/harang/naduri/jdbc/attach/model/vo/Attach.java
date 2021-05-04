@@ -32,13 +32,19 @@ public class Attach implements Serializable {
 		this.a_status = a_status;
 		this.r_no = r_no;
 		this.m_no = m_no;
-		L_no = l_no;
+		this.L_no = l_no;
 		this.n_no = n_no;
 		this.s_id = s_id;
 		this.flevel = flevel;
 	}
 
-	
+	// 공지사항 첨부파일 작성 부분
+	public Attach(int a_no, String a_name) {
+		super();
+		this.a_no = a_no;
+		this.a_name = a_name;
+	}
+
 	@Override
 	public String toString() {
 		return "Attach [a_no=" + a_no + ", a_name=" + a_name + ", a_status=" + a_status + ", r_no=" + r_no + ", m_no="

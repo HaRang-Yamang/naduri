@@ -10,21 +10,29 @@
                 <li>
                     <hr id="menu_hr">
                     <ul id="menu_detail">
-                        <li><button class="adminMember_btn" onclick="adminmemberLsit();">회원관리</button><li>
+                        <li><button class="adminMember_btn" onclick="adminMemberLsit();">회원관리</button><li>
                         <li><a>데이터 등록</a></li>
-                        <li><a href="/naduri/views/admin/adminHeritage.jsp">문화재</a></li>
-                        <li><a href="/naduri/views/admin/adminFood.jsp">맛집</a></li>
-                        <li><a href="/naduri/views/admin/adminSpot.jsp">여행지</a></li>
+                        <li><button class="adminHeritage_btn" onclick="adminHeritageLsit();">문화재</button><li>
+                        <li><button class="adminHeritage_btn" onclick="adminFoodLsit();">맛집</button><li>
+                        <li><button class="adminHeritage_btn" onclick="adminSpotLsit();">여행지</button><li>
                     </ul>
                 </li>
             </ul>
         </div>
         
         <script>
-				function adminmemberLsit(){
+				function adminMemberLsit(){
 					location.href = '/naduri/memberList.ad';
 				}
-	
-			
+				function adminHeritageLsit(){
+					location.href = '/naduri/heritageList.ad';
+				}
+				function adminFoodLsit(){
+					location.href = '/naduri/foodList.ad';
+				}
+				function adminSpotLsit(){
+					location.href = '/naduri/spotList.ad';
+				}
+				
 			</script>
     </aside>

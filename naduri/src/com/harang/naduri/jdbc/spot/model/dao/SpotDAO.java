@@ -114,6 +114,85 @@ public class SpotDAO {
 		
 		return list;
 	}
+
+
+
+
+	public ArrayList<Spot> foodList(Connection con) {
+		
+		ArrayList<Spot> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("foodList");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next()) {
+				Spot ss = new Spot();
+				
+				
+				ss.setS_id(rs.getInt("s_id"));
+				ss.setS_name(rs.getString("s_name"));
+				
+				list.add(ss);
+				
+			}
+			//System.out.println("list : " + list);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+	
+		return list;
+	}
+
+
+
+
+	public ArrayList<Spot> spotList(Connection con) {
+		ArrayList<Spot> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("spotList");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next()) {
+				Spot ss = new Spot();
+				
+				
+				ss.setS_id(rs.getInt("s_id"));
+				ss.setS_name(rs.getString("s_name"));
+				
+				list.add(ss);
+				
+			}
+			System.out.println("여행지 list : " + list);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+	
+		return list;
+	}
 	
 	
 

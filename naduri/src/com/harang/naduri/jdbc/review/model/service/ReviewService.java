@@ -66,9 +66,9 @@ public class ReviewService {
 		return map;
 	}
 
-	public ArrayList<Review> selectReviewList(int lno) {
+	public ArrayList<Review> selectReviewList(int l_no) {
 		con = getConnection();
-		ArrayList<Review> reviewList = dao.selectReviewList(con, lno);
+		ArrayList<Review> reviewList = dao.selectReviewList(con, l_no);
 		close(con);
 		return reviewList;
 	}

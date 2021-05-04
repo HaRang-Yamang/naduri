@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
 import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
@@ -146,9 +147,13 @@ public class MemberDAO {
 	
 	
 	// 로그인 - 회원번호 조회
-	public Member selectMember(Connection con, Member loginMember) {
+	public HashMap<String, Object> selectMember(Connection con, Member loginMember) {
 		
-		Member result = null;
+		HashMap<String, Object> mapMember = new HashMap<>();
+		ArrayList<Member> listM = new ArrayList<>();
+		ArrayList<Keyword> listK = new ArrayList<>();
+
+		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -162,35 +167,54 @@ public class MemberDAO {
 			
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
-				result = new Member();
+			Member member = new Member();
+			Keyword keyword = new Keyword();
 				
-				result.setM_no(rs.getInt("m_no"));
-				result.setM_id(rs.getString("m_id"));
-				result.setM_no(rs.getInt("m_no"));
-				result.setM_pwd(rs.getString("m_pwd"));
-				result.setM_name(rs.getString("m_name"));
-				result.setM_gender(rs.getString("m_gender"));
-				result.setM_address(rs.getString("m_address"));
-				result.setM_email(rs.getString("m_email"));
-				result.setM_phone(rs.getString("m_phone"));
-				result.setM_birth(rs.getString("m_birth"));
-				result.setM_auth(rs.getInt("m_auth"));
+			while(rs.next()) {
+				keyword = new Keyword();
+				keyword.setM_no(rs.getInt("m_no"));				
+				keyword.setKeyword_id(rs.getInt("keyword_id"));
+
+				listK.add(keyword);
 				
+				if(member.getM_no() != rs.getInt("m_no") ) {
+				
+					member.setM_no(rs.getInt("m_no"));
+					member.setM_id(rs.getString("m_id"));
+					member.setM_no(rs.getInt("m_no"));
+					member.setM_pwd(rs.getString("m_pwd"));
+					member.setM_name(rs.getString("m_name"));
+					member.setM_gender(rs.getString("m_gender"));
+					member.setM_address(rs.getString("m_address"));
+					member.setM_email(rs.getString("m_email"));
+					member.setM_phone(rs.getString("m_phone"));
+					member.setM_birth(rs.getString("m_birth"));
+					member.setM_auth(rs.getInt("m_auth"));
+			
+					/*
+					member.setKeyword_id(rs.getInt("keyword_id"));
+					member.setKeyword(rs.getString("keyword"));
+					*/
+					listM.add(member);
+					
+				}	
+
 			}
 			
-			System.out.println("조회 결과 : " + result);
+			mapMember.put("listM", listM);
+			mapMember.put("listK", listK);
 			
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rs);
 			close(ps);
 		}
 		
-		return result;
+		return mapMember;
 	}
 	
+	/*
 	public ArrayList<Keyword> selectKeyword(Connection con, int m_no) {
 		ArrayList<Keyword> list = new ArrayList<Keyword>();
 		PreparedStatement ps = null;
@@ -208,8 +232,7 @@ public class MemberDAO {
 			while( rs.next() ) {
 				
 				Keyword key = new Keyword();
-				
-				key.setM_no(rs.getInt("m_no"));
+
 				key.setKeyword_id(rs.getInt("keyword_id"));
 				
 				list.add(key);				
@@ -230,6 +253,7 @@ public class MemberDAO {
 		
 	}
 	
+	*/
 	
 	// 회원 정보 수정
 	public int updateMember(Connection con, Member updateMember) {

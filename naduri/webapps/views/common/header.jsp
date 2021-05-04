@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.harang.naduri.jdbc.member.model.vo.*, java.util.*,com.harang.naduri.jdbc.location.model.vo.*" %>
+
+<%@ 
+	page import="com.harang.naduri.jdbc.member.model.vo.*,
+		com.harang.naduri.jdbc.location.model.vo.*,
+		java.util.*"
+%>
+
 <%
-	Member m = (Member)session.getAttribute("member");
-	ArrayList<Keyword> k = (ArrayList<Keyword>)session.getAttribute("keywords");
-	
+
+	ArrayList<Member> listM = (ArrayList<Member>)session.getAttribute("listM");
+	ArrayList<Keyword> listK = (ArrayList<Keyword>)session.getAttribute("listK");
+	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
+
 %>
 <header>
     <!-- 페이지 설명 -->
@@ -18,7 +26,7 @@
             <img src="/naduri/assets/images/header/profile.png" alt="로그인" >
             
             <!-- profile menu-->
-        <% if ( m == null) { %>
+        <% if ( listM == null) { %>
             <div class="user_menu">
 
                 <h3><span>로그인이<br> 필요합니다</span></h3>
@@ -28,9 +36,10 @@
                 </ul>
             </div>
 		<% } else { %>
+			<% for(Member me : listM){ %>
 			<div class="user_menu">
 
-                <h3><%= m.getM_name() %>님<br><span>일반회원</span></h3>
+                <h3><%= me.getM_name() %>님<br><span>일반회원</span></h3>
                 <ul>
                     <li><i class="far fa-user-circle"></i><a href="/naduri/myPage.do">내 기행록</a></li>
                     <li><i class="far fa-edit"></i><a href="/naduri/views/member/modifyMember.jsp">회원정보 수정</a></li>
@@ -43,6 +52,7 @@
            		location.href='/naduri/logout.do';
            	}
            </script>
+           <% } %>
         <% } %>
         </div>
 

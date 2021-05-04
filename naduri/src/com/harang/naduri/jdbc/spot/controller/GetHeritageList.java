@@ -37,7 +37,23 @@ public class GetHeritageList extends HttpServlet {
 		ArrayList<Heritage> list = new ArrayList<>();		
 		HeritageService service = new HeritageService();
 	
-		list = service.herlist();
+		list = service.getHerCode();
+		
+		System.out.println("list : " + list);
+		
+		
+		String ccbaKdcd = ""; // 종목코드
+		String ccbaAsno = ""; // 지정번호
+		String ccbaCtcd = ""; // 시도코드
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	
 	

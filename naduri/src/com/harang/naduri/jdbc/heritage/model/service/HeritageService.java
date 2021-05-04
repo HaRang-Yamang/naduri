@@ -115,10 +115,10 @@ public class HeritageService {
 
 
 
-	public ArrayList<Heritage> herlist() {
+	public ArrayList<Heritage> getHerCode() {
 		con = getConnection();
 		
-		ArrayList<Heritage> list = dao.herlist(con);
+		ArrayList<Heritage> list = dao.getHerCode(con);
 		
 		close(con);
 		

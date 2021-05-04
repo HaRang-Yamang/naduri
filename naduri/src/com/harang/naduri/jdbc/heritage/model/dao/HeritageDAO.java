@@ -234,7 +234,7 @@ public class HeritageDAO {
 	}
 
 
-	public ArrayList<Heritage> herlist(Connection con) {
+	public ArrayList<Heritage> getHerCode(Connection con) {
 		
 		ArrayList<Heritage> list = new ArrayList<>();
 		
@@ -249,37 +249,27 @@ public class HeritageDAO {
 			
 			
 			while(rs.next()) {
-				Heritage h = new Heritage();
+				Heritage hh = new Heritage();
 				
-				h.setH_id(      rs.getInt("h_hi"));
-				h.setL_no(      rs.getInt("l_no"));
-				h.setH_events(      rs.getString("h_events"));
-				h.setH_serial(      rs.getString("h_serial"));
-				h.setH_zipcode(      rs.getString("h_zipcode"));
-				h.setH_status(      rs.getString("h_status"));
-				h.setH_count(      rs.getInt("h_count"));
+				hh.setH_events(      rs.getString("h_events"));
+				hh.setH_name(	rs.getString("h_name"));
+				hh.setH_zipcode(      rs.getString("h_zipcode"));
+				hh.setH_serial(      rs.getString("h_serial"));
 				
-				list.add(h);
+				list.add(hh);
 				
-			}
-			
-			
-			
+			}			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
 		}
-	
 		
-		
-		
-		
-		
-		
-		
-		
-		return null;
+		return list;
+
 	}
 
 }

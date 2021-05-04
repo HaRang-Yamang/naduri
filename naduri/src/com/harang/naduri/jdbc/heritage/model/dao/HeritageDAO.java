@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
+import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 
 public class HeritageDAO {
@@ -51,9 +53,9 @@ public class HeritageDAO {
 			rs = ps.executeQuery();
 			
 			// Debug
-			System.out.println("쿼리문 실행 결과 : " + rs);
+			System.out.println("������ ���� ��� : " + rs);
 			
-			// 결과데이터 반복문돌려서 리스트에 담기 (객체 배열 생성)
+			// ��������� �ݺ��������� ����Ʈ�� ��� (��ü �迭 ����)
 						while(rs.next()) {
 							Heritage h = new Heritage();
 							
@@ -63,12 +65,12 @@ public class HeritageDAO {
 							h.setH_name(      rs.getString("h_name"));
 							
 							// Debug
-							System.out.println("DAO 반복문 결과 : " + h);
+							System.out.println("DAO �ݺ��� ��� : " + h);
 							
 							list.add(h);
 						}
 						// Debug
-						System.out.println("DAO 반복문 결과2 : " + list);
+						System.out.println("DAO �ݺ��� ���2 : " + list);
 						
 		} catch (SQLException e) {
 			
@@ -182,28 +184,28 @@ public class HeritageDAO {
 
 	public ArrayList<Heritage> selectList(Connection con) {
 		
-		// 문화재 데이터 담을 리스트
+		// ��ȭ�� ������ ���� ����Ʈ
 		ArrayList<Heritage> list = new ArrayList<>();
 		
-		// 쿼리문 준비
+		// ������ �غ�
 		PreparedStatement ps = null;
 		
-		// 결과 데이터
+		// ��� ������
 		ResultSet rs = null;
 		
-		// properties 변수에 담기
+		// properties ������ ���
 		String sql = prop.getProperty("selectHeritage");
 		
 		try {
 			
-			// 쿼리문 실행
+			// ������ ����
 			ps = con.prepareStatement(sql);
 			
-			// 실행결과 결과데이터에 담기
+			// ������ ��������Ϳ� ���
 			rs = ps.executeQuery();
 			
 			
-			// 결과데이터 반복문돌려서 리스트에 담기 (객체 배열 생성)
+			// ��������� �ݺ��������� ����Ʈ�� ��� (��ü �迭 ����)
 			while(rs.next()) {
 				Heritage h = new Heritage();
 				
@@ -225,12 +227,11 @@ public class HeritageDAO {
 		} finally {
 			close(rs);
 			close(ps);			
-					
-			
 		}
 		
 		return list;
 	}
+
 
 	// 관리자 페이지 문화재 리스트 부분
 	public ArrayList<Heritage> heritageList(Connection con) {
@@ -267,15 +268,9 @@ public class HeritageDAO {
 
 
 
-
-	
-	
-	
-	
-	
-	
 	
 	
 	
 	
 }
+

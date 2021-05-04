@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="/naduri/assets/css/common/header.css" />
 
 
+
 <script src="/naduri/assets/js/jquery-3.6.0.min.js"></script>
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
@@ -261,6 +262,21 @@
 			    
 		
 		</script>
+		
+	<aside><div id="topBtn" href="#">TOP</div></aside>			
+
+	<script>
+    $(function() {
+       
+        
+        $("#topBtn").click(function() {
+            $('html, body').animate({
+                scrollTop : 0
+            }, 400);
+            return false;
+        });
+    });
+	</script>
 
 		
 			

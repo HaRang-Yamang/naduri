@@ -100,14 +100,14 @@
         </div>
 
         <div class="search">
-<<<<<<< HEAD
+
             <input type="text" placeholder="가고 싶은 곳을 검색하세요" id="sLoc">
             <i class="fas fa-search" aria-hidden="true"></i>
-=======
+
             <input class="search_val"type="text" placeholder="가고 싶은 곳을 검색하세요">
             <div id='searchResult'></div>
             <i class="fas fa-search" aria-hidden="true" onclick="goSearch();"></i>
->>>>>>> refs/remotes/origin/dabee_real_real_
+
         </div>
 
         
@@ -135,9 +135,11 @@
 					
 					
                     <div class="row">
-                    <% for(int i=0 ; i < lo_key.size(); i++) { %>
+                    <% for(int i=0 ; i < lo_key.get(i).getLs_code(); i++) { %>
                         <div class="hotSpot <%= lo_key.get(i).getLs_code() %>">
                          <% } %>
+                         
+                         rlist.get(i).getRno()
                          <% for(int i=0 ; i < list2.size(); i++) { %>
                          <% if( list2.get(i).getA_name() != null ) { %>
                             <img src="/naduri/resources/thumb/<%= list2.get(i).getA_name() %>" id=<%= list2.get(i).getL_no() %>/>

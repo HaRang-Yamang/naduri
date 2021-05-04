@@ -39,7 +39,7 @@
 	                    <div class="like_photo" style="margin: 10px 0;">
 	                    
 	                    <% for(Attach a : list2) { %>
-	                    	<% if( a.getRno() == rlist.get(i).getRno()) { %>
+	                    	<% if( a.getR_no() == rlist.get(i).getRno()) { %>
 	                        
 	                        <div class="like_photo_sample">
 	                        		<img src="/naduri/assets/images/review/<%= a.getA_name() %>" alt="" />

@@ -23,7 +23,7 @@ public class HeritageService {
 	private HeritageDAO dao = new HeritageDAO();
 	
 	
-	// ¸ñ·Ï Á¶È¸ ½Ã ÇÊ¿äÇÑ Á¾¸ñÄÚµå ÃßÃâ
+	// ëª©ë¡ ì¡°íšŒ ì‹œ í•„ìš”í•œ ì¢…ëª©ì½”ë“œ ì¶”ì¶œ
 	public ArrayList<Heritage> selectName(String spotName) {
 		
 		con = getConnection();
@@ -39,7 +39,7 @@ public class HeritageService {
 	
 	
 	
-	// ¸ñ·Ï Á¶È¸
+	// ëª©ë¡ ì¡°íšŒ
 	public ArrayList<Heritage> selectList(String spotName) {
 		con = getConnection();
 		
@@ -53,22 +53,22 @@ public class HeritageService {
 	
 	
 	
-	// °ø°øµ¥ÀÌÅÍ DB ÀúÀå
+	// ê³µê³µë°ì´í„° DB ì €ì¥
 	public int insertHeritage(Heritage heri) {
 		con = getConnection();
 	
 		
-		// 1. LOCATION Å×ÀÌºí µ¥ÀÌÅÍ »ı¼º
+		// 1. LOCATION í…Œì´ë¸” ë°ì´í„° ìƒì„±
 		int result1 = dao.insertLocation(con, heri);
 		
-		// Ã³¸®µÈ Çà °³¼ö°¡ ¾Æ´Ï¶ó Æ¯Á¤ °á°ú °ªÀÌ ³ª¿À°Ô ÇÏ·Á¸é?
+		// ì²˜ë¦¬ëœ í–‰ ê°œìˆ˜ê°€ ì•„ë‹ˆë¼ íŠ¹ì • ê²°ê³¼ ê°’ì´ ë‚˜ì˜¤ê²Œ í•˜ë ¤ë©´?
 
 		
 		// Debug
-		System.out.println("location id »ı¼º ¼º°ø ¿©ºÎ : " + result1);
+		System.out.println("location id ìƒì„± ì„±ê³µ ì—¬ë¶€ : " + result1);
 		
 		
-		// Location VO »ı¼º
+		// Location VO ìƒì„±
 		// Location location = new Location();
 		
 		
@@ -76,13 +76,13 @@ public class HeritageService {
 			commit(con);
 			
 			
-			// 2. Locaiton ID °ª °¡Á®¿À±â
+			// 2. Locaiton ID ê°’ ê°€ì ¸ì˜¤ê¸°
 			int l_no = dao.selectLno(con);
 			
 			// Debug
-			System.out.println("location id Á¶È¸ ¼º°ø ¿©ºÎ : " + l_no);
+			System.out.println("location id ì¡°íšŒ ì„±ê³µ ì—¬ë¶€ : " + l_no);
 
-			// l_no¸¦ °¡Á®¿Â °ªÀÌ ÀÖ´Ù¸é commit
+			// l_noë¥¼ ê°€ì ¸ì˜¨ ê°’ì´ ìˆë‹¤ë©´ commit
 			if ( l_no < 0) {
 				rollback(con);
 			} else {
@@ -90,16 +90,16 @@ public class HeritageService {
 				int result2 = 0;
 				
 				// Debug
-				System.out.println("location id °á°ú°ª È®ÀÎ : " + l_no);
+				System.out.println("location id ê²°ê³¼ê°’ í™•ì¸ : " + l_no);
 				
-				// 3. À§¿¡¼­ Ã£Àº l_no¿Í Heritage °´Ã¼¸¦ ÇÔ²² insert Heritage
+				// 3. ìœ„ì—ì„œ ì°¾ì€ l_noì™€ Heritage ê°ì²´ë¥¼ í•¨ê»˜ insert Heritage
 				result2 = dao.insertHeritage(con, l_no, heri);
 				
 			
-				// result2ÀÇ °á°ú°ªÀÌ 0ÀÌ¶ó¸é rollback
+				// result2ì˜ ê²°ê³¼ê°’ì´ 0ì´ë¼ë©´ rollback
 				if( result2 > 0) commit(con);
 				else rollback(con);
-				} // ¾ÈÂÊ if¹® end
+				} // ì•ˆìª½ ifë¬¸ end
 				commit(con);
 			
 		} // else end

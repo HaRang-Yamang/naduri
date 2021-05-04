@@ -53,9 +53,9 @@ public class HeritageDAO {
 			rs = ps.executeQuery();
 			
 			// Debug
-			System.out.println("Äõ¸®¹® ½ÇÇà °á°ú : " + rs);
+			System.out.println("ì¿¼ë¦¬ë¬¸ ì‹¤í–‰ ê²°ê³¼ : " + rs);
 			
-			// °á°úµ¥ÀÌÅÍ ¹İº¹¹®µ¹·Á¼­ ¸®½ºÆ®¿¡ ´ã±â (°´Ã¼ ¹è¿­ »ı¼º)
+			// ê²°ê³¼ë°ì´í„° ë°˜ë³µë¬¸ëŒë ¤ì„œ ë¦¬ìŠ¤íŠ¸ì— ë‹´ê¸° (ê°ì²´ ë°°ì—´ ìƒì„±)
 						while(rs.next()) {
 							Heritage h = new Heritage();
 							
@@ -65,12 +65,12 @@ public class HeritageDAO {
 							h.setH_name(      rs.getString("h_name"));
 							
 							// Debug
-							System.out.println("DAO ¹İº¹¹® °á°ú : " + h);
+							System.out.println("DAO ë°˜ë³µë¬¸ ê²°ê³¼ : " + h);
 							
 							list.add(h);
 						}
 						// Debug
-						System.out.println("DAO ¹İº¹¹® °á°ú2 : " + list);
+						System.out.println("DAO ë°˜ë³µë¬¸ ê²°ê³¼2 : " + list);
 						
 		} catch (SQLException e) {
 			
@@ -184,28 +184,28 @@ public class HeritageDAO {
 
 	public ArrayList<Heritage> selectList(Connection con) {
 		
-		// ¹®È­Àç µ¥ÀÌÅÍ ´ãÀ» ¸®½ºÆ®
+		// ë¬¸í™”ì¬ ë°ì´í„° ë‹´ì„ ë¦¬ìŠ¤íŠ¸
 		ArrayList<Heritage> list = new ArrayList<>();
 		
-		// Äõ¸®¹® ÁØºñ
+		// ì¿¼ë¦¬ë¬¸ ì¤€ë¹„
 		PreparedStatement ps = null;
 		
-		// °á°ú µ¥ÀÌÅÍ
+		// ê²°ê³¼ ë°ì´í„°
 		ResultSet rs = null;
 		
-		// properties º¯¼ö¿¡ ´ã±â
+		// properties ë³€ìˆ˜ì— ë‹´ê¸°
 		String sql = prop.getProperty("selectHeritage");
 		
 		try {
 			
-			// Äõ¸®¹® ½ÇÇà
+			// ì¿¼ë¦¬ë¬¸ ì‹¤í–‰
 			ps = con.prepareStatement(sql);
 			
-			// ½ÇÇà°á°ú °á°úµ¥ÀÌÅÍ¿¡ ´ã±â
+			// ì‹¤í–‰ê²°ê³¼ ê²°ê³¼ë°ì´í„°ì— ë‹´ê¸°
 			rs = ps.executeQuery();
 			
 			
-			// °á°úµ¥ÀÌÅÍ ¹İº¹¹®µ¹·Á¼­ ¸®½ºÆ®¿¡ ´ã±â (°´Ã¼ ¹è¿­ »ı¼º)
+			// ê²°ê³¼ë°ì´í„° ë°˜ë³µë¬¸ëŒë ¤ì„œ ë¦¬ìŠ¤íŠ¸ì— ë‹´ê¸° (ê°ì²´ ë°°ì—´ ìƒì„±)
 			while(rs.next()) {
 				Heritage h = new Heritage();
 				

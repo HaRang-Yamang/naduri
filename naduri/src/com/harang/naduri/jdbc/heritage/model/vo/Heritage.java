@@ -6,31 +6,31 @@ public class Heritage implements Serializable{
 	
 	private static final long serialVersionUID = 1003L;
 	
-	// ¼­¹ö µ¥ÀÌÅÍ º£ÀÌ½º Å×ÀÌºí°ú ¸ÅÄªµÇ´Â voÀÔ´Ï´Ù.
+	// ì„œë²„ ë°ì´í„° ë² ì´ìŠ¤ í…Œì´ë¸”ê³¼ ë§¤ì¹­ë˜ëŠ” voì…ë‹ˆë‹¤.
 	private int h_id;
 	private int l_no;
-	private String h_events; // Á¾¸ñÄÚµå
+	private String h_events; // ì¢…ëª©ì½”ë“œ
 	private String h_name;
-	private String h_zipcode; // ½ÃµµÄÚµå
-	private String h_serial; // ÁöÁ¤¹øÈ£
+	private String h_zipcode; // ì‹œë„ì½”ë“œ
+	private String h_serial; // ì§€ì •ë²ˆí˜¸
 	private String h_status;
 	private int h_count;
 
 	
 	
-	// ¿©±â¼­ºÎÅÍ´Â °ø°øµ¥ÀÌÅÍ api¿¡¼­ ¹Ş¾Æ¿Ã µ¥ÀÌÅÍ ÀÔ´Ï´Ù.
-	private String ccmaName; // ¹®È­ÀçÁ¾¸ñ
-	private String gcodeName; // ¹®È­ÀçºĞ·ù
-	private String ccbaAsdt; // ÁöÁ¤(µî·ÏÀÏ)
-	private String ccbaLcad; // ¼ÒÀçÁö »ó¼¼
-	private String ccceName; // ½Ã´ë
-	private String ccbaPoss; // ¼ÒÀ¯ÀÚ
-	private String ccbaAdmin; // °ü¸®ÀÚ
-	private String imageUrl; // ¸ŞÀÎ³ëÃâÀÌ¹ÌÁöURL
-	private String content; // ³»¿ë
+	// ì—¬ê¸°ì„œë¶€í„°ëŠ” ê³µê³µë°ì´í„° apiì—ì„œ ë°›ì•„ì˜¬ ë°ì´í„° ì…ë‹ˆë‹¤.
+	private String ccmaName; // ë¬¸í™”ì¬ì¢…ëª©
+	private String gcodeName; // ë¬¸í™”ì¬ë¶„ë¥˜
+	private String ccbaAsdt; // ì§€ì •(ë“±ë¡ì¼)
+	private String ccbaLcad; // ì†Œì¬ì§€ ìƒì„¸
+	private String ccceName; // ì‹œëŒ€
+	private String ccbaPoss; // ì†Œìœ ì
+	private String ccbaAdmin; // ê´€ë¦¬ì
+	private String imageUrl; // ë©”ì¸ë…¸ì¶œì´ë¯¸ì§€URL
+	private String content; // ë‚´ìš©
 	
-	private String longitude; // °æµµ
-	private String latitude; // À§µµ
+	private String longitude; // ê²½ë„
+	private String latitude; // ìœ„ë„
 
 	
 	public Heritage() {	}

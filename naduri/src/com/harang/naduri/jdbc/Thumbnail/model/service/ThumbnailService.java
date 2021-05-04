@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
+import com.harang.naduri.jdbc.Thumbnail.model.vo.lo_key;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;
 import com.harang.naduri.jdbc.Thumbnail.model.dao.ThumbnailDAO;
@@ -34,6 +35,20 @@ public class ThumbnailService {
 		close(con);
 		
 		return map;
+	}
+	
+	// --------------------------- hot spot 2 ----------------------- //
+	
+	public ArrayList<lo_key> hotSpot2() {
+		con = getConnection();
+		
+		ArrayList<lo_key> lokey = new ArrayList<>();
+		
+		lokey = dao.hotSpot2(con);
+		
+		close(con);
+		
+		return lokey;
 	}
 	
 	//-------------------------------- 통합 검색 2 ------------------------------//

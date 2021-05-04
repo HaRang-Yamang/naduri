@@ -18,6 +18,8 @@
 	// Location & Keyword 정보
 	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
 	
+	ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey");
+	
 	
 	Heritage heri = new Heritage();
 
@@ -115,61 +117,30 @@
 
     <section>
 
-        <div class="main_body">
-            <div class="hot_keword">
-                <h2>인기명소 골라보기</h2>
-                <ul class="tag">
-                    <li class="list active" data-filter="All">전체보기</li>
-                    <li class="list" data-filter="1">#문화재</li>
-                    <li class="list" data-filter="2">#맛집</li>
-                    <li class="list" data-filter="2">#여행</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class = "areaList">
-            <!-- featured images -->
-            <div class="featured">
-                <div class="small-container">
-					
-					
-					
-                    <div class="row">
-                    <% for(int i=0 ; i < lo_key.get(i).getLs_code(); i++) { %>
-                        <div class="hotSpot <%= lo_key.get(i).getLs_code() %>">
-                         <% } %>
-                         
-                         rlist.get(i).getRno()
-                         <% for(int i=0 ; i < list2.size(); i++) { %>
-                         <% if( list2.get(i).getA_name() != null ) { %>
-                            <img src="/naduri/resources/thumb/<%= list2.get(i).getA_name() %>" id=<%= list2.get(i).getL_no() %>/>
-                             
-                            <div class="spotInfo">
-                                <h4><%= list2.get(i).getA_name() %></h4>
-                                 <% } %>
-                                  <% } %>
-                                  
-                                  
-                                  <!--  썸네일에 따른 태그 값 가져오는 부분 location list 반복 돌리기 -->
-                                <% for(int i=0 ; i < lo_key.size(); i++) { %>
-                                 <% if( list2.get(i).getA_name() != null ) { %>
-                                <p>#<%= lo_key.get(i).getKeyword() %></p>
-                                <% } %>
-                                <% } %>
-                            </div>
-                            <div class="markIcon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    
-                </div>
-            </div>
-            <!-- featured images end -->
-        </div>
        
+ <!-- featured images -->
+        <div class="featured">
+            <div class="small-container">
+			<% for(lo_key l : lokey) { %>
+            <div class="row">
+                <div class="hotSpot date">
+                   <img src="/naduri/resources/thumb/ <%=l.getA_name() %>"/>
 
+                    <div class="spotInfo">
+                    <h4><%=l.getLocal_name() %></h4>
+                    
+                    <% for( int z = 0 ; z < l.getKeyword().size() ; z++ ) { %>
+                    <p>#<%=l.getKeyword() %></p>
+                     <% } %>
+                     
+                    </div>
+                    <div class="markIcon"><i class="fas fa-heart"></i></div>
+                </div>
+               
+</div>
+ <% } %>
+</div>
+<!--  featured images end -->
 
 
         

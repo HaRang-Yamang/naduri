@@ -174,6 +174,18 @@ public class MemberService {
 		
 		return result;
 	}
+
+
+	// session.setAttribute("member", loginMember);을 위한 selectMember2
+	public Member selectMember2(Member loginMember) {
+		
+		con = getConnection();
+		Member result = dao.selectMember2(con, loginMember);
+		
+		close(con);
+		
+		return result;
+	}
 	
 
 }

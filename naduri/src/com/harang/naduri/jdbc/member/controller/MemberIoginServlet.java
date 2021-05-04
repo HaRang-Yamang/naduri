@@ -48,12 +48,17 @@ public class MemberIoginServlet extends HttpServlet {
 		
 		mapMember = service.selectMember(loginMember);
 		
-		if(mapMember != null) {
+		// 기존 작업
+		loginMember = service.selectMember2(loginMember);
+		
+		if(mapMember != null || loginMember!=null) {
 			// 로그인 성공!
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("listM", mapMember.get("listM"));
 			session.setAttribute("listK", mapMember.get("listK"));
+			
+			session.setAttribute("member", loginMember);
 			
 			System.out.println(mapMember.get("listK"));
 			

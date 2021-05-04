@@ -8,6 +8,7 @@
 %>
 
 <%
+	Member m = (Member)session.getAttribute("member");
 	ArrayList<Member> listM = (ArrayList<Member>)session.getAttribute("listM");
 	ArrayList<Keyword> listK = (ArrayList<Keyword>)session.getAttribute("listK");
 	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");

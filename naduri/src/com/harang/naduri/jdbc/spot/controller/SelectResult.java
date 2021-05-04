@@ -16,14 +16,14 @@ import com.harang.naduri.jdbc.spot.model.vo.Spot;
 /**
  * Servlet implementation class SpotSelectList
  */
-@WebServlet("/selectlist.sp")
-public class SpotSelectList extends HttpServlet {
+@WebServlet("/searchresult.sr")
+public class SelectResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SpotSelectList() {
+    public SelectResult() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -44,9 +44,6 @@ public class GetLocation extends HttpServlet {
 		
 		new Gson().toJson(list, response.getWriter());
 	
-	
-	
-	
 	}
 
 	/**

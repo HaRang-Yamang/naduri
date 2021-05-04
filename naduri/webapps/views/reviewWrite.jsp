@@ -34,7 +34,7 @@
             <hr class="gray_bar">
             <div id="container">
                 <table class="review_table">
-                    <tr>
+                    <tr> 
                     <td>
                     <input type="hidden" name="m_no" value="<%=m.getM_no() %>"/> 
                     </td>

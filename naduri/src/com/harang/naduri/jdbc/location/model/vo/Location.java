@@ -14,6 +14,11 @@ public class Location implements Serializable{
 	// location_keyword table
 
 	
+	public Location(int l_no) {
+		super();
+		this.l_no = l_no;
+	}
+
 	// keyword table
 	private int keyword_id;
 	private String keyword;

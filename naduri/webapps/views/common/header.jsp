@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.harang.naduri.jdbc.member.model.vo.*, java.util.*" %>
+<%@ page import="com.harang.naduri.jdbc.member.model.vo.*, java.util.*,com.harang.naduri.jdbc.location.model.vo.*" %>
 <%
 	Member m = (Member)session.getAttribute("member");
 	ArrayList<Keyword> k = (ArrayList<Keyword>)session.getAttribute("keywords");
+	
 %>
 <header>
     <!-- 페이지 설명 -->

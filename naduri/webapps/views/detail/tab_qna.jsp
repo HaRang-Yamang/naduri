@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.harang.naduri.jdbc.qna.model.vo.*, com.harang.naduri.jdbc.member.model.vo.*"%>
+    pageEncoding="UTF-8" import="java.util.*, com.harang.naduri.jdbc.qna.model.vo.*, com.harang.naduri.jdbc.member.model.vo.*,
+    com.harang.naduri.jdbc.location.model.vo.*"%>
    <%
  	Member m = (Member)session.getAttribute("member");
   ArrayList<Qna>list = (ArrayList<Qna>)request.getAttribute("list");
+  ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
  %>
 <div id = "tab_qna" class="tab-content">
         <!-- QnA 질문하기 버튼 -->
         <div class = "filter">
         <form id="insertForm" action="/naduri/insert.qn" method="post">
           <input type="hidden" name="m_no" value="<%=m.getM_no() %>"/> 
+            <% for(int i=0 ; i <lo_key.size(); i++) { %>
+                    <input type="hidden" name="l_no" value="<%= lo_key.get(i).getL_no() %>"/></td>
+           <% } %>
             <div class=qnatitle >
             <span>질문 제목: </span>
             <input type="text" name="q_title" />

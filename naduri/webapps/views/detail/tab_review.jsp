@@ -141,7 +141,13 @@
                             </tr>
                             <tr>
                                 <td>방문유형</td>
-                                <td><%=r.getR_with() %></td>
+                                   <td>
+                                <%if(r.getR_with()==1){ %> 혼자 
+	                            <% } else if(r.getR_with()==2){ %>친구
+	                            <%}else if(r.getR_with()==3){ %>썸
+	                      	     <%}else if(r.getR_with()==4){ %>커플
+	                      	     <%}else{ %>가족<%} %>    
+	                             </td>
                             </tr>
                      </table>
                     </div>

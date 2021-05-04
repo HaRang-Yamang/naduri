@@ -29,17 +29,18 @@ public class Review implements Serializable{
 	public Review() {
 		super();
 	}
-
-	public Review(int m_no, int r_rank, String r_title, String r_content, String r_period, int r_with) {
-		   super();
-		   this.m_no = m_no;
-		   this.r_rank = r_rank;
-		   this.r_title = r_title;
-		   this.r_content = r_content;
-		   this.r_period = r_period;
-		   this.r_with = r_with;
-		}
 	
+	public Review(int l_no, int m_no, int r_rank, String r_title, String r_content, String r_period, int r_with) {
+		super();
+		this.l_no = l_no;
+		this.m_no = m_no;
+		this.r_rank = r_rank;
+		this.r_title = r_title;
+		this.r_content = r_content;
+		this.r_period = r_period;
+		this.r_with = r_with;
+	}
+
 	public Review(ArrayList<Attach> attList, int rno, int l_no, int m_no, String m_name, int r_rank, String r_title,
 			String r_content, String r_period, int r_with, Date r_date, Date r_update, int r_count, String r_status,
 			String m_id) {

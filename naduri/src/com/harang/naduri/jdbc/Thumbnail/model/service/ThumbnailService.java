@@ -23,20 +23,20 @@ public class ThumbnailService {
 	private ThumbnailDAO dao = new ThumbnailDAO();
 	
 	
-	// ¸ŞÀÎ ÀÎ±â¸í¼Ò Á¶È¸
-	public HashMap<String, Object> selectList() {
+	// ë©”ì¸ ì¸ê¸°ëª…ì†Œ ì¡°íšŒ
+	public HashMap<String, Object> hotSpot() {
 		con = getConnection();
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
-		map = dao.selectList(con);
+		map = dao.hotSpot(con);
 		
 		close(con);
 		
 		return map;
 	}
 	
-	//-------------------------------- ÅëÇÕ °Ë»ö 2 ------------------------------//
+	//-------------------------------- í†µí•© ê²€ìƒ‰ 2 ------------------------------//
 	
 	public HashMap<String, Object> selectListCollection(String spotName) {
 		con = getConnection();
@@ -48,8 +48,8 @@ public class ThumbnailService {
 		return map;
 	}
 	
-	//----------------------- °Ë»öÀ» À§ÇÑ 3´Ü°è -------------------------//
-	// 1. Àå¼Ò ÄÚµå Á¶È¸ (»ç¿ëÀÚ ÀÔ·Â °ª¿¡ µû¶ó¼­ l_no, ls_code¸¦ ¹Ş¾Æ°£´Ù.)
+	//----------------------- ê²€ìƒ‰ì„ ìœ„í•œ 3ë‹¨ê³„ -------------------------//
+	// 1. ì¥ì†Œ ì½”ë“œ ì¡°íšŒ (ì‚¬ìš©ì ì…ë ¥ ê°’ì— ë”°ë¼ì„œ l_no, ls_codeë¥¼ ë°›ì•„ê°„ë‹¤.)
 		public ArrayList<Location> selectLocationCode(String spotName) {
 			con = getConnection();
 			
@@ -61,8 +61,8 @@ public class ThumbnailService {
 
 		}
 
-	// ls_code°¡ 2(¸ÀÁı/¿©ÇàÁö)¶ó¸é Ã·ºÎÆÄÀÏµéÀ» °¡Á®¿Â´Ù.
-	// »ç¿ëÀÚ ÀÔ·Â °ª(Spot_name)À» °¡Áö°í °Ô½Ã±Û, Ã·ºÎÆÄÀÏ Á¤º¸ °¡Á®¿À±â
+	// ls_codeê°€ 2(ë§›ì§‘/ì—¬í–‰ì§€)ë¼ë©´ ì²¨ë¶€íŒŒì¼ë“¤ì„ ê°€ì ¸ì˜¨ë‹¤.
+	// ì‚¬ìš©ì ì…ë ¥ ê°’(Spot_name)ì„ ê°€ì§€ê³  ê²Œì‹œê¸€, ì²¨ë¶€íŒŒì¼ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	public HashMap<String, Object> selectThumnail1(String spotName) {
 		con = getConnection();
 		
@@ -75,11 +75,11 @@ public class ThumbnailService {
 	}
 
 
-	// ls_code°¡ 1(¹®È­Àç)¶ó¸é api ¿äÃ»À» À§ÇÑ Á¤º¸¸¦ °¡Á®¿Â´Ù.
-	// »ç¿ëÀÚ ÀÔ·Â °ª(Spot_name)À» °¡Áö°í ¹®È­Àç Á¤º¸¸¦ ¸®½ºÆ®¿¡ ´ã¾Æ °¡Á®¿À±â
+	// ls_codeê°€ 1(ë¬¸í™”ì¬)ë¼ë©´ api ìš”ì²­ì„ ìœ„í•œ ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
+	// ì‚¬ìš©ì ì…ë ¥ ê°’(Spot_name)ì„ ê°€ì§€ê³  ë¬¸í™”ì¬ ì •ë³´ë¥¼ ë¦¬ìŠ¤íŠ¸ì— ë‹´ì•„ ê°€ì ¸ì˜¤ê¸°
 	
 	
-	//-------------------------------- ÅëÇÕ °Ë»ö ------------------------------//
+	//-------------------------------- í†µí•© ê²€ìƒ‰ ------------------------------//
 	// select One...
 	public HashMap<String, Object> selectThumnailOne(int l_no2) {
 		con = getConnection();

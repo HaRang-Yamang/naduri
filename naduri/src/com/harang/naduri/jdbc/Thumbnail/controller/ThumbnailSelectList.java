@@ -42,7 +42,7 @@ public class ThumbnailSelectList extends HttpServlet {
 		ThumbnailService service = new ThumbnailService();
 		
 		// 결과를 list 객체에 저장
-		map = service.selectList();
+		map = service.hotSpot();
 		
 //		System.out.println(list);
 		

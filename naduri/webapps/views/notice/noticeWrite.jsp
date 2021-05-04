@@ -63,7 +63,7 @@
                         <td>첨부파일</td>
                         <td colspan="3">
                             <input class="inputFile" type="file" name="n_file" id="input_file">
-
+							
                         </td>
                     </tr>
                     <tr>

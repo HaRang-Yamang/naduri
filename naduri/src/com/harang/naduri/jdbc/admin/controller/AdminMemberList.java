@@ -41,7 +41,7 @@ public class AdminMemberList extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		
-		System.out.println("list" + list);
+		//System.out.println("list" + list);
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/admin/adminMember.jsp");
 		

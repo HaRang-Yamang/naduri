@@ -15,7 +15,7 @@ import com.harang.naduri.jdbc.qna.model.vo.Qna;
 /**
  * Servlet implementation class MyPageQnA
  */
-@WebServlet("/tap_p_like.do")
+@WebServlet("/tab_p_qna.do")
 public class MyPageQnA extends HttpServlet {
 	private static final long serialVersionUID = 1034L;
        
@@ -36,7 +36,7 @@ public class MyPageQnA extends HttpServlet {
 		int m_no= Integer.parseInt(request.getParameter("m_no"));
 		
 		list = service.selectMyQnaList(m_no);
-		if(list !=null) {
+		if(list != null) {
 			request.setAttribute("list", list);
 			
 			request.getRequestDispatcher("views/myPage/tab_p_qna.jsp").forward(request, response);

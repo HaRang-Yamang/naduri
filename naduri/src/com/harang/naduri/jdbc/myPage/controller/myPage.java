@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.myPage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.harang.naduri.jdbc.attach.model.vo.*;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 import com.harang.naduri.jdbc.myPage.model.service.myPageService;
+import com.harang.naduri.jdbc.review.model.service.ReviewService;
 
 /**
  * Servlet implementation class myPage
@@ -34,11 +36,15 @@ public class myPage extends HttpServlet {
 
 		int m_no = ((Member)request.getSession().getAttribute("member")).getM_no();
 		
-		myPageService service = new myPageService();
-		Attach a = service.myPage(m_no);
-		request.setAttribute("Attach", a);			
+		HashMap<String, Object> map = new myPageService().myPage(m_no);
+		
+		if ( map != null) {
+		
+		request.setAttribute("a", map.get("a"));			
+		request.setAttribute("listk", map.get("listk")); // 키워드
 		request.getRequestDispatcher("views/myPage/myPage.jsp").forward(request, response);
-			
+		
+		}
 		
 	}
 

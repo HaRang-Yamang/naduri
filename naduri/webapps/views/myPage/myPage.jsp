@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import = "com.harang.naduri.jdbc.attach.model.vo.*, java.util.*" %>
-    <% Attach a = (Attach)request.getAttribute("Attach"); %>
+    <% Attach a = (Attach)request.getAttribute("a"); 
+    ArrayList<Keyword> listk = (ArrayList<Keyword>)request.getAttribute("listk");
+    %>
 
 <!DOCTYPE html>
 <html>
@@ -66,10 +68,10 @@
 	        <form class="top_area" action = "/naduri/profileImgInsert.do" method="post" enctype="multipart/form-data">
 	        	<input type="hidden" name="m_no" value="<%= m.getM_no() %>"/>
 	            <div class="profile_img">
-	            <% if ( a == null) { %>
+	           <% if ( a == null) { %>
 	            	<img src="/naduri/assets/images/no-img.png" id="profileImg" width="350px" height="295px" alt="프로필사진" />
 	            	<% } else { %>
-	            	<img src="/naduri/assets/images/profile/<%= a.getA_name() %>" id="profileImg" width="350px" height="295px" alt="프로필사진" />
+	            	<img src="/naduri/resources/profileImg/<%= a.getA_name() %>" id="profileImg" width="350px" height="295px" alt="프로필사진" />
 	            	<% } %>
 	            </div>
 	            <input type="file" class="hidden" accept="image/*" name="profileImg" id="profileImg1" onchange="readURL(input)" />
@@ -114,9 +116,11 @@
 	                            <td>좋아하는 여행 테마</td>
 	                            <td>
 	                                <ol class="keword">
-	                                    <li>문화재</li>
-	                                    <li>문화재</li>
-	                                    <li>문화재</li>
+	                                    <% for(Keyword ke : listk) { %>
+	                                    <% if( ke.getKeyword_id() <= 14){ %>
+	                                    <li><%= ke.getKeyword() %></li>
+	                                     <% } %>
+	                                    <% } %>
 	                                </ol>
 	                            </td>
 	                        </tr>
@@ -124,7 +128,11 @@
 	                            <td>선호하는 계절</td>
 	                            <td>
 	                                <ol class="keword">
-	                                    <li>봄</li>
+	                                    <% for(Keyword ke : listk) { %>
+	                                    <% if( ke.getKeyword_id() > 14 && ke.getKeyword_id() <= 18){ %>
+	                                    <li><%= ke.getKeyword() %></li>
+	                                     <% } %>
+	                                    <% } %>
 	                                </ol>
 	                            </td>
 	                        </tr>
@@ -132,14 +140,12 @@
 	                            <td>선호 키워드</td>
 	                            <td>
 	                                <ol class="keword">
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
+	                                 <% for(Keyword ke : listk) { %>
+	                                    <% if( ke.getKeyword_id() > 18){ %>
+	                                    <li><%= ke.getKeyword() %></li>
+	                                     <% } %>
+	                                    <% } %>
+	
 	                                </ol>
 	                            </td>
 	                        </tr>

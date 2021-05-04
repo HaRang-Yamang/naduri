@@ -1,29 +1,28 @@
-package com.harang.naduri.jdbc.member.controller;
+package com.harang.naduri.jdbc.review.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.harang.naduri.jdbc.review.model.service.ReviewService;
+import com.google.gson.Gson;
+import com.harang.naduri.jdbc.review.model.service.LikeCountService;
+import com.harang.naduri.jdbc.review.model.service.selectOneService;
 import com.harang.naduri.jdbc.review.model.vo.Review;
 
 /**
- * Servlet implementation class Tab_MyReview
+ * Servlet implementation class LikeCount
  */
-@WebServlet("/tab_p_reviews.do")
-public class Tab_MyReview extends HttpServlet {
-	private static final long serialVersionUID = 1032L;
+@WebServlet("/likeCount.do")
+public class LikeCount extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Tab_MyReview() {
+    public LikeCount() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +31,14 @@ public class Tab_MyReview extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int r_no = Integer.parseInt(request.getParameter("r_no"));
 		int m_no = Integer.parseInt(request.getParameter("m_no"));
 		
-		HashMap<String, Object> map = new ReviewService().selectMyReview(m_no);
+		int re = new LikeCountService().LikeCount(r_no, m_no);
 		
+		response.setContentType("application/json; charset=UTF-8");
 		
-		
-		if ( map != null) {
-			request.setAttribute("list", map.get("list")); // 리뷰들
-			request.setAttribute("list2", map.get("list2")); // 사진
-
-			request.getRequestDispatcher("views/myPage/tab_p_reviews.jsp")
-			.forward(request, response);
-		}
-		
+		new Gson().toJson(re, response.getWriter());
 	}
 
 	/**

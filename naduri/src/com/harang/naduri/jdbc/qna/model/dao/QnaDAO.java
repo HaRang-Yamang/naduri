@@ -83,7 +83,7 @@ public QnaDAO() {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("selectQnaList");
+		String sql = prop.getProperty("selectMyQnaList");
 		
 		try {
 			ps= con.prepareStatement(sql);

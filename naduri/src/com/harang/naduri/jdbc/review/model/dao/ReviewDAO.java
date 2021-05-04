@@ -41,6 +41,8 @@ private Properties prop;
 		String sql = prop.getProperty("insertReview");
 		try {
 			ps = con.prepareStatement(sql);
+			/*
+			 * 이 코드는 차후에 L_no가 연결되면 써야하는 것입니다
 			ps.setInt(1, r.getL_no());
 			ps.setInt(2, r.getM_no());
 			ps.setInt(3, r.getR_rank());
@@ -48,6 +50,15 @@ private Properties prop;
 			ps.setString(5, r.getR_content());
 			ps.setString(6,r.getR_period());
 			ps.setInt(7, r.getR_with());
+			 */
+			ps.setInt(1, r.getM_no());	
+			ps.setInt(2, r.getR_rank());
+					
+			ps.setString(3, r.getR_title());
+			ps.setString(4, r.getR_content());
+			ps.setString(5,r.getR_period());
+			ps.setInt(6, r.getR_with());
+
 					result = ps.executeUpdate();
 					
 		} catch (SQLException e) {
@@ -135,8 +146,7 @@ private Properties prop;
 				
 				list2.add(a);
 
-				System.out.println("rno : " + r.getRno() + " / "+ rs.getInt("r_no"));
-				System.out.println("rno : " +( r.getRno() != rs.getInt("r_no")));
+	
 				
 				if(r.getRno() != rs.getInt("r_no")) {
 					Review temp = new Review();

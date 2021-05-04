@@ -9,7 +9,10 @@ public class Keyword implements Serializable {
 
 	private int m_no;
 	private int keyword_id;
+
 	private ArrayList<Keyword> Keylist;
+	private String keyword;
+
 	
 	public Keyword() {}
 
@@ -33,17 +36,18 @@ public class Keyword implements Serializable {
 		Keylist = keylist;
 	}
 
+
+	public Keyword(int m_no, int keyword_id, String keyword) {
+		super();
+		this.m_no = m_no;
+		this.keyword_id = keyword_id;
+		this.keyword = keyword;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "Keyword [keyword_id=" + keyword_id + "]";
-	}
-
-	public int getKeyword_id() {
-		return keyword_id;
-	}
-
-	public void setKeyword_id(int keyword_id) {
-		this.keyword_id = keyword_id;
+		return "Keyword [m_no=" + m_no + ", keyword_id=" + keyword_id + ", keyword=" + keyword + "]";
 	}
 
 	public int getM_no() {
@@ -54,6 +58,22 @@ public class Keyword implements Serializable {
 		this.m_no = m_no;
 	}
 
+	public int getKeyword_id() {
+		return keyword_id;
+	}
+
+	public void setKeyword_id(int keyword_id) {
+		this.keyword_id = keyword_id;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public ArrayList<Keyword> getKeylist() {
 		return Keylist;
 	}
@@ -61,12 +81,14 @@ public class Keyword implements Serializable {
 	public void setKeylist(ArrayList<Keyword> keylist) {
 		Keylist = keylist;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
 	
-
-
-
-
+	
 	
 	
 }

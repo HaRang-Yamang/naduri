@@ -49,14 +49,31 @@
 	                    </div>
 	                    
 	                    <div class="like_btnArea">
-	                        <div class="like_likeBtn"><i class="fas fa-heart"></i><span style="color: var(--black-color);">
+	                        <div class="like_likeBtn"><i class="fas fa-heart"> </i><span style="color: var(--black-color);" class = "like_count" id="like-<%=rlist.get(i).getRno() %>">
 	                                5</span></div>
 	                        <div class="like_comentBtn"><i class="far fa-comment-dots"></i><span
 	                                style="color: var(--black-color)"> 5</span></div>
 	                    </div>
 	                </div>
+	                
+					<script>
+					
+					function recCount() {
+						$.ajax({
+							url: "/naduri/likeCount.do",
+			                type: "get",
+			                data: { r_no : '<%=rlist.get(i).getRno() %>', m_no : '<%= m.getM_no() %>'},
+			                success: function(count) {
+			                	$("#like-<%=rlist.get(i).getRno() %>").html(count);
+			                	
+			                	console.log(count);
+			                }
+						});
+				    };
+				    
+				    recCount();
+					</script>
 	                <% } %>
-	
 	
 	
 	            </div>
@@ -79,12 +96,7 @@
 	                      
 	<span class="like_date_modal"></span><span id="like_date_coment"> 방문</span>
 	 <br><br>
-	                    <div class="like_btnArea">
-	                        <div class="like_likeBtn"><i class="fas fa-heart"></i><span style="color: var(--black-color);">
-	                                5</span></div>
-	                        <div class="like_comentBtn"><i class="far fa-comment-dots"></i><span
-	                                style="color: var(--black-color)"> 5</span></div>
-	                    </div>
+	                    
 	                    <br>
 	                    <article class="slider-images">
 	                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
@@ -164,6 +176,7 @@
                                     'class="d-block w-100" alt="..."></div>'; 
    								$('#review_img>.carousel-item').after(divImg);
             				}
+            				
             			}
             			
             			// $('#carouselExampleIndicators').carousel();

@@ -233,34 +233,34 @@ public class HeritageDAO {
 	}
 
 
-
-	// 관리자 페이지 문화재 리스트 부분
+	// 문화재 리스트 부분
 	public ArrayList<Heritage> heritageList(Connection con) {
+		
 		ArrayList<Heritage> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("adminHeritage");
+		String sql = prop.getProperty("heritageList");
 		
 		try {
 			ps = con.prepareStatement(sql);
+			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				Heritage h = new Heritage();
 				
-				h.setH_id(      rs.getInt("h_id"));
-				h.setH_name(      rs.getString("h_name"));
-		
+				h.setH_id(rs.getInt("h_id"));
+				h.setH_name(rs.getString("h_name"));
 				
 				list.add(h);
-				
+			
 			}
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		} finally {
-			
+		}finally {
 			close(rs);
 			close(ps);
 		}

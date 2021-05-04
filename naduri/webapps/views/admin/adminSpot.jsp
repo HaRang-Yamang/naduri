@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*" %>
+<%
+	ArrayList<Spot> list = (ArrayList<Spot>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,9 +39,10 @@
                         <th></th>
                         <th></th>
                     </tr>
+                     <% for(Spot ss : list) { %>
                     <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
+                        <td id="her_no"><%= ss.getS_id() %></td>
+                        <td id="her_id"><%= ss.getS_name() %></td>
                         <td id="her_table_btn">
                             <div class="her_btn_area">
                                 <button id="her_update">데이터 수정</button>
@@ -49,146 +54,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="her_no">1</td>
-                        <td id="her_id">청계천</td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
-                            </div>
-                        </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
-                            </div>
-                        </td>
-                    </tr>
+                   	<% } %>
                 </table>
  <div class="her_btn_area">
 				<button id="her_insert_btn" onclick="location.href='/naduri/views/admin/adminInsertSpot.jsp'">여행지 등록</button>

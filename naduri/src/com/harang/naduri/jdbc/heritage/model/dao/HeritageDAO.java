@@ -53,9 +53,9 @@ public class HeritageDAO {
 			rs = ps.executeQuery();
 			
 			// Debug
-			System.out.println("Äõ¸®¹® ½ÇÇà °á°ú : " + rs);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ : " + rs);
 			
-			// °á°úµ¥ÀÌÅÍ ¹Ýº¹¹®µ¹·Á¼­ ¸®½ºÆ®¿¡ ´ã±â (°´Ã¼ ¹è¿­ »ý¼º)
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½Ã¼ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½)
 						while(rs.next()) {
 							Heritage h = new Heritage();
 							
@@ -65,12 +65,12 @@ public class HeritageDAO {
 							h.setH_name(      rs.getString("h_name"));
 							
 							// Debug
-							System.out.println("DAO ¹Ýº¹¹® °á°ú : " + h);
+							System.out.println("DAO ï¿½Ýºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ : " + h);
 							
 							list.add(h);
 						}
 						// Debug
-						System.out.println("DAO ¹Ýº¹¹® °á°ú2 : " + list);
+						System.out.println("DAO ï¿½Ýºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½2 : " + list);
 						
 		} catch (SQLException e) {
 			
@@ -184,28 +184,28 @@ public class HeritageDAO {
 
 	public ArrayList<Heritage> selectList(Connection con) {
 		
-		// ¹®È­Àç µ¥ÀÌÅÍ ´ãÀ» ¸®½ºÆ®
+		// ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 		ArrayList<Heritage> list = new ArrayList<>();
 		
-		// Äõ¸®¹® ÁØºñ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½
 		PreparedStatement ps = null;
 		
-		// °á°ú µ¥ÀÌÅÍ
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ResultSet rs = null;
 		
-		// properties º¯¼ö¿¡ ´ã±â
+		// properties ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		String sql = prop.getProperty("selectHeritage");
 		
 		try {
 			
-			// Äõ¸®¹® ½ÇÇà
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			ps = con.prepareStatement(sql);
 			
-			// ½ÇÇà°á°ú °á°úµ¥ÀÌÅÍ¿¡ ´ã±â
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½
 			rs = ps.executeQuery();
 			
 			
-			// °á°úµ¥ÀÌÅÍ ¹Ýº¹¹®µ¹·Á¼­ ¸®½ºÆ®¿¡ ´ã±â (°´Ã¼ ¹è¿­ »ý¼º)
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½Ã¼ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½)
 			while(rs.next()) {
 				Heritage h = new Heritage();
 				
@@ -230,6 +230,40 @@ public class HeritageDAO {
 
 		}
 		
+		return list;
+	}
+
+
+	public ArrayList<Heritage> heritageList(Connection con) {
+		
+		ArrayList<Heritage> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("heritageList");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Heritage h = new Heritage();
+				
+				h.setH_id(rs.getInt("h_id"));
+				h.setH_name(rs.getString("h_name"));
+				
+				list.add(h);
+			
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
+		}
 		return list;
 	}
 

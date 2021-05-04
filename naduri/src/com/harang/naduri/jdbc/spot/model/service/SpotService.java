@@ -37,5 +37,29 @@ public class SpotService {
 		return result;
 	}
 	
+	// 관리자페이지 맛집 리스트 부분
+	public ArrayList<Spot> foodList() {
+		
+		con = getConnection();
+		
+		ArrayList<Spot> list = dao.foodList(con);
+		
+		close(con);
+		
+		return list;
+		
+	}
+	// 관리자페이지 여행지 리스트 부분
+	public ArrayList<Spot> spotList() {
+		con = getConnection();
+		
+		ArrayList<Spot> list = dao.spotList(con);
+		
+		close(con);
+		
+		return list;
+	
+	}
+	
 	
 }

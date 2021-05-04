@@ -6,31 +6,31 @@ public class Heritage implements Serializable{
 	
 	private static final long serialVersionUID = 1003L;
 	
-	// ¼­¹ö µ¥ÀÌÅÍ º£ÀÌ½º Å×ÀÌºí°ú ¸ÅÄªµÇ´Â voÀÔ´Ï´Ù.
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ ï¿½ï¿½Äªï¿½Ç´ï¿½ voï¿½Ô´Ï´ï¿½.
 	private int h_id;
 	private int l_no;
-	private String h_events; // Á¾¸ñÄÚµå
+	private String h_events; // ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 	private String h_name;
-	private String h_zipcode; // ½ÃµµÄÚµå
-	private String h_serial; // ÁöÁ¤¹øÈ£
+	private String h_zipcode; // ï¿½Ãµï¿½ï¿½Úµï¿½
+	private String h_serial; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
 	private String h_status;
 	private int h_count;
 
 	
 	
-	// ¿©±â¼­ºÎÅÍ´Â °ø°øµ¥ÀÌÅÍ api¿¡¼­ ¹Ş¾Æ¿Ã µ¥ÀÌÅÍ ÀÔ´Ï´Ù.
-	private String ccmaName; // ¹®È­ÀçÁ¾¸ñ
-	private String gcodeName; // ¹®È­ÀçºĞ·ù
-	private String ccbaAsdt; // ÁöÁ¤(µî·ÏÀÏ)
-	private String ccbaLcad; // ¼ÒÀçÁö »ó¼¼
-	private String ccceName; // ½Ã´ë
-	private String ccbaPoss; // ¼ÒÀ¯ÀÚ
-	private String ccbaAdmin; // °ü¸®ÀÚ
-	private String imageUrl; // ¸ŞÀÎ³ëÃâÀÌ¹ÌÁöURL
-	private String content; // ³»¿ë
+	// ï¿½ï¿½ï¿½â¼­ï¿½ï¿½ï¿½Í´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ apiï¿½ï¿½ï¿½ï¿½ ï¿½Ş¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.
+	private String ccmaName; // ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String gcodeName; // ï¿½ï¿½È­ï¿½ï¿½Ğ·ï¿½
+	private String ccbaAsdt; // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½)
+	private String ccbaLcad; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	private String ccceName; // ï¿½Ã´ï¿½
+	private String ccbaPoss; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String ccbaAdmin; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String imageUrl; // ï¿½ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½URL
+	private String content; // ï¿½ï¿½ï¿½ï¿½
 	
-	private String longitude; // °æµµ
-	private String latitude; // À§µµ
+	private String longitude; // ï¿½æµµ
+	private String latitude; // ï¿½ï¿½ï¿½ï¿½
 
 	
 	public Heritage() {	}
@@ -76,6 +76,13 @@ public class Heritage implements Serializable{
 	}
 	
 	
+
+	// ê´€ë¦¬ìí˜ì´ì§€ ë¬¸í™”ì¬ë¦¬ìŠ¤íŠ¸ ë¶€ë¶„
+	public Heritage(int h_id, String h_name) {
+		super();
+		this.h_id = h_id;
+		this.h_name = h_name;
+	}
 
 
 	@Override

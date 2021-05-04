@@ -14,6 +14,7 @@ import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.heritage.model.dao.HeritageDAO;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;
+import com.harang.naduri.jdbc.spot.model.vo.Spot;
 import com.harang.naduri.jdbc.Thumbnail.model.dao.ThumbnailDAO;
 
 
@@ -23,7 +24,7 @@ public class HeritageService {
 	private HeritageDAO dao = new HeritageDAO();
 	
 	
-	// ¸ñ·Ï Á¶È¸ ½Ã ÇÊ¿äÇÑ Á¾¸ñÄÚµå ÃßÃâ
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 	public ArrayList<Heritage> selectName(String spotName) {
 		
 		con = getConnection();
@@ -39,7 +40,7 @@ public class HeritageService {
 	
 	
 	
-	// ¸ñ·Ï Á¶È¸
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public ArrayList<Heritage> selectList(String spotName) {
 		con = getConnection();
 		
@@ -53,22 +54,22 @@ public class HeritageService {
 	
 	
 	
-	// °ø°øµ¥ÀÌÅÍ DB ÀúÀå
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DB ï¿½ï¿½ï¿½ï¿½
 	public int insertHeritage(Heritage heri) {
 		con = getConnection();
 	
 		
-		// 1. LOCATION Å×ÀÌºí µ¥ÀÌÅÍ »ý¼º
+		// 1. LOCATION ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		int result1 = dao.insertLocation(con, heri);
 		
-		// Ã³¸®µÈ Çà °³¼ö°¡ ¾Æ´Ï¶ó Æ¯Á¤ °á°ú °ªÀÌ ³ª¿À°Ô ÇÏ·Á¸é?
+		// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½?
 
 		
 		// Debug
-		System.out.println("location id »ý¼º ¼º°ø ¿©ºÎ : " + result1);
+		System.out.println("location id ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + result1);
 		
 		
-		// Location VO »ý¼º
+		// Location VO ï¿½ï¿½ï¿½ï¿½
 		// Location location = new Location();
 		
 		
@@ -76,13 +77,13 @@ public class HeritageService {
 			commit(con);
 			
 			
-			// 2. Locaiton ID °ª °¡Á®¿À±â
+			// 2. Locaiton ID ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			int l_no = dao.selectLno(con);
 			
 			// Debug
-			System.out.println("location id Á¶È¸ ¼º°ø ¿©ºÎ : " + l_no);
+			System.out.println("location id ï¿½ï¿½È¸ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + l_no);
 
-			// l_no¸¦ °¡Á®¿Â °ªÀÌ ÀÖ´Ù¸é commit
+			// l_noï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ commit
 			if ( l_no < 0) {
 				rollback(con);
 			} else {
@@ -90,16 +91,16 @@ public class HeritageService {
 				int result2 = 0;
 				
 				// Debug
-				System.out.println("location id °á°ú°ª È®ÀÎ : " + l_no);
+				System.out.println("location id ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ : " + l_no);
 				
-				// 3. À§¿¡¼­ Ã£Àº l_no¿Í Heritage °´Ã¼¸¦ ÇÔ²² insert Heritage
+				// 3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ l_noï¿½ï¿½ Heritage ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ô²ï¿½ insert Heritage
 				result2 = dao.insertHeritage(con, l_no, heri);
 				
 			
-				// result2ÀÇ °á°ú°ªÀÌ 0ÀÌ¶ó¸é rollback
+				// result2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½Ì¶ï¿½ï¿½ rollback
 				if( result2 > 0) commit(con);
 				else rollback(con);
-				} // ¾ÈÂÊ if¹® end
+				} // ï¿½ï¿½ï¿½ï¿½ ifï¿½ï¿½ end
 				commit(con);
 			
 		} // else end
@@ -108,6 +109,20 @@ public class HeritageService {
 		
 		return result1;
 
+	}
+
+
+
+
+
+	public ArrayList<Heritage> herlist() {
+		con = getConnection();
+		
+		ArrayList<Heritage> list = dao.herlist(con);
+		
+		close(con);
+		
+		return list;
 	}
 
 

@@ -45,7 +45,7 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
     
     
     
-	// tag°ªÀÇ Á¤º¸¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// tagê°’ì˜ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
 	public String getTagValue(String tag, Element eElement) {
 	    NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 	    Node nValue = (Node) nlList.item(0);
@@ -61,44 +61,44 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-			// ÆÄ¶ó¹ÌÅÍ ¼±¾ğ ¹× ÃÊ±âÈ­
-			int pageIndex = 1;	// ÆäÀÌÁö ÃÊ±â°ª 
+			// íŒŒë¼ë¯¸í„° ì„ ì–¸ ë° ì´ˆê¸°í™”
+			int pageIndex = 1;	// í˜ì´ì§€ ì´ˆê¸°ê°’ 
 			
-			// (2´Ü°è) °á°ú °ª ¹ŞÀ» º¯¼öµé ÃÊ±âÈ­
-			String ccbaKdcd = ""; // Á¾¸ñÄÚµå
-			String ccbaAsno = ""; // ÁöÁ¤¹øÈ£
-			String ccbaCtcd = ""; // ½ÃµµÄÚµå
+			// (2ë‹¨ê³„) ê²°ê³¼ ê°’ ë°›ì„ ë³€ìˆ˜ë“¤ ì´ˆê¸°í™”
+			String ccbaKdcd = ""; // ì¢…ëª©ì½”ë“œ
+			String ccbaAsno = ""; // ì§€ì •ë²ˆí˜¸
+			String ccbaCtcd = ""; // ì‹œë„ì½”ë“œ
 			
-			// SelectOneÀ» À§ÇÑ »ç¿ëÀÚ ¼±ÅÃ °ª 
+			// SelectOneì„ ìœ„í•œ ì‚¬ìš©ì ì„ íƒ ê°’ 
 			// int l_no = Integer.parseInt(request.getParameter("l_no"));
-			// Àå¼Ò Á¤º¸ °´Ã¼ list
+			// ì¥ì†Œ ì •ë³´ ê°ì²´ list
 			ArrayList<Location> list = new ArrayList();
 						
 
 			
-			// »ç¿ëÀÚ ÀÔ·Â °ª °¡Á®¿À±â
-			// 1´Ü°è - »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ Àå¼Ò¸íÀ» ¼­¹ö µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ Á¶È¸ & Àå¼ÒÄÚµå(LS_CODE)°¡ 1(¹®È­Àç)¸é °ø°øµ¥ÀÌÅÍ È£Ãâ
+			// ì‚¬ìš©ì ì…ë ¥ ê°’ ê°€ì ¸ì˜¤ê¸°
+			// 1ë‹¨ê³„ - ì‚¬ìš©ìê°€ ì…ë ¥í•œ ì¥ì†Œëª…ì„ ì„œë²„ ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ì¡°íšŒ & ì¥ì†Œì½”ë“œ(LS_CODE)ê°€ 1(ë¬¸í™”ì¬)ë©´ ê³µê³µë°ì´í„° í˜¸ì¶œ
 
 
-			// ¸ÕÀú ¼±ÅÃµÈ °Ô½Ã¹°ÀÇ l_no¸¦ °¡Áö°í ls_code¸¦ Á¶È¸ÇÏ´Â ·ÎÁ÷ ¼öÇà
-			// ¿©±â¼­ ¹İÈ¯µÈ ls_code¸¦ °¡Áö°í if¹®À» ÅëÇØ 1¹ø È¤Àº 2¹ø ·ÎÁ÷ ¼öÇà
+			// ë¨¼ì € ì„ íƒëœ ê²Œì‹œë¬¼ì˜ l_noë¥¼ ê°€ì§€ê³  ls_codeë¥¼ ì¡°íšŒí•˜ëŠ” ë¡œì§ ìˆ˜í–‰
+			// ì—¬ê¸°ì„œ ë°˜í™˜ëœ ls_codeë¥¼ ê°€ì§€ê³  ifë¬¸ì„ í†µí•´ 1ë²ˆ í˜¹ì€ 2ë²ˆ ë¡œì§ ìˆ˜í–‰
 			
 			
-			// 1-1´Ü°è - Á¶È¸¸¦ À§ÇÑ ÀÔ·Â°ª ÃßÃâ
+			// 1-1ë‹¨ê³„ - ì¡°íšŒë¥¼ ìœ„í•œ ì…ë ¥ê°’ ì¶”ì¶œ
 			// String spotName = request.getParameter("spotName");
-			String spotName = "Àå¼Ò¸í_1";
+			String spotName = "ìˆ­ë¡€ë¬¸";
 			
-			// 1-2´Ü°è °Ô½Ã±Û ¼­ºñ½º °´Ã¼ »ı¼º
+			// 1-2ë‹¨ê³„ ê²Œì‹œê¸€ ì„œë¹„ìŠ¤ ê°ì²´ ìƒì„±
 			ThumbnailService service = new ThumbnailService();
 
-			// 1-3´Ü°è °Ô½Ã±Û Á¶È¸ ¼­ºñ½º ½ÃÀÛ --> ¼­ºñ½º Go!
+			// 1-3ë‹¨ê³„ ê²Œì‹œê¸€ ì¡°íšŒ ì„œë¹„ìŠ¤ ì‹œì‘ --> ì„œë¹„ìŠ¤ Go!
 			list = service.selectLocationCode(spotName);
 			
 			
 			//Debug
-			System.out.println("°á°ú È®ÀÎ : " + list);
+			System.out.println("ê²°ê³¼ í™•ì¸ : " + list);
 			
-			// °á°ú °ª ls_code¿¡ ´ã±â
+			// ê²°ê³¼ ê°’ ls_codeì— ë‹´ê¸°
 			int l_no2 = 0;
 			int ls_code = 0;
 			
@@ -106,32 +106,32 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 			for (Location l : list ) {
 				l_no2 = l.getL_no();
 				ls_code = l.getLs_code();
-			}
+			
 			
 			
 
 			
-			//--------------------------- °á°ú °ªÀÌ µµÂøÇÏ¸é --------------------------- //
+			//--------------------------- ê²°ê³¼ ê°’ì´ ë„ì°©í•˜ë©´ --------------------------- //
 			
 			
 			
-			// ls_code °¡ 2 ¶ó¸é ÇØ½Ã¸ÊÀ¸·Î ÀÌ¹ÌÁö °¡Á®¿À±â!
-			// Àå¼ÒÅ×ÀÌºí Á¶È¸ÇÏ·¯ Ãâ¹ß
+			// ls_code ê°€ 2 ë¼ë©´ í•´ì‹œë§µìœ¼ë¡œ ì´ë¯¸ì§€ ê°€ì ¸ì˜¤ê¸°!
+			// ì¥ì†Œí…Œì´ë¸” ì¡°íšŒí•˜ëŸ¬ ì¶œë°œ
 			if ( ls_code == 2 ) {
 				ArrayList<Thumbnail> spot = new ArrayList();
 
-				// Àå¼ÒµéÀÇ ½æ³×ÀÏÀ» ¹Ş¾Æ¿Ã °´Ã¼ ÇÊ¿ä
+				// ì¥ì†Œë“¤ì˜ ì¸ë„¤ì¼ì„ ë°›ì•„ì˜¬ ê°ì²´ í•„ìš”
 				HashMap<String, Object> map = new HashMap<>();
 				
-				// °á°ú¸¦ list °´Ã¼¿¡ ÀúÀå
+				// ê²°ê³¼ë¥¼ list ê°ì²´ì— ì €ì¥
 				map = service.selectThumnailOne(l_no2);
 				
-				// request¿¡ list °´Ã¼ ´ã¾Æ¼­ º¸³¿
+				// requestì— list ê°ì²´ ë‹´ì•„ì„œ ë³´ëƒ„
 				if ( map != null) {
-					request.setAttribute("list", map.get("list")); // ¸ÀÁı/¿©ÇàÁö Á¤º¸ ( spot )
-					request.setAttribute("list2", map.get("list2")); // »çÁø ( attach )
-					request.setAttribute("listHeri", map.get("listHeri")); // ¹®È­Àç Á¤º¸ ( Heritage )
-					request.setAttribute("lo_key", map.get("lo_key")); // Àå¼ÒandÅ°¿öµå Á¤º¸ (location and keyword)
+					request.setAttribute("list", map.get("list")); // ë§›ì§‘/ì—¬í–‰ì§€ ì •ë³´ ( spot )
+					request.setAttribute("list2", map.get("list2")); // ì‚¬ì§„ ( attach )
+					request.setAttribute("listHeri", map.get("listHeri")); // ë¬¸í™”ì¬ ì •ë³´ ( Heritage )
+					request.setAttribute("lo_key", map.get("lo_key")); // ì¥ì†Œandí‚¤ì›Œë“œ ì •ë³´ (location and keyword)
 					
 					
 					System.out.println(map.get("list"));
@@ -148,67 +148,67 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 
 			
 				
-			//----------------------------- ¹®È­ÀçÀÎ °æ¿ì API È£Ãâ -----------------------------------//
-			// ls_code°¡ 1(¹®È­Àç)ÀÎ °æ¿ì¿¡¸¸ ¾Æ·¡ ·ÎÁ÷ ¼öÇà
+			//----------------------------- ë¬¸í™”ì¬ì¸ ê²½ìš° API í˜¸ì¶œ -----------------------------------//
+			// ls_codeê°€ 1(ë¬¸í™”ì¬)ì¸ ê²½ìš°ì—ë§Œ ì•„ë˜ ë¡œì§ ìˆ˜í–‰
 			else if ( ls_code == 1 ) {
 			
-				// ¼­¹ö¿¡¼­ ¹®È­Àç Á¤º¸ °Ë»öÇÏ·¯ Ãâ¹ß
+				// ì„œë²„ì—ì„œ ë¬¸í™”ì¬ ì •ë³´ ê²€ìƒ‰í•˜ëŸ¬ ì¶œë°œ
 				
-				// °´Ã¼ ¹Ù±¸´Ï
+				// ê°ì²´ ë°”êµ¬ë‹ˆ
 				HashMap<String, Object> apis = null;
 				
-				// heritage °´Ã¼µéÀ» ÀúÀåÇÒ list
+				// heritage ê°ì²´ë“¤ì„ ì €ì¥í•  list
 				// HashMap<String, Object> list = new HashMap<>();	
 				
 				
-				// heritage °´Ã¼µéÀ» ÀúÀåÇÒ list
+				// heritage ê°ì²´ë“¤ì„ ì €ì¥í•  list
 				ArrayList<Heritage> listHeri = new ArrayList<>();	
-				// service °á°ú¸¦ ´ãÀ» °´Ã¼ »ı¼º (h_name, h_events, h_serial...)
+				// service ê²°ê³¼ë¥¼ ë‹´ì„ ê°ì²´ ìƒì„± (h_name, h_events, h_serial...)
 				Heritage heriName = new Heritage();
 
 				
-				// 1-2´Ü°è °Ô½Ã±Û ¼­ºñ½º °´Ã¼ »ı¼º
+				// 1-2ë‹¨ê³„ ê²Œì‹œê¸€ ì„œë¹„ìŠ¤ ê°ì²´ ìƒì„±
 				HeritageService serviceHeri = new HeritageService();
 
-				// 1-3´Ü°è °Ô½Ã±Û Á¶È¸ ¼­ºñ½º ½ÃÀÛ --> ¼­ºñ½º Go!
+				// 1-3ë‹¨ê³„ ê²Œì‹œê¸€ ì¡°íšŒ ì„œë¹„ìŠ¤ ì‹œì‘ --> ì„œë¹„ìŠ¤ Go!
 				listHeri = serviceHeri.selectName(spotName);
 				
 				
 			for(Heritage h : listHeri) {
 				
-				ccbaKdcd = h.getH_events(); // Á¾¸ñÄÚµå
-				ccbaAsno = h.getH_serial(); // ÁöÁ¤¹øÈ£
-				ccbaCtcd = h.getH_zipcode(); // ½ÃµµÄÚµå
+				ccbaKdcd = h.getH_events(); // ì¢…ëª©ì½”ë“œ
+				ccbaAsno = h.getH_serial(); // ì§€ì •ë²ˆí˜¸
+				ccbaCtcd = h.getH_zipcode(); // ì‹œë„ì½”ë“œ
 			}
 			
-			// 2´Ü°è °á°ú °ªÀ» °¡Áö°í ÀÌ¹ø¿¡´Â ¹®È­ÀçÃ» »ó¼¼°Ë»ö
+			// 2ë‹¨ê³„ ê²°ê³¼ ê°’ì„ ê°€ì§€ê³  ì´ë²ˆì—ëŠ” ë¬¸í™”ì¬ì²­ ìƒì„¸ê²€ìƒ‰
 			
-			// 2-1´Ü°è Äõ¸®½ºÆ®¸µÀ¸·Î º¸³¾ º¯¼ö¿¡ list¿¡¼­ »Ì¾Æ¿Â °á°ú °ª ³Ö±â (ÀÓ½Ã º¯¼ö »ç¿ëÇØ¾ß ÇÔ)
+			// 2-1ë‹¨ê³„ ì¿¼ë¦¬ìŠ¤íŠ¸ë§ìœ¼ë¡œ ë³´ë‚¼ ë³€ìˆ˜ì— listì—ì„œ ë½‘ì•„ì˜¨ ê²°ê³¼ ê°’ ë„£ê¸° (ì„ì‹œ ë³€ìˆ˜ ì‚¬ìš©í•´ì•¼ í•¨)
 
 
 			// Debug
-			System.out.println("°á°ú Á¶È¸ : " + ccbaKdcd + ccbaAsno + ccbaCtcd);
+			System.out.println("ê²°ê³¼ ì¡°íšŒ : " + ccbaKdcd + ccbaAsno + ccbaCtcd);
 			System.out.println(spotName);
 
-			// API È£Ãâ
+			// API í˜¸ì¶œ
 						try{
 							
 							while(true){
-								// parsingÇÒ url ÁöÁ¤(API Å° Æ÷ÇÔÇØ¼­)
+								// parsingí•  url ì§€ì •(API í‚¤ í¬í•¨í•´ì„œ)
 								// String callList = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?pageIndex="+pageIndex;
 								 String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName;
 								 // + "&ccbaMnm1=" + spotName
 								// String callImage = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd ;
 								
 								 //Debug
-								 System.out.println( "¿äÃ» URL : " + callDetail);
+								 System.out.println( "ìš”ì²­ URL : " + callDetail);
 								
 								DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 								DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 								Document doc = dBuilder.parse(callDetail);
 								
 								//Debug
-								System.out.println("call Api °á°ú : " + doc);
+								System.out.println("call Api ê²°ê³¼ : " + doc);
 								
 								// root tag 
 								doc.getDocumentElement().normalize();
@@ -217,11 +217,11 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 								System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 								System.out.println("Tag element :" + doc.getDocumentElement().getTagName());
 								
-								// ÆÄ½ÌÇÒ tag
+								// íŒŒì‹±í•  tag
 								NodeList nList = doc.getElementsByTagName("item");
 								
 								//Debug
-								System.out.println("ÆÄ½ÌÇÒ ¸®½ºÆ® ¼ö : "+ nList.getLength());
+								System.out.println("íŒŒì‹±í•  ë¦¬ìŠ¤íŠ¸ ìˆ˜ : "+ nList.getLength());
 							
 								
 								
@@ -236,20 +236,20 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 										
 										Element eElement = (Element) nNode;
 										
-										// heritage vo¸¦ ÀúÀåÇÒ °´Ã¼ 
+										// heritage voë¥¼ ì €ì¥í•  ê°ì²´ 
 										// ArrayList<Heritage> list3 = new ArrayList<>();
 										 Heritage heri = new Heritage();
 
-										// api·Î ¹ŞÀº Á¤º¸ ÀúÀå
-											heri.setH_events(getTagValue("ccbaKdcd", eElement)); // Á¾¸ñÄÚµå
-											heri.setH_serial(getTagValue("ccbaAsno", eElement)); // ÁöÁ¤¹øÈ£
-											heri.setH_zipcode(getTagValue("ccbaCtcd", eElement)); // ½ÃµµÄÚµå
-											heri.setH_name(getTagValue("ccbaMnm1", eElement)); // ¹®È­Àç¸í
-											// heri.setImageUrl(getTagValue("imageUrl", eElement)); // ÀÌ¹ÌÁö
+										// apië¡œ ë°›ì€ ì •ë³´ ì €ì¥
+											heri.setH_events(getTagValue("ccbaKdcd", eElement)); // ì¢…ëª©ì½”ë“œ
+											heri.setH_serial(getTagValue("ccbaAsno", eElement)); // ì§€ì •ë²ˆí˜¸
+											heri.setH_zipcode(getTagValue("ccbaCtcd", eElement)); // ì‹œë„ì½”ë“œ
+											heri.setH_name(getTagValue("ccbaMnm1", eElement)); // ë¬¸í™”ì¬ëª…
+											// heri.setImageUrl(getTagValue("imageUrl", eElement)); // ì´ë¯¸ì§€
 
 
 
-									// °´Ã¼ ¹Ù±¸´Ï¿¡ ÀúÀå
+									// ê°ì²´ ë°”êµ¬ë‹ˆì— ì €ì¥
 											listHeri.add(heri);
 									
 									 System.out.println(listHeri);
@@ -283,7 +283,7 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 			}
 					}	// main end
 	
-	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

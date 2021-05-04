@@ -38,7 +38,7 @@ public class ThumbnailDAO {
 	
 	//-------------------- �˻� HASH MAP���� ���� �� �޾ƿ��� ----------------//
 		// �α��� �ѷ����� ��� ��ȸ  // 0503 spot & heritage & location & keyword ���� �߰�
-			public HashMap<String, Object> selectList(Connection con) {
+			public HashMap<String, Object> selectListCollection(Connection con) {
 				// �ؽø� �غ�
 				HashMap<String, Object> map = new HashMap<>();
 				
@@ -71,21 +71,20 @@ public class ThumbnailDAO {
 						
 						
 						// ����, ������ ���� ����
-						t.setSpot_id(      rs.getInt("spot_id"));
+						t.setS_id(      rs.getInt("s_id"));
 						t.setL_no(      rs.getInt("l_no"));
-						t.setSpot_name(   rs.getString("spot_name"));
-						t.setSpot_tel(  rs.getString("spot_tel"));
-						t.setSpot_time(  rs.getString("spot_time"));
-						t.setSpot_location(  rs.getString("spot_location"));
-						t.setSpot_lat(  rs.getInt("spot_lat"));
-						t.setSpot_long(  rs.getInt("spot_long"));
+						t.setS_name(   rs.getString("s_name"));
+						t.setS_tel(  rs.getString("s_tel"));
+						t.setS_time(  rs.getString("s_time"));
+						t.setS_address(  rs.getString("address"));
+						t.setS_lat(  rs.getDouble("s_lat"));
+						t.setS_lng(  rs.getDouble("s_lng"));
 						t.setS_status(  rs.getString("s_status"));
-						t.setSpot_count(  rs.getInt("spot_count"));
+						t.setS_count(  rs.getInt("s_count"));
 						
 						
-						// ÷������ ���� ����
 						a.setA_name(rs.getString("a_name"));
-						a.setSpot_id(rs.getInt("spot_id"));
+						a.setS_id(rs.getInt("s_id"));
 						
 						list2.add(a);
 						
@@ -122,7 +121,10 @@ public class ThumbnailDAO {
 					e.printStackTrace();
 				} finally {
 					close(rs);
-					close(ps);			
+					close(ps);		
+				}
+				return map;
+			}
 
 
 

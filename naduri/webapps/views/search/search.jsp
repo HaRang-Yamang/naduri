@@ -5,7 +5,6 @@
 
 <%
 		ArrayList<Spot> list = (ArrayList<Spot>)request.getAttribute("list");
-		
 %>
 
 <!DOCTYPE html>
@@ -52,16 +51,17 @@
             <i class="fas fa-search" aria-hidden="true"></i>
         </div>
     </div>
-
-<!--<div id="map2"><img src="/naduri/assets/images/map.gif"></div> -->  
+    
     <section class="map_box">
         <!-- 지도를 표시할 div 입니다 -->
+        <% if(true) { %>
         <div id="map"> </div>
         
         </section>
 			
         <!-- hot keword -->
         <section class="main_body">
+        
             <div class="hot_keword">
             	<h2>검색 결과</h2>
                <div id="s_result"> <!--  검색 결과 불러오는 div -->
@@ -108,7 +108,18 @@
             
             </div>
         </div>
-       </section>		
+        <% } else { %>
+        	
+        	<div class='not_found'>
+        	<p class='not_found_message'> 
+        		   죄송합니다. <br>검색 결과를 찾을 수 없습니다.<br>
+        		   문화재, 음식점, 여행지 이름으로 검색해 주세요.</p>
+        	</div>
+        	
+        <% } %>
+       </section>
+       
+       		
 		<script>
 			$(function(){
 				// 자바 배열을 이용하여 positions 배열을 만드는 반복문

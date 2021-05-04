@@ -94,27 +94,14 @@ public class MemberService {
 		
 		con = getConnection();
 		
-		Member result1 = dao.selectMember(con, loginMember);
-		ArrayList<Keyword> result2 = null;
-		HashMap<String, Object> map = new HashMap<String, Object>();
-
-		if( result1 != null ) {
-			int m_no = dao.selectMno(con, loginMember.getM_id());
-			
-			if( m_no > 0 ) {
-				
-				result2 = dao.selectKeyword(con, m_no);
-
-			}
-		}
+		HashMap<String, Object> mapMember = dao.selectMember(con, loginMember);
+		
 		close(con);
 		
-		map.put("member", result1);
-		map.put("keyword", result2);
-		
-		return map;
-		
+		return mapMember;
+
 	}
+	
 
 	
 	// 회원 수정

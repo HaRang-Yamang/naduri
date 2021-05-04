@@ -118,7 +118,7 @@ $("#memberForm").submit(function(event){
 		$("#m_pwd1").val() == "" ||
 		$("#m_id").val() == "" ||
 		$("#m_name").val() == "" ||
-		($("#gender_F").val() || $("#gender_M").val() == "") ||
+
 		$("#m_birth").val() == "" ||
 		$("#m_phone").val() == "" ||
 		$("#m_email").val() == "" ||

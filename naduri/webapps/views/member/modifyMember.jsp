@@ -21,7 +21,7 @@
 	<%@ include file="../common/header.jsp" %>
 	
 	<section>
-	
+	<% for(Member me : listM){ %>
         <div class="joinArea">
 
             <!-- 회원 정보 수정 타이틀 영역-->
@@ -46,7 +46,7 @@
                                             <h4><span class="red visiNone">*</span>아이디</h4>
                                             </td>
                                         <td>
-                                        	<%= m.getM_id() %>
+                                        	<%= me.getM_id() %>
                                         </td>
                                     </tr>
                                 <!-- PASSWORD -->
@@ -74,7 +74,7 @@
                                         <h4><span class="red">*</span>이름</h4>
                                     </td>
                                     <td>
-                                    	<%= m.getM_name() %>
+                                    	<%= me.getM_name() %>
                                    	</td>
                                 </tr>
                                 <!-- GENDER -->
@@ -93,7 +93,7 @@
                                         <h4><span class="red">*</span>생년월일</h4>
                                     </td>
                                     <td class="join_birth">
-                                        <%= m.getM_birth() %>
+                                        <%= me.getM_birth() %>
                                     </td>
                                 </tr>
                                 <!-- PHONE -->
@@ -149,7 +149,7 @@
                                         <h4><span class="red visiNone">*</span>주소</h4>
                                     </td>
                                     <td>
-                                    	<%= m.getM_address() %>
+                                    	<%= me.getM_address() %>
                                     </td>
                                 </tr>
                                 <tr>
@@ -298,22 +298,35 @@
             </div>
 
         </div>
-        
-	</section>		
+
+	</section>
 
 	<%@ include file="../common/footer.jsp" %>
 	
 	<script type="text/javascript" defer src="/naduri/assets/js/member.js"></script>
-	<script type="text/javascript" defer src="/naduri/assets/js/interest.js"></script>
 	<script>
 	// 관심사 값 받아오기
-	
+	var keywords =
+		<% for(Keyword k : listK) {
+			out.print(k.getKeyword_id() + ", ");
+		}
+			%>;
 
-	console.log('<%= m.getM_id() %>');
+	$('input:checkbox').each(function(){
+		<% for(Keyword k : listK){ %>
+			if($(this).val() == <%= k.getKeyword_id()%>){
+				$(this).prop('checked', true);
+			} else{
+				$(this).prop('checked', false);
+			}
+		<%} %>
+	});
+
+	
 	// 성별 값 받아오기
 	$('input:radio').each(function(){
 
-		if($(this).val() == '<%= m.getM_gender() %>' ) {
+		if($(this).val() == '<%= me.getM_gender() %>' ) {
 			$(this).prop('checked', true);
 		} else {
 			$(this).prop('checked', false);
@@ -328,6 +341,7 @@
 
 	
 	</script>
+	<% } %>
 
 </body>
 </html>

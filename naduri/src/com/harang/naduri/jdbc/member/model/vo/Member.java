@@ -19,9 +19,65 @@ public class Member implements Serializable{
    private String m_phone;
    private int m_auth;
    private String m_status;
-
    
-   // 2. 생성자
+   
+   //
+   private int keyword_id;
+   private String keyword;
+   
+   
+//
+   public int getKeyword_id() {
+	return keyword_id;
+}
+
+
+
+
+public void setKeyword_id(int keyword_id) {
+	this.keyword_id = keyword_id;
+}
+
+
+
+
+public String getKeyword() {
+	return keyword;
+}
+
+
+
+
+public void setKeyword(String keyword) {
+	this.keyword = keyword;
+}
+
+
+
+
+//
+   public Member(int m_no, String m_id, String m_pwd, String m_name, String m_birth, String m_gender, String m_address,
+		String m_email, String m_phone, int m_auth, String m_status, int keyword_id, String keyword) {
+	super();
+	this.m_no = m_no;
+	this.m_id = m_id;
+	this.m_pwd = m_pwd;
+	this.m_name = m_name;
+	this.m_birth = m_birth;
+	this.m_gender = m_gender;
+	this.m_address = m_address;
+	this.m_email = m_email;
+	this.m_phone = m_phone;
+	this.m_auth = m_auth;
+	this.m_status = m_status;
+	this.keyword_id = keyword_id;
+	this.keyword = keyword;
+}
+   
+   
+   
+
+// 2. 생성자
    public Member() {}
 
 		// 전체용
@@ -88,7 +144,8 @@ public class Member implements Serializable{
 	public String toString() {
 		return "Member [m_no=" + m_no + ", m_id=" + m_id + ", m_pwd=" + m_pwd + ", m_name=" + m_name + ", m_birth="
 				+ m_birth + ", m_gender=" + m_gender + ", m_address=" + m_address + ", m_email=" + m_email
-				+ ", m_phone=" + m_phone + ", m_auth=" + m_auth + ", m_status=" + m_status + "]";
+				+ ", m_phone=" + m_phone + ", m_auth=" + m_auth + ", m_status=" + m_status + ", keyword_id="
+				+ keyword_id + ", keyword=" + keyword + "]";
 	}
 
 	public int getM_no() {

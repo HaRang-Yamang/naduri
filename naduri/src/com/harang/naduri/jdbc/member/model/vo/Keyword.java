@@ -1,7 +1,7 @@
 package com.harang.naduri.jdbc.member.model.vo;
 
 import java.io.Serializable;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class Keyword implements Serializable {
 
@@ -9,7 +9,7 @@ public class Keyword implements Serializable {
 
 	private int m_no;
 	private int keyword_id;
-	//private ArrayList<Keyword> Keylist;
+	private ArrayList<Keyword> Keylist;
 	
 	public Keyword() {}
 
@@ -23,6 +23,14 @@ public class Keyword implements Serializable {
 		super();
 		this.m_no = m_no;
 		this.keyword_id = keyword_id;
+	}
+	
+
+	public Keyword(int m_no, int keyword_id, ArrayList<Keyword> keylist) {
+		super();
+		this.m_no = m_no;
+		this.keyword_id = keyword_id;
+		Keylist = keylist;
 	}
 
 	@Override
@@ -44,6 +52,14 @@ public class Keyword implements Serializable {
 
 	public void setM_no(int m_no) {
 		this.m_no = m_no;
+	}
+
+	public ArrayList<Keyword> getKeylist() {
+		return Keylist;
+	}
+
+	public void setKeylist(ArrayList<Keyword> keylist) {
+		Keylist = keylist;
 	}
 	
 	

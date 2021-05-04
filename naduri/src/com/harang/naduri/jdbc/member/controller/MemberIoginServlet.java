@@ -2,8 +2,6 @@ package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.harang.naduri.jdbc.member.model.service.MemberService;
-import com.harang.naduri.jdbc.member.model.vo.Keyword;
-import com.harang.naduri.jdbc.member.model.vo.Member;
+import com.harang.naduri.jdbc.member.model.vo.*;
 
 /**
  * Servlet implementation class MemberIoginServlet
@@ -55,8 +52,10 @@ public class MemberIoginServlet extends HttpServlet {
 			// 로그인 성공!
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("member", mapMember.get("member"));
-			session.setAttribute("keywords", mapMember.get("keyword"));
+			session.setAttribute("listM", mapMember.get("listM"));
+			session.setAttribute("listK", mapMember.get("listK"));
+			
+			System.out.println(mapMember.get("listK"));
 			
 			response.sendRedirect("index.do");
 		} else {

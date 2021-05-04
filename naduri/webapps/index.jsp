@@ -129,7 +129,7 @@
                     <div class="spotInfo">
                     <h4><%=l.getLocal_name() %></h4>
                     
-                    <% for( int z = 0 ; z < l.getKeyword().size() ; z++ ) { %>
+                    <% for( int z = 0 ; z < l.getKeyword().length() ; z++ ) { %>
                     <p>#<%=l.getKeyword() %></p>
                      <% } %>
                      

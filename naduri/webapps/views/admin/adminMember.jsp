@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="com.harang.naduri.jdbc.admin.model.vo.*, java.util.*"%>    
+<%@ page import="com.harang.naduri.jdbc.member.model.vo.*, java.util.*"%>    
  
 <%
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");

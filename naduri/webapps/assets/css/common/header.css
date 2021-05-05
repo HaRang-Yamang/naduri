@@ -9,47 +9,49 @@ header{
 header .navbar {
     width: 1000px;
 }
+.headerArea{
+ 	width:100px;
+ 	margin-left:0px;
+}
+
+/* 나드리 메인 로고 */
 .logo{
 	width: 100px;
 	float: left;
 	margin-top:10px;
 }
-header .profile {
+/* 우측 사람 아이콘 */
+header .navbar .profile {
     transform: translateY(15px);
     width : 36px;
-    z-index : 1;
     right:0px;
     float:right;
-   
 }
 
-header .profile img{
-	cursor : pointer;
-}
 /* user menu */
-header .profile img{
+header .navbar .profile img{
     cursor : pointer;
 }
-header .user_menu {
+header .navbar .user_menu {
+	width: 150px;
     position: absolute;
     top: 80px;
     right: -10px;
     padding: 10px 20px;
     background: var(--white-color);
-    width: 150px;
-    box-sizing: 0 5px 25px rgba(0,0,0, 0.1);
+    box-shadow: 0 5px 25px rgba(0,0,0, 0.1);
     border-radius: 15px;
+    transform: translate(7px, -17px);
     transition: 0.5s;
     visibility: hidden;
-    opacity: 0;
-    transform: translate(7px, -17px);
-
+    opacity: 0;   
 }
-header .user_menu.active {
+header .navbar .user_menu.active {
     visibility: visible;
     opacity: 1;
+    z-index : 1200;
 }
-header .user_menu::before {
+header .navbar .user_menu::before {
     content: '';
     position: absolute;
     top: -5px;
@@ -59,7 +61,7 @@ header .user_menu::before {
     background: var(--light-gray);
     transform: rotate(45deg);
 }
-header .user_menu h3 {
+header .navbar .user_menu h3 {
     width: 100%;
     text-align: center;
     font-size: 18px;
@@ -68,12 +70,12 @@ header .user_menu h3 {
     color: var(--black-color);
     line-height: 1.2em;
 }
-header .user_menu h3 span {
+header .navbar .user_menu h3 span {
     font-size: 12px;
     color: var(--gray-color);
     font-weight: 400;
 }
-header .user_menu ul li{
+header .navbar .user_menu ul li{
     font-size: 12px;
     list-style: none;
     padding: 5px 0;
@@ -82,6 +84,9 @@ header .user_menu ul li{
     align-items: center;
     justify-content: center;
 
+}
+header .navbar .user_menu ul li:last-child{
+z-index : 100;
 }
 header .user_menu li a{
     font-size : 12px;
@@ -104,11 +109,15 @@ header .user_menu ul li a {
     font-weight: 500;
     transition: 0.5s;
 }
-header .user_menu ul li a:hover {
+header .user_menu ul li a:hover,
+header .logout_btn:hover {
     color: var(--main-color);
 }
 
-.headerArea{
- 	width:100px;
- 	margin-left:0px;
+
+/* 로그 아웃 버튼 */
+.logout_btn{
+	border : 0;
+	background : transparent;
+	cursor : pointer;
 }

@@ -25,8 +25,8 @@
             <div class="container">
                 <p class="id_notice"><%= m.getM_name() %>님의 아이디는 아래와 같습니다.</p>
                 <p class="id_result"><%= m.getM_id() %></p>
-                <button class="find_pw_btn"><a href="findResultPwd.jsp">비밀번호 찾기</a></button>
-                <button class="login_btn"><a href="../login.jsp">로그인 하기</a></button>
+                <button class="find_pw_btn" type="button" onclick="location.href='/naduri/views/find/findIdPwd.jsp'">비밀번호 바꾸기</button>
+                <button class="login_btn" type="button" onclick="location.href='/naduri/views/login.jsp'">로그인 하기</button>
             </div>
         </div>	
 	

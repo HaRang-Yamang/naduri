@@ -6,6 +6,7 @@ import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +37,8 @@ public class MemberIoginServlet extends HttpServlet {
 		
 		String m_id = request.getParameter("m_id");
 		String m_pwd = request.getParameter("m_pwd");
+		// 로그인 상태 유지
+		String saveId = request.getParameter("saveId");
 		
 		System.out.println("서블릿 : " + m_id + "/" + m_pwd);
 		
@@ -53,14 +56,25 @@ public class MemberIoginServlet extends HttpServlet {
 		
 		if(mapMember != null || loginMember!=null) {
 			// 로그인 성공!
+			System.out.println("로그인 성공!");
 			
+			// 아이디 저장 여부 쿠키로 저장하기
+			if(saveId != null) {
+				Cookie c = new Cookie("saved", m_id);
+				c.setMaxAge(60*60*24*7);
+				response.addCookie(c);
+			} else {
+				Cookie c = new Cookie("savedId", m_id);
+				c.setMaxAge(0);
+				response.addCookie(c);
+			}
 			HttpSession session = request.getSession();
 			session.setAttribute("listM", mapMember.get("listM"));
 			session.setAttribute("listK", mapMember.get("listK"));
 			
 			session.setAttribute("member", loginMember);
 			
-			System.out.println(mapMember.get("listK"));
+			//System.out.println(mapMember.get("listK"));
 			
 			response.sendRedirect("/naduri");
 		} else {

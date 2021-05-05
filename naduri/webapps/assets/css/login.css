@@ -5,59 +5,76 @@
     padding-bottom : 150px;
 }
 .container {
-    width: 355px;
-    height: 344px;
-    background: var(--light-gray);
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+	width : 354px;
+	height : 340px;
+	background : var(--light-gray);
+	position : relative;
+	box-shadow : 5px 5px 10px 1px rgba(0,0,0,0.2);
 }
 #login_title {
     /* margin-top: 45px; */
-    padding-top: 45px;
-    padding-bottom: 50px;
+    padding-top: 35px;
+    padding-bottom: 45px;
     text-align: center;
     font-size: 21pt;
     font-weight: 700;
 }
-#join {
-    margin-top: 10px;
-    margin-left: 10px;
-    text-align: center;
-    display: block;
+
+/* input 영역 */
+.loginArea input:nth-child(n+2){
+	margin-top : 10px;
 }
-.input_box {
-    width: 300px;
-    height: 40px;
-    border: 1px solid var(--gray-color);
-    display: block;
-    margin-bottom: 5px;
-    padding-left: auto;
-    padding-right: auto;
+
+.loginArea input[type=text],
+.loginArea input[type=password]{
+	width : 298px;
+	height : 38px;
+	display : block;
+	padding : 5px;
+	border : 1px solid var(--gray-color);
 }
-.inp_text {
-    width: 100%;
-    height: 100%;
-    border: none;
-    padding-left: 10px;
-    font-size: 12pt;
-}
+
+/* 로그인 상태 유지 // 아이디 찾기 & 비밀번호 바꾸기 */
 .keep_and_find {
     width: 300px;
     font-size: 12px;
     position: relative;
-    padding: 8px 1px 1px 1px;
+    padding: 15px 2px 15px 2px;
 }
 .login_check {
-    position: relative;
-    display: block;
+    display : inline-block;
+    position : relative;
 }
-.find_acc {
-    position: absolute;
-    top: 8px;
-    right: 1px;
-    float: left;
+.findIdPwd_Area{
+	display : inline-block;
+	position : absolute;
+	right : 0px;
+}
+.findIdPwd{
+	border : none 0;
+	background : transparent;
+	cursor : pointer;
+}
+
+.login_btn{
+	display : block;
+	border : 0;
+	width : 298px;
+	height : 50px;
+	background : var(--main-color);
+	color : white;
+	font-size : 15px;
+	text-align : center;
+	cursor : pointer;
+}
+
+.join{
+	border : none 0;
+	background : transparent;
+	cursor : pointer;
+	margin-top : 10px;
+    text-align: center;
+    display: block;
 }
 #login_btn {
     width: 300px;

@@ -174,6 +174,7 @@ public class MemberDAO {
 				keyword = new Keyword();
 				keyword.setM_no(rs.getInt("m_no"));				
 				keyword.setKeyword_id(rs.getInt("keyword_id"));
+				keyword.setKeyword(rs.getString("keyword"));
 
 				listK.add(keyword);
 				

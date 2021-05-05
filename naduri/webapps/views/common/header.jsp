@@ -43,7 +43,7 @@
                 <ul>
                     <li><i class="far fa-user-circle"></i><a href="/naduri/myPage.do">내 기행록</a></li>
                     <li><i class="far fa-edit"></i><a href="/naduri/views/member/modifyMember.jsp">회원정보 수정</a></li>
-                    <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
+                    <li><i class="fas fa-sign-out-alt"></i><button type="button" class="logout_btn" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
 

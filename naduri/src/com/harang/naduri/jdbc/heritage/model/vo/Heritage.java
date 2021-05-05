@@ -31,8 +31,33 @@ public class Heritage implements Serializable{
 	
 	private String longitude; // 경도
 	private String latitude; // 위도
+	
+	// 좌표 설정용 위도 경도 변수 추가 설정
+	private Double h_lat;
+	private Double h_lng;
+	
 
 	
+	public Double getH_lat() {
+		return h_lat;
+	}
+
+
+	public void setH_lat(Double h_lat) {
+		this.h_lat = h_lat;
+	}
+
+
+	public Double getH_lng() {
+		return h_lng;
+	}
+
+
+	public void setH_lng(Double h_lng) {
+		this.h_lng = h_lng;
+	}
+
+
 	public Heritage() {	}
 	
 	
@@ -57,9 +82,28 @@ public class Heritage implements Serializable{
 		this.h_name = h_name;
 	}
 
+	
+	
+	
 
 	
 	
+	public Heritage(int h_id, int l_no, String h_events, String h_name, String h_zipcode, String h_serial,
+			String h_status, int h_count, Double h_lat, Double h_lng) {
+		super();
+		this.h_id = h_id;
+		this.l_no = l_no;
+		this.h_events = h_events;
+		this.h_name = h_name;
+		this.h_zipcode = h_zipcode;
+		this.h_serial = h_serial;
+		this.h_status = h_status;
+		this.h_count = h_count;
+		this.h_lat = h_lat;
+		this.h_lng = h_lng;
+	}
+
+
 	public Heritage(int h_id, int l_no, String h_events, String h_serial, String h_zipcode, String h_status,
 			int h_count, String h_name, String ccmaName, String gcodeName, String ccbaAsdt, String ccbaLcad, String ccceName,
 			String ccbaPoss, String ccbaAdmin, String imageUrl, String content, String longitude, String latitude) {
@@ -90,12 +134,15 @@ public class Heritage implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Heritage [h_id=" + h_id + ", l_no=" + l_no + ", h_events=" + h_events + ", h_serial=" + h_serial
-				+ ", h_zipcode=" + h_zipcode + ", h_status=" + h_status + ", h_count=" + h_count + ", h_name=" + h_name + ", ccmaName="
-				+ ccmaName + ", gcodeName=" + gcodeName + ", ccbaAsdt=" + ccbaAsdt + ", ccbaLcad=" + ccbaLcad
-				+ ", ccceName=" + ccceName + ", ccbaPoss=" + ccbaPoss + ", ccbaAdmin=" + ccbaAdmin + ", imageUrl="
-				+ imageUrl + ", content=" + content + ", longitude=" + longitude + ", latitude=" + latitude + "]";
+		return "Heritage [h_id=" + h_id + ", l_no=" + l_no + ", h_events=" + h_events + ", h_name=" + h_name
+				+ ", h_zipcode=" + h_zipcode + ", h_serial=" + h_serial + ", h_status=" + h_status + ", h_count="
+				+ h_count + ", ccmaName=" + ccmaName + ", gcodeName=" + gcodeName + ", ccbaAsdt=" + ccbaAsdt
+				+ ", ccbaLcad=" + ccbaLcad + ", ccceName=" + ccceName + ", ccbaPoss=" + ccbaPoss + ", ccbaAdmin="
+				+ ccbaAdmin + ", imageUrl=" + imageUrl + ", content=" + content + ", longitude=" + longitude
+				+ ", latitude=" + latitude + ", h_lat=" + h_lat + ", h_lng=" + h_lng + "]";
 	}
+	
+	
 	
 	
 

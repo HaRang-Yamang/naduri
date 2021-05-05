@@ -262,16 +262,24 @@ public ArrayList<Heritage> selectHeriList(){
 			con = getConnection();
 		
 			int result = 0;
-			// 3. 위에서 찾은 l_no와 Heritage 객체를 함께 insert Heritage
-			result = dao.insertHeritageLong(con, herihang);
+				// 3. 위에서 찾은 l_no와 Heritage 객체를 함께 insert Heritage
+				result = dao.insertHeritageLong(con, herihang);
+							
+				commit(con);
+
+				close(con);
+				
+				return result;
+		}
+
+		public ArrayList<Heritage> selectHerList() {
+			con = getConnection();
 			
-		
-			commit(con);
-
-
+			ArrayList<Heritage> hlist = dao.selectHeriList(con);
+			
 			close(con);
 			
-			return result;
+			return hlist;
 		}
 
 

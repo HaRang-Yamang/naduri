@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*" %>
+<%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*, com.harang.naduri.jdbc.heritage.model.vo.*" %>
 
 <%
-		ArrayList<Spot> list = (ArrayList<Spot>)request.getAttribute("list");
+		ArrayList<Spot> slist = (ArrayList<Spot>)request.getAttribute("slist");
+		ArrayList<Heritage> hlist = (ArrayList<Heritage>)request.getAttribute("hlist");
 %>
 
 <!DOCTYPE html>
@@ -96,7 +97,8 @@
             <div class="small-container" id="thumbloop">
             
           	<!-- 장소 개수만큼 장소 정보 썸네일(div) 생성하는 반복문  -->
-			<% for(Spot p : list) { %>
+			<!-- 
+			<% for(Spot p : slist) { %>
 			        <div class="row">    
 		            	<div class="hotSpot date">
 		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">
@@ -107,7 +109,7 @@
 		           		</div>
 		            </div>         			
           	<% } %>
-		
+		 	-->
             
             </div>
         </div>
@@ -130,7 +132,7 @@
 				// 자바 배열을 이용하여 positions 배열을 만드는 반복문
 				var positions = [
 						<%
-						for(Spot s : list){
+						for(Spot s : slist){
 							out.println("{ content : '"+"<div class="+'"'+"lmark"+'"' +" id="+ '"'+s.getL_no()+'"'+
 									"style="+'"'+"text-align:center; width:150px;"+'"' +
 									
@@ -142,7 +144,7 @@
 			
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 			    mapOption = { 
-			        center: new kakao.maps.LatLng(<%= list.get(0).getS_lat() +", " + list.get(0).getS_lng()%>), // 지도의 중심좌표(제주향교])
+			        center: new kakao.maps.LatLng(<%= slist.get(0).getS_lat() +", " + slist.get(0).getS_lng()%>), // 지도의 중심좌표(제주향교])
 			        level: 4 // 지도의 확대 레벨
 			        
 			    };
@@ -224,7 +226,7 @@
 							var snameArr = [];
 							
 							
-							<% for(Spot s : list) { %>
+							<% for(Spot s : slist) { %>
 								
 							slatArr.push(<%= s.getS_lat() %>);
 							slngArr.push(<%= s.getS_lng() %>);
@@ -242,7 +244,7 @@
 									{	
 									console.log(snameArr[i]);
 									 
-									$('#thumbloop').html( $('#thumbloop').html() +
+									$('#thumbloop').html($('#thumbloop').html() +
 											
 											'<div class="row">'+ 
 											   '<div class="hotSpot date">'+

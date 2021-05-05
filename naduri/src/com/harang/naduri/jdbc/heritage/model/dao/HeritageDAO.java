@@ -350,7 +350,7 @@ public class HeritageDAO {
 	
 	// 전체 문화재 검색
 	public ArrayList<Heritage> selectHeriList(Connection con) {
-		ArrayList<Heritage> heriList = new ArrayList<>();
+		ArrayList<Heritage> hlist = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -362,9 +362,7 @@ public class HeritageDAO {
 				ps = con.prepareStatement(sql);
 
 				rs = ps.executeQuery();
-//				 Debug
-//				System.out.println("쿼리문 실행 결과 : " + rs);
-				
+
 				while (rs.next()) {
 					Heritage h = new Heritage();
 
@@ -374,8 +372,12 @@ public class HeritageDAO {
 					h.setH_name(rs.getString("h_name"));
 					h.setH_zipcode(rs.getString("h_zipcode"));
 					h.setH_serial(rs.getString("h_serial"));
+					h.setH_status(rs.getString("h_status"));
+					h.setH_count(rs.getInt("h_count"));
+					h.setH_lat(rs.getDouble("h_lat"));
+					h.setH_lng(rs.getDouble("h_lng"));
 
-					heriList.add(h);
+					hlist.add(h);
 
 				}
 				
@@ -383,7 +385,13 @@ public class HeritageDAO {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}		return heriList;
+			} finally {
+				close(rs);
+				close(ps);
+			}
+			
+			
+			return hlist;
 	}
 
 

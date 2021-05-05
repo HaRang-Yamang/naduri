@@ -78,7 +78,7 @@ public class testApi extends HttpServlet {
 			
 			heriList = serviceHeri.selectHeriList();
 			
-
+			System.out.println(heriList);
 			
 			for ( Heritage h : heriList ) {
 				
@@ -92,9 +92,9 @@ public class testApi extends HttpServlet {
 			
 
 
-			// 1-3단계 게시글 조회 서비스 시작 --> 서비스 Go!
-			//listHeri = serviceHeri.selectName(spotName);
-			
+				// 1-3단계 게시글 조회 서비스 시작 --> 서비스 Go!
+				//listHeri = serviceHeri.selectName(spotName);
+				
 
 
 		// 2단계 결과 값을 가지고 이번에는 문화재청 상세검색

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.harang.naduri.jdbc.heritage.model.service.HeritageService;
+import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.spot.model.service.SpotService;
 import com.harang.naduri.jdbc.spot.model.vo.Spot;
 
@@ -35,16 +37,32 @@ public class SelectResult extends HttpServlet {
 		response.setContentType("UTF-8");
 		
 		// Spot 목록 처리하는 변수 
-		ArrayList<Spot> list = new ArrayList<>();		
-		SpotService service = new SpotService();
+		ArrayList<Spot> slist = new ArrayList<>();		
+		SpotService sservice = new SpotService();
 				
-		list = service.selectList();
+		slist = sservice.selectList();
 		
-		System.out.println("list : " + list);
+		System.out.println("slist : " + slist);
 		
-		request.setAttribute("list", list);
+		request.setAttribute("slist", slist);
 		
 		request.getRequestDispatcher("views/search/search.jsp").forward(request, response);
+		
+		
+		
+		
+		// Heritage 목록 처리하는 변수
+		ArrayList<Heritage> hlist = new ArrayList<>();
+		HeritageService hservice = new HeritageService();
+		
+		hlist = hservice.selectHerList();
+		
+		System.out.println("hlist : " + hlist);
+		
+		
+		request.setAttribute("hlist", hlist);
+		request.getRequestDispatcher("views/search/search.jsp").forward(request, response);
+
 		
 		
 		

@@ -72,5 +72,50 @@ public class SpotService {
 		return result;
 	}
 	
+	//관리자페이지 맛집데이터 업데이트 부분
+	public int FoodUpdateList(int s_id, String s_status) {
+		con = getConnection();
+		
+		int result = 0;
+		
+		//만약 m_status가 y이면 n으로 바꾸고
+		// else if m_status가 n이라면 y로 바꿔라
+		if(s_status.equals("Y")) {
+			s_status = "N";
+		} else {
+			s_status = "Y";
+		}
+		result = dao.foodUpdateList(con, s_id, s_status);
+		
+		 if(result > 0) commit(con);
+		 else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	//관리자페이지 여행지 데이터 업데이트 부분
+	public int SpotUpdateList(int s_id, String s_status) {
+		con = getConnection();
+		
+		int result = 0;
+		
+		//만약 m_status가 y이면 n으로 바꾸고
+		// else if m_status가 n이라면 y로 바꿔라
+		if(s_status.equals("Y")) {
+			s_status = "N";
+		} else {
+			s_status = "Y";
+		}
+		result = dao.foodUpdateList(con, s_id, s_status);
+		
+		 if(result > 0) commit(con);
+		 else rollback(con);
+		
+		close(con);
+		
+		return result;
+	}
 	
 }

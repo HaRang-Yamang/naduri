@@ -31,9 +31,17 @@
 <script defer src="/naduri/assets/js/header.js"></script>
 <title>나드리</title>
 <style>
+	#m_btn_ban {
+		width : 100px;
+	}
+	.table_area {
+    width: 850px;
+    height: auto;
+	}
 	#m_btn_ban{
 	cursor : pointer;
 	}
+
 	#p_btn {
 		background-color : #A5B874;
 		border-radius: 5px;
@@ -74,28 +82,27 @@
                         <td id="her_no"><%= hh.getH_id() %></td>
                         <td id="her_id"><%= hh.getH_name() %></td>
                         <td id="her_status"><%= hh.getH_status() %></td>
-                        <td id="her_table_btn">
+             			<td id="her_table_btn">
                             <div class="her_btn_area">
-                                <button id="her_update" onclick="goUpdate();" style="cursor : pointer;">데이터 수정</button>
+                                <button id="m_btn_ban">데이터 수정</button>
                             </div>
                         </td>
-                        <td id="her_table_btn">
-                            <div class="her_btn_area">
-                                <button id="her_delete" onclick="deleteDate(<%= h.getH_id() %>);" style="cursor : pointer;">데이터 삭제</button>
+                        <td>
+                            <div class="btn_area">
+                            <% if( hh.getH_status().equals("Y")) { %>
+                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= hh.getH_id() %>,'<%= hh.getH_status() %>')">데이터삭제</button>
+                            <% } else { %>
+                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= hh.getH_id() %>,'<%= hh.getH_status() %>')">삭제취소</button>
+                            <% } %>
                             </div>
                         </td>
                     </tr>
-                    <% } %>
+               		<% } %>
+               	
                 </table>
-                
                 <script>
-                	function goUpdate() {
-                		location.href='/naduri/updateHeritage.ad?h_id=' + <%= h.getH_id() %>;
-                	}
-                	
-                	function deleteDate(h_id) {
-                		
-                		location.href='/naduri/deleteHeritage.ad?h_id='+h_id;
+                	function banMember(h_id, h_status) {
+                		location.href = '/naduri/updateHeritage.ad?h_id='+ h_id + '&h_status=' + h_status;
                 	}
                 </script>
                 

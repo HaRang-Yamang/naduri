@@ -321,29 +321,32 @@ public class HeritageDAO {
 		return result;
 	}
 
-	public int deletHeritage(Connection con, int h_id) {
-
+	// 관리자페이지 heritage data 업데이트 부분
+	public int memberUpdateList(Connection con, int h_id, String h_status) {
 		int result = 0;
 		PreparedStatement ps = null;
-
-		String sql = prop.getProperty("deleteHeritage");
-
+		
+		String sql = prop.getProperty("adminUpdateHeritage");
+		
 		try {
 			ps = con.prepareStatement(sql);
-
-			ps.setInt(1, h_id);
-
+			
+			ps.setString(1, h_status);
+			ps.setInt(2, h_id);
+			
 			result = ps.executeUpdate();
-
+			
+		
+			
 		} catch (SQLException e) {
-
+			
 			e.printStackTrace();
 		} finally {
+			
 			close(ps);
 		}
-
+		
 		return result;
-
 	}
 
 }

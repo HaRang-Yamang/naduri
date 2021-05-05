@@ -26,7 +26,7 @@
             <img src="/naduri/assets/images/header/profile.png" alt="로그인" >
             
             <!-- profile menu-->
-        <% if ( listM == null) { %>
+        <% if ( m == null) { %>
             <div class="user_menu">
 
                 <h3><span>로그인이<br> 필요합니다</span></h3>
@@ -35,25 +35,32 @@
                     <li><i class="fas fa-sign-out-alt"></i><a href="/naduri/views/login.jsp">로그인</a></li>
                 </ul>
             </div>
-		<% } else { %>
-			<% for(Member me : listM){ %>
+		<% } else if( m.getM_auth() == 1){ %>
 			<div class="user_menu">
 
-                <h3><%= me.getM_name() %>님<br><span>일반회원</span></h3>
+                <h3><%= m.getM_name() %>님<br><span>일반회원</span></h3>
                 <ul>
                     <li><i class="far fa-user-circle"></i><a href="/naduri/myPage.do">내 기행록</a></li>
-                    <li><i class="far fa-edit"></i><a href="/naduri/views/member/modifyMember.jsp">회원정보 수정</a></li>
+                    <li><i class="far fa-edit"></i><a href="/naduri/memberList.ad">회원정보 수정</a></li>
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" class="logout_btn" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
+           <% } else if ( m.getM_auth() == 0 ) { %>
 
-           <script>
+                  			<div class="user_menu">
+
+                <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>
+                <ul>
+                    <li><i class="far fa-edit"></i><a href="/naduri/views/admin/adminMember.jsp">ㄱㄹㅈ page</a></li>
+                    <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
+                </ul>
+            </div>
+        <% }  %>
+            <script>
            	function logout(){
            		location.href='/naduri/logout.do';
            	}
-           </script>
-           <% } %>
-        <% } %>
+           </script>          
         </div>
 
     </nav>

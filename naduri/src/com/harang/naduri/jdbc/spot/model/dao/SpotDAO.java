@@ -232,6 +232,35 @@ public class SpotDAO {
 		
 		return result;
 	}
-	
+
+
+
+	//관리자페이지 맛집데이터 업데이트 부분
+	public int foodUpdateList(Connection con, int s_id, String s_status) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("adminUpdateFood");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, s_status);
+			ps.setInt(2, s_id);
+			
+			result = ps.executeUpdate();
+			
+		
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+		}
+		
+		return result;
+	}
 
 }

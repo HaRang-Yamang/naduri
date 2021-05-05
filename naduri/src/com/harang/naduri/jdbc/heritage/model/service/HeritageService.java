@@ -222,22 +222,23 @@ public class HeritageService {
 			return result;
 		}
 
-
-		// delete Adimin Heritage
-		public int deleteHeritage(int h_id) {
-			
+		//관리자페이지 문화재 데이터 업데이트 부분
+		public int HeritageUpdateList(int h_id, String h_status) {
 			con = getConnection();
 			
+			int result = 0;
 			
-			int result = dao.deletHeritage(con, h_id);
-			
-			
-			if ( result > 0) {
-				commit(con);
-				
+			//만약 m_status가 y이면 n으로 바꾸고
+			// else if m_status가 n이라면 y로 바꿔라
+			if(h_status.equals("Y")) {
+				h_status = "N";
 			} else {
-				rollback(con);
+				h_status = "Y";
 			}
+			result = dao.memberUpdateList(con, h_id, h_status);
+			
+			 if(result > 0) commit(con);
+			 else rollback(con);
 			
 			close(con);
 			

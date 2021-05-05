@@ -10,16 +10,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.Thumbnail.model.vo.lo_key;
+import com.harang.naduri.jdbc.member.model.vo.Keyword;
 import com.harang.naduri.jdbc.review.model.dao.ReviewDAO;
 
 public class ToGoListDAO {
 	private Properties prop;
 	
-	public ToGoListDAO() {
+	public ToGoListDAO(){
+		
 		prop= new Properties();
 		String filePath = ReviewDAO.class
 		          .getResource("/config/togolist.properties")
@@ -31,82 +32,45 @@ public class ToGoListDAO {
 			e.printStackTrace();
 		}
 		
-		
 	}
 
-	public List<Map<String, Object>> togolist(Connection con, int m_no) {
-		
-//		HashMap<String, Object> map = new HashMap<>();
-//		ArrayList<Keyword> listk = new ArrayList<>();
-//		ArrayList<Attach> lista = new ArrayList<>();
-//		ArrayList<Spot> lists = new ArrayList<>();
-//		ArrayList<Heritage> listh = new ArrayList<>();
-		
-		List<Map<String, Object>> list = new ArrayList<>();
-		
+	public HashMap<String, Object> togolist(Connection con, int m_no) {
+		HashMap<String, Object> map = new HashMap<>();
+		ArrayList<Keyword> list = new ArrayList<>();
+		ArrayList<lo_key> list2 = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("selectTogolist");
+		String sql = prop.getProperty("togolist");
 		
 		try {
 			ps = con.prepareStatement(sql);
-			
 			ps.setInt(1, m_no);
 			rs = ps.executeQuery();
-			
+			lo_key lk = new lo_key();
 			while(rs.next()) {
+				Keyword k = new Keyword();
+				k.setKeyword(rs.getString("keyword"));
+				list.add(k);
 				
-				Map<String, Object> map = new HashMap<>();
-				map.put("l_no" , rs.getInt("l_no"));
-				map.put("a_name" , rs.getString("a_name"));
-				map.put("local_name" , rs.getString("local_name"));
-				map.put("keyword" , rs.getString("keyword"));
-				
-				list.add(map);
-		
-//				Attach a = new Attach();
-//				
-//				a.setA_name(rs.getString("a_name"));
-//				a.setL_no(rs.getInt("l_no"));
-//				
-//				lista.add(a);
-//				
-//				Keyword k = new Keyword();
-//				
-//				listk.add(k);
-//				
-//				k.setKeyword(rs.getString("keyword"));
-//				
-//				listk.add(k);
-				
-				
-				/*
-				if(a.getL_no() != rs.getInt("l_no")) {
+				if (lk.getL_no() != rs.getInt("l_no")) {
+					lo_key temp = new lo_key();
 					
-					Spot s = new Spot();
-					s.setS_name(rs.getString("s_name"));
-					s.setL_no(rs.getInt("l_no"));
+					lk.setL_no(rs.getInt("l_no"));
 					
-					lists.add(s);
-					
-					Heritage h = new Heritage();
-					h.setH_name(rs.getString("h_name"));
-					h.setL_no(rs.getInt("l_no"));
-					
-					listh.add(h);
-				
-					
+					temp.setL_no(rs.getInt("l_no"));
+					temp.setA_name(rs.getString("a_name"));
+					temp.setLocal_name(rs.getString("local_name"));
+					temp.setFlevel(rs.getInt("flevel"));
+
+					list2.add(temp);
+
 				}
-				*/
 			}
-				
-//				map.put("lista", lista);
-//				map.put("listk", listk);
-//				map.put("lists", lists);
-//				map.put("listh", listh);
 			
 			
+					map.put("list", list);
+					map.put("list2", list2);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -116,9 +80,7 @@ public class ToGoListDAO {
 			close(ps);
 		}
 		
-		
-		
-		return list;
+		return map;
 	}
 
 }

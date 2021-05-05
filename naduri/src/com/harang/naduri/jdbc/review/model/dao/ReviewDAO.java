@@ -1,6 +1,6 @@
 package com.harang.naduri.jdbc.review.model.dao;
 
-import static com.harang.naduri.jdbc.common.JDBCTemplate.close;
+import static com.harang.naduri.jdbc.common.JDBCTemplate.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -226,6 +226,7 @@ private Properties prop;
 	               r.setAttList(list);
 	            }
 	            reviewList.add(r);
+	            System.out.println(reviewList);
 	         }
 	         
 	      } catch (SQLException e) {

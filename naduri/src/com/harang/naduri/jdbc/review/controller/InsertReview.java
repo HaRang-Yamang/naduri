@@ -50,6 +50,7 @@ public class InsertReview extends HttpServlet {
 		ArrayList<String>changeNames = new ArrayList<>();
 	//정보 받아오기
 //		int l_no = Integer.parseInt(mr.getParameter("l_no"));
+		int l_no = 1;
 		int m_no = Integer.parseInt(mr.getParameter("m_no"));
 		int r_rank = Integer.parseInt(mr.getParameter("r_rank"));
 		String[]r_period =  mr.getParameterValues("r_period");

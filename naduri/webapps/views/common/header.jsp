@@ -19,7 +19,7 @@
     <h2 class="hidden">나드리</h2>
     <nav class="navbar">
         <div class="headerArea">
-            <h1 class="logo"><a href="/naduri/index.do"><img src="/naduri/assets/images/header/logo.png" alt="나드리 로고"></a></h1>
+            <h1 class="logo"><a href="/naduri"><img src="/naduri/assets/images/header/logo.png" alt="나드리 로고"></a></h1>
         </div>
 
         <div class="profile">
@@ -43,7 +43,7 @@
                 <ul>
                     <li><i class="far fa-user-circle"></i><a href="/naduri/myPage.do">내 기행록</a></li>
                     <li><i class="far fa-edit"></i><a href="/naduri/views/member/modifyMember.jsp">회원정보 수정</a></li>
-                    <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
+                    <li><i class="fas fa-sign-out-alt"></i><button type="button" class="logout_btn" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
 

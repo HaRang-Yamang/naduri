@@ -14,16 +14,16 @@ import com.harang.naduri.jdbc.member.model.service.MemberService;
 import com.harang.naduri.jdbc.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberDeleteServlet
+ * Servlet implementation class SearchMember
  */
-@WebServlet("/memberDelete.do")
-public class MemberDeleteServlet extends HttpServlet {
+@WebServlet("/searchId.do")
+public class SearchMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDeleteServlet() {
+    public SearchMember() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,22 +34,32 @@ public class MemberDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		HttpSession session = request.getSession(false);
+		String m_name = request.getParameter("m_name");
+		String m_email = request.getParameter("m_email");
 		
-		Member m = (Member)session.getAttribute("member");
+		// m_id를 찾기 위한 정보
+		Member searchId = new Member(0, null, null, m_name, null, null, null, m_email, null , 0, null);
 		
-		String m_id = m.getM_id();
+		System.out.println("이름 / 이메일 : " + searchId);
 		
 		MemberService service = new MemberService();
-		int result = service.deleteMember(m_id);
+		Member result = service.searchId(searchId);
 		
-		if( result > 0 ) {
-			session.invalidate();
-			response.sendRedirect("/naduri");
-		}else {
-			request.setAttribute("error-msg", "회원 탈퇴 실패!");
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+		if(result != null) {
+			// 아이디 찾기 성공!
+			System.out.println("아이디 찾기 성공!");
+			System.out.println("찾은 정보 : " + result);
 			
+			HttpSession session = request.getSession();
+			session.setAttribute("member", result);
+			
+			
+			response.sendRedirect("views/find/findResultId.jsp");
+		} else {
+			// 아이디 찾기 실패
+			System.out.println("아이디 찾기 실패!");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			request.setAttribute("error-msg", "아이디 찾기에 실패하였습니다");
 			view.forward(request, response);
 		}
 		

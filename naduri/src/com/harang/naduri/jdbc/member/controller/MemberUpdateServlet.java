@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
@@ -45,10 +46,10 @@ public class MemberUpdateServlet extends HttpServlet {
 		String m_phoneStr = String.join("-", m_phone);
 		
 		String[] m_email = request.getParameterValues("m_email");
-		String m_emailStr = String.join("-", m_email);
+		String m_emailStr = String.join("@", m_email);
 		
 		String[] m_address = request.getParameterValues("m_address");
-		String m_addressStr = String.join("-", m_address);
+		String m_addressStr = String.join(" ", m_address);
 		
 		String[] keyword_id = request.getParameterValues("keyword_id");
 		String keyword_idStr = String.join(", ", keyword_id);
@@ -59,32 +60,27 @@ public class MemberUpdateServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 			// member.java를 통해 저장되어 있던 정보
 		Member updateMember = (Member)session.getAttribute("member");
-			// keyword.java를 통해 저장되어 있던 정보
-		Keyword updateKeyword = (Keyword)session.getAttribute("keyword");
+			// keyword_id는 배열로 받아오기 때문에 배열로 불러온다
+		// ArrayList<Keyword> updateListK = (ArrayList<Keyword>)session.getAttribute("listK");
 		
 		System.out.println("member 원본 정보 : " + updateMember);
-		System.out.println("keyword_id 원본 정보 : " + updateKeyword);
-
 		
-		// 변경할 회원 정보 처리
 		
+		// 변경할 회원 정보 처리	
 		updateMember.setM_pwd(m_pwd);
 		updateMember.setM_gender(m_gender);
 		updateMember.setM_phone(m_phoneStr);
 		updateMember.setM_email(m_emailStr);
 		updateMember.setM_address(m_addressStr);
 		
-		//updateKeyword.setKeyword_id(keyword_idStr);
-
-
+		// 변경할 키워드 정보 처리
 		System.out.println("member 변경 정보 : " + updateMember);
-		
+		System.out.println("keyword 변경 정보 arr : " + Arrays.toString(keyword_id));
+
 		
 		// 회원 서비스 연동
 		MemberService service = new MemberService();
-		
-		int result = service.updateMember(updateMember);
-		
+		int result = service.updateMember(updateMember, keyword_id);
 		if(result > 0) {
 			// 회원 정보 수정 성공!
 			System.out.println("회원 정보 수정 성공!");

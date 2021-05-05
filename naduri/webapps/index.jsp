@@ -51,7 +51,7 @@
         <nav class="navbar">
             <div></div> <!-- 지우지 마세요. -->
             <div class="logo">
-                <h1><a href="/naduri/index.jsp"><img src="/naduri/assets/images/logo_big.png" alt="로고 이미지"></a></h1>
+                <h1><a href="/naduri"><img src="/naduri/assets/images/logo_big.png" alt="로고 이미지"></a></h1>
             </div>
 
             <div class="profile">
@@ -67,7 +67,7 @@
                     <li><i class="fas fa-sign-out-alt"></i><a href="/naduri/views/login.jsp">로그인</a></li>
                 </ul>
             </div>
-		<% } else if ( m.getM_id() == "0"  ) { %>
+		<% } else if ( m.getM_auth() == 0  ) { %>
 			<div class="user_menu">
 
                 <h3><%= m.getM_name() %>님<br><span>일반회원</span></h3>
@@ -77,7 +77,7 @@
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
-            <% } else if ( m.getM_id() == "1" ) { %>
+            <% } else if ( m.getM_auth() == 1 ) { %>
                   			<div class="user_menu">
 
                 <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>

@@ -540,13 +540,6 @@ public class ThumbnailDAO {
 				
 				list2.add(a);
 				
-				// 문화재 정보 저장
-				h.setH_events(      rs.getString("h_events"));
-				h.setH_serial(      rs.getString("h_serial"));
-				h.setH_zipcode(      rs.getString("h_zipcode"));
-				h.setH_name(      rs.getString("h_name"));
-				
-				listHeri.add(h);
 				
 				// 장소와 키워드 정보 저장
 				l.setL_no(rs.getInt("l_no"));
@@ -581,5 +574,61 @@ public class ThumbnailDAO {
 	}
 
 
+	public ArrayList<lo_key> hotSpot4(Connection con, int l_no2) {
+		// 맛집과 여행지 정보 저장 객체
+		ArrayList<lo_key> lokey = new ArrayList<>();
 
+	
+	
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("hotSpot4");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, l_no2);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+			
+				lo_key l = new lo_key();
+				
+				l.setL_no(rs.getInt("l_no"));
+				l.setLs_code(rs.getInt("ls_code"));
+				l.setLocal_name(rs.getString("local_name"));
+				l.setCount_all(rs.getInt("count_all"));
+				l.setKeyword(rs.getString("keyword"));
+				l.setA_no(rs.getInt("a_no"));
+				l.setA_name(rs.getString("a_name"));
+				l.setA_status(rs.getString("a_status"));
+				l.setR_no(rs.getInt("r_no"));
+				l.setM_no(rs.getInt("m_no"));
+				l.setN_no(rs.getInt("n_no"));
+				l.setS_id(rs.getInt("s_id"));
+				l.setFlevel(rs.getInt("flevel"));
+				
+				
+	
+			
+				lokey.add(l);
+			}
+		
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	} finally {
+		close(ps);			
+
+	}
+	
+	return lokey;
 }
+
+	}
+
+
+

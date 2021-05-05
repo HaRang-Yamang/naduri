@@ -121,6 +121,18 @@ public class ThumbnailService {
 		return map;
 	}
 
+	public ArrayList<lo_key> hotSpot4(int l_no2) {
+		con = getConnection();
+		
+		ArrayList<lo_key> lokey = new ArrayList<>();
+		
+		lokey = dao.hotSpot4(con, l_no2);
+		
+		close(con);
+		
+		return lokey;
+	}
+
 
 	
 	

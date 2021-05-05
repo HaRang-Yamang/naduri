@@ -20,6 +20,7 @@ import org.w3c.dom.NodeList;
 
 import com.harang.naduri.jdbc.Thumbnail.model.service.ThumbnailService;
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
+import com.harang.naduri.jdbc.Thumbnail.model.vo.lo_key;
 import com.harang.naduri.jdbc.heritage.model.service.HeritageService;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;
@@ -86,7 +87,7 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 			
 			// 1-1단계 - 조회를 위한 입력값 추출
 			// String spotName = request.getParameter("spotName");
-			String spotName = "숭례문";
+			String spotName = "동고량";
 			
 			// 1-2단계 게시글 서비스 객체 생성
 			ThumbnailService service = new ThumbnailService();
@@ -118,31 +119,24 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 			// ls_code 가 2 라면 해시맵으로 이미지 가져오기!
 			// 장소테이블 조회하러 출발
 			if ( ls_code == 2 ) {
-				ArrayList<Thumbnail> spot = new ArrayList();
 
-				// 장소들의 썸네일을 받아올 객체 필요
-				HashMap<String, Object> map = new HashMap<>();
+				ArrayList<lo_key> lokey = new ArrayList<>();
+				// 서비스 준비
+				ThumbnailService spotService = new ThumbnailService();
 				
 				// 결과를 list 객체에 저장
-				map = service.selectThumnailOne(l_no2);
+				lokey = spotService.hotSpot4(l_no2);
+				
 				
 				// request에 list 객체 담아서 보냄
-				if ( map != null) {
-					request.setAttribute("list", map.get("list")); // 맛집/여행지 정보 ( spot )
-					request.setAttribute("list2", map.get("list2")); // 사진 ( attach )
-					request.setAttribute("listHeri", map.get("listHeri")); // 문화재 정보 ( Heritage )
-					request.setAttribute("lo_key", map.get("lo_key")); // 장소and키워드 정보 (location and keyword)
-					
-					
-					System.out.println(map.get("list"));
-					System.out.println(map.get("list2"));
-					System.out.println(map.get("listHeri"));
-					System.out.println(map.get("lo_key"));
+				request.setAttribute("lokey", lokey); // 맛집/여행지 정보 ( spot )
+
 				
-				
-				request.getRequestDispatcher("index.jsp")
-				       .forward(request, response);
-				}
+				System.out.println(lokey);
+			
+					request.getRequestDispatcher("views/detail/detailHeritage.jsp")
+			       .forward(request, response);
+
 			}
 				
 

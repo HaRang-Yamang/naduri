@@ -38,11 +38,11 @@ public class SpotService {
 	}
 	
 	// 관리자페이지 맛집 리스트 부분
-	public ArrayList<Spot> foodList() {
+	public ArrayList<Spot> foodList(int currentPage) {
 		
 		con = getConnection();
 		
-		ArrayList<Spot> list = dao.foodList(con);
+		ArrayList<Spot> list = dao.foodList(con, currentPage);
 		
 		close(con);
 		
@@ -50,15 +50,26 @@ public class SpotService {
 		
 	}
 	// 관리자페이지 여행지 리스트 부분
-	public ArrayList<Spot> spotList() {
+	public ArrayList<Spot> spotList(int currentPage) {
 		con = getConnection();
 		
-		ArrayList<Spot> list = dao.spotList(con);
+		ArrayList<Spot> list = dao.spotList(con, currentPage);
 		
 		close(con);
 		
 		return list;
 	
+	}
+
+	// 페이지네이션을 위한 서비스 생성
+	public int getListCount() {
+		con = getConnection();
+		
+		int result = dao.getListCount(con);
+		
+		close(con);
+		
+		return result;
 	}
 	
 	

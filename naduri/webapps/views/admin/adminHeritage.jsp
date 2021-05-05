@@ -1,9 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.harang.naduri.jdbc.heritage.model.vo.*, java.util.*" %>
+<%@ page import="com.harang.naduri.jdbc.heritage.model.vo.*, com.harang.naduri.jdbc.notice.model.vo.* ,java.util.*" %>
 
 <%	
 	ArrayList<Heritage> list = (ArrayList<Heritage>)request.getAttribute("list");
+	Heritage h = new Heritage();
+	PageNation pn = (PageNation)request.getAttribute("pn");
+	
+	int st = pn.getStartPage();
+	int ed = pn.getEndPage();
+	int mx = pn.getMaxPage();
+	int limit = pn.getLimit();
+	int listCount = pn.getListCount();
+	int cur = pn.getCurrentPage();
 %>
 
 <!DOCTYPE html>
@@ -21,6 +30,24 @@
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
 <title>나드리</title>
+<style>
+	#m_btn_ban{
+	cursor : pointer;
+	}
+	#p_btn {
+		background-color : #A5B874;
+		border-radius: 5px;
+    	border: none;
+		cursor : pointer;
+		width : 25px;
+
+	}
+	.pagingArea {
+		text-align : center;
+		margin-top : 70px;
+	}
+
+</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -38,28 +65,79 @@
                     <tr>
                         <th>번호</th>
                         <th>장소명</th>
+                        <th style="width:100px">삭제여부</th>
                         <th></th>
                         <th></th>
                     </tr>
-                    <% for(Heritage h : list) {%>
+                    <% for(Heritage hh : list) {%>
                     <tr>
-                        <td id="her_no"><%= h.getH_id() %></td>
-                        <td id="her_id"><%= h.getH_name() %></td>
+                        <td id="her_no"><%= hh.getH_id() %></td>
+                        <td id="her_id"><%= hh.getH_name() %></td>
+                        <td id="her_status"><%= hh.getH_status() %></td>
                         <td id="her_table_btn">
                             <div class="her_btn_area">
-                                <button id="her_update">데이터 수정</button>
+                                <button id="her_update" onclick="goUpdate();" style="cursor : pointer;">데이터 수정</button>
                             </div>
                         </td>
                         <td id="her_table_btn">
                             <div class="her_btn_area">
-                                <button id="her_delete">데이터 삭제</button>
+                                <button id="her_delete" onclick="deleteDate(<%= h.getH_id() %>);" style="cursor : pointer;">데이터 삭제</button>
                             </div>
                         </td>
                     </tr>
                     <% } %>
                 </table>
+                
+                <script>
+                	function goUpdate() {
+                		location.href='/naduri/updateHeritage.ad?h_id=' + <%= h.getH_id() %>;
+                	}
+                	
+                	function deleteDate(h_id) {
+                		
+                		location.href='/naduri/deleteHeritage.ad?h_id='+h_id;
+                	}
+                </script>
+                
+                
                 <div class="her_btn_area">
 				<button id="her_insert_btn" onclick="location.href='/naduri/views/admin/adminInsertHeritage.jsp'">문화재 등록</button>
+				
+				<%-- 페이지네이션 버튼 --%>
+                <div class="pagingArea">
+		        	<button id="p_btn" onclick="location.href='/naduri/heritageList.ad?currentPage=1'">
+		        		&lt;&lt;
+		        	</button>
+		        	
+		        	<% if (cur <= 1) { %>
+						<button id="p_btn" disabled> &lt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/heritageList.ad?currentPage=<%= cur - 1 %>'"> &lt;</button>
+					<% } %>
+		        	
+		        	<% for(int p = st ; p <= ed ; p ++) { %>
+		        	
+			        	<% if( p == cur) { %>
+			        		<button id="p_btn" disabled> <%= p %> </button>
+			        	<% } else { %>
+			        		<button id="p_btn" onclick="location.href='/naduri/heritageList.ad?currentPage=<%= p %>'"> <%= p %> </button>
+			        	<% } %>
+		        	
+		        	<% } %>
+		        	
+		        	<% if (cur >= mx) { %>
+						<button id="p_btn" disabled> &gt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/heritageList.ad?currentPage=<%= cur + 1 %>'"> &gt;</button>
+					<% } %>
+					
+		        	<button id="p_btn" onclick="location.href='/naduri/heritageList.ad?currentPage=<%= mx %>'">
+		        		&gt;&gt;
+		        	</button>
+		        	
+		        </div>
+      				
+      			<%-- ------------------- --%>	
 				</div>
             </div>
         </div>

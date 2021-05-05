@@ -167,11 +167,10 @@ public class MemberService {
 	}
 
 	// 관리자 회원관리 리스트
-
-	public ArrayList<Member> memberList() {
+	public ArrayList<Member> memberList(int currentPage) {
 		con = getConnection();
 		
-		ArrayList<Member> list = dao.memberList(con);
+		ArrayList<Member> list = dao.memberList(con, currentPage);
 		
 		close(con);
 		
@@ -223,5 +222,18 @@ public class MemberService {
 		return result;
 	}
 	
+
+	// 페이지네이션을 위한 서비스 생성
+	public int getListCount() {
+		con = getConnection();
+		
+		int result = dao.getListCount(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+
 
 }

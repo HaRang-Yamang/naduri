@@ -118,7 +118,7 @@ public class SpotDAO {
 
 
 
-	public ArrayList<Spot> foodList(Connection con) {
+	public ArrayList<Spot> foodList(Connection con, int currentPage) {
 		
 		ArrayList<Spot> list = new ArrayList<>();
 		PreparedStatement ps = null;
@@ -126,8 +126,13 @@ public class SpotDAO {
 		
 		String sql = prop.getProperty("foodList");
 		
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
+		
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
 			
 			rs = ps.executeQuery();
 			
@@ -138,6 +143,7 @@ public class SpotDAO {
 				
 				ss.setS_id(rs.getInt("s_id"));
 				ss.setS_name(rs.getString("s_name"));
+				ss.setS_status(rs.getString("s_status"));
 				
 				list.add(ss);
 				
@@ -158,15 +164,19 @@ public class SpotDAO {
 
 
 
-	public ArrayList<Spot> spotList(Connection con) {
+	public ArrayList<Spot> spotList(Connection con, int currentPage) {
 		ArrayList<Spot> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("spotList");
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
 		
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
 			
 			rs = ps.executeQuery();
 			
@@ -177,11 +187,12 @@ public class SpotDAO {
 				
 				ss.setS_id(rs.getInt("s_id"));
 				ss.setS_name(rs.getString("s_name"));
+				ss.setS_status(rs.getString("s_status"));
 				
 				list.add(ss);
 				
 			}
-			System.out.println("여행지 list : " + list);
+			// System.out.println("여행지 list : " + list);
 			
 		} catch (SQLException e) {
 			
@@ -193,7 +204,34 @@ public class SpotDAO {
 	
 		return list;
 	}
-	
+
+
+	// 페이지네이션을 위한 DAO
+	public int getListCount(Connection con) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
 	
 
 }

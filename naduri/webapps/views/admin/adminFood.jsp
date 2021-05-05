@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*" %>
+<%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, com.harang.naduri.jdbc.notice.model.vo.*, java.util.*" %>
 <%
 	ArrayList<Spot> list = (ArrayList<Spot>)request.getAttribute("list");
+	PageNation pn = (PageNation)request.getAttribute("pn");
+	
+	int st = pn.getStartPage();
+	int ed = pn.getEndPage();
+	int mx = pn.getMaxPage();
+	int limit = pn.getLimit();
+	int listCount = pn.getListCount();
+	int cur = pn.getCurrentPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -19,6 +27,22 @@
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
 <title>나드리</title>
+<style>
+
+	#p_btn {
+		background-color : #A5B874;
+		border-radius: 5px;
+    	border: none;
+		cursor : pointer;
+		width : 25px;
+
+	}
+	.pagingArea {
+		text-align : center;
+		margin-top : 70px;
+	}
+
+</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -36,6 +60,7 @@
                     <tr>
                         <th>번호</th>
                         <th>장소명</th>
+                        <th style="width:100px">삭제여부</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -43,6 +68,7 @@
                     <tr>
                         <td id="her_no"><%= ss.getS_id() %></td>
                         <td id="her_id"><%= ss.getS_name() %></td>
+                        <td id="her_status"><%= ss.getS_status() %></td>
                         <td id="her_table_btn">
                             <div class="her_btn_area">
                                 <button id="her_update">데이터 수정</button>
@@ -58,7 +84,44 @@
                 </table>
  			<div class="her_btn_area">
 				<button id="her_insert_btn" onclick="location.href='/naduri/views/admin/adminInsertFood.jsp'">맛집 등록</button>
-				</div>
+			</div>
+				
+				
+				<%-- 페이지네이션 버튼 --%>
+                <div class="pagingArea">
+		        	<button id="p_btn" onclick="location.href='/naduri/foodList.ad?currentPage=1'">
+		        		&lt;&lt;
+		        	</button>
+		        	
+		        	<% if (cur <= 1) { %>
+						<button id="p_btn" disabled> &lt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/foodList.ad?currentPage=<%= cur - 1 %>'"> &lt;</button>
+					<% } %>
+		        	
+		        	<% for(int p = st ; p <= ed ; p ++) { %>
+		        	
+			        	<% if( p == cur) { %>
+			        		<button id="p_btn" disabled> <%= p %> </button>
+			        	<% } else { %>
+			        		<button id="p_btn" onclick="location.href='/naduri/foodList.ad?currentPage=<%= p %>'"> <%= p %> </button>
+			        	<% } %>
+		        	
+		        	<% } %>
+		        	
+		        	<% if (cur >= mx) { %>
+						<button id="p_btn" disabled> &gt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/foodList.ad?currentPage=<%= cur + 1 %>'"> &gt;</button>
+					<% } %>
+					
+		        	<button id="p_btn" onclick="location.href='/naduri/foodList.ad?currentPage=<%= mx %>'">
+		        		&gt;&gt;
+		        	</button>
+		        	
+		        </div>
+      				
+      			<%-- ------------------- --%>	
             </div>
         </div>
 	

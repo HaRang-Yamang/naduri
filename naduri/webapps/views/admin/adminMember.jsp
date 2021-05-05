@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="com.harang.naduri.jdbc.member.model.vo.*, java.util.*"%>    
+<%@ page import="com.harang.naduri.jdbc.notice.model.vo.*, java.util.*"%>    
  
 <%
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	PageNation pn = (PageNation)request.getAttribute("pn");
+	
+	int st = pn.getStartPage();
+	int ed = pn.getEndPage();
+	int mx = pn.getMaxPage();
+	int limit = pn.getLimit();
+	int listCount = pn.getListCount();
+	int cur = pn.getCurrentPage();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +40,20 @@
 	#m_btn_ban{
 	cursor : pointer;
 	}
+
+	#p_btn {
+		background-color : #A5B874;
+		border-radius: 5px;
+    	border: none;
+		cursor : pointer;
+		width : 25px;
+
+	}
+	.pagingArea {
+		text-align : center;
+		margin-top : 70px;
+	}
+
 </style>
 <title>나드리</title>
 </head>
@@ -80,14 +103,52 @@
                         </td>
                     </tr>
                		<% } %>
-
+               	
                 </table>
                 <script>
                 	function banMember(m_no, m_status) {
                 		location.href = '/naduri/memberUpdate.ad?m_no='+ m_no + '&m_status=' + m_status;
                 	}
                 </script>
-
+				
+				<%-- 페이지네이션 버튼 --%>
+                <div class="pagingArea">
+		        	<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=1'">
+		        		&lt;&lt;
+		        	</button>
+		        	
+		        	<% if (cur <= 1) { %>
+						<button id="p_btn" disabled> &lt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= cur - 1 %>'"> &lt;</button>
+					<% } %>
+		        	
+		        	<% for(int p = st ; p <= ed ; p ++) { %>
+		        	
+			        	<% if( p == cur) { %>
+			        		<button id="p_btn" disabled> <%= p %> </button>
+			        	<% } else { %>
+			        		<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= p %>'"> <%= p %> </button>
+			        	<% } %>
+		        	
+		        	<% } %>
+		        	
+		        	<% if (cur >= mx) { %>
+						<button id="p_btn" disabled> &gt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= cur + 1 %>'"> &gt;</button>
+					<% } %>
+					
+		        	<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= mx %>'">
+		        		&gt;&gt;
+		        	</button>
+		        	
+		        </div>
+      				
+      			<%-- ------------------- --%>	
+				
+				
+				
             </div>
         </div>
        

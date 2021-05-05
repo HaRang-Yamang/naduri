@@ -3,7 +3,7 @@
 
 <%@ 
 	page import="com.harang.naduri.jdbc.member.model.vo.*,
-		com.harang.naduri.jdbc.location.model.vo.*,
+		com.harang.naduri.jdbc.location.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*,
 		java.util.*"
 %>
 
@@ -12,6 +12,7 @@
 	ArrayList<Member> listM = (ArrayList<Member>)session.getAttribute("listM");
 	ArrayList<Keyword> listK = (ArrayList<Keyword>)session.getAttribute("listK");
 	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
+	ArrayList<lo_key> list = (ArrayList<lo_key>)request.getAttribute("lo_key");
 
 %>
 <header>

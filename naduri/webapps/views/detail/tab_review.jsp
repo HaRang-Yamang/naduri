@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, com.harang.naduri.jdbc.review.model.vo.*, com.harang.naduri.jdbc.attach.model.vo.*,
-    com.harang.naduri.jdbc.qna.model.vo.*, com.harang.naduri.jdbc.member.model.vo.*"%>
+     com.harang.naduri.jdbc.member.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*"%>
    <%
  ArrayList<Review> reviewList = (ArrayList<Review>)request.getAttribute("reviewList");
+ ArrayList<lo_key> list = (ArrayList<lo_key>)request.getAttribute("lo_key");
      int repeatCnt = 0;
  %>
   <!-- 리뷰 영역 -->
@@ -10,7 +11,7 @@
         <!-- 리뷰 필터 영역 -->
         <div class="filter">
             <div class="write_btn">
-                <a href="/naduri/views/reviewWrite.jsp"><input type="button" value = "리뷰 쓰기"></a>
+                <a href="/naduri/views/reviewWrite.jsp"><input type="button" value = "리뷰 쓰기" onclick="insertreview()"></a>
             </div>
             <div class="review_table">
                 <table>
@@ -320,3 +321,15 @@
         </div>
 	
     </div>
+    
+    <script>
+    <%for(lo_key lk : list){ %>
+    var L_no = <%= lk.getL_no()%>
+    <% }%>
+    function selectreview(){
+    	location.href="/naduri/insert.re"+"?L_no"+L_no;
+    }
+    
+    
+    
+    </script>

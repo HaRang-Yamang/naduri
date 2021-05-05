@@ -36,12 +36,4 @@ profile.addEventListener('click', () => {
     userMenu.classList.toggle('active');
 });
 
-/* search */
 
-    const search = document.querySelector('search_val').value;
-	const searchResult = document.querySelector('#result');
-
-
-    function goSearch() {
-    	location.href = "/naduri/search.do?search=" + searchResult;
-    }

@@ -1,10 +1,16 @@
 package com.harang.naduri.jdbc.spot.model.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 
 public class Spot implements Serializable {
 	
 	private static final long serialVersionUID = 1014L;
+	
+	private ArrayList<Attach>attList;
+	
 	
 	private	int s_id;
 	private	int l_no;
@@ -13,21 +19,33 @@ public class Spot implements Serializable {
 	private	String s_tel;
 	private	String s_time;
 	private	String s_address;
-	private	double s_lat;
-	private	double s_lng;
+	private	String s_lat;
+	private	String s_lng;
 	private	String s_status;
 	private	String s_date;
 	private	int s_count;
+	
+	private String a_name;
 	
 	
 	public Spot() {
 		super();
 	}	
 
+	public Spot(String s_name, String s_tel, String s_date, String s_address, String s_lat, String s_lng, String a_name) {
+		super();
+		this.s_name = s_name;
+		this.s_tel = s_tel;
+		this.s_date = s_date;
+		this.s_address = s_address;
+		this.s_lat = s_lat;
+		this.s_lng = s_lng;
+		
+		this.a_name = a_name;
+	}
 	
 	
-	
-	public Spot(String s_name, double s_lat, double st_lng) {
+	public Spot(String s_name, String s_lat, String st_lng) {
 		super();
 		this.s_name = s_name;
 		this.s_lat = s_lat;
@@ -35,7 +53,7 @@ public class Spot implements Serializable {
 	}
 
 
-	public Spot(double s_lat, double st_lng) {
+	public Spot(String s_lat, String st_lng) {
 		super();
 		this.s_lat = s_lat;
 		this.s_lng = st_lng;
@@ -46,14 +64,14 @@ public class Spot implements Serializable {
 
 	// 전체 생성자
 	public Spot(int s_id, int l_no, String s_name, String s_type, String s_tel, String s_time, String s_address,
-			double s_lat, double s_lng, String s_status, String s_date, int s_count) {
+			String s_lat, String s_lng, String s_status, String s_date, int s_count) {
 		super();
 		this.s_id = s_id;
 		this.l_no = l_no;
 		this.s_name = s_name;
 		this.s_type = s_type;
 		this.s_tel = s_tel;
-		this.s_time = s_time;
+		this.s_time = s_time;s
 		this.s_address = s_address;
 		this.s_lat = s_lat;
 		this.s_lng = s_lng;
@@ -65,9 +83,10 @@ public class Spot implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Spot [s_id=" + s_id + ", l_no=" + l_no + ", s_name=" + s_name + ", s_type=" + s_type + ", s_tel="
-				+ s_tel + ", s_time=" + s_time + ", s_address=" + s_address + ", s_lat=" + s_lat + ", s_lng=" + s_lng
-				+ ", s_status=" + s_status + ", s_date=" + s_date + ", s_count=" + s_count + "]";
+		return "Spot [attList=" + attList + ", s_id=" + s_id + ", l_no=" + l_no + ", s_name=" + s_name + ", s_type="
+				+ s_type + ", s_tel=" + s_tel + ", s_time=" + s_time + ", s_address=" + s_address + ", s_lat=" + s_lat
+				+ ", s_lng=" + s_lng + ", s_status=" + s_status + ", s_date=" + s_date + ", s_count=" + s_count
+				+ ", a_name=" + a_name + "]";
 	}
 
 
@@ -170,35 +189,6 @@ public class Spot implements Serializable {
 
 
 
-
-	public double getS_lat() {
-		return s_lat;
-	}
-
-
-
-
-	public void setS_lat(double s_lat) {
-		this.s_lat = s_lat;
-	}
-
-
-
-
-	public double getS_lng() {
-		return s_lng;
-	}
-
-
-
-
-	public void setS_lng(double s_lng) {
-		this.s_lng = s_lng;
-	}
-
-
-
-
 	public String getS_status() {
 		return s_status;
 	}
@@ -245,9 +235,37 @@ public class Spot implements Serializable {
 		return serialVersionUID;
 	}
 
+	public String getS_lat() {
+		return s_lat;
+	}
+
+	public void setS_lat(String s_lat) {
+		this.s_lat = s_lat;
+	}
+
+	public String getS_lng() {
+		return s_lng;
+	}
+
+	public void setS_lng(String s_lng) {
+		this.s_lng = s_lng;
+	}
+
+	public String getA_name() {
+		return a_name;
+	}
+
+	public void setA_name(String a_name) {
+		this.a_name = a_name;
+	}
 
 
+	public ArrayList<Attach> getAttList() {
+		return attList;
+	}
 
+	public void setAttList(ArrayList<Attach> attList) {
+		this.attList = attList;
 
 	
 }

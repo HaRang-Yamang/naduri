@@ -51,7 +51,7 @@
         <nav class="navbar">
             <div></div> <!-- 지우지 마세요. -->
             <div class="logo">
-                <h1><a href="/naduri"><img src="/naduri/assets/images/logo_big.png" alt="로고 이미지"></a></h1>
+                <h1><a href="/naduri/index.jsp"><img src="/naduri/assets/images/logo_big.png" alt="로고 이미지"></a></h1>
             </div>
 
             <div class="profile">
@@ -139,6 +139,7 @@
                     </div>
                     <div class="markIcon"><i class="fas fa-heart"></i></div>
                 </div>
+                
                
 </div>
  <% } %>
@@ -148,6 +149,17 @@
 
         
     </section>
+    <script>
+    
+    $(document).ready(function() {
+        $(".search_val").keydown(function(key) {
+            if (key.keyCode == 13) {
+            	$(".search_val").val().href = ""
+            }
+        });
+    });
+
+    </script>
 	
 	
 	<%@ include file="views/common/footer.jsp" %>

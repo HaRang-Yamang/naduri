@@ -293,7 +293,7 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 						request.setAttribute("listHeri", listHeri);
 						
 						RequestDispatcher view =
-								request.getRequestDispatcher("test.jsp");
+								request.getRequestDispatcher("views/detail/detailHeritage.jsp");
 						
 						view.forward(request, response);
 			}

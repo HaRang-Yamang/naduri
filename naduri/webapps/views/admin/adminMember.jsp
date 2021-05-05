@@ -83,7 +83,7 @@
                         
                     </tr>
 					
-					<% for(Member mm : listM ) { %> 
+					<% for(Member mm : list ) { %> 
                     <tr>
                         <td id="m_no"><%= mm.getM_no() %></td>
                         <td id="m_id"><%= mm.getM_id() %></td>

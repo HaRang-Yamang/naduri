@@ -102,9 +102,10 @@
                 		location.href = '/naduri/updateFood.ad?s_id='+ s_id + '&s_status=' + s_status;
                 	}
                 </script>
- 			<div class="her_btn_area">
-				<button id="her_insert_btn" onclick="location.href='/naduri/views/admin/adminInsertFood.jsp'">맛집 등록</button>
-			</div>
+		          <div class="her_btn_area">
+		            <button id="her_insert_btn" onclick="location.href='/naduri/views/admin/adminInsertFood.jsp'">맛집 등록</button>
+		         </div>
+
 				
 				
 				<%-- 페이지네이션 버튼 --%>

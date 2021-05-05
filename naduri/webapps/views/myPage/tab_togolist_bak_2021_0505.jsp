@@ -16,39 +16,36 @@ com.harang.naduri.jdbc.heritage.model.vo.*"%>
 	*/
 	
 	List<Map<String, Object>> list = (ArrayList) request.getAttribute("list");
-	//System.out.println(">>>>> 화면 list : " + list);
+	System.out.println(">>>>> 화면 list : " + list);
 	%>
 
-
 <div id="tab_togolist" class="tab-content current">
-<%= list %>
 	<div class="current_tab">
 		<% for(int i=0 ; i < list .size(); i++) { 
 		
 		Map<String, Object> map = list.get(i);
+		 %>
 		
-		Integer lNo = (Integer) map.get("l_no");
-		String aName = (String) map.get("a_name");
-		String localName = (String) map.get("local_name");
-		String keyword = (String) map.get("keyword");
-		
-		%>
-		
+		<span>
+		<%
+		map.get("l_no");
+		map.get("a_name");
+		map.get("local_name");
+		map.get("keyword");
+		 %>
+		</span>
 
- 		<div class="hotSpot">
-			<img src="/naduri/resources/thumb/<%= aName %>">
+<%-- 		<div class="hotSpot">
+			<img src="/naduri/resources/thumb/<%= list.get(i).get("a_name")() %>">
 
 			<div class="spotInfo"> 
-				<h4><%= localName %></h4>
-				<%-- <div class="spotInfoKeyword"><% for(Keyword k : listk) { %><% if( lista.get(i).getL_no() == lists.get(i).getL_no() ) { %><p><%= k.getKeyword %></p><% } %><% } %></div> --%>
-				<div class="spotInfoKeyword">
-					<p><%= keyword %><p>
-				</div>
+				<h4>한옥마을</h4>
+				<div class="spotInfoKeyword"><% for(Keyword k : listk) { %><% if( lista.get(i).getL_no() == lists.get(i).getL_no() ) { %><p><%= k.getKeyword %></p><% } %><% } %></div>
 			</div>
 			<div class="markIcon">
 				<i class="fas fa-star"></i>
 			</div>
-		</div> 
+		</div> --%>
 
 		<% } %>
 	</div>

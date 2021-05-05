@@ -37,7 +37,7 @@ public class SelectReviewList extends HttpServlet {
 		ReviewService service = new ReviewService();
 		
 		// 임시
-	    int lno = Integer.parseInt(request.getParameter("l_no"));
+	    int lno = 1;
 		
 	    reviewList =service.selectReviewList(lno);
 		

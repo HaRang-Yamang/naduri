@@ -16,7 +16,7 @@ public class ToGoListService {
 		con = getConnection();
 		HashMap<String, Object> map = dao.togolist(con, m_no);
 
-		
+
 		close(con);
 		
 		return map;

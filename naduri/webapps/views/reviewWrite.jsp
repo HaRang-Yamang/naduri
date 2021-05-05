@@ -36,7 +36,8 @@
                 <table class="review_table">
                     <tr> 
                     <td>
-                    <input type="hidden" name="m_no" value="<%=m.getM_no() %>"/> 
+               
+                    <input type="hidden" name="m_no" value="<%=m.getM_no()%>"/> 
                     </td>
                         <div class="range_part">
                             <td class="review_title" >평점 &nbsp;</td>

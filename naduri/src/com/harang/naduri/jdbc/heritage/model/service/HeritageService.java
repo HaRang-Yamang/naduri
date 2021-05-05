@@ -6,9 +6,20 @@ import static com.harang.naduri.jdbc.common.JDBCTemplate.getConnection;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.rollback;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.heritage.model.dao.HeritageDAO;
@@ -122,12 +133,78 @@ public class HeritageService {
 	   return list;
 	}
 
+	// tag값의 정보를 가져오는 메소드
+	public String getTagValue(String tag, Element eElement) {
+	    NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+	    Node nValue = (Node) nlList.item(0);
+	    if(nValue == null) 
+	        return null;
+	    return nValue.getNodeValue();
+	   }
 	
 	//상세검색 위한 코드 불러오는 코드
 	public ArrayList<Heritage> getHerCode() {
 	   con = getConnection();
 	   
 	   ArrayList<Heritage> list = dao.getHerCode(con);
+	   
+	   
+	   System.out.println("list : " + list);
+	   
+		String ccbaKdcd = ""; // 종목코드
+		String ccbaAsno = ""; // 지정번호
+		String ccbaCtcd = ""; // 시도코드
+		String ccbaMnm1 = "";
+		
+		for(Heritage h : list) {
+			
+			ccbaKdcd = h.getH_events(); // 종목코드
+			ccbaAsno = h.getH_serial(); // 지정번호
+			ccbaCtcd = h.getH_zipcode(); // 시도코드
+			ccbaMnm1 = h.getH_name(); // 문화재
+
+			// System.out.println("종목코드 : "+ h.getL_no() + ", "+ ccbaKdcd);
+			
+			try {
+			
+			String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiDt.do"+"?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + ccbaMnm1;
+			
+			System.out.println(callDetail);
+			
+			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+			Document doc = dBuilder.parse(callDetail);
+			
+			
+			System.out.println("api result : " + doc);
+			
+			doc.getDocumentElement().normalize();
+			
+			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			System.out.println("Tag element :" + doc.getDocumentElement().getTagName());
+			
+			// 파싱할 tag
+			NodeList nList = doc.getElementsByTagName("result");
+			
+			//Debug
+			System.out.println("파싱할 리스트 수 : "+ nList.getLength());
+		
+			
+			
+			
+			} catch (ParserConfigurationException | SAXException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			
+			
+			
+		}
+		
+		
+	  
+	   
 	   
 	   close(con);
 	   

@@ -196,9 +196,9 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 							while(true){
 								// parsing할 url 지정(API 키 포함해서)
 								// String callList = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?pageIndex="+pageIndex;
-								 String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName;
+								 String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiDt.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName;
 								 // + "&ccbaMnm1=" + spotName
-								// String callImage = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd ;
+								// String callImage = "http://www.cha.go.kr/cha/SearchImageOpenapi.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName ;
 								
 								 //Debug
 								 System.out.println( "요청 URL : " + callDetail);
@@ -218,7 +218,7 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 								System.out.println("Tag element :" + doc.getDocumentElement().getTagName());
 								
 								// 파싱할 tag
-								NodeList nList = doc.getElementsByTagName("item");
+								NodeList nList = doc.getElementsByTagName("result");
 								
 								//Debug
 								System.out.println("파싱할 리스트 수 : "+ nList.getLength());
@@ -241,11 +241,27 @@ public class CallApiDetailSelectOneCollection extends HttpServlet {
 										 Heritage heri = new Heritage();
 
 										// api로 받은 정보 저장
+										 	
 											heri.setH_events(getTagValue("ccbaKdcd", eElement)); // 종목코드
 											heri.setH_serial(getTagValue("ccbaAsno", eElement)); // 지정번호
 											heri.setH_zipcode(getTagValue("ccbaCtcd", eElement)); // 시도코드
 											heri.setH_name(getTagValue("ccbaMnm1", eElement)); // 문화재명
-											// heri.setImageUrl(getTagValue("imageUrl", eElement)); // 이미지
+											
+											
+											
+											// 임시 변수 부분
+											heri.setCcmaName(getTagValue("ccmaName", eElement)); // 문화재종목
+											heri.setGcodeName(getTagValue("gcodeName", eElement)); // 문화재분류
+											heri.setCcbaAsdt(getTagValue("ccbaAsdt", eElement)); // 지정(등록일)
+											heri.setCcbaLcad(getTagValue("ccbaLcad", eElement)); // 소재지 상세
+											heri.setCcceName(getTagValue("ccceName", eElement)); // 시대
+											heri.setCcbaPoss(getTagValue("ccbaPoss", eElement)); // 소유자
+											heri.setCcbaAdmin(getTagValue("ccbaAdmin", eElement)); // 관리자
+											heri.setContent(getTagValue("content", eElement)); // 내용
+											
+											heri.setLongitude(getTagValue("longitude", eElement)); // 경도
+											heri.setLatitude(getTagValue("latitude", eElement)); // 위도
+											heri.setImageUrl(getTagValue("imageUrl", eElement)); // 메인노출이미지URL
 
 
 

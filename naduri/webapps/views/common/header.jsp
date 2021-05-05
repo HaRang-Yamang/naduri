@@ -51,7 +51,7 @@
 
                 <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>
                 <ul>
-                    <li><i class="far fa-edit"></i><a href="/naduri/views/admin/adminMember.jsp">ㄱㄹㅈ page</a></li>
+                    <li><i class="far fa-edit"></i><a href="/naduri/views/admin/adminMember.jsp">관리자페이지</a></li>
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>

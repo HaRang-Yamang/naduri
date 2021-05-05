@@ -59,6 +59,7 @@ public class MemberIoginServlet extends HttpServlet {
 			System.out.println("로그인 성공!");
 			
 			// 아이디 저장 여부 쿠키로 저장하기
+			/*
 			if(saveId != null) {
 				Cookie c = new Cookie("saved", m_id);
 				c.setMaxAge(60*60*24*7);
@@ -68,6 +69,7 @@ public class MemberIoginServlet extends HttpServlet {
 				c.setMaxAge(0);
 				response.addCookie(c);
 			}
+			*/
 			HttpSession session = request.getSession();
 			session.setAttribute("listM", mapMember.get("listM"));
 			session.setAttribute("listK", mapMember.get("listK"));

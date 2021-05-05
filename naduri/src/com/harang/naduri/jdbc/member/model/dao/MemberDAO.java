@@ -403,6 +403,8 @@ public class MemberDAO {
 		         result.setM_email(rs.getString("m_email"));
 		         result.setM_phone(rs.getString("m_phone"));
 		         result.setM_birth(rs.getString("m_birth"));
+		         result.setM_auth(rs.getInt("m_auth"));
+		         result.setM_status(rs.getString("m_status"));
 		         
 		      }
 		      

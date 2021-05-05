@@ -17,6 +17,7 @@ import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.Thumbnail.model.vo.lo_key;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;
+import com.harang.naduri.jdbc.spot.model.vo.Spot;
 
 public class ThumbnailDAO {
 	private Properties prop;
@@ -574,12 +575,11 @@ public class ThumbnailDAO {
 	}
 
 
-	public ArrayList<lo_key> hotSpot4(Connection con, int l_no2) {
+	public HashMap<String, Object> hotSpot4(Connection con, int l_no2) {
 		// 맛집과 여행지 정보 저장 객체
+		HashMap<String, Object> map = new HashMap<>();
 		ArrayList<lo_key> lokey = new ArrayList<>();
-
-	
-	
+		ArrayList<Spot> spot = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -592,16 +592,32 @@ public class ThumbnailDAO {
 			
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
-				
 			
+			ArrayList<lo_key> lokey1 = new ArrayList<>(); // keyword저장
+			ArrayList<lo_key> lokey2 = new ArrayList<>(); // 장소 정보 저장
+			
+			while(rs.next()) {
+
+				
+				// 1. location keyword 저장
+				
+				lo_key a = new lo_key();
+				
+				a.setKeyword(rs.getString("keyword"));
+
+				lokey1.add(a);
+
+				
+				if(a.getKeyword() != rs.getString("keyword")) {
+				// 2. 장소 정보 저장
+				
 				lo_key l = new lo_key();
 				
 				l.setL_no(rs.getInt("l_no"));
 				l.setLs_code(rs.getInt("ls_code"));
 				l.setLocal_name(rs.getString("local_name"));
 				l.setCount_all(rs.getInt("count_all"));
-				l.setKeyword(rs.getString("keyword"));
+				
 				l.setA_no(rs.getInt("a_no"));
 				l.setA_name(rs.getString("a_name"));
 				l.setA_status(rs.getString("a_status"));
@@ -610,25 +626,26 @@ public class ThumbnailDAO {
 				l.setN_no(rs.getInt("n_no"));
 				l.setS_id(rs.getInt("s_id"));
 				l.setFlevel(rs.getInt("flevel"));
-				
-				
-	
+
 			
-				lokey.add(l);
+				lokey2.add(l);
 			}
+		}
+				map.put("lokey1", lokey1);
+				map.put("lokey2", lokey2);
+
+			
 		
 	} catch (SQLException e) {
-		
+		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} finally {
-		close(ps);			
-
+		close(rs);
+		close(ps);
 	}
 	
-	return lokey;
+	return map;
 }
-
-	}
 
 
 

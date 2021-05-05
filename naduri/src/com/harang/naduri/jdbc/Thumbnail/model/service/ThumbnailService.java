@@ -121,16 +121,16 @@ public class ThumbnailService {
 		return map;
 	}
 
-	public ArrayList<lo_key> hotSpot4(int l_no2) {
+	public HashMap<String, Object> hotSpot4(int l_no2) {
 		con = getConnection();
-		
+		HashMap<String, Object> map = new HashMap<>();
 		ArrayList<lo_key> lokey = new ArrayList<>();
 		
-		lokey = dao.hotSpot4(con, l_no2);
+		map = dao.hotSpot4(con, l_no2);
 		
 		close(con);
 		
-		return lokey;
+		return map;
 	}
 
 

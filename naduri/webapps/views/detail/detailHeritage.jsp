@@ -345,7 +345,7 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
            type : 'GET',                 //get방식으로 통신
            url : urlPath,    //탭의 data-tab속성의 값으로 된 html파일로 통신
            dataType : "html",//html형식으로 값 읽기 
-           data: { m_no : '<%= m.getM_no() %>' } ,
+           data: { m_no : '' } ,
            error : function() {          //통신 실패시
             alert('통신실패!');
            },

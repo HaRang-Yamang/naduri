@@ -30,14 +30,14 @@ import com.harang.naduri.jdbc.location.model.vo.Location;
 /**
  * Servlet implementation class InsertHeritage
  */
-@WebServlet("/CallApiDetailSelectOneCollection.do")
-public class CallApiDetailSelectOneCollection extends HttpServlet {
+@WebServlet("/CallApiDetail.do")
+public class CallApiDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CallApiDetailSelectOneCollection() {
+    public CallApiDetail() {
         super();
         // TODO Auto-generated constructor stub
     }

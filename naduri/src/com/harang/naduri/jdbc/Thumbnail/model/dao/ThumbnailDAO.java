@@ -95,6 +95,74 @@ public class ThumbnailDAO {
 				}
 
 	
+	// ----------------------------- 간소화 프로젝트2 ------------------------------//
+		// 인기명소 둘러보기 목록 조회, 매개변수 없는 조회 버전// 0503 spot & heritage & location & keyword 연결 추가
+		public HashMap<String, Object> hotSpot3(Connection con) {
+
+			
+							HashMap<String, Object> map = new HashMap<>();
+							
+							// 맛집과 여행지 정보 저장 객체
+							ArrayList<lo_key> lokey = new ArrayList<>();
+
+						
+						
+						PreparedStatement ps = null;
+						ResultSet rs = null;
+						
+						String sql = prop.getProperty("hotSpot");
+						
+						try {
+							ps = con.prepareStatement(sql);
+							
+							
+							rs = ps.executeQuery();
+							
+							while(rs.next()) {
+								
+							
+								lo_key l = new lo_key();
+								lo_key k = new lo_key();
+								
+								l.setL_no(rs.getInt("l_no"));
+								l.setLs_code(rs.getInt("ls_code"));
+								l.setLocal_name(rs.getString("local_name"));
+								l.setCount_all(rs.getInt("count_all"));
+								
+								l.setA_no(rs.getInt("a_no"));
+								l.setA_name(rs.getString("a_name"));
+								l.setA_status(rs.getString("a_status"));
+								l.setR_no(rs.getInt("r_no"));
+								l.setM_no(rs.getInt("m_no"));
+								l.setN_no(rs.getInt("n_no"));
+								l.setS_id(rs.getInt("s_id"));
+								l.setFlevel(rs.getInt("flevel"));
+								
+								k.setKeyword(rs.getString("keyword"));
+								
+								lokey.add(l);
+								lokey.add(k);
+							
+								map.put("lokey", lokey);
+								
+							}
+							
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						} finally {
+							close(ps);			
+
+						}
+						
+						return map;
+					}
+
+
+	
+	
+	
+	
 
 	// 인기명소 둘러보기 목록 조회, 매개변수 없는 조회 버전// 0503 spot & heritage & location & keyword 연결 추가
 	public HashMap<String, Object> hotSpot(Connection con) {

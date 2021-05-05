@@ -24,7 +24,7 @@ public class ThumbnailService {
 	private ThumbnailDAO dao = new ThumbnailDAO();
 	
 	
-	// 메인 인기명소 조회
+	// --------------------------- hot spot original. ver ----------------------- //
 	public HashMap<String, Object> hotSpot() {
 		con = getConnection();
 		
@@ -49,6 +49,21 @@ public class ThumbnailService {
 		close(con);
 		
 		return lokey;
+	}
+	
+	// --------------------------- hot spot 3 ----------------------- //
+	
+	public HashMap<String, Object> hotSpot3() {
+		con = getConnection();
+		
+		ArrayList<lo_key> lokey = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map = dao.hotSpot3(con);
+		
+		close(con);
+		
+		return map;
 	}
 	
 	//-------------------------------- 통합 검색 2 ------------------------------//

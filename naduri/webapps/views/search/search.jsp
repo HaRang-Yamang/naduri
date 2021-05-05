@@ -97,8 +97,7 @@
             <div class="small-container" id="thumbloop">
             
           	<!-- 장소 개수만큼 장소 정보 썸네일(div) 생성하는 반복문  -->
-			<!-- 
-			<% for(Spot p : slist) { %>
+		<!-- 	<% for(Spot p : slist) { %>
 			        <div class="row">    
 		            	<div class="hotSpot date">
 		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">
@@ -109,7 +108,7 @@
 		           		</div>
 		            </div>         			
           	<% } %>
-		 	-->
+		 -->
             
             </div>
         </div>
@@ -132,6 +131,15 @@
 				// 자바 배열을 이용하여 positions 배열을 만드는 반복문
 				var positions = [
 						<%
+						for(Heritage h : hlist){
+							out.println("{ content : '"+"<div class="+'"'+"lmark"+'"' +" id="+ '"'+h.getL_no()+'"'+
+									"style="+'"'+"text-align:center; width:150px;"+'"' +
+									
+									">" + h.getH_name() + "</div>', "
+						   + " latlng: new kakao.maps.LatLng(" + h.getH_lat() + ", " + h.getH_lng() + ") }, ");
+						}
+
+						
 						for(Spot s : slist){
 							out.println("{ content : '"+"<div class="+'"'+"lmark"+'"' +" id="+ '"'+s.getL_no()+'"'+
 									"style="+'"'+"text-align:center; width:150px;"+'"' +
@@ -141,10 +149,13 @@
 						}
 						%>
 					];
+				
+				console.log(positions); // 배열에 전부 담기 성공.
+				
 			
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 			    mapOption = { 
-			        center: new kakao.maps.LatLng(<%= slist.get(0).getS_lat() +", " + slist.get(0).getS_lng()%>), // 지도의 중심좌표(제주향교])
+			        center: new kakao.maps.LatLng(<%= hlist.get(0).getH_lat() +", " + hlist.get(0).getH_lng()%>), // 지도의 중심좌표
 			        level: 4 // 지도의 확대 레벨
 			        
 			    };
@@ -220,37 +231,50 @@
 						
 						
 							<!-- 장소 개수만큼 장소 정보 썸네일(div) 생성하는 반복문  -->
-							var sidArr =  [];
-							var slatArr = [];
-							var slngArr = [];
-							var snameArr = [];
 							
+							
+							
+							var idArr = [];
+							var latArr = [];
+							var lngArr = [];
+							var nameArr = [];
+							
+							<% for(Heritage h : hlist) { %>
+							
+							idArr.push(<%= h.getH_id() %>);
+							latArr.push(<%= h.getH_lat() %>);
+							lngArr.push(<%= h.getH_lng() %>);
+							nameArr.push('<%= h.getH_name() %>');
+							<% } %>	
 							
 							<% for(Spot s : slist) { %>
-								
-							slatArr.push(<%= s.getS_lat() %>);
-							slngArr.push(<%= s.getS_lng() %>);
-							snameArr.push('<%= s.getS_name() %>');
+							
+							idArr.push(<%= s.getS_id() %>);
+							latArr.push(<%= s.getS_lat() %>);
+							lngArr.push(<%= s.getS_lng() %>);
+							nameArr.push('<%= s.getS_name() %>');
 							<% } %>	
 							
 							
+							
+							
 							$('#thumbloop').html('');
-							for(var i in snameArr, slatArr, slngArr){
+							for(var i in nameArr, latArr, lngArr){
 								
-								if( slatArr[i] > swlat &&	
-									slatArr[i] < nelat &&
-									slngArr[i] > swlng &&
-									slngArr[i] < nelng)	
+								if( latArr[i] > swlat &&	
+									latArr[i] < nelat &&
+									lngArr[i] > swlng &&
+									lngArr[i] < nelng)	
 									{	
-									console.log(snameArr[i]);
+									console.log(nameArr[i]);
+									
 									 
-									$('#thumbloop').html($('#thumbloop').html() +
-											
+									$('#thumbloop').html( $('#thumbloop').html() +
 											'<div class="row">'+ 
 											   '<div class="hotSpot date">'+
 											   	'<img src="/naduri/assets/images/main/featured_img_1.jpg">'+
 								            		 '<div class="spotInfo">'+
-									            		 '<h4>'+snameArr[i]+'</h4>'+
+									            		 '<h4>'+nameArr[i]+'</h4>'+
 									            		 '<p>#데이트</p> <p>#데이트</p> <p>#데이트</p>'+
 								            		 '</div>'+
 								           		'</div>'+

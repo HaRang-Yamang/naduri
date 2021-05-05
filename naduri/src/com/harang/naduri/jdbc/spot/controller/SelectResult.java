@@ -46,8 +46,6 @@ public class SelectResult extends HttpServlet {
 		
 		request.setAttribute("slist", slist);
 		
-		request.getRequestDispatcher("views/search/search.jsp").forward(request, response);
-		
 		
 		
 		
@@ -59,11 +57,10 @@ public class SelectResult extends HttpServlet {
 		
 		System.out.println("hlist : " + hlist);
 		
-		
-		request.setAttribute("hlist", hlist);
-		request.getRequestDispatcher("views/search/search.jsp").forward(request, response);
+	
+		request.setAttribute("hlist", hlist);	
 
-		
+		request.getRequestDispatcher("views/search/search.jsp").forward(request, response);
 		
 		
 	

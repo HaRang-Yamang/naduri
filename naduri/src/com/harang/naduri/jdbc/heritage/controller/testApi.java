@@ -19,7 +19,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.harang.naduri.jdbc.heritage.model.service.HeritageService;
-import com.harang.naduri.jdbc.heritage.model.service.insertService;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 
 
@@ -27,14 +26,14 @@ import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 /**
  * Servlet implementation class InsertHeritage
  */
-@WebServlet("/insertTest.do")
-public class insertTest extends HttpServlet {
+@WebServlet("/testApi.do")
+public class testApi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public insertTest() {
+    public testApi() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -66,7 +65,7 @@ public class insertTest extends HttpServlet {
 				String ccbaCtcd = ""; // 시도코드
 				
 				// 서비스 출발 
-				insertService serviceHeri = new insertService();
+				HeritageService serviceHeri = new HeritageService();
 			
 			// 1. 문화재 정보 DB에서 불러와서 객체화 시키는 작업
 			
@@ -79,7 +78,7 @@ public class insertTest extends HttpServlet {
 			
 			heriList = serviceHeri.selectHeriList();
 			
-
+			System.out.println(heriList);
 			
 			for ( Heritage h : heriList ) {
 				
@@ -88,6 +87,20 @@ public class insertTest extends HttpServlet {
 				ccbaAsno = h.getH_serial(); // 지정번호
 				ccbaCtcd = h.getH_zipcode(); // 시도코드
 				
+				
+			
+			
+
+
+				// 1-3단계 게시글 조회 서비스 시작 --> 서비스 Go!
+				//listHeri = serviceHeri.selectName(spotName);
+				
+
+
+		// 2단계 결과 값을 가지고 이번에는 문화재청 상세검색
+
+		// 2-1단계 쿼리스트링으로 보낼 변수에 list에서 뽑아온 결과 값 넣기 (임시 변수 사용해야 함)
+
 
 		// Debug
 		System.out.println("결과 조회 : " + ccbaKdcd + ccbaAsno + ccbaCtcd);
@@ -164,17 +177,15 @@ public class insertTest extends HttpServlet {
 										herihang.setLatitude(getTagValue("latitude", eElement)); // 위도
 										herihang.setImageUrl(getTagValue("imageUrl", eElement)); // 메인노출이미지URL
 
-
-										// 객체 바구니에 저장
-										heriList.add(herihang);
-										
 										// 서비스 시작!
-										insertService service = new insertService();
+										HeritageService service = new HeritageService();
 										
 										
-										 int result = service.insertHeritageLong(heriList);
+										int result = service.insertHeritageLong(herihang);
 										
 
+								// 객체 바구니에 저장
+										heriList.add(herihang);
 								
 								 System.out.println(heriList);
 
@@ -182,9 +193,11 @@ public class insertTest extends HttpServlet {
 								}	// for end
 								
 							}	// if end
+							
+						}
 
 						}	// while end
-					}
+						
 					
 					catch (Exception e){	
 						e.printStackTrace();
@@ -199,7 +212,7 @@ public class insertTest extends HttpServlet {
 					view.forward(request, response);
 		}
 				}	// main end
-
+			
 
 
 

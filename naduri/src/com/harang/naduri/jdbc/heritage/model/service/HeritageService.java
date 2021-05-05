@@ -34,6 +34,18 @@ public class HeritageService {
 	private HeritageDAO dao = new HeritageDAO();
 	
 	
+	// 전체 문화재 검색
+public ArrayList<Heritage> selectHeriList(){
+	
+	con = getConnection();
+	
+	ArrayList<Heritage> heriList = dao.selectHeriList(con);
+	
+	close(con);
+	
+	return heriList;
+}
+	
 	// 목록 조회 시 필요한 종목코드 추출
 	public ArrayList<Heritage> selectName(String spotName) {
 		
@@ -243,6 +255,32 @@ public class HeritageService {
 			close(con);
 			
 			return result;
+		}
+
+		
+		// 위도 경도 update Heritage
+		public int insertHeritageLong(Heritage herihang) {
+			con = getConnection();
+		
+			int result = 0;
+				// 3. 위에서 찾은 l_no와 Heritage 객체를 함께 insert Heritage
+				result = dao.insertHeritageLong(con, herihang);
+							
+				commit(con);
+
+				close(con);
+				
+				return result;
+		}
+
+		public ArrayList<Heritage> selectHerList() {
+			con = getConnection();
+			
+			ArrayList<Heritage> hlist = dao.selectHeriList(con);
+			
+			close(con);
+			
+			return hlist;
 		}
 
 

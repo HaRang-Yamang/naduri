@@ -143,6 +143,7 @@ public class SpotDAO {
 				
 				ss.setS_id(rs.getInt("s_id"));
 				ss.setS_name(rs.getString("s_name"));
+				ss.setS_status(rs.getString("s_status"));
 				
 				list.add(ss);
 				
@@ -186,6 +187,7 @@ public class SpotDAO {
 				
 				ss.setS_id(rs.getInt("s_id"));
 				ss.setS_name(rs.getString("s_name"));
+				ss.setS_status(rs.getString("s_status"));
 				
 				list.add(ss);
 				

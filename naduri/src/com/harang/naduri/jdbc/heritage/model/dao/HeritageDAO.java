@@ -259,6 +259,7 @@ public class HeritageDAO {
 	            
 	            h.setH_id(rs.getInt("h_id"));
 	            h.setH_name(rs.getString("h_name"));
+	            h.setH_status(rs.getString("h_status"));
 	            
 	            list.add(h);
 	         
@@ -339,5 +340,35 @@ public class HeritageDAO {
 			
 			return result;
 		}
+
+
+		public int deletHeritage(Connection con, int h_id) {
+			
+			int result = 0;
+			PreparedStatement ps = null;
+			
+			String sql = prop.getProperty("deleteHeritage");
+			
+			try {
+				ps = con.prepareStatement(sql);
+				
+				ps.setInt(1, h_id);
+				
+				result = ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			} finally {
+				close(ps);
+			}
+			
+			return result;
+			
+			
+		}
+
+
+
 
 }

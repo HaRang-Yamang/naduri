@@ -146,5 +146,29 @@ public class HeritageService {
 		}
 
 
+		// delete Adimin Heritage
+		public int deleteHeritage(int h_id) {
+			
+			con = getConnection();
+			
+			
+			int result = dao.deletHeritage(con, h_id);
+			
+			
+			if ( result > 0) {
+				commit(con);
+				
+			} else {
+				rollback(con);
+			}
+			
+			close(con);
+			
+			return result;
+		}
+
+
+
+
 
 }

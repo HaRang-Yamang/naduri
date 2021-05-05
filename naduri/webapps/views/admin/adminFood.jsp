@@ -60,6 +60,7 @@
                     <tr>
                         <th>번호</th>
                         <th>장소명</th>
+                        <th style="width:100px">삭제여부</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -67,6 +68,7 @@
                     <tr>
                         <td id="her_no"><%= ss.getS_id() %></td>
                         <td id="her_id"><%= ss.getS_name() %></td>
+                        <td id="her_status"><%= ss.getS_status() %></td>
                         <td id="her_table_btn">
                             <div class="her_btn_area">
                                 <button id="her_update">데이터 수정</button>

@@ -105,19 +105,45 @@ public class MemberService {
 
 	
 	// 회원 수정
-	public int updateMember(Member updateMember) {
+	public int updateMember(Member updateMember, String[] keyword_id) {
 		
 		con = getConnection();
-
+		
 		int result1 = dao.updateMember(con, updateMember);
 
 		// updateMember 정보를 가지고 MemberDAO의 updateMember가 한 번 이상 시행 됐다면 커밋
+		// 1. 새로 받아온 업데이트 맴버 정보가 적용됨
 		if(result1 > 0) {
-			commit(con);
+			// 2. updateMember에 입력된 m_id 정보값으로 m_no를 찾아온다
+			int m_no = dao.selectMno(con, updateMember.getM_id());
+			if (m_no > 0) {
+				
+				int delete = dao.deleteKeyword(con, m_no);
+				
+				if(delete > 0) {
+					
+					int result2 = 0;
+					
+					for (int i = 0 ; i < keyword_id.length ; i++) {
+						
+						Keyword key = new Keyword(m_no, Integer.parseInt(keyword_id[i]));
+						key.setM_no(m_no);
+						key.setKeyword_id(i);
+						result2 = dao.insertKeyword(con, key);
+						
+						commit(con);
+						
+						if ( result2 == 0) {
+							rollback(con);
+							break;
+						}
+					}
+				}
+			}
+			
 		} else {
 			rollback(con);
 		}
-		
 		close(con);
 		return result1;
 	}

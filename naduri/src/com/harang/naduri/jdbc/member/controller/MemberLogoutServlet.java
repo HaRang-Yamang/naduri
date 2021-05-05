@@ -37,7 +37,7 @@ public class MemberLogoutServlet extends HttpServlet {
 			session.invalidate();
 		}
 		
-		response.sendRedirect("index.do");
+		response.sendRedirect("/naduri");
 		
 		
 	}

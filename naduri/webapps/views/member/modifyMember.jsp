@@ -306,18 +306,17 @@
 	<script type="text/javascript" defer src="/naduri/assets/js/member.js"></script>
 	<script>
 	// 관심사 값 받아오기
-	var keywords =
+	var keywords = [
 		<% for(Keyword k : listK) {
 			out.print(k.getKeyword_id() + ", ");
 		}
-			%>;
+			%>
+	];
 
 	$('input:checkbox').each(function(){
 		<% for(Keyword k : listK){ %>
 			if($(this).val() == <%= k.getKeyword_id()%>){
 				$(this).prop('checked', true);
-			} else{
-				$(this).prop('checked', false);
 			}
 		<%} %>
 	});
@@ -333,11 +332,6 @@
 		}
 
 	});
-	
-	
-	// 관심사 값 받아오기
-
-	
 
 	
 	</script>

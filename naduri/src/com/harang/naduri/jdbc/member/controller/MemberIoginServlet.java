@@ -46,8 +46,8 @@ public class MemberIoginServlet extends HttpServlet {
 		// 로그인 서비스 수행 (업무 로직 : biz logic)
 		MemberService service = new MemberService();
 		
+		// member 정보와 keyword_id 정보를 한꺼번에 가져오는 방법
 		mapMember = service.selectMember(loginMember);
-		
 		// 기존 작업
 		loginMember = service.selectMember2(loginMember);
 		
@@ -62,7 +62,7 @@ public class MemberIoginServlet extends HttpServlet {
 			
 			System.out.println(mapMember.get("listK"));
 			
-			response.sendRedirect("index.do");
+			response.sendRedirect("/naduri");
 		} else {
 			// 로그인 실패!
 			request.setAttribute("error-msg", "로그인 실패!");

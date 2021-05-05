@@ -45,7 +45,7 @@ public class MemberDeleteServlet extends HttpServlet {
 		
 		if( result > 0 ) {
 			session.invalidate();
-			response.sendRedirect("index.do");
+			response.sendRedirect("/naduri");
 		}else {
 			request.setAttribute("error-msg", "회원 탈퇴 실패!");
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");

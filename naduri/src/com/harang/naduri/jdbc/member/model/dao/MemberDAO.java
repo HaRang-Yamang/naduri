@@ -214,47 +214,6 @@ public class MemberDAO {
 		return mapMember;
 	}
 	
-	/*
-	public ArrayList<Keyword> selectKeyword(Connection con, int m_no) {
-		ArrayList<Keyword> list = new ArrayList<Keyword>();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("selectKeyword");
-	
-		try {
-			ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, m_no);
-			
-			rs = ps.executeQuery();
-			
-			while( rs.next() ) {
-				
-				Keyword key = new Keyword();
-
-				key.setKeyword_id(rs.getInt("keyword_id"));
-				
-				list.add(key);				
-			}
-			
-			System.out.println("keyword_id 조회 결과 : " + list);
-			
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(ps);
-		}	
-		
-		return list;
-
-		
-	}
-	
-	*/
-	
 	// 회원 정보 수정
 	public int updateMember(Connection con, Member updateMember) {
 		int result = 0;
@@ -280,11 +239,8 @@ public class MemberDAO {
 
 			e.printStackTrace();
 		} finally {
-			
 			close(ps);
-
-		}
-		
+		}	
 		return result;
 	}
 
@@ -411,13 +367,13 @@ public class MemberDAO {
 
 	// session.setAttribute("member", loginMember);을 위한 dao
 	public Member selectMember2(Connection con, Member loginMember) {
-		
+
 		Member result = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+	
 		String sql = prop.getProperty("selectMember2");
-		
+	
 		try {
 			ps = con.prepareStatement(sql);
 			
@@ -425,33 +381,53 @@ public class MemberDAO {
 			ps.setString(2,  loginMember.getM_pwd());
 			
 			rs = ps.executeQuery();
-	         
-	         if(rs.next()) {
-	            result = new Member();
-	            
-	            result.setM_id(rs.getString("m_id"));
-	            result.setM_no(rs.getInt("m_no"));
-	            result.setM_pwd(rs.getString("m_pwd"));
-	            result.setM_name(rs.getString("m_name"));
-	            result.setM_gender(rs.getString("m_gender"));
-	            result.setM_address(rs.getString("m_address"));
-	            result.setM_email(rs.getString("m_email"));
-	            result.setM_phone(rs.getString("m_phone"));
-	            result.setM_birth(rs.getString("m_birth"));
-	            
-	         }
-	         
-	         System.out.println("조회 결과 : " + result);
-	         
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } finally {
-	         close(rs);
-	         close(ps);
-	      }
-	      
-	      return result;
-	   }
+		      
+		      if(rs.next()) {
+		         result = new Member();
+		         
+		         result.setM_id(rs.getString("m_id"));
+		         result.setM_no(rs.getInt("m_no"));
+		         result.setM_pwd(rs.getString("m_pwd"));
+		         result.setM_name(rs.getString("m_name"));
+		         result.setM_gender(rs.getString("m_gender"));
+		         result.setM_address(rs.getString("m_address"));
+		         result.setM_email(rs.getString("m_email"));
+		         result.setM_phone(rs.getString("m_phone"));
+		         result.setM_birth(rs.getString("m_birth"));
+		         
+		      }
+		      
+		      System.out.println("조회 결과 : " + result);
+		      
+		   } catch (SQLException e) {
+		      e.printStackTrace();
+		   } finally {
+		      close(rs);
+		      close(ps);
+		   }
+		   
+		return result;
+	}
+
+	// 회원정보 수정 - 키워드 값 삭제
+	public int deleteKeyword(Connection con, int m_no) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteKeyword");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, m_no);
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
 
 
 }

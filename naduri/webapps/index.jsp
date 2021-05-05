@@ -51,7 +51,7 @@
         <nav class="navbar">
             <div></div> <!-- 지우지 마세요. -->
             <div class="logo">
-                <h1><a href="/naduri/index.jsp"><img src="/naduri/assets/images/logo_big.png" alt="로고 이미지"></a></h1>
+                <h1><a href="/naduri"><img src="/naduri/assets/images/logo_big.png" alt="로고 이미지"></a></h1>
             </div>
 
             <div class="profile">
@@ -85,8 +85,7 @@
 
                 <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>
                 <ul>
-                    <li><i class="far fa-user-circle"></i><a href="/naduri/views/myPage/myPage.jsp">내 기행록</a></li>
-                    <li><i class="far fa-edit"></i><a href="/naduri/memberList.ad">관리자페이지</a></li>
+                    <li><i class="far fa-edit"></i><button type="button" onclick="adminPage();">관리자페이지</button></li>
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
@@ -158,6 +157,10 @@
             }
         });
     });
+    
+    function adminPage(){
+        location.href='/naduri/memberList.ad';
+     }
 
     </script>
 	

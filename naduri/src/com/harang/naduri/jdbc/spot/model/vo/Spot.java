@@ -71,7 +71,7 @@ public class Spot implements Serializable {
 		this.s_name = s_name;
 		this.s_type = s_type;
 		this.s_tel = s_tel;
-		this.s_time = s_time;s
+		this.s_time = s_time;
 		this.s_address = s_address;
 		this.s_lat = s_lat;
 		this.s_lng = s_lng;
@@ -266,6 +266,6 @@ public class Spot implements Serializable {
 
 	public void setAttList(ArrayList<Attach> attList) {
 		this.attList = attList;
-
+	}
 	
 }

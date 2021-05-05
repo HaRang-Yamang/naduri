@@ -3,7 +3,8 @@
 
 <%@ 
 	page import="com.harang.naduri.jdbc.member.model.vo.*,
-		com.harang.naduri.jdbc.location.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*,
+		com.harang.naduri.jdbc.location.model.vo.*,
+		com.harang.naduri.jdbc.Thumbnail.model.vo.*,
 		java.util.*"
 %>
 
@@ -12,7 +13,6 @@
 	ArrayList<Member> listM = (ArrayList<Member>)session.getAttribute("listM");
 	ArrayList<Keyword> listK = (ArrayList<Keyword>)session.getAttribute("listK");
 	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
-	ArrayList<lo_key> list = (ArrayList<lo_key>)request.getAttribute("lo_key");
 
 %>
 <header>
@@ -52,7 +52,7 @@
 
                 <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>
                 <ul>
-                    <li><i class="far fa-edit"></i><a href="/naduri/views/admin/adminMember.jsp">관리자페이지</a></li>
+                    <li><i class="far fa-edit"></i><button type="button" onclick="adminPage();">관리자페이지</button></li>
                     <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
@@ -60,6 +60,9 @@
             <script>
            	function logout(){
            		location.href='/naduri/logout.do';
+           	}
+        	function adminPage(){
+           		location.href='/naduri/memberList.ad';
            	}
            </script>          
         </div>

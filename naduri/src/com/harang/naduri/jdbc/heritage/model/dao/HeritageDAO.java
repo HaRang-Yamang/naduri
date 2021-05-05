@@ -31,6 +31,7 @@ public class HeritageDAO {
 			e.printStackTrace();
 		}
 	}
+	
 
 	// select Heritage Name
 
@@ -345,5 +346,78 @@ public class HeritageDAO {
 		return result;
 
 	}
+	
+	
+	// 전체 문화재 검색
+	public ArrayList<Heritage> selectHeriList(Connection con) {
+		ArrayList<Heritage> heriList = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectHeriList");
 
-}
+
+			try {
+				
+				ps = con.prepareStatement(sql);
+
+				rs = ps.executeQuery();
+//				 Debug
+//				System.out.println("쿼리문 실행 결과 : " + rs);
+				
+				while (rs.next()) {
+					Heritage h = new Heritage();
+
+					h.setH_id(rs.getInt("h_id"));
+					h.setL_no(rs.getInt("l_no"));
+					h.setH_events(rs.getString("h_events"));
+					h.setH_name(rs.getString("h_name"));
+					h.setH_zipcode(rs.getString("h_zipcode"));
+					h.setH_serial(rs.getString("h_serial"));
+
+					heriList.add(h);
+
+				}
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		return heriList;
+	}
+
+
+	public int insertHeritageLong(Connection con, Heritage herihang) {
+		
+			int result = 0;
+			
+			PreparedStatement ps = null;
+			Heritage h = new Heritage();
+
+			String sql = prop.getProperty("updateLong");
+
+			try {
+
+				ps = con.prepareStatement(sql);
+
+				ps.setString(1, h.getLongitude()); // 경도 
+				ps.setString(2, h.getLatitude()); // 위도 
+				ps.setNString(3, h.getH_name()); // H_name
+				
+				result = ps.executeUpdate();
+
+				
+				System.out.println(result);
+				
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} finally {
+				close(ps);
+			}
+
+			return result;
+			
+		}
+	}
+

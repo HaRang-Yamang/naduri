@@ -207,8 +207,12 @@
 	                 url : urlPath,    //탭의 data-tab속성의 값으로 된 html파일로 통신
 	                 dataType : "html",//html형식으로 값 읽기 
 	                 data: { m_no : '<%= m.getM_no() %>' } ,
-	                 error : function() {          //통신 실패시
+	                 error : function(error, status) {           //통신 실패시
 	                  alert('통신실패!');
+	                  console.log('--------------------');
+	                  console.log(error);
+	                  console.log(status);
+	                  console.log('--------------------');
 	                 },
 	                 success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
 	                 	

@@ -1,6 +1,7 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.harang.naduri.jdbc.Thumbnail.model.vo.lo_key;
 import com.harang.naduri.jdbc.member.model.service.ToGoListService;
-import com.harang.naduri.jdbc.review.model.service.ReviewService;
 
 /**
- * Servlet implementation class Tap_ToGoList
+ * Servlet implementation class Tab_ToGoList
  */
 @WebServlet("/tab_togolist.do")
-public class Tap_ToGoList extends HttpServlet {
+public class Tab_ToGoList extends HttpServlet {
 	private static final long serialVersionUID = 1031L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Tap_ToGoList() {
+    public Tab_ToGoList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +33,19 @@ public class Tap_ToGoList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int m_no = Integer.parseInt(request.getParameter("m_no"));
-		HashMap<String, Object> map = new ToGoListService().togolist(m_no);
+		HashMap<String, Object> map = new ToGoListService().togoList(m_no);
 		
-		request.setAttribute("lista", map.get("lista"));
-		request.setAttribute("listk", map.get("listk"));
-		request.setAttribute("lists", map.get("lists"));
-		request.setAttribute("listh", map.get("listh"));
 		
-		response.sendRedirect("/tab_togolist.do");
+		if ( map != null) {
+			request.setAttribute("map", map.get("list"));  //키워드
+			request.setAttribute("map", map.get("list2"));  // 나머지
+			
+			
+			
+			request.getRequestDispatcher("views/myPage/tab_togolist.jsp").forward(request, response);
+		}
+		
+		
 	}
 
 	/**

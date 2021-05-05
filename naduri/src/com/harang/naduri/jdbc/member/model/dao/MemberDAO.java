@@ -428,6 +428,37 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	
+	// 아이디 찾기
+	public Member searchId(Connection con, Member searchId) {
+		Member result = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("searchId");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1,  searchId.getM_name());
+			ps.setString(2,  searchId.getM_email());
+			
+			rs = ps.executeQuery();
+			
+			if( rs.next()) {
+				result = new Member();
+				result.setM_id(rs.getString("m_id"));
+				result.setM_name(rs.getString("m_name"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		return result;
+	}
 
 
 }

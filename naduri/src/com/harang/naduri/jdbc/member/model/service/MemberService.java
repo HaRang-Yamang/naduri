@@ -212,6 +212,16 @@ public class MemberService {
 		
 		return result;
 	}
+
+
+	// 아이디 찾기
+	public Member searchId(Member searchId) {
+	
+		con = getConnection();
+		Member result = dao.searchId(con, searchId);
+		
+		return result;
+	}
 	
 
 }

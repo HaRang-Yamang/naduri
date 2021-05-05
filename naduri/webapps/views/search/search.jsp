@@ -4,6 +4,7 @@
 <%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*" %>
 
 <%
+		ArrayList<Heritage> hlist = 
 		ArrayList<Spot> list = (ArrayList<Spot>)request.getAttribute("list");
 %>
 

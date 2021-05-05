@@ -6,9 +6,17 @@ import static com.harang.naduri.jdbc.common.JDBCTemplate.getConnection;
 import static com.harang.naduri.jdbc.common.JDBCTemplate.rollback;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.heritage.model.dao.HeritageDAO;
@@ -128,6 +136,55 @@ public class HeritageService {
 	   con = getConnection();
 	   
 	   ArrayList<Heritage> list = dao.getHerCode(con);
+	   
+	   
+	   System.out.println("list : " + list);
+	   
+		String ccbaKdcd = ""; // 종목코드
+		String ccbaAsno = ""; // 지정번호
+		String ccbaCtcd = ""; // 시도코드
+		
+		for(Heritage h : list) {
+			
+			ccbaKdcd = h.getH_events(); // 종목코드
+			ccbaAsno = h.getH_serial(); // 지정번호
+			ccbaCtcd = h.getH_zipcode(); // 시도코드
+
+			// System.out.println("종목코드 : "+ h.getL_no() + ", "+ ccbaKdcd);
+			
+			try {
+			
+			String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd;
+			
+			System.out.println(callDetail);
+			
+			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+			Document doc = dBuilder.parse(callDetail);
+			
+			
+			System.out.println("api result : " + doc);
+			
+			doc.getDocumentElement().normalize();
+			
+			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			System.out.println("Tag element :" + doc.getDocumentElement().getTagName());
+			
+			
+			
+			} catch (ParserConfigurationException | SAXException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			
+			
+			
+		}
+		
+		
+	  
+	   
 	   
 	   close(con);
 	   

@@ -19,7 +19,7 @@ import com.harang.naduri.jdbc.spot.model.vo.Spot;
  */
 @WebServlet("/heritagelist.se")
 public class GetHeritageList extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1818L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,8 +39,7 @@ public class GetHeritageList extends HttpServlet {
 	
 		list = service.getHerCode();
 		
-		System.out.println("list : " + list);
-		
+//		System.out.println("list : " + list);
 		
 		String ccbaKdcd = ""; // 종목코드
 		String ccbaAsno = ""; // 지정번호

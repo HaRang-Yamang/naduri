@@ -284,14 +284,16 @@ public class HeritageDAO {
 		      
 		      
 		      while(rs.next()) {
-		         Heritage hh = new Heritage();
+		         Heritage h = new Heritage();
 		         
-		         hh.setH_events(      rs.getString("h_events"));
-		         hh.setH_name(   rs.getString("h_name"));
-		         hh.setH_zipcode(      rs.getString("h_zipcode"));
-		         hh.setH_serial(      rs.getString("h_serial"));
+		         h.setH_id(rs.getInt("h_id"));
+		         h.setL_no(rs.getInt("l_no"));
+		         h.setH_events(rs.getString("h_events"));
+		         h.setH_name(rs.getString("h_name"));
+		         h.setH_zipcode(rs.getString("h_zipcode"));
+		         h.setH_serial(rs.getString("h_serial"));
 		         
-		         list.add(hh);
+		         list.add(h);
 		         
 		      }         
 		      

@@ -58,6 +58,8 @@ public class Heritage implements Serializable{
 	}
 
 
+	
+	
 	public Heritage(int h_id, int l_no, String h_events, String h_serial, String h_zipcode, String h_status,
 			int h_count, String h_name, String ccmaName, String gcodeName, String ccbaAsdt, String ccbaLcad, String ccceName,
 			String ccbaPoss, String ccbaAdmin, String imageUrl, String content, String longitude, String latitude) {
@@ -94,6 +96,8 @@ public class Heritage implements Serializable{
 				+ ", ccceName=" + ccceName + ", ccbaPoss=" + ccbaPoss + ", ccbaAdmin=" + ccbaAdmin + ", imageUrl="
 				+ imageUrl + ", content=" + content + ", longitude=" + longitude + ", latitude=" + latitude + "]";
 	}
+	
+	
 
 
 	public int getH_id() {

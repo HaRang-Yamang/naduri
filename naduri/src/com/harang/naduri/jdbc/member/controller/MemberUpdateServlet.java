@@ -73,8 +73,9 @@ public class MemberUpdateServlet extends HttpServlet {
 		updateMember.setM_email(m_emailStr);
 		updateMember.setM_address(m_addressStr);
 		
+		
 		// 변경할 키워드 정보 처리
-		System.out.println("member 변경 정보 : " + updateMember);
+		//System.out.println("member 변경 정보 : " + updateMember);
 		System.out.println("keyword 변경 정보 arr : " + Arrays.toString(keyword_id));
 
 		

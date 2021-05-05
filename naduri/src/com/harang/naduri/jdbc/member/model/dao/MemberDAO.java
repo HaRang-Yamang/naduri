@@ -224,7 +224,7 @@ public class MemberDAO {
 		
 		try {
 			
-			ps = con.prepareStatement(sql);
+			ps = con.prepareStatement(sql);	
 			
 			ps.setString(1, updateMember.getM_pwd());
 			ps.setString(2, updateMember.getM_gender());
@@ -234,8 +234,8 @@ public class MemberDAO {
 			ps.setString(6, updateMember.getM_id());
 	
 			result = ps.executeUpdate();
-
-			
+			System.out.println(ps);
+			System.out.println(result);
 		} catch (SQLException e) {
 
 			e.printStackTrace();

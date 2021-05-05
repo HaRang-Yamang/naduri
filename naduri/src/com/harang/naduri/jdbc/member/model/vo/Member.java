@@ -189,6 +189,16 @@ public class Member implements Serializable {
 	public String getM_email() {
 		return m_email;
 	}
+	// test
+	public Member(String m_id, String m_pwd, String m_gender, String m_address, String m_email, String m_phone) {
+		super();
+		this.m_id = m_id;
+		this.m_pwd = m_pwd;
+		this.m_gender = m_gender;
+		this.m_address = m_address;
+		this.m_email = m_email;
+		this.m_phone = m_phone;
+	}
 
 	public void setM_email(String m_email) {
 		this.m_email = m_email;

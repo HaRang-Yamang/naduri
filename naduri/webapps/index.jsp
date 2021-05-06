@@ -16,6 +16,9 @@
    Heritage heri = new Heritage();
 
 
+   ArrayList<lo_key> list = (ArrayList<lo_key>)request.getAttribute("list"); //키워드
+
+
    
 %>
 
@@ -134,30 +137,26 @@
         <div class="featured">
             <div class="small-container">
             
-<% if( spotlo != null ) { %>            
-<% for(int i=0 ; i < spotlo.size(); i++) { %>
+<% for(int i=0 ; i < list.size(); i++) { %>
             <div class="row">
-                <div class="hotSpot <%=spotlo.get(i).getLs_code() %>" id="<%=spotlo.get(i).getLocal_name() %>" name="spotName">
-                   <img src="/naduri/resources/thumb/<%=spotlo.get(i).getA_name() %>"/>
+                <div class="hotSpot <%= list.get(i).getLs_code() %>" id="<%= list.get(i).getLocal_name() %>" name="spotName">
+                   <img src="/naduri/resources/thumb/<%= list.get(i).getA_name() %>"/>
 
                     <div class="spotInfo">
-                    <h4><%=spotlo.get(i).getLocal_name() %></h4>
+                    <h4><%= list.get(i).getLocal_name() %></h4>
                     
-                <% for( lo_key k : keyword) { %>
-                <% if( k.getL_no() == spotlo.get(i).getL_no()) { %>
-                    <p>#<%=k.getKeyword() %></p>
-                <% } %>
-                     <% } %>
+                <% for(String k : list.get(i).getKeyword()) { %>
+                <p>#<%= k %> </p>
+                    <% } %>
                     </div>
-                    <div class="markIcon"><i class="fas fa-heart"></i></div>
+                    
                 </div>
-           
-             
+       
               
 </div>
 
 <% } %> <!-- for문 end -->
-<% } %>  <!-- if문 end -->
+
 </div>
 <!--  featured images end -->
 
@@ -167,56 +166,91 @@
     <script>
     
 
-	/**
-	 * author : dababy
-	 * e-mail : pieta2529@gmail.com
-	 * last-update : 2021-05-06 p.m. 12:37
-	 * comment : 사용자가 검색하는 장소명을 검색 페이지로 넘깁니다. 이 때, submit 이벤트는 Enter 값으로 인식합니다.
-	 * 
-	 * 
-	 * **/
-	 
-
-     $(document).ready(function() {
-         $(".search_val").keydown(function(key) {
-            
-             if (event.keyCode == 13) {
-                var spotName = $(this).val();
-                /* alert($(".search_val").val()); */
-                 location.href = "/naduri/goresult.sr?spotName=" + spotName;
-                
-             }
-         });
-      });
-	    
-	    
-	    // selectOne
-	    $('.hotSpot').on('click', function(){
-	    	var spotName = $(this).attr('id');
-			
-			location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
-		});
-
+   /**
+    * author : dababy
+    * e-mail : pieta2529@gmail.com
+    * last-update : 2021-05-06 p.m. 12:37
+    * comment : 사용자가 검색하는 장소명을 검색 페이지로 넘깁니다. 이 때, submit 이벤트는 Enter 값으로 인식합니다.
+    * 
+    * 
+    * **/
     
 
-	function join(){
-		location.href="/naduri/joinMember.jsp"
-	}
-	function login(){
-		location.href = '/naduri/views/login.jsp';
-	}
-	function myPage(){
-		location.href='/naduri/myPage.do';
-	}
-	function memberUpdate(){
-		location.href = '/naduri/views/member/modifyMember.jsp';
-	}
-	function logout() {
-		location.href = '/naduri/logout.do';
-	}
-	function adminPage() {
-		location.href = '/naduri/memberList.ad';
-	}
+    $(document).ready(function() {
+           $(".search_val").keydown(function(key) {
+              
+               if (event.keyCode == 13) {
+                  var spotName = $(this).val();
+                  /* alert($(".search_val").val()); */
+                   location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+                  
+               }
+           });
+        });
+       
+       
+       // selectOne
+       $('.hotSpot').on('click', function(){
+          var spotName = $(this).attr('id');
+         
+         location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+      });
+
+
+
+   /**
+    * author : dababy
+    * e-mail : pieta2529@gmail.com
+    * last-update : 2021-05-06 p.m. 12:37
+    * comment : 사용자가 검색하는 장소명을 검색 페이지로 넘깁니다. 이 때, submit 이벤트는 Enter 값으로 인식합니다.
+    * 
+    * 
+    * **/
+    
+     $(document).ready(function() {
+        $(".search_val").keydown(function(key) {
+           
+            if (event.keyCode == 13) {
+               var spotName = $(this).val();
+               /* alert($(".search_val").val()); */
+                location.href = "/naduri/goresult.sr?spotName=" + spotName;
+               
+            }
+        });
+     });
+
+   function join(){
+      location.href="/naduri/joinMember.jsp"
+   }
+   function login(){
+      location.href = '/naduri/views/login.jsp';
+   }
+   function myPage(){
+      location.href='/naduri/myPage.do';
+   }
+   function memberUpdate(){
+      location.href = '/naduri/views/member/modifyMember.jsp';
+   }
+   function logout() {
+      location.href = '/naduri/logout.do';
+   }
+   function adminPage() {
+      location.href = '/naduri/memberList.ad';
+   }
+
+    
+    // selectOne
+    $('.hotSpot').on('click', function(){
+       var spotName = $(this).attr('id');
+      
+      location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+   });
+    
+    
+    
+    function adminPage(){
+        location.href='/naduri/memberList.ad';
+     }
 
 
     </script>

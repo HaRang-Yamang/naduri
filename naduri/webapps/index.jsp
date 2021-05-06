@@ -9,19 +9,12 @@
 <%
 	Member m = (Member)session.getAttribute("member");
 	
-	// spot 정보
-	ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list");
-	// Heritage 정보
-	ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri");
-	// 첨부파일 정보
-	ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2");
-	// Location & Keyword 정보
-	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
+	ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword");
+	ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo");
 	
-	ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey");
-	
-	
+	HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
 	Heritage heri = new Heritage();
+
 
 	
 %>
@@ -123,30 +116,36 @@
  <!-- featured images -->
         <div class="featured">
             <div class="small-container">
-			<% for(lo_key l : lokey) { %>
+            
+<% if( spotlo != null ) { %>	         
+<% for(int i=0 ; i < spotlo.size(); i++) { %>	
             <div class="row">
                 <div class="hotSpot date">
-                   <img src="/naduri/resources/thumb/ <%=l.getA_name() %>"/>
+                   <img src="/naduri/resources/thumb/ <%=spotlo.get(i).getA_name() %>"/>
 
                     <div class="spotInfo">
-                    <h4><%=l.getLocal_name() %></h4>
+                    <h4><%=spotlo.get(i).getLocal_name() %></h4>
                     
-                    <% for( int z = 0 ; z < l.getKeyword().length() ; z++ ) { %>
-                    <p>#<%=l.getKeyword() %></p>
+					 <% for( lo_key k : keyword) { %>
+					 <% if( k.getL_no() == spotlo.get(i).getL_no()) { %>
+                    <p>#<%=k.getKeyword() %></p>
+					 <% } %>
                      <% } %>
-                     
                     </div>
                     <div class="markIcon"><i class="fas fa-heart"></i></div>
                 </div>
-                
-               
+           
+             
+              
 </div>
- <% } %>
+
+<% } %> <!-- for문 end -->
+<% } %>  <!-- if문 end -->
 </div>
 <!--  featured images end -->
 
 
-        
+     
     </section>
     <script>
     

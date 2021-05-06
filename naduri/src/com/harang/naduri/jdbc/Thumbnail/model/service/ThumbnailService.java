@@ -152,8 +152,36 @@ public class ThumbnailService {
 //		return map;
 //	}
 	
+		
+		
+		
 	
+		//------------------------------------- 메인페이지 썸네일 ----------------------------------------//
 
+		/**
+		 * author : dababy
+		 * e-mail : pieta2529@gmail.com
+		 * last-update : 2021-05-06 a.m. 11:19
+		 * comment : 나드리 상세페이지에 들어갈 정보를 보내주기 위한 코드입니다. 
+		 * 				맛집, 여행, 문화재 통합검색 및 이미지를 전달합니다.
+		 * 				사용자가 검색한 값으로 location id를 검색하고, 그 location id를 매개변수로 하여
+		 * 				SQL문에서 일치하는 값을 찾아 결과로 반환합니다.
+		 * 
+		 * **/
+		
+		
+
+		public HashMap<String, Object> spotDetail() {
+			con = getConnection();
+			HashMap<String, Object> map = new HashMap<>();
+			ArrayList<lo_key> lokey = new ArrayList<>();
+			
+			map = dao.spotDetail(con);
+			
+			close(con);
+			
+			return map;
+		}
 
 
 	

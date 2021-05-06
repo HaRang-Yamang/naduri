@@ -146,74 +146,7 @@ public class MemberDAO {
 	}
 	
 	
-	// 로그인 - 회원번호 조회
-	public HashMap<String, Object> selectMember(Connection con, Member loginMember) {
-		
-		HashMap<String, Object> mapMember = new HashMap<>();
-		ArrayList<Member> listM = new ArrayList<>();
-		ArrayList<Keyword> listK = new ArrayList<>();
 
-		
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("selectMember");
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			ps.setString(1, loginMember.getM_id());
-			ps.setString(2, loginMember.getM_pwd());
-			
-			rs = ps.executeQuery();
-			
-			Member member = new Member();
-			Keyword keyword = new Keyword();
-				
-			while(rs.next()) {
-				keyword = new Keyword();
-				keyword.setM_no(rs.getInt("m_no"));				
-				keyword.setKeyword_id(rs.getInt("keyword_id"));
-				keyword.setKeyword(rs.getString("keyword"));
-
-				listK.add(keyword);
-				
-				if(member.getM_no() != rs.getInt("m_no") ) {
-				
-					member.setM_no(rs.getInt("m_no"));
-					member.setM_id(rs.getString("m_id"));
-					member.setM_no(rs.getInt("m_no"));
-					member.setM_pwd(rs.getString("m_pwd"));
-					member.setM_name(rs.getString("m_name"));
-					member.setM_gender(rs.getString("m_gender"));
-					member.setM_address(rs.getString("m_address"));
-					member.setM_email(rs.getString("m_email"));
-					member.setM_phone(rs.getString("m_phone"));
-					member.setM_birth(rs.getString("m_birth"));
-					member.setM_auth(rs.getInt("m_auth"));
-			
-					/*
-					member.setKeyword_id(rs.getInt("keyword_id"));
-					member.setKeyword(rs.getString("keyword"));
-					*/
-					listM.add(member);
-					
-				}	
-
-			}
-			
-			mapMember.put("listM", listM);
-			mapMember.put("listK", listK);
-			
-		}catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(ps);
-		}
-		
-		return mapMember;
-	}
 	
 	// 회원 정보 수정
 	public int updateMember(Connection con, Member updateMember) {
@@ -374,14 +307,14 @@ public class MemberDAO {
 		
 	}
 
-	// session.setAttribute("member", loginMember);을 위한 dao
-	public Member selectMember2(Connection con, Member loginMember) {
+	// 로그인 - 회원 기본 정보 찾기
+	public Member selectMember(Connection con, Member loginMember) {
 
 		Member result = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 	
-		String sql = prop.getProperty("selectMember2");
+		String sql = prop.getProperty("selectMember");
 	
 		try {
 			ps = con.prepareStatement(sql);
@@ -419,6 +352,39 @@ public class MemberDAO {
 		   
 		return result;
 	}
+	
+	// 회원 로그인 - 키워드 찾기
+	public ArrayList<Keyword> selectKeyword(Connection con, int m_no) {
+		ArrayList<Keyword> keywordArr = new ArrayList<>();		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectKeyword");
+		
+		try {
+			ps = con.prepareStatement(sql);			
+			ps.setInt(1,  m_no);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Keyword key = new Keyword();
+				
+				key.setKeyword_id(rs.getInt("keyword_id"));
+				
+				keywordArr.add(key);
+			}
+					
+			System.out.println("키워드 조회 결과 : " + keywordArr);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return keywordArr;
+	}
+
 
 	// 회원정보 수정 - 키워드 값 삭제
 	public int deleteKeyword(Connection con, int m_no) {
@@ -497,6 +463,9 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+
+
 	
 
 }

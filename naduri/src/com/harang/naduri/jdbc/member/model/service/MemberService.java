@@ -76,7 +76,7 @@ public class MemberService {
 		return result1;
 	}
 	
-	
+
 	
 	// 중복 아이디 검색
 	public int idCheck(String m_id) {
@@ -88,21 +88,33 @@ public class MemberService {
 		return result;
 	}
 	
-	
-	// 로그인
-	public HashMap<String, Object> selectMember(Member loginMember) {
+
+	// 로그인 - 회원 기본 정보 불러오기
+	public Member selectMember(Member loginMember) {
 		
 		con = getConnection();
-		
-		HashMap<String, Object> mapMember = dao.selectMember(con, loginMember);
+		Member result = dao.selectMember(con, loginMember);
 		
 		close(con);
 		
-		return mapMember;
+		return result;
+	}	
+	
+	// 로그인 - 회원 키워드 불러오기
+
+	public ArrayList<Keyword> selectKeyword(Member loginMember) {
+		
+		con = getConnection();
+		
+		int m_no = dao.selectMno(con, loginMember.getM_id());
+		ArrayList<Keyword> result = dao.selectKeyword(con, m_no);
+		
+		close(con);
+		
+		return result;
 
 	}
 	
-
 	
 	// 회원 수정
 	public int updateMember(Member updateMember, String[] keyword_id) {
@@ -201,18 +213,6 @@ public class MemberService {
 	}
 
 
-	// session.setAttribute("member", loginMember);을 위한 selectMember2
-	public Member selectMember2(Member loginMember) {
-		
-		con = getConnection();
-		Member result = dao.selectMember2(con, loginMember);
-		
-		close(con);
-		
-		return result;
-	}
-
-
 	// 아이디 찾기
 	public Member searchId(Member searchId) {
 	
@@ -233,6 +233,13 @@ public class MemberService {
 		
 		return result;
 	}
+
+
+
+
+
+
+
 
 
 

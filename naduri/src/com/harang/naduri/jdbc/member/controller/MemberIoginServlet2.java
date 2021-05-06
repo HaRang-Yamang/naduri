@@ -1,7 +1,6 @@
 package com.harang.naduri.jdbc.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -39,22 +38,23 @@ public class MemberIoginServlet extends HttpServlet {
 		String m_id = request.getParameter("m_id");
 		String m_pwd = request.getParameter("m_pwd");
 		// 로그인 상태 유지
+		String saveId = request.getParameter("saveId");
 		
 		System.out.println("서블릿 : " + m_id + "/" + m_pwd);
 		
 		
 		Member loginMember = new Member(m_id, m_pwd);
-		ArrayList<Keyword> keywordArr = new ArrayList<>();
+		HashMap<String, Object> mapMember = new HashMap<>();
 		
 		// 로그인 서비스 수행 (업무 로직 : biz logic)
 		MemberService service = new MemberService();
 		
 		// member 정보와 keyword_id 정보를 한꺼번에 가져오는 방법
-		keywordArr = service.selectKeyword(loginMember);
+		mapMember = service.selectMember(loginMember);
 		// 기존 작업
-		loginMember = service.selectMember(loginMember);
+		loginMember = service.selectMember2(loginMember);
 		
-		if(loginMember!=null) {
+		if(mapMember != null || loginMember!=null) {
 			// 로그인 성공!
 			System.out.println("로그인 성공!");
 			
@@ -71,8 +71,9 @@ public class MemberIoginServlet extends HttpServlet {
 			}
 			*/
 			HttpSession session = request.getSession();
+			session.setAttribute("listM", mapMember.get("listM"));
+			session.setAttribute("listK", mapMember.get("listK"));
 			
-			session.setAttribute("listK", keywordArr);
 			session.setAttribute("member", loginMember);
 			
 			//System.out.println(mapMember.get("listK"));

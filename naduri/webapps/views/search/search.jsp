@@ -6,6 +6,7 @@
 <%
 		ArrayList<Spot> slist = (ArrayList<Spot>)request.getAttribute("slist");
 		ArrayList<Heritage> hlist = (ArrayList<Heritage>)request.getAttribute("hlist");
+		Heritage heri = new Heritage();
 %>
 
 <!DOCTYPE html>
@@ -73,7 +74,7 @@
 		            	<div class="hotSpot heritage food spot"> <!-- 클래스명 수정 필 -->
 		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">  <!-- 검색한 장소 이미지 불러와야  -->
 		            		 <div class="spotInfo">
-			            		 <h4>검색결과</h4>  <!--  검색 장소 이름  -->
+			            		 <h4><%= heri.getH_name() %></h4>  <!--  검색 장소 이름  -->
 			            	 </div>
 		           		</div>
 		            </div>       
@@ -153,7 +154,7 @@
 			
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 			    mapOption = { 
-			        center: new kakao.maps.LatLng(<%= hlist.get(1).getH_lat() %>, <%= hlist.get(1).getH_lng()%>), // 지도의 중심좌표
+			        center: new kakao.maps.LatLng(<%= heri.getLatitude()+", "+ heri.getLongitude() %> ), // 지도의 중심좌표
 			        level: 4 // 지도의 확대 레벨
 			        
 			    };
@@ -265,16 +266,18 @@
 									lngArr[i] < nelng)	
 									{	
 									console.log(idArr[i]);
-									var imgSelector = '';
+							//		var imgSelector = '';
 									
-								   	if(idArr[i] < 500){
-								   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
-								   	} else if(idArr[i] <1000){
+						//		   	if(idArr[i] < 500){
+							//	   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
+								//   	} else if(idArr[i] <1000){
 								   		imgSelector = '<img src="/naduri/resources/thumb/5.jpg">';
-								   	} else {
-								   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
-								   	}
-									$('#thumbloop').html( $('#thumbloop').html() +
+							//	   	} else {
+							//	   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
+							//	   	}
+								
+									if(idArr[i] < 500){
+										$('#thumbloop').html( $('#thumbloop').html() +
 										<!--	'<div style="height:300; width:300;">'+ -->
 												'<div class="row">'+ 
 												   '<div class="hotSpot heritage" id="'+idArr[i]+'">'+
@@ -287,13 +290,13 @@
 									            '</div>'
 									       <!--    '</div>' -->
 									            );
-								          
+									} else if(idArr[i] < 1000)
 								            
 								               
 								     <!-- onclick="location.href=\'/naduri/CallApiDetailSelectOneCollection.do?l_no=' + idArr[i] + '\'--> 
 										
-								    	 <!--
-						   	} else if(idArr[i] < 1000){
+								    	
+								    else if(idArr[i] < 1000){
 						   		$('#thumbloop').html( $('#thumbloop').html() +
 										'<div class="row">'+ 
 										   '<div class="hotSpot food" id="'+idArr[i]+'">'+
@@ -306,7 +309,7 @@
 							            '</div>'
 							            );
 						     		
-						   	} else{ 
+						   	} else { 
 						   		$('#thumbloop').html( $('#thumbloop').html() +
 										'<div class="row">'+ 
 										   '<div class="hotSpot spot" id="'+idArr[i]+'">'+
@@ -318,19 +321,23 @@
 							           		'</div>'+
 							            '</div>'
 							            );
-						     	} 
-								-->
+						     	} -->
+								
 									} // if close
 							$('.hotSpot').each(function(){
 								var daniel_no = $(this).attr('id');
-								location.href='/naduri/CallApiDetail.do?l_no='+daniel_no;
+								location.href='/naduri/CallApiDetail.do?spotName='+daniel_no;
 								});  // function close
 							
 							} // for close
 				   	}, // success close(Ajax)
-					    error : function(error){alert("전송 실패");}
+				    function(error){alert("전송 실패");}
+					    } //error close
 				    }); // Ajax close
 				};
+				
+				
+				
 				$('#map').on('mouseup mousewheel mouseleave', myFunc);
 				myFunc();
 								// myFunc()은 페이지 바로 시작과 on 이벤트를 모두 실행하고자 하여 변수로 선언한 것

@@ -1,20 +1,6 @@
 --------------------------------------------------------
---  파일이 생성됨 - 목요일-5월-06-2021   
+--  파일이 생성됨 - 금요일-5월-07-2021   
 --------------------------------------------------------
-DROP TABLE "NADURI"."ATTACH";
-DROP TABLE "NADURI"."BOOKMARK";
-DROP TABLE "NADURI"."HERITAGE";
-DROP TABLE "NADURI"."KEYWORD";
-DROP TABLE "NADURI"."LOCATION";
-DROP TABLE "NADURI"."LOCATION_KEYWORD";
-DROP TABLE "NADURI"."LOCATION_SORT";
-DROP TABLE "NADURI"."MCHOICE";
-DROP TABLE "NADURI"."MEMBER";
-DROP TABLE "NADURI"."NOTICE";
-DROP TABLE "NADURI"."QNA";
-DROP TABLE "NADURI"."REPLY";
-DROP TABLE "NADURI"."REVIEW";
-DROP TABLE "NADURI"."SPOT";
 --------------------------------------------------------
 --  DDL for Table ATTACH
 --------------------------------------------------------
@@ -240,7 +226,8 @@ DROP TABLE "NADURI"."SPOT";
 	"Q_CONTENT" VARCHAR2(1000 BYTE), 
 	"Q_DATE" DATE DEFAULT SYSDATE, 
 	"Q_UPDATE" DATE DEFAULT SYSDATE, 
-	"Q_TITLE" VARCHAR2(300 BYTE)
+	"Q_TITLE" VARCHAR2(300 BYTE), 
+	"L_NO" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -253,6 +240,8 @@ DROP TABLE "NADURI"."SPOT";
    COMMENT ON COLUMN "NADURI"."QNA"."Q_DATE" IS '작성일';
    COMMENT ON COLUMN "NADURI"."QNA"."Q_UPDATE" IS '수정일';
    COMMENT ON COLUMN "NADURI"."QNA"."Q_TITLE" IS '제목';
+   COMMENT ON COLUMN "NADURI"."QNA"."L_NO" IS '장소 번호
+';
 --------------------------------------------------------
 --  DDL for Table REPLY
 --------------------------------------------------------
@@ -354,7 +343,16 @@ DROP TABLE "NADURI"."SPOT";
    COMMENT ON COLUMN "NADURI"."SPOT"."S_COUNT" IS '조회수';
 REM INSERTING into NADURI.ATTACH
 SET DEFINE OFF;
-Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (1,'1.jpg','Y',null,null,1,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (4,'1.jpg','Y',null,null,1,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (1,'1.jpg','Y',null,null,501,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (2,'1.jpg','Y',null,null,502,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (3,'1.jpg','Y',null,null,504,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (5,'1.jpg','Y',null,null,2,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (6,'6.jpg','Y',null,null,3,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (7,'4.jpg','Y',null,null,4,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (8,'1.jpg','Y',null,null,5,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (9,'1.jpg','Y',null,null,6,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (10,'6.jpg','Y',null,null,503,null,null,null);
 REM INSERTING into NADURI.BOOKMARK
 SET DEFINE OFF;
 REM INSERTING into NADURI.HERITAGE
@@ -2943,6 +2941,16 @@ Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (1250,39);
 Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (1251,45);
 Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (1251,22);
 Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (1251,33);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (502,1);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (502,2);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (501,31);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (504,33);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (1,12);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (2,23);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (3,33);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (4,42);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (5,1);
+Insert into NADURI.LOCATION_KEYWORD (L_NO,KEYWORD_ID) values (6,2);
 REM INSERTING into NADURI.LOCATION_SORT
 SET DEFINE OFF;
 Insert into NADURI.LOCATION_SORT (LS_CODE,LS_NAME) values (1,'문화재');
@@ -4085,6 +4093,7 @@ Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "SYSTEM"  ENABLE;
   ALTER TABLE "NADURI"."QNA" MODIFY ("Q_TITLE" NOT NULL ENABLE);
+  ALTER TABLE "NADURI"."QNA" MODIFY ("L_NO" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table REPLY
 --------------------------------------------------------
@@ -4187,6 +4196,8 @@ Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_
 
   ALTER TABLE "NADURI"."QNA" ADD CONSTRAINT "FK_QNA_M_NO" FOREIGN KEY ("M_NO")
 	  REFERENCES "NADURI"."MEMBER" ("M_NO") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "NADURI"."QNA" ADD CONSTRAINT "QNA_FK1" FOREIGN KEY ("L_NO")
+	  REFERENCES "NADURI"."LOCATION" ("L_NO") ON DELETE CASCADE ENABLE;
 --------------------------------------------------------
 --  Ref Constraints for Table REPLY
 --------------------------------------------------------

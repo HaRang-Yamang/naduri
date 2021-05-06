@@ -133,7 +133,10 @@
 
 /* 구분 선 */
 .green_bar.short{
+	display : block;
     width : 800px;
+    position : relative;
+    left : -650px;
 }
 .green_bar.thick{
     height : 2px;

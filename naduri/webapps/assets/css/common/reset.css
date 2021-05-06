@@ -10,7 +10,7 @@
     font-family : 'NotoSansKR';
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, hr, input { 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, hr, input, button { 
     font : inherit;
     font-size : 100%;
     font-weight : 300;
@@ -71,6 +71,8 @@ table {
 /* 기본 좌우 넓이 */
 section {
     width : 1000px;
+    position : relative;
+    padding : 150px 0;
 }
 
 /* 폰트 사이즈 지정 */
@@ -109,12 +111,21 @@ h6{
     background-color : var(--main-color);
     height : 1px;
 }
+/* 버튼 초기화 */
+.not_btn{
+	border : 0;
+	background : transparent;
+	cursor : pointer;
+}
 
 /*체크박스 버튼 변형*/
 input[type=checkbox]+label {
     display: inline-block;
     position: relative;
     cursor: pointer;
+}
+header .user_menu ul li button:hover {
+    color: var(--main-color);
 }
 
 input[type=checkbox]+label:before {

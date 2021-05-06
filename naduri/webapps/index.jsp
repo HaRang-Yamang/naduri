@@ -60,8 +60,8 @@
 
                 <h3><span>로그인이<br> 필요합니다</span></h3>
                 <ul>
-                    <li><i class="far fa-edit"></i><a href="/naduri/views/member/joinMember.jsp">회원가입</a></li>
-                    <li><i class="fas fa-sign-out-alt"></i><a href="/naduri/views/login.jsp">로그인</a></li>
+                    <li><i class="far fa-edit"></i><button type="button" class="not_btn" onclick="join();">회원가입</button></li>
+                    <li><i class="fas fa-sign-out-alt"></i><button type="button" class="not_btn" onclick="login();">로그인</button></li>
                 </ul>
             </div>
 
@@ -70,20 +70,20 @@
 
                 <h3><%= m.getM_name() %>님<br><span>일반회원</span></h3>
                 <ul>
-                    <li><i class="far fa-user-circle"></i><a href="/naduri/myPage.do">내 기행록</a></li>
-                    <li><i class="far fa-edit"></i><a href="/naduri/views/member/modifyMember.jsp">회원정보 수정</a></li>
-                    <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
+                    <li><i class="far fa-user-circle"></i><button type="button" class="not_btn" onclick="myPage();">내 기행록</button></li>
+                    <li><i class="far fa-edit"></i><button type="button" class="not_btn" onclick="memberUpdate();">회원정보 수정</button></li>
+                    <li><i class="fas fa-sign-out-alt"></i><button type="button" class="not_btn" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
 
             <% } else if ( m.getM_auth() == 0 ) { %>
 
-                  			<div class="user_menu">
+            <div class="user_menu">
 
                 <h3><%= m.getM_name() %>님<br><span>관리자</span></h3>
                 <ul>
-                    <li><i class="far fa-edit"></i><button type="button" onclick="adminPage();">관리자페이지</button></li>
-                    <li><i class="fas fa-sign-out-alt"></i><button type="button" onclick="logout();">로그아웃</button></li>
+                    <li><i class="far fa-edit"></i><button type="button" class="not_btn" onclick="adminPage();">관리자페이지</button></li>
+                    <li><i class="fas fa-sign-out-alt"></i><button type="button" class="not_btn" onclick="logout();">로그아웃</button></li>
                 </ul>
             </div>
                 <% }  %>          
@@ -194,12 +194,26 @@
 			location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
 		});
 
+
     
-    
-    
-    function adminPage(){
-        location.href='/naduri/memberList.ad';
-     }
+	function join(){
+		location.href="/naduri/joinMember.jsp"
+	}
+	function login(){
+		location.href = '/naduri/views/login.jsp';
+	}
+	function myPage(){
+		location.href='/naduri/myPage.do';
+	}
+	function memberUpdate(){
+		location.href = '/naduri/views/member/modifyMember.jsp';
+	}
+	function logout() {
+		location.href = '/naduri/logout.do';
+	}
+	function adminPage() {
+		location.href = '/naduri/memberList.ad';
+	}
 
     </script>
 	

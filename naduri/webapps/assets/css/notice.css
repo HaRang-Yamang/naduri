@@ -91,19 +91,6 @@
     text-align: center;
 }
 
-[class*=_btn] {
-    border-radius: 5px;
-    border: none;
-    background-color: var(--main-color);
-    width: 150px;
-    line-height: 25px;
-    font-size: 14px;
-    margin: 30px auto 30px auto;
-    display: block;
-    cursor: pointer;
-}
-
-
 
 #input_notice{
     width: 100%;

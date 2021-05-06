@@ -157,7 +157,7 @@ header .search .fa-search {
     position: absolute;
     color: var(--white-color);
     background-color: var(--main-color);
-    padding: 14px;
+    padding: 16px;
     transform: translateY(3px);
 }
 

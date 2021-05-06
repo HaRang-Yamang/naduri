@@ -25,9 +25,27 @@
 	                            </div>
 	                        </div>
 	                        <div class="markIcon"><i class="fas fa-star"></i></div>
+	                        <div class="markIcon"><i class="far fa-star"></i></div>
 	                </div>
 	                
 	                <script>
+	                $(function(){
+	            		// 추천버튼 클릭시(추천 추가 또는 추천 제거)
+	            		$(".markIcon").click(function(){
+	            			$.ajax({
+	            				url: "/naduri/bookmarkInsert.do",
+	                            type: "get",
+	                            data: { l_no : '<%= list.get(i).getL_no() %>', m_no : '<%= m.getM_no() %>'
+	                            },
+	                            success: function () {
+	            			        recCount();
+	                            },
+	            			})
+	            		})
+	            		
+					recCount();
+	                
+	                
 	                $('.hotSpot<%=i%>').on('click', function(){
 	                    location.href='/naduri/CallApiDetailSelectOneCollection.do?l_no=<%=list.get(i).getL_no()%>';
 	               });

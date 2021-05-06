@@ -86,6 +86,8 @@ public QnaDAO() {
 		
 		try {
 			ps= con.prepareStatement(sql);
+			
+			ps.setInt(1, m.getM_no());
 	
 			rs = ps.executeQuery();
 			while(rs.next()) {

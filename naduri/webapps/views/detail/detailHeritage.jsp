@@ -104,11 +104,31 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                <button style="border:none; background : transparent;">
 	                    <img src="/naduri/assets/images/icon/homebutton.PNG" id="home">
 	                </button>
-	                <div class="markIcon" onclick="change();">
-	                    <i class="fas fa-star"></i>
+	                <div class="markIcon">
+	                    <i class="far fa-star"></i>
 	                </div>
 	            </div>
+	<script>
+	$(function(){
+		// 추천버튼 클릭시(추천 추가 또는 추천 제거)
+		$(".markIcon").click(function(){
+			$.ajax({
+				url: "/naduri/bookmarkInsert.do",
+                type: "get",
+                data: { l_no : <%= sendL_no%>, m_no : '<%= m.getM_no() %>'
+                },
+                success: function () {
+                	$(".fa-star").removeClass("far");
+
+                 
+                    $(".fa-star").addClass("fas");
+                },
+			})
+		})
+		
+	recCount();
 	
+	</script>
 	            <!-- 키워드 -->
 	            <div class="keyword">
 	                <ul>

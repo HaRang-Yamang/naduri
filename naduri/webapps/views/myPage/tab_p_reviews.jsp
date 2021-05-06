@@ -51,7 +51,6 @@
 	                    <div class="like_btnArea">
 	                        <div class="like_likeBtn"><i class="fas fa-heart"> </i><span style="color: var(--black-color);" class = "like_count" id="like-<%=rlist.get(i).getRno() %>">
 	                                5</span></div>
-	                        
 	                    </div>
 	                </div>
 	                

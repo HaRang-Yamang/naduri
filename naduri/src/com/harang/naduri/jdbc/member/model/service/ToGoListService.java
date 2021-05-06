@@ -12,14 +12,13 @@ public class ToGoListService {
 	private Connection con;
 	 private ToGoListDAO dao = new ToGoListDAO();
 
-	public HashMap<String, Object> togoList(int m_no) {
+	public ArrayList<lo_key> togoList(int m_no) {
 		con = getConnection();
-		HashMap<String, Object> map = dao.togolist(con, m_no);
-
-
+		ArrayList<lo_key> list = dao.togolist(con, m_no);
+		
 		close(con);
 		
-		return map;
+		return list;
 	}
 
 }

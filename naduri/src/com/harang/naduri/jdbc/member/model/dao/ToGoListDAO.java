@@ -34,10 +34,8 @@ public class ToGoListDAO {
 		
 	}
 
-	public HashMap<String, Object> togolist(Connection con, int m_no) {
-		HashMap<String, Object> map = new HashMap<>();
-		ArrayList<Keyword> list = new ArrayList<>();
-		ArrayList<lo_key> list2 = new ArrayList<>();
+	public ArrayList<lo_key> togolist(Connection con, int m_no) {
+		ArrayList<lo_key> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -47,31 +45,28 @@ public class ToGoListDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, m_no);
 			rs = ps.executeQuery();
+			
 			lo_key lk = new lo_key();
+			
 			while(rs.next()) {
-				Keyword k = new Keyword();
-				k.setKeyword(rs.getString("keyword"));
-				list.add(k);
 				
-				if (lk.getL_no() != rs.getInt("l_no")) {
-					lo_key temp = new lo_key();
+				if (lk.getL_no() != rs.getInt("l_no")) { // 첫번째라면
+					
+					lk = new lo_key();
 					
 					lk.setL_no(rs.getInt("l_no"));
+					lk.setA_name(rs.getString("a_name"));
+					lk.setLocal_name(rs.getString("local_name"));
+					lk.setFlevel(rs.getInt("flevel"));
+
+					lk.setKeyword(new ArrayList<>());
 					
-					temp.setL_no(rs.getInt("l_no"));
-					temp.setA_name(rs.getString("a_name"));
-					temp.setLocal_name(rs.getString("local_name"));
-					temp.setFlevel(rs.getInt("flevel"));
-
-					list2.add(temp);
-
+					list.add(lk);
 				}
+				
+				lk.getKeyword().add(rs.getString("keyword"));
+				
 			}
-			
-			
-					map.put("list", list);
-					map.put("list2", list2);
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,7 +75,7 @@ public class ToGoListDAO {
 			close(ps);
 		}
 		
-		return map;
+		return list;
 	}
 
 }

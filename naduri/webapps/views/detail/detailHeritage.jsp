@@ -4,17 +4,19 @@
 com.harang.naduri.jdbc.Thumbnail.model.vo.*,
 com.harang.naduri.jdbc.attach.model.vo.*" %>
 <%
-      ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri"); // 문화재 정보 저장 객체
-      ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword"); // 키워드가 여러개일 경우를 위한 객체
-      ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo"); // location and keyword 썸네일 필요한 부분만을 위한 통합 vo
-      
-      ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list"); // 맛집과 여행지 정보 저장 객체
-      ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2"); // 첨부파일 저장 객체
-      ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey"); // 장소와 키워드 정보 저장 객체
-      
-      
-      HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
-      Heritage heri = new Heritage();
+		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri"); // 문화재 정보 저장 객체
+		ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword"); // 키워드가 여러개일 경우를 위한 객체
+		ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo"); // location and keyword 썸네일 필요한 부분만을 위한 통합 vo
+		
+		ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list"); // 맛집과 여행지 정보 저장 객체
+		ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2"); // 첨부파일 저장 객체
+		ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey"); // 장소와 키워드 정보 저장 객체
+		
+		
+		HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
+		Heritage heri = listHeri.get(0);
+		
+		int sendL_no = 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -123,17 +125,18 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                    <table>
 	                        <tr>
 	                            <td >소재지</td>
-	                            <td></td>
+	                            <td><%= l.getS_address() %> %></td>
 	                        </tr>   
 	                        <tr>
 	                            <td>전화번호</td>
-	                            <td></td>
+	                            <td><%= l.getS_tel() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>운영시간</td>
 	                            <td>9 a.m - 5.pm</td>
 	                        </tr>
 
+	                        </tr>
 	                    </table>
 	                </div>
 	                <!-- 상세 정보 (텍스트) -->
@@ -155,12 +158,7 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                    </div>
 	                </div>       
  <% } %>	        
- <% } %>	        
-        
- 		        
-	        
-<% if( listHeri != null ) { %>	        
-<% for( Heritage h : listHeri ) { %>	
+ <% } else if( listHeri != null ) { %>	        
 <div class="slider-images">
 	            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 1000px;">
 	                <div class="carousel-indicators" style="margin-left: 10px;" >
@@ -171,16 +169,16 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                </div>
 	                <div class="carousel-inner">
 	                    <div class="carousel-item active">
-	                        <img src="<%=h.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
+	                        <img src="<%=heri.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
 	                    </div>
 	                    <div class="carousel-item">
-	                        <img src="<%=h.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
+	                        <img src="<%=heri.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
 	                    </div>
 	                    <div class="carousel-item">
-	                        <img src="<%=h.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
+	                        <img src="<%=heri.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
 	                    </div>
 	                    <div class="carousel-item">
-	                        <img src="<%=h.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
+	                        <img src="<%=heri.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
 	                    </div>
 	                </div>
 	                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -199,7 +197,7 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 <div class="infoArea">
 	            <!-- 장소 명, 평점, 홈페이지 아이콘, 찜 버튼 -->
 	            <div class="infoTitle">
-	                <h2><%=h.getH_name() %></h2>
+	                <h2><%=heri.getH_name() %></h2>
 	                <h2 style="color:var(--main-color);">4.3</h2>
 	                <button style="border:none; background : transparent;">
 	                    <img src="/naduri/assets/images/icon/homebutton.PNG" id="home">
@@ -218,14 +216,14 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                </ul>
 	            </div>
 	
-	<img src="<%=h.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
+	<img src="<%=heri.getImageUrl() %>" width="1000px" height="536px" class="d-block w-100" alt="...">
 	            <div class="infoDetailArea">
 	                <!-- 테이블-->
 	                <div class="infoTable">
 	                    <table>
 	                        <tr>
 	                            <td >소재지</td>
-	                            <td><%=h.getCcbaLcad() %></td>
+	                            <td><%=heri.getCcbaLcad() %></td>
 	                        </tr>   
 	                        <tr>
 	                            <td>전화번호</td>
@@ -237,19 +235,19 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                        </tr>
 	                        <tr>
 	                            <td>지정번호</td>
-	                            <td><%=h.getH_serial() %></td>
+	                            <td><%=heri.getH_serial() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>지정일</td>
-	                            <td><%=h.getCcbaAsdt() %></td>
+	                            <td><%=heri.getCcbaAsdt() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>분류</td>
-	                            <td><%=h.getGcodeName() %></td>
+	                            <td><%=heri.getGcodeName() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>시대</td>
-	                            <td><%=h.getCcceName() %></td>
+	                            <td><%=heri.getCcceName() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>면적</td>
@@ -257,11 +255,11 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                        </tr>
 	                        <tr>
 	                            <td>소유자</td>
-	                            <td><%=h.getCcbaPoss() %></td>
+	                            <td><%=heri.getCcbaPoss() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>관리자</td>
-	                            <td><%=h.getCcbaAdmin() %></td>
+	                            <td><%=heri.getCcbaAdmin() %></td>
 	                        </tr>
 	                    </table>
 	                </div>
@@ -269,7 +267,7 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                <div class="infoDetail">
 	                    <div class="a">
 	                        <p>
-	                            <%=h.getContent() %>
+	                            <%=heri.getContent() %>
 	                        </p>
 	                        <details>
 	                            <summary>내용 더보기+</summary>
@@ -288,18 +286,11 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	       	            </div>
 	        </div>
 	        <% } %>
-	       <% } %>
 	
 	        <!-- 근처 장소 영역 -->
 	        <%@ include file="nearArea.jsp" %>
 	        
 	        <!-- 탭 -->
-	        <div class="write_btn">
-                <a href="/naduri/views/reviewWrite.jsp"><input type="button" value = "리뷰 쓰기" id="insertreview"></a>
-            </div>
-               <div class="write_btn">
-                <a href="/naduri/views/qnaWrite.jsp"><input type="button" value = "QNA 쓰기" id="insertqna"></a>
-            </div>
 <div id = "container">
 	
     <!-- 상단 tab 영역 -->
@@ -360,13 +351,7 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	    </div>
 	
 	</section>
-	<script>
-	$('#insertreview').on('click', function(){
-	     location.href='/naduri/insert.re?l_no='<%= heri.getL_no() %>"';"
-	}
-
 	
-	</script>
 	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

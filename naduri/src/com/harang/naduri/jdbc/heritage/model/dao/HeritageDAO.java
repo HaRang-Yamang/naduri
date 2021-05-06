@@ -55,7 +55,8 @@ public class HeritageDAO {
 			// 결과데이터 반복문돌려서 리스트에 담기 (객체 배열 생성)
 			while (rs.next()) {
 				Heritage h = new Heritage();
-
+				
+				h.setL_no(rs.getInt("l_no"));
 				h.setH_events(rs.getString("h_events"));
 				h.setH_serial(rs.getString("h_serial"));
 				h.setH_zipcode(rs.getString("h_zipcode"));

@@ -14,6 +14,8 @@ public class lo_key implements Serializable {
 	private int String;
 	private String a_name;
 	private String a_status;
+	private String s_address;
+	private String s_tel;
 	private int r_no;
 	private int a_no;
 	private int m_no;
@@ -142,4 +144,17 @@ public class lo_key implements Serializable {
 	public void setFlevel(int flevel) {
 		this.flevel = flevel;
 	}
+	public String getS_address() {
+		return s_address;
+	}
+	public void setS_address(String s_address) {
+		this.s_address = s_address;
+	}
+	public String getS_tel() {
+		return s_tel;
+	}
+	public void setS_tel(String s_tel) {
+		this.s_tel = s_tel;
+	}
+	
 }

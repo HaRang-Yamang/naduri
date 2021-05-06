@@ -99,7 +99,7 @@ public class CallApiDetail extends HttpServlet {
 			// SelectOne을 위한 사용자 선택 값 
 			// int l_no = Integer.parseInt(request.getParameter("l_no"));
 			// 장소 정보 객체 list
-			ArrayList<Location> list = new ArrayList();
+			ArrayList<Location> list = new ArrayList<>();
 						
 
 			//------------------------------------- 1. selectLocationCode ----------------------------------------//
@@ -233,7 +233,6 @@ public class CallApiDetail extends HttpServlet {
 				// 1-3단계 게시글 조회 서비스 시작 --> 서비스 Go!
 				listHeri = serviceHeri.selectName(spotName);
 				
-				
 			for(Heritage h : listHeri) {
 				
 				ccbaKdcd = h.getH_events(); // 종목코드
@@ -256,7 +255,7 @@ public class CallApiDetail extends HttpServlet {
 							while(true){
 								// parsing할 url 지정(API 키 포함해서)
 								// String callList = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?pageIndex="+pageIndex;
-								 String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiDt.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName;
+								 String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiDt.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName.replace(" ", "%20");
 								 // + "&ccbaMnm1=" + spotName
 								// String callImage = "http://www.cha.go.kr/cha/SearchImageOpenapi.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName ;
 								
@@ -298,10 +297,9 @@ public class CallApiDetail extends HttpServlet {
 										
 										// heritage vo를 저장할 객체 
 										// ArrayList<Heritage> list3 = new ArrayList<>();
-										 Heritage heri = new Heritage();
+										 Heritage heri = listHeri.get(0);
 
 										// api로 받은 정보 저장
-										 	
 											heri.setH_events(getTagValue("ccbaKdcd", eElement)); // 종목코드
 											heri.setH_serial(getTagValue("ccbaAsno", eElement)); // 지정번호
 											heri.setH_zipcode(getTagValue("ccbaCtcd", eElement)); // 시도코드
@@ -326,7 +324,8 @@ public class CallApiDetail extends HttpServlet {
 
 
 									// 객체 바구니에 저장
-											listHeri.add(heri);
+											// listHeri.add(heri);
+											
 									
 									 System.out.println(listHeri);
 

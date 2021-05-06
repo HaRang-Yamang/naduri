@@ -16,6 +16,9 @@
    Heritage heri = new Heritage();
 
 
+	ArrayList<lo_key> list = (ArrayList<lo_key>)request.getAttribute("list"); //키워드
+
+
    
 %>
 
@@ -134,30 +137,26 @@
         <div class="featured">
             <div class="small-container">
             
-<% if( spotlo != null ) { %>            
-<% for(int i=0 ; i < spotlo.size(); i++) { %>
+<% for(int i=0 ; i < list.size(); i++) { %>
             <div class="row">
-                <div class="hotSpot <%=spotlo.get(i).getLs_code() %>" id="<%=spotlo.get(i).getLocal_name() %>" name="spotName">
-                   <img src="/naduri/resources/thumb/<%=spotlo.get(i).getA_name() %>"/>
+                <div class="hotSpot <%= list.get(i).getLs_code() %>" id="<%= list.get(i).getLocal_name() %>" name="spotName">
+                   <img src="/naduri/resources/thumb/<%= list.get(i).getA_name() %>"/>
 
                     <div class="spotInfo">
-                    <h4><%=spotlo.get(i).getLocal_name() %></h4>
+                    <h4><%= list.get(i).getLocal_name() %></h4>
                     
-                <% for( lo_key k : keyword) { %>
-                <% if( k.getL_no() == spotlo.get(i).getL_no()) { %>
-                    <p>#<%=k.getKeyword() %></p>
-                <% } %>
-                     <% } %>
+					 <% for(String k : list.get(i).getKeyword()) { %>
+					 <p>#<%= k %> </p>
+	                 <% } %>
                     </div>
-                    <div class="markIcon"><i class="fas fa-heart"></i></div>
+                    
                 </div>
-           
-             
+       
               
 </div>
 
 <% } %> <!-- for문 end -->
-<% } %>  <!-- if문 end -->
+
 </div>
 <!--  featured images end -->
 
@@ -166,7 +165,7 @@
     </section>
     <script>
     
-<<<<<<< HEAD
+
 	/**
 	 * author : dababy
 	 * e-mail : pieta2529@gmail.com
@@ -198,7 +197,7 @@
 		});
 
 
-=======
+
    /**
     * author : dababy
     * e-mail : pieta2529@gmail.com
@@ -219,9 +218,7 @@
             }
         });
      });
->>>>>>> refs/remotes/origin/Hwangseok
-    
-<<<<<<< HEAD
+
 	function join(){
 		location.href="/naduri/joinMember.jsp"
 	}
@@ -240,13 +237,13 @@
 	function adminPage() {
 		location.href = '/naduri/memberList.ad';
 	}
-=======
+
     
     // selectOne
     $('.hotSpot').on('click', function(){
        var spotName = $(this).attr('id');
       
-      location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+      location.href = "/naduri/index.do?spotName=" + spotName;
    });
     
     
@@ -254,7 +251,7 @@
     function adminPage(){
         location.href='/naduri/memberList.ad';
      }
->>>>>>> refs/remotes/origin/Hwangseok
+
 
     </script>
    

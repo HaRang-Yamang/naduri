@@ -90,18 +90,18 @@ private Connection con;
 	
 	
 	// 질문 댓글 등록
-	public int insertQComment(Comment Qcomment) {
-		con = getConnection();
-		
-		int result = dao.insertComment(con, Qcomment);
-		
-		if(result > 0) commit(con);
-		else rollback(con);
-		
-		close(con);
-		
-		return result;
-	}
+//	public int insertQComment(Comment Qcomment) {
+//		con = getConnection();
+//		
+//		int result = dao.insertComment(con, Qcomment);
+//		
+//		if(result > 0) commit(con);
+//		else rollback(con);
+//		
+//		close(con);
+//		
+//		return result;
+//	}
 
 	
 	

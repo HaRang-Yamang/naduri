@@ -29,13 +29,14 @@
                 <hr class="green_bar">
             </div>
             <div class="dtable_area">
+            	<form action="/naduri/AdminFoodInsert.do" method = "post" enctype="multipart/form-data" id="dababy">
                  <table class="d_table">
                     <!-- PASSWORD -->
                     <tr>
                         <td class="data_title">장소명</td>
                         <td colspan="3">
                             <span class="box">
-                                <input type="text" id="food_title" size="70">
+                                <input type="text" id="food_title" size="70" name="s_name">
                             </span>
                         </td>
 
@@ -43,33 +44,33 @@
                     <!-- PASSWORD -->
                     <tr>
                         <td class="data_title">전화번호</td>
-                        <td colspan="3"><span class="box"><input type="text" id="food_tell" size="70"></span></td>
+                        <td colspan="3"><span class="box"><input type="text" id="food_tell" size="70" name="s_tel"></span></td>
                     </tr>
                     <!-- NAME -->
                     <tr>
                         <td class="data_title">운영시간</td>
-                        <td colspan="3"><span class="box"><input type="text" id="food_time" size="70"></span></td>
+                        <td colspan="3"><span class="box"><input type="text" id="food_time" size="70" name="s_date"></span></td>
                     </tr>
                     <tr>
                         <td class="data_title">위치</td>
                         <td colspan="3">
                             <span class="box">
-                                <input type="text" id="food_site" size="70">
+                                <input type="text" id="food_site" size="70" name="s_address">
                             </span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="data_title">위도/경도</td>
+                        <td class="data_title">위도</td>
                         <td colspan="3">
                             <span class="box">
-                                 <input type="text" id="food_location" size="70">
+                                 <input type="text" id="food_location" size="70" name="s_lat">
                             </span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="data_title">상세설명</td>
+                        <td class="data_title">경도</td>
                         <td colspan="3">
-                             <input type="text" id="food_content" size="70">
+                             <input type="text" id="food_content" size="70" name="s_lng">
                         </td>
                     </tr>
                     <tr class="photo_table">
@@ -92,9 +93,10 @@
 
             <div class="submit_btn">
 
-                <button type="button" id="submit_btn">데이터 등록</button>
+                <button type="submit" form="dababy" id="submit_btn">데이터 등록</button>
 
             </div>
+            </form>
         </div>	
 	
 	</section>

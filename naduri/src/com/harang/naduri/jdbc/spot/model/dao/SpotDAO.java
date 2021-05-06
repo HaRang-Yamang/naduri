@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.spot.model.vo.Spot;
 
 public class SpotDAO {
@@ -60,8 +61,8 @@ public class SpotDAO {
 				s.setS_tel(rs.getString("s_tel"));
 				s.setS_time(rs.getString("s_time"));
 				s.setS_address(rs.getString("s_address"));
-				s.setS_lat(rs.getDouble("s_lat"));
-				s.setS_lng(rs.getDouble("s_lng"));
+				s.setS_lat(rs.getString("s_lat"));
+				s.setS_lng(rs.getString("s_lng"));
 				s.setS_status(rs.getString("s_status"));
 				s.setS_date(rs.getString("s_date"));
 				s.setS_count(rs.getInt("s_count"));
@@ -99,8 +100,8 @@ public class SpotDAO {
 				Spot s = new Spot();
 				
 				s.setS_name(rs.getString("s_name"));
-				s.setS_lat(rs.getDouble("s_lat"));
-				s.setS_lng(rs.getDouble("s_lng"));
+				s.setS_lat(rs.getString("s_lat"));
+				s.setS_lng(rs.getString("s_lng"));
 			
 				list.add(s);
 			}
@@ -262,5 +263,6 @@ public class SpotDAO {
 		
 		return result;
 	}
+	
 
 }

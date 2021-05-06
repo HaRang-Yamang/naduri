@@ -1,7 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
+
 	import="com.harang.naduri.jdbc.heritage.model.vo.*, java.util.*,
+
 com.harang.naduri.jdbc.Thumbnail.model.vo.*"%>
 <%
 ArrayList<lo_key> lokey = (ArrayList<lo_key>) request.getAttribute("lokey");

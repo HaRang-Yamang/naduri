@@ -51,7 +51,7 @@ public class ThumbnailDAO {
 	 * 				매개변수가 필요 없으며 SQL문에서 조회수 TOP9 만을 조회하여 결과로 반환합니다.
 	 * 
 	 * **/
-	public HashMap<String, Object> hotSpot(Connection con) {
+	public HashMap<String, Object> selectOneSpot(Connection con, String spotName) {
 		// 해시맵 준비
 		HashMap<String, Object> map = new HashMap<>();
 		
@@ -68,10 +68,13 @@ public class ThumbnailDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("hotSpot");
+		String sql = prop.getProperty("selectOneSpot");
 		
 		try {
 			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, spotName);
+			ps.setString(2, spotName);
 			
 			
 			rs = ps.executeQuery();

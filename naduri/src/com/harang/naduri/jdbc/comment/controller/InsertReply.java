@@ -1,4 +1,4 @@
-package com.harang.naduri.jdbc.reply.controller;
+package com.harang.naduri.jdbc.comment.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -35,14 +35,14 @@ public class InsertReply extends HttpServlet {
 
 		
 				// 받아오는 변수들 1. 리뷰
-				int mno = Integer.parseInt(request.getParameter("mno")); // 작성자
+				//int mno = Integer.parseInt(request.getParameter("mno")); // 작성자
 				String m_id = request.getParameter("m_id"); // 댓글 내용
-				int rno = Integer.parseInt(request.getParameter("rno")); // 게시글 번호
+				//int rno = Integer.parseInt(request.getParameter("rno")); // 게시글 번호
 				
-				String reply_content = request.getParameter("reply_content"); // 댓글 내용
+				//String reply_content = request.getParameter("reply_content"); // 댓글 내용
 				String reply_date = request.getParameter("reply_date"); // 댓글 내용
 				String reply_update = request.getParameter("reply_update"); // 댓글 내용
-				int ref_no = Integer.parseInt(request.getParameter("ref_no")); // 참조하는 댓글 번호
+				//int ref_no = Integer.parseInt(request.getParameter("ref_no")); // 참조하는 댓글 번호
 
 				// 받아오는 변수들 2. qna
 				int qno = Integer.parseInt(request.getParameter("qno")); // 작성자
@@ -51,12 +51,20 @@ public class InsertReply extends HttpServlet {
 				String q_date = request.getParameter("q_date"); // 댓글 내용
 				String q_update = request.getParameter("q_update"); // 댓글 내용
 				
+				int mno = 5;
+				int rno = 5;
+				String reply_content = "안녕하세요";
+				int ref_no = 0;
+				int l_no = 4;
 				
 				
 				
-				Comment Rcomment = new Comment(mno, rno, reply_content, ref_no);
+				// ArrayList대신에 객체 생성
+				Comment Rcomment = new Comment(mno, rno, reply_content, ref_no); 
 				
 				Comment Qcomment = new Comment(mno, qno, q_title, q_content);
+				
+
 				
 				
 				// 리뷰 댓글을 작성한다면 아래의 서비스로 출발합니다.
@@ -67,7 +75,7 @@ public class InsertReply extends HttpServlet {
 				int resultR = Rservice.insertRComment(Rcomment);
 				
 				if( resultR > 0 ) {
-					response.sendRedirect(".do?l_no="+ l_no);
+					response.sendRedirect("index.do");
 	
 				} else {
 					request.setAttribute("error-msg", "댓글 작성 중 에러 발생");

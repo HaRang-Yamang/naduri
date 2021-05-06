@@ -52,34 +52,34 @@ public class CommentDAO {
 			
 			pstmt = con.prepareStatement(sql);
 		
-			pstmt.setInt(1, Rcomment.getReplyno());
-			pstmt.setInt(2, Rcomment.getMno());
+			
+			pstmt.setInt(1, Rcomment.getMno());
 
 			
 			
 			// 리뷰가 있다면, 리뷰에 번호 set
 			if(Rcomment.getRno() > 0 ) {
-				pstmt.setInt(3, Rcomment.getRno());
+				pstmt.setInt(2, Rcomment.getRno());
 			} else {
-				pstmt.setNull(3, java.sql.Types.NULL);
+				pstmt.setNull(2, java.sql.Types.NULL);
 			}
 			
 			// 질문이 있디면..
 			if(Rcomment.getQno() > 0 ) {
-				pstmt.setInt(4, Rcomment.getQno());
+				pstmt.setInt(3, Rcomment.getQno());
 			} else {
-				pstmt.setNull(4, java.sql.Types.NULL);
+				pstmt.setNull(3, java.sql.Types.NULL);
 			}
 			
-			pstmt.setString(5, Rcomment.getReply_content());
+			pstmt.setString(4, Rcomment.getReply_content());
 			
-			pstmt.setInt(6, Rcomment.getRef_no());
+			pstmt.setInt(5, Rcomment.getRef_no());
 			
 			
 			if(Rcomment.getRef_no() > 0 ) {
-				pstmt.setInt(4, Rcomment.getRef_no());
+				pstmt.setInt(6, Rcomment.getRef_no());
 			} else {
-				pstmt.setNull(4, java.sql.Types.NULL);
+				pstmt.setNull(6, java.sql.Types.NULL);
 			}
 			
 			

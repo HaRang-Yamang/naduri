@@ -33,12 +33,12 @@ public class ThumbnailService {
 	 * 
 	 * **/
 	// --------------------------- hot spot Main original. ver ----------------------- //
-	public HashMap<String, Object> hotSpot() {
+	public HashMap<String, Object> selectOneSpot(String spotName) {
 		con = getConnection();
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
-		map = dao.hotSpot(con);
+		map = dao.selectOneSpot(con, spotName);
 		
 		close(con);
 		

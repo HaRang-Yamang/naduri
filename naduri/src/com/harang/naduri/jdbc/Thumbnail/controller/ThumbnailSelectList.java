@@ -38,11 +38,15 @@ public class ThumbnailSelectList extends HttpServlet {
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
+		String spotName = request.getParameter("spotName");
+		
+		
 		// 서비스 준비
 		ThumbnailService service = new ThumbnailService();
 		
+		
 		// 결과를 list 객체에 저장
-		map = service.hotSpot();
+		map = service.selectOneSpot(spotName);
 		
 //		System.out.println(list);
 		
@@ -59,7 +63,7 @@ public class ThumbnailSelectList extends HttpServlet {
 			System.out.println(map.get("listHeri"));
 			System.out.println(map.get("lo_key"));
 		
-		request.getRequestDispatcher("index.jsp")
+		request.getRequestDispatcher("index2.jsp")
 		       .forward(request, response);
 		}
 	}

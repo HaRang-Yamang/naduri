@@ -82,3 +82,12 @@ cursor: pointer;
 [id*=ImgArea]:hover {
 		cursor: pointer;
 	}
+	
+
+
+.writeFrm table,
+.writeFrm tr,
+.writeFrm td{
+	border : 1px solid black;
+}
+	

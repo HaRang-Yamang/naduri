@@ -45,23 +45,26 @@ public class SelectReviewList extends HttpServlet {
 		if(reviewList !=null) {
 			request.setAttribute("reviewList",  reviewList);
 			
-			for(Review r : reviewList) {
-				System.out.println(r);
-				System.out.println(r.getAttList());
-			}
-			
-			request.getRequestDispatcher("views/detail/tab_review.jsp").forward(request, response);
-		} else {
+//			for(Review r : reviewList) {
+//				System.out.println(r);
+//				System.out.println(r.getAttList());
+//			}
+		
+			request.getRequestDispatcher("view/detail/tab_review.jsp").forward(request, response);
+		} else 
 			
 			request.setAttribute("error-msg", "리뷰 게시 실패!");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
+			
+			
 			
 		}
 		
 		
 		
 		
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

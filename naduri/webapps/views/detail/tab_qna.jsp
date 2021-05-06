@@ -9,23 +9,7 @@
 <div id = "tab_qna" class="tab-content">
         <!-- QnA 질문하기 버튼 -->
         <div class = "filter">
-        <form id="insertForm" action="/naduri/insert.qn" method="post">
-          <input type="hidden" name="m_no" value="<%=m.getM_no() %>"/> 
-            <% for(int i=0 ; i <lo_key.size(); i++) { %>
-                    <input type="hidden" name="l_no" value="<%= lo_key.get(i).getL_no() %>"/></td>
-           <% } %>
-            <div class=qnatitle >
-            <span>질문 제목: </span>
-            <input type="text" name="q_title" />
-            </div>
-            <div class=qnacontent>
-            <span>질문 내용: </span>
-             <textarea id="qna_textArea"  name="q_content" cols="150" rows="10" style="resize:none;"></textarea>
-             </div>
-             <div class="write_btn">
-                   <button type="submit"  form='insertForm' id="submit_btn" >질문하기</button>
-            </div>
-	</form>
+        
 	  </div>
         <!-- 전체 QnA -->
         <%for(Qna q : list){ %>

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ page import="com.harang.naduri.jdbc.heritage.model.vo.*, java.util.*,
+com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
+<%
+		ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,14 +34,15 @@
                 <img src="../assets/images/review/review_main.png" width="50%">
             </div>
 
-            <div class="img_text">아이스크림 가게</div>
+            <div class="img_text"></div>
 
             <hr class="gray_bar">
             <div id="container">
                 <table class="review_table">
                     <tr> 
                     <td>
-               
+                    
+               		
                     <input type="hidden" name="m_no" value="<%=m.getM_no()%>"/> 
                     </td>
                         <div class="range_part">

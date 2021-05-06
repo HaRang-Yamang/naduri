@@ -105,7 +105,7 @@ private Properties prop;
 			ps= con.prepareStatement(sql);
 			ps.setString(1, attach.getA_name());
 			ps.setInt(2,attach.getM_no() );
-			ps.setInt(3, attach.getL_no());
+//			ps.setInt(3, attach.getL_no());
 		 result =ps.executeUpdate();
 					} catch (SQLException e) {
 			// TODO Auto-generated catch block

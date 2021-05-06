@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
     <%@ page import="com.harang.naduri.jdbc.heritage.model.vo.*, java.util.*,
-com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
+com.harang.naduri.jdbc.Thumbnail.model.vo.*,
+com.harang.naduri.jdbc.attach.model.vo.*" %>
 <%
-		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri");
-		ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey");
-		Heritage heri = new Heritage();
+      ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri"); // 문화재 정보 저장 객체
+      ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword"); // 키워드가 여러개일 경우를 위한 객체
+      ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo"); // location and keyword 썸네일 필요한 부분만을 위한 통합 vo
+      
+      ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list"); // 맛집과 여행지 정보 저장 객체
+      ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2"); // 첨부파일 저장 객체
+      ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey"); // 장소와 키워드 정보 저장 객체
+      
+      
+      HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
+      Heritage heri = new Heritage();
 %>
 <!DOCTYPE html>
 <html>
@@ -179,6 +188,12 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	        <%@ include file="nearArea.jsp" %>
 	        
 	        <!-- 탭 -->
+	        <div class="write_btn">
+                <a href="/naduri/views/reviewWrite.jsp"><input type="button" value = "리뷰 쓰기" id="insertreview"></a>
+            </div>
+               <div class="write_btn">
+                <a href="/naduri/views/qnaWrite.jsp"><input type="button" value = "QNA 쓰기" id="insertqna"></a>
+            </div>
 <div id = "container">
 	
     <!-- 상단 tab 영역 -->
@@ -239,7 +254,13 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	    </div>
 	
 	</section>
+	<script>
+	$('#insertreview').on('click', function(){
+	     location.href='/naduri/insert.re?l_no='<%= heri.getL_no() %>"';"
+	}
+
 	
+	</script>
 	<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

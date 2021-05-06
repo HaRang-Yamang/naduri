@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+-<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, com.harang.naduri.jdbc.review.model.vo.*, com.harang.naduri.jdbc.attach.model.vo.*,
      com.harang.naduri.jdbc.member.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*"%>
    <%
@@ -10,9 +10,6 @@
     <div id="tab_review" class="tab-content current">
         <!-- 리뷰 필터 영역 -->
         <div class="filter">
-            <div class="write_btn">
-                <a href="/naduri/views/reviewWrite.jsp"><input type="button" value = "리뷰 쓰기" onclick="insertreview()"></a>
-            </div>
             <div class="review_table">
                 <table>
                     <tr>
@@ -322,14 +319,3 @@
 	
     </div>
     
-    <script>
-    <%for(lo_key lk : list){ %>
-    var L_no = <%= lk.getL_no()%>
-    <% }%>
-    function selectreview(){
-    	location.href="/naduri/insert.re"+"?L_no"+L_no;
-    }
-    
-    
-    
-    </script>

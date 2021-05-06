@@ -45,9 +45,8 @@ public QnaDAO() {
 		}
 		return result;
 	}
-	public ArrayList<Qna> SelectQnaList(Connection con, int mno) {
+	public ArrayList<Qna> SelectQnaList(Connection con) {
 		ArrayList<Qna>list = new ArrayList<>();
-		Member m = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -55,7 +54,7 @@ public QnaDAO() {
 		
 		try {
 			ps= con.prepareStatement(sql);
-			ps.setInt(1, mno);
+			
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Qna q = new Qna();
@@ -64,9 +63,9 @@ public QnaDAO() {
 				q.setQ_date(rs.getDate("q_date"));
 				q.setM_id(rs.getString("m_id"));
 				list.add(q);
-				
+				System.out.println(list);
 			}
-		
+	
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -87,7 +86,7 @@ public QnaDAO() {
 		
 		try {
 			ps= con.prepareStatement(sql);
-			ps.setInt(1, m_no);
+	
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Qna q = new Qna();

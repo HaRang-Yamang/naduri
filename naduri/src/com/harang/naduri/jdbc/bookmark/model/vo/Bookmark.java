@@ -23,6 +23,12 @@ public class Bookmark implements Serializable {
 		this.rno = rno;
 	}
 
+	public Bookmark(int l_no, int m_no) {
+		super();
+		this.l_no = l_no;
+		this.m_no = m_no;
+	}
+
 
 	@Override
 	public String toString() {

@@ -125,8 +125,8 @@ public class CallApiDetail extends HttpServlet {
 			
 			
 			// 1-1단계 - 조회를 위한 입력값 추출
-			// String spotName = request.getParameter("spotName");
-			String spotName = "동고량";
+			String spotName = request.getParameter("spotName");
+			// String spotName = "숭례문";
 			
 			// 1-2단계 게시글 서비스 객체 생성
 			ThumbnailService service = new ThumbnailService();

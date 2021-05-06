@@ -38,6 +38,8 @@
 </head>
 <body>
 
+
+
 	<header>
         <h2 class="hidden">나드리</h2>
 
@@ -111,17 +113,30 @@
     </header>
 
     <section>
+    
+    
+        <div class="main_body">
+            <div class="hot_keword">
+                <h2>인기명소 골라보기</h2>
+                <ul class="tag">
+                    <li class="list active" data-filter="All">전체보기</li>
+                    <li class="list" data-filter="1">#문화재</li>
+                    <li class="list" data-filter="2">#맛집</li>
+                    <li class="list" data-filter="3">#여행</li>
+                </ul>
+            </div>
+        </div>
 
-       
+	    
  <!-- featured images -->
         <div class="featured">
             <div class="small-container">
             
 <% if( spotlo != null ) { %>	         
-<% for(int i=0 ; i < spotlo.size(); i++) { %>	
+<% for(int i=0 ; i < spotlo.size(); i++) { %>
             <div class="row">
-                <div class="hotSpot date">
-                   <img src="/naduri/resources/thumb/ <%=spotlo.get(i).getA_name() %>"/>
+                <div class="hotSpot <%=spotlo.get(i).getLs_code() %>" id="<%=spotlo.get(i).getLocal_name() %>" name="spotName">
+                   <img src="/naduri/resources/thumb/<%=spotlo.get(i).getA_name() %>"/>
 
                     <div class="spotInfo">
                     <h4><%=spotlo.get(i).getLocal_name() %></h4>
@@ -160,12 +175,25 @@
 	 
     $(document).ready(function() {
         $(".search_val").keydown(function(key) {
+        	var spotName = $(this).$(".search_val").val();
+        	
             if (key.keyCode == 13) {
-            	alert($(".search_val").val());
-            	/* $(".search_val").val().href = "" */
+            	/* alert($(".search_val").val()); */
+            	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+            	
             }
         });
     });
+    
+    
+    // selectOne
+    $('.hotSpot').on('click', function(){
+    	var spotName = $(this).attr('id');
+		
+		location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+	});
+    
+    
     
     function adminPage(){
         location.href='/naduri/memberList.ad';

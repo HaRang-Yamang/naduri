@@ -220,7 +220,7 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 <div class="infoArea">
 	            <!-- 장소 명, 평점, 홈페이지 아이콘, 찜 버튼 -->
 	            <div class="infoTitle">
-	                <h2>덕수궁</h2>
+	                <h2><%=h.getH_name() %></h2>
 	                <h2 style="color:var(--main-color);">4.3</h2>
 	                <button style="border:none; background : transparent;">
 	                    <img src="/naduri/assets/images/icon/homebutton.PNG" id="home">

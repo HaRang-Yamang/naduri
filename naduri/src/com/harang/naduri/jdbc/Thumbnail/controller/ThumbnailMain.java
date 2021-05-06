@@ -57,7 +57,7 @@ public class ThumbnailMain extends HttpServlet {
 		System.out.println("controller : " + map.get("keyword"));
 		System.out.println("controller : " + map.get("spotlo"));
 	
-			request.getRequestDispatcher("index2.jsp")
+			request.getRequestDispatcher("index.jsp")
 	       .forward(request, response);
 
 	}

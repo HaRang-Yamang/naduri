@@ -534,6 +534,55 @@ public ArrayList<lo_key> hotSpot3(Connection con) {
 	return list;
 }
 
+
+public ArrayList<Location> selectLocationCode(Connection con, int l_no) {
+	// 게시글 코드 가지고 갈 리스트 준비 
+				ArrayList<Location> list = new ArrayList();
+				// 장소 객체 준비
+				Location location = new Location();
+
+				PreparedStatement ps = null;
+				ResultSet rs = null;
+				
+				String sql = prop.getProperty("selectLocationCodeLNO");
+				
+				try {
+					
+					ps = con.prepareStatement(sql);
+					
+					ps.setInt(1, l_no);
+					
+					rs = ps.executeQuery();
+
+					
+					while(rs.next()) {
+						Location l = new Location();
+						
+						l.setL_no( rs.getInt("l_no"));
+						l.setLs_code( rs.getInt("ls_code"));
+						if( rs.getString("S_NAME") == null) { // 문화재
+							l.setS_name(rs.getString("H_NAME") );
+						} else { // 맛집, 여행지 							
+							l.setS_name(rs.getString("S_NAME") );
+						}
+						
+						list.add(l);
+						
+						System.out.println("LOCATION 테이블 성공 여부 : " + list);
+					}
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				} finally {
+					close(rs);
+					close(ps);			
+
+				}
+				
+				return list;
+}
+
 // ------------------------------------------------------------------------ //
 //public ArrayList<lo_key> spotDetail2(Connection con, int l_no2) {
 //	

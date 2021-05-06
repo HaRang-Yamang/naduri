@@ -176,8 +176,8 @@
      $(document).ready(function() {
         $(".search_val").keydown(function(key) {
         	
-            if (key.keyCode == 13) {
-            	var spotName = $(this).$(".search_val").val();
+            if (event.keyCode == 13) {
+            	var spotName = $(this).val();
             	/* alert($(".search_val").val()); */
             	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
             	

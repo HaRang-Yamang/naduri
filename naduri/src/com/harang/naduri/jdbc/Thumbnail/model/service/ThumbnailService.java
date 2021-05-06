@@ -166,6 +166,17 @@ public class ThumbnailService {
 			
 			return list;
 		}
+
+		public ArrayList<Location> selectLocationCode(int l_no) {
+			con = getConnection();
+			
+			ArrayList<Location> list = dao.selectLocationCode(con, l_no);
+			
+			close(con);
+			
+			return list;	
+		}
+
 		
 		
 		//------------------------------------- 메인 썸네일 ver 1.0 ----------------------------------------//

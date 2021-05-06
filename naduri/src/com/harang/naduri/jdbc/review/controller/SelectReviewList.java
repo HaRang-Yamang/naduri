@@ -37,8 +37,8 @@ public class SelectReviewList extends HttpServlet {
 		ReviewService service = new ReviewService();
 		
 		// 임시
-//	    int lno = Integer.parseInt(request.getParameter("l_no"));
-		int lno = 1;
+	    int lno = Integer.parseInt(request.getParameter("l_no"));
+//		int lno = 1;
 		
 	    reviewList =service.selectReviewList(lno);
 		
@@ -50,12 +50,12 @@ public class SelectReviewList extends HttpServlet {
 //				System.out.println(r.getAttList());
 //			}
 		
-			request.getRequestDispatcher("view/detail/tab_review.jsp").forward(request, response);
-		} else 
+			request.getRequestDispatcher("views/detail/tab_review.jsp").forward(request, response);
+		} else  {
 			
 			request.setAttribute("error-msg", "리뷰 게시 실패!");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-			
+		}
 			
 			
 			

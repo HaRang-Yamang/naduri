@@ -86,7 +86,7 @@ public QnaDAO() {
 		
 		try {
 			ps= con.prepareStatement(sql);
-	
+			
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Qna q = new Qna();

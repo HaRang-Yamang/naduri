@@ -49,8 +49,7 @@ public class InsertReview extends HttpServlet {
 		
 		ArrayList<String>changeNames = new ArrayList<>();
 	//정보 받아오기
-//		int l_no = Integer.parseInt(mr.getParameter("l_no"));
-		int l_no = 1;
+		int l_no = Integer.parseInt(mr.getParameter("l_no"));
 		int m_no = Integer.parseInt(mr.getParameter("m_no"));
 		int r_rank = Integer.parseInt(mr.getParameter("r_rank"));
 		String[]r_period =  mr.getParameterValues("r_period");
@@ -58,9 +57,9 @@ public class InsertReview extends HttpServlet {
 		int r_with = Integer.parseInt(mr.getParameter("r_with"));
 		String r_title = mr.getParameter("r_title");
 		String r_content =mr.getParameter("r_content"); 
-//		Review r = new Review(l_no, m_no, r_rank, r_title,r_content,r_periodStr, r_with);
-		Review r = new Review(m_no, r_rank, r_title,r_content,r_periodStr,r_with);
-//		System.out.println(l_no+","+m_no+","+r_rank+","+r_title+","+r_content+","+r_periodStr+","+r_with);
+	    Review r = new Review(l_no, m_no, r_rank, r_title,r_content,r_periodStr, r_with);
+//		Review r = new Review(m_no, r_rank, r_title,r_content,r_periodStr,r_with);
+		System.out.println(l_no+","+m_no+","+r_rank+","+r_title+","+r_content+","+r_periodStr+","+r_with);
 		//첨부파일 목록
 		Enumeration<String>tagNames= mr.getFileNames();
 		while( tagNames.hasMoreElements()) {
@@ -80,13 +79,13 @@ public class InsertReview extends HttpServlet {
 			Attach a = new Attach();
 			a.setA_name(changeNames.get(i));
 			a.setM_no(m_no);
-//			a.setL_no(l_no);
+			a.setL_no(l_no);
 //			if(i==changeNames.size()-1) {
 //				a.setA_no('1');
 //			}else {
 //				a.setA_no('2');
 //			}
-//			a.setM_no(m_no);
+			a.setM_no(m_no);
 			list.add(a);
 		}
 		r.setAttList(list);
@@ -96,7 +95,7 @@ public class InsertReview extends HttpServlet {
 		ReviewService rReview = new ReviewService();
 		int rResult = rReview.insertReview(r);
 		if(rResult>0) {
-			response.sendRedirect("selectList.re");
+			response.sendRedirect("CallApiDetail.do?l_no="+l_no);
 		}else {
 			request.setAttribute("error-msg", "게시글 작성 실패.");
 			request.getRequestDispatcher("views/common/errorPage.jsp")

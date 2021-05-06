@@ -9,7 +9,7 @@ public class Location implements Serializable{
 	// location table
 	private int l_no;
 	private int ls_code;
-	
+	private String s_name;
 	
 	// location_keyword table
 
@@ -55,9 +55,10 @@ public class Location implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Location [l_no=" + l_no + ", ls_code=" + ls_code + ", keyword_id=" + keyword_id + ", keyword=" + keyword
-				+ "]";
+		return "Location [l_no=" + l_no + ", ls_code=" + ls_code + ", s_name=" + s_name + ", keyword_id=" + keyword_id
+				+ ", keyword=" + keyword + "]";
 	}
+
 
 	public int getL_no() {
 		return l_no;
@@ -93,6 +94,16 @@ public class Location implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+	public String getS_name() {
+		return s_name;
+	}
+
+
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
 	}
 	
 	

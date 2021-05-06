@@ -262,50 +262,8 @@ com.harang.naduri.jdbc.bookmark.model.vo.*" %>
 							<button style="border: none; background: transparent;">
 								<img src="/naduri/assets/images/icon/homebutton.PNG" id="home">
 							</button>
-								<!-- 좋아요 주석처리
-								<div class="markIcon">
-								<%
-								if (b.getMark_id() > 0) {
-								%>
-								<i class="far fa-star"></i>
-								<%
-								} else {
-								%>
-								<i class="fas fa-star"></i>
-								<%
-								}
-								%>
-							</div>
-						</div>
-						<script>
-	$(function(){
-		// 추천버튼 클릭시(추천 추가 또는 추천 제거)
-		$(".markIcon").click(function(){
-			$.ajax({
-				url: "/naduri/bookmarkInsert.do",
-                type: "get",
-                data: { l_no : <%=sendL_no%>, m_no : '<%=m.getM_no()%>'
-                },
-                success: function () {
-                	if( <%=b.getMark_id()%> != 0 ) {
-                	$(".fa-star").removeClass("far");
-                    $(".fa-star").addClass("fas");
-                	}else{
-                		$(".fa-star").removeClass("fas");
-                        $(".fa-star").addClass("far");
-                	
-                	}
-                	}
-                },
-			})
-		})
-		
-	
-	</script>
-	-->
+								
 
-<<<<<<< HEAD
-	       
 	       	            </div>
 	        </div>
 	        <% } %>

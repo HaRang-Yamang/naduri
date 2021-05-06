@@ -4,14 +4,9 @@
 <%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*, com.harang.naduri.jdbc.heritage.model.vo.*" %>
 
 <%
-		
-		
 		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri"); // 문화재 정보 저장 객체
 		ArrayList<Spot> slist = (ArrayList<Spot>)request.getAttribute("slist");
 		ArrayList<Heritage> hlist = (ArrayList<Heritage>)request.getAttribute("hlist");
-		
-		HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
-
 %>
 
 <!DOCTYPE html>
@@ -64,7 +59,8 @@
         
         
         <!-- 검색 결과에서 받아올 값에 따라 결과창에 결과 표시 or 검색 결과 없음 표시하기위한 if 조건문 시작 -->
-        <% if(true) { %>
+        
+        <% if( listHeri.get(0).getL_no() > 0 ) { %>
         <div id="map"> </div>
         
         </section>
@@ -76,7 +72,7 @@
             	<h2>검색 결과</h2>
                <div id="s_result"> <!--  검색 결과 불러오는 div -->
        	          	<div class="row">    
-		            	<div class="hotSpot heritage food spot" id=""> <!-- 클래스명 수정 필 -->
+		            	<div class="hotSpot heritage food spot" id="<%= listHeri.get(0).getL_no() %>"> <!-- 클래스명 수정 필 -->
 		          		  	 <img src="<%= listHeri.get(0).getImageUrl()%>">  <!-- 검색한 장소 이미지 불러와야  -->
 		            		 <div class="spotInfo">
 			            		 <h4><%= listHeri.get(0).getH_name() %></h4>  <!--  검색 장소 이름  -->
@@ -297,8 +293,7 @@
 									            		 '<h4>'+nameArr[i]+'</h4>'+
 									            		'</div>'+
 								           		'</div>'
-								       
-										);
+								       );
 								
 								   
 								}

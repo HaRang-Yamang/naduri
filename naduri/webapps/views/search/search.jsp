@@ -273,7 +273,6 @@
 											'<div class="row">'+ 
 											   '<div class="hotSpot heritage">'+
 											   	'<img src="/naduri/assets/images/main/featured_img_1.jpg"'+'onclick="location.href='+"'/naduri/CallApiDetailSelectOneCollection.do?l_no="+idArr[i]+"';>"+
-							
 											   	'<div class="spotInfo">'+
 									            		 '<h4>'+nameArr[i]+'</h4>'+
 									            		 '<p>#문화재</p> <p>#데이트</p> <p>#데이트</p>'+
@@ -327,9 +326,7 @@
 	<aside><div id="topBtn" href="#">TOP</div></aside>			
 
 	<script>
-    $(function() {
-       
-        
+    $(function() {          
         $("#topBtn").click(function() {
             $('html, body').animate({
                 scrollTop : 0

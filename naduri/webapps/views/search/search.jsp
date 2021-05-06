@@ -70,7 +70,7 @@
             	<h2>검색 결과</h2>
                <div id="s_result"> <!--  검색 결과 불러오는 div -->
        	          	<div class="row">    
-		            	<div class="hotSpot date"> <!-- 클래스명 수정 필 -->
+		            	<div class="hotSpot heritage food spot"> <!-- 클래스명 수정 필 -->
 		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">  <!-- 검색한 장소 이미지 불러와야  -->
 		            		 <div class="spotInfo">
 			            		 <h4>검색결과</h4>  <!--  검색 장소 이름  -->
@@ -82,9 +82,9 @@
                 <h2>주변명소 골라보기</h2>
                 <ul class="tag">
                     <li class="list active" data-filter="All">전체보기</li>
-                    <li class="list" data-filter="date">#데이트</li>
-                    <li class="list" data-filter="palace">#궁궐</li>
-                    <li class="list" data-filter="heritage">#역사</li>
+                    <li class="list" data-filter="heritage">#문화재</li>
+                    <li class="list" data-filter="food">#맛집</li>
+                    <li class="list" data-filter="spot">#여행지</li>
                 </ul>
                       
             </div>
@@ -241,7 +241,7 @@
 							
 							<% for(Heritage h : hlist) { %>
 							
-							idArr.push(<%= h.getH_id() %>);
+							idArr.push(<%= h.getL_no() %>);
 							latArr.push(<%= h.getH_lat() %>);
 							lngArr.push(<%= h.getH_lng() %>);
 							nameArr.push('<%= h.getH_name() %>');
@@ -249,7 +249,7 @@
 							
 							<% for(Spot s : slist) { %>
 							
-							idArr.push(<%= s.getS_id() %>);
+							idArr.push(<%= s.getL_no() %>);
 							latArr.push(<%= s.getS_lat() %>);
 							lngArr.push(<%= s.getS_lng() %>);
 							nameArr.push('<%= s.getS_name() %>');
@@ -259,27 +259,55 @@
 							
 							
 							$('#thumbloop').html('');
-							for(var i in nameArr, latArr, lngArr){
+							for(var i in nameArr, latArr, lngArr, idArr){
 								
 								if( latArr[i] > swlat &&	
 									latArr[i] < nelat &&
 									lngArr[i] > swlng &&
 									lngArr[i] < nelng)	
 									{	
-									console.log(nameArr[i]);
+									console.log(idArr[i]);
 									
-									 
+								   	if(idArr[i] < 500){
 									$('#thumbloop').html( $('#thumbloop').html() +
 											'<div class="row">'+ 
-											   '<div class="hotSpot date">'+
-											   	'<img src="/naduri/assets/images/main/featured_img_1.jpg">'+
-								            		 '<div class="spotInfo">'+
+											   '<div class="hotSpot heritage">'+
+											   	'<img src="/naduri/assets/images/main/featured_img_1.jpg"'+'onclick="location.href='+"'/naduri/CallApiDetailSelectOneCollection.do?l_no="+idArr[i]+"';>"+
+							
+											   	'<div class="spotInfo">'+
 									            		 '<h4>'+nameArr[i]+'</h4>'+
-									            		 '<p>#데이트</p> <p>#데이트</p> <p>#데이트</p>'+
+									            		 '<p>#문화재</p> <p>#데이트</p> <p>#데이트</p>'+
 								            		 '</div>'+
 								           		'</div>'+
 								            '</div>'
 										);
+
+						   	} else if(idArr[i] < 1000){
+						   		$('#thumbloop').html( $('#thumbloop').html() +
+										'<div class="row">'+ 
+										   '<div class="hotSpot food">'+
+										   	'<img src="/naduri/assets/images/main/featured_img_2.jpg">'+
+							            		 '<div class="spotInfo">'+
+								            		 '<h4>'+nameArr[i]+'</h4>'+
+								            		 '<p>#맛집</p> <p>#데이트</p> <p>#데이트</p>'+
+							            		 '</div>'+
+							           		'</div>'+
+							            '</div>'
+							            );
+						     		
+						   	} else{ 
+						   		$('#thumbloop').html( $('#thumbloop').html() +
+										'<div class="row">'+ 
+										   '<div class="hotSpot spot">'+
+										   	'<img src="/naduri/assets/images/main/featured_img_3.jpg">'+
+							            		 '<div class="spotInfo">'+
+								            		 '<h4>'+nameArr[i]+ idArr[i]+'</h4>'+
+								            		 '<p>#여행지</p> <p>#데이트</p> <p>#데이트</p>'+
+							            		 '</div>'+
+							           		'</div>'+
+							            '</div>'
+							            );
+						     	}
 									}
 								};
 			    	},
@@ -309,6 +337,9 @@
             return false;
         });
     });
+    
+    
+
 	</script>
 
 		

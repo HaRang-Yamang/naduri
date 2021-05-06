@@ -4,7 +4,10 @@
 com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 <%
 		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri");
-		ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey");
+		ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword");
+		ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo");
+		
+		HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
 		Heritage heri = new Heritage();
 %>
 <!DOCTYPE html>
@@ -47,8 +50,9 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	
 	        <h2 class="hidden">상세페이지</h2>
 	        
-<% if( lokey != null ) { %>	         
-<% for( lo_key l : lokey ) { %>	        
+<% if( spotlo != null ) { %>	         
+ <% for(lo_key l : spotlo) { %>
+	                    	
 	 <div class="slider-images">
 	            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 1000px;">
 	                <div class="carousel-indicators" style="margin-left: 10px;" >
@@ -125,19 +129,19 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	                        </tr>
 	                        <tr>
 	                            <td>지정번호</td>
-	                            <td><%=l.getLocal_name() %></td>
+	                            <td>000-0000</td>
 	                        </tr>
 	                        <tr>
 	                            <td>지정일</td>
-	                            <td><%=l.getLocal_name() %></td>
+	                            <td>000-0000</td>
 	                        </tr>
 	                        <tr>
 	                            <td>분류</td>
-	                            <td><%=l.getLocal_name() %></td>
+	                           <td>000-0000</td>
 	                        </tr>
 	                        <tr>
 	                            <td>시대</td>
-	                            <td><%=l.getLocal_name() %></td>
+	                           <td>000-0000</td>
 	                        </tr>
 	                        <tr>
 	                            <td>면적</td>
@@ -145,11 +149,11 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	                        </tr>
 	                        <tr>
 	                            <td>소유자</td>
-	                            <td><%=l.getLocal_name() %></td>
+	                           <td>000-0000</td>
 	                        </tr>
 	                        <tr>
 	                            <td>관리자</td>
-	                            <td><%=l.getLocal_name() %></td>
+	                            <td>000-0000</td>
 	                        </tr>
 	                    </table>
 	                </div>
@@ -157,7 +161,7 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	                <div class="infoDetail">
 	                    <div class="a">
 	                        <p>
-	                            <%=l.getLocal_name() %>
+	                           <td>000-0000</td>
 	                        </p>
 	                        <details>
 	                            <summary>내용 더보기+</summary>
@@ -173,7 +177,8 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	                </div>       
  <% } %>	        
  <% } %>	        
-	        
+        
+ 		        
 	        
 <% if( listHeri != null ) { %>	        
 <% for( Heritage h : listHeri ) { %>	
@@ -300,10 +305,11 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	                    </div>
 	                </div>
 
-	       <% } %>
+	       
 	       	            </div>
 	        </div>
 	        <% } %>
+	       <% } %>
 	
 	        <!-- 근처 장소 영역 -->
 	        <%@ include file="nearArea.jsp" %>

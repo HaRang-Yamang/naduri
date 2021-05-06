@@ -24,6 +24,7 @@ import com.harang.naduri.jdbc.Thumbnail.model.vo.lo_key;
 import com.harang.naduri.jdbc.heritage.model.service.HeritageService;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;
+import com.harang.naduri.jdbc.review.model.service.ReviewService;
 
 
 
@@ -42,7 +43,32 @@ public class CallApiDetail extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    
+	//------------------------------ Spot Search 로직 설명 (1->2 or 1->3) ---------------------------------//
+	
+	/**
+	 * author : dababy
+	 * e-mail : pieta2529@gmail.com
+	 * last-update : 2021-05-06 a.m. 11:19
+	 * comment : 나드리 메인 화면과 검색 화면에 있는 검색 기능을 위한 코드입니다.
+	 * 				맛집, 여행, 문화재 통합검색 및 이미지를 전달합니다.
+	 * 				사용자가 검색한 값으로 location id를 검색하고, 그 location id를 매개변수로 하여
+	 * 				SQL문에서 일치하는 값을 찾아 결과로 반환합니다.
+	 * 				
+	 * 				1. 먼저, 사용자가 검색하는 곳의 장소분류가 문화재(ls_code=1)인지 맛집, 여행지(ls_code=2)인지 판별하는
+	 * 				selectLocationCode 로직을 수행합니다.
+	 * 
+	 * 				2. ls_code가 1이라면 공공데이터 api를 호출하는 selectName(Heritage) 로직을 실행하게 됩니다.
+	 * 					문화재 정보는 공공데이터 api를 이용하므로 selectName 이후 다른 service나 dao를 거치지 않습니다.
+	 * 					(주의!) selectName 코드는 Heritage mvc 폴더에 있습니다.
+	 * 
+	 * 
+	 * 				3. ls_code가 2라면 맛집, 여행지 정보를 가져오는 spotDetail 로직을 실행하게 됩니다.
+	 * 
+	 * 
+	 * 				즉, 검색 기능은 총 2번의 로직을 거쳐야 하며 첫 로직의 결과에 따라 이후 수행되는 service와 dao가 달라집니다.
+	 * **/
+	
+ 
     
     
     
@@ -76,6 +102,19 @@ public class CallApiDetail extends HttpServlet {
 			ArrayList<Location> list = new ArrayList();
 						
 
+			//------------------------------------- 1. selectLocationCode ----------------------------------------//
+			/**
+			 * author : dababy
+			 * e-mail : pieta2529@gmail.com
+			 * last-update : 2021-05-06 a.m. 11:19
+			 * comment : 사용자가 검색하는 곳의 장소분류가 문화재(ls_code=1)인지 맛집, 여행지(ls_code=2)인지 판별하는 로직입니다.
+			 * 
+			 * 				따라서, 매개변수로 장소명을 받습니다.
+			 * 				사용자가 검색한 장소명으로 location id를 검색하고, 그 location id를 매개변수로 하여
+			 * 				다음 로직인 selectName(Heritage) 또는 spotDetail 을 수행하여 
+			 * 				검색 목록 페이지에 데이터를 전달합니다.
+			 * 
+			 * **/
 			
 			// 사용자 입력 값 가져오기
 			// 1단계 - 사용자가 입력한 장소명을 서버 데이터베이스에서 조회 & 장소코드(LS_CODE)가 1(문화재)면 공공데이터 호출
@@ -112,27 +151,51 @@ public class CallApiDetail extends HttpServlet {
 			
 
 			
-			//--------------------------- 결과 값이 도착하면 --------------------------- //
+			//--------------------------- 장소 분류를 판별한 결과 값이 도착하면 --------------------------- //
+				
+			// ls_code 가 2 라면 맛집, 여행지 정보를 가지러 갑니다. 이를 수행하는 로직의 이름은 Thumbnail mvc의 spot Detail입니다.
+			// ls_code 가 1 이라면 문화재 정보를 가지러 갑니다. 이를 수행하는 로직의 이름은 Heritage mvc의 select Name입니다.	
+			//	이어서 select Name의 결과가 전달되면 이를 요청 파라미터로 이용하여 문화재정 api를 호출합니다.
+				
+			//------------------------------------- 2. spot Detail ----------------------------------------//
+
+			/**
+			 * author : dababy
+			 * e-mail : pieta2529@gmail.com
+			 * last-update : 2021-05-06 a.m. 11:19
+			 * comment : 나드리 상세페이지에 들어갈 정보를 보내주기 위한 코드입니다. 
+			 * 				맛집, 여행, 문화재 통합검색 및 이미지를 전달합니다.
+			 * 				사용자가 검색한 값으로 location id를 검색하고, 그 location id를 매개변수로 하여
+			 * 				SQL문에서 일치하는 값을 찾아 결과로 반환합니다.
+			 * 
+			 * **/
 			
 			
-			
-			// ls_code 가 2 라면 해시맵으로 이미지 가져오기!
 			// 장소테이블 조회하러 출발
 			if ( ls_code == 2 ) {
-
+				
+				// 객체 준비
+				HashMap<String, Object> map = new HashMap<>();
 				ArrayList<lo_key> lokey = new ArrayList<>();
+				
 				// 서비스 준비
 				ThumbnailService spotService = new ThumbnailService();
 				
 				// 결과를 list 객체에 저장
-				lokey = spotService.hotSpot4(l_no2);
+				map = spotService.spotDetail(l_no2);
 				
+				System.out.println("controller map : "+map);
 				
-				// request에 list 객체 담아서 보냄
-				request.setAttribute("lokey", lokey); // 맛집/여행지 정보 ( spot )
+				if ( map != null) {
 
 				
-				System.out.println(lokey);
+				// request에 list 객체 담아서 보냄
+				request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
+				request.setAttribute("spotlo", map.get("spotlo"));
+				request.setAttribute("map", map);
+				
+				System.out.println("controller : " + map.get("keyword"));
+				System.out.println("controller : " + map.get("spotlo"));
 			
 					request.getRequestDispatcher("views/detail/detailHeritage.jsp")
 			       .forward(request, response);
@@ -140,9 +203,12 @@ public class CallApiDetail extends HttpServlet {
 			}
 				
 
+			}
 			
+			//------------------------------------- 3. select Name (Heritage) ----------------------------------------//
+			// 이 부분의 코드는 Heritage mvc 폴더에 있습니다. ^^ 
 				
-			//----------------------------- 문화재인 경우 API 호출 -----------------------------------//
+			//------------------------------------ 문화재인 경우 API 호출 -----------------------------------------//
 			// ls_code가 1(문화재)인 경우에만 아래 로직 수행
 			else if ( ls_code == 1 ) {
 			

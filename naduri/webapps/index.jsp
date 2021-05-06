@@ -150,10 +150,20 @@
     </section>
     <script>
     
+	/**
+	 * author : dababy
+	 * e-mail : pieta2529@gmail.com
+	 * last-update : 2021-05-06 p.m. 12:37
+	 * comment : 사용자가 검색하는 장소명을 검색 페이지로 넘깁니다. 이 때, submit 이벤트는 Enter 값으로 인식합니다.
+	 * 
+	 * 
+	 * **/
+	 
     $(document).ready(function() {
         $(".search_val").keydown(function(key) {
             if (key.keyCode == 13) {
-            	$(".search_val").val().href = ""
+            	alert($(".search_val").val());
+            	/* $(".search_val").val().href = "" */
             }
         });
     });

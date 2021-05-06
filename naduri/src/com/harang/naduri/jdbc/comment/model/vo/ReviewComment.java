@@ -21,6 +21,15 @@ public class ReviewComment implements Serializable {
 		super();
 	}
 	
+	public ReviewComment( int mno, int rno, String reply_content, int ref_no) {
+		super();
+		this.mno = mno;
+		this.rno = rno;
+		this.reply_content = reply_content;
+		this.ref_no = ref_no;
+	}
+
+
 
 	public ReviewComment(int replyno, int mno, int rno, int qno, String reply_content, Date reply_date,
 			Date reply_update, int ref_no) {

@@ -34,28 +34,36 @@ public class ThumbnailMain extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 장소들의 썸네일을 받아올 객체 필요
+		// 객체 준비
 		HashMap<String, Object> map = new HashMap<>();
-		
-		
 		ArrayList<lo_key> lokey = new ArrayList<>();
+		
 		// 서비스 준비
-		ThumbnailService service = new ThumbnailService();
+		ThumbnailService spotService = new ThumbnailService();
 		
 		// 결과를 list 객체에 저장
-		lokey = service.hotSpot2();
+		map = spotService.spotDetail();
+		
+		System.out.println("controller map : "+map);
+		
+		if ( map != null) {
 
 		
 		// request에 list 객체 담아서 보냄
-			request.setAttribute("lokey", lokey); // 맛집/여행지 정보 ( spot )
-
-			
-			System.out.println(lokey);
+		request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
+		request.setAttribute("spotlo", map.get("spotlo"));
+		request.setAttribute("map", map);
 		
-		request.getRequestDispatcher("index.jsp")
-		       .forward(request, response);
-		}
+		System.out.println("controller : " + map.get("keyword"));
+		System.out.println("controller : " + map.get("spotlo"));
 	
+			request.getRequestDispatcher("index.jsp")
+	       .forward(request, response);
+
+	}
+		
+
+	}
 	
 
 	/**

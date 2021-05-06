@@ -9,19 +9,12 @@
 <%
 	Member m = (Member)session.getAttribute("member");
 	
-	// spot 정보
-	ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list");
-	// Heritage 정보
-	ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri");
-	// 첨부파일 정보
-	ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2");
-	// Location & Keyword 정보
-	ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
+	ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword");
+	ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo");
 	
-	ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey");
-	
-	
+	HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
 	Heritage heri = new Heritage();
+
 
 	
 %>
@@ -44,6 +37,8 @@
 <title>나드리</title>
 </head>
 <body>
+
+
 
 	<header>
         <h2 class="hidden">나드리</h2>
@@ -110,7 +105,7 @@
 
             <input class="search_val"type="text" placeholder="가고 싶은 곳을 검색하세요">
             <div id='searchResult'></div>
-            <i class="fas fa-search" aria-hidden="true" onclick="goSearch();"></i>
+            <i class="fas fa-search" aria-hidden="true"></i>
 
         </div>
 
@@ -118,45 +113,87 @@
     </header>
 
     <section>
+    
+    
+        <div class="main_body">
+            <div class="hot_keword">
+                <h2>인기명소 골라보기</h2>
+                <ul class="tag">
+                    <li class="list active" data-filter="All">전체보기</li>
+                    <li class="list" data-filter="1">#문화재</li>
+                    <li class="list" data-filter="2">#맛집</li>
+                    <li class="list" data-filter="3">#여행</li>
+                </ul>
+            </div>
+        </div>
 
-       
+	    
  <!-- featured images -->
         <div class="featured">
             <div class="small-container">
-			<% for(lo_key l : lokey) { %>
+            
+<% if( spotlo != null ) { %>	         
+<% for(int i=0 ; i < spotlo.size(); i++) { %>
             <div class="row">
-                <div class="hotSpot date">
-                   <img src="/naduri/resources/thumb/ <%=l.getA_name() %>"/>
+                <div class="hotSpot <%=spotlo.get(i).getLs_code() %>" id="<%=spotlo.get(i).getLocal_name() %>" name="spotName">
+                   <img src="/naduri/resources/thumb/<%=spotlo.get(i).getA_name() %>"/>
 
                     <div class="spotInfo">
-                    <h4><%=l.getLocal_name() %></h4>
+                    <h4><%=spotlo.get(i).getLocal_name() %></h4>
                     
-                    <% for( int z = 0 ; z < l.getKeyword().length() ; z++ ) { %>
-                    <p>#<%=l.getKeyword() %></p>
+					 <% for( lo_key k : keyword) { %>
+					 <% if( k.getL_no() == spotlo.get(i).getL_no()) { %>
+                    <p>#<%=k.getKeyword() %></p>
+					 <% } %>
                      <% } %>
-                     
                     </div>
                     <div class="markIcon"><i class="fas fa-heart"></i></div>
                 </div>
-                
-               
+           
+             
+              
 </div>
- <% } %>
+
+<% } %> <!-- for문 end -->
+<% } %>  <!-- if문 end -->
 </div>
 <!--  featured images end -->
 
 
-        
+     
     </section>
     <script>
     
-    $(document).ready(function() {
+	/**
+	 * author : dababy
+	 * e-mail : pieta2529@gmail.com
+	 * last-update : 2021-05-06 p.m. 12:37
+	 * comment : 사용자가 검색하는 장소명을 검색 페이지로 넘깁니다. 이 때, submit 이벤트는 Enter 값으로 인식합니다.
+	 * 
+	 * 
+	 * **/
+	 
+     $(document).ready(function() {
         $(".search_val").keydown(function(key) {
+        	
             if (key.keyCode == 13) {
-            	$(".search_val").val().href = ""
+            	var spotName = $(this).$(".search_val").val();
+            	/* alert($(".search_val").val()); */
+            	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+            	
             }
         });
-    });
+     });
+    
+    
+    // selectOne
+    $('.hotSpot').on('click', function(){
+    	var spotName = $(this).attr('id');
+		
+		location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+	});
+    
+    
     
     function adminPage(){
         location.href='/naduri/memberList.ad';

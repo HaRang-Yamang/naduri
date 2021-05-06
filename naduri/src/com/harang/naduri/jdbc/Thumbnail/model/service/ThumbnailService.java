@@ -155,7 +155,21 @@ public class ThumbnailService {
 		 * **/
 		
 		
-
+		//------------------------------------- 메인 썸네일 ver 2.0 ----------------------------------------//
+		public ArrayList<lo_key> hotSpot3() {
+			
+			con = getConnection();
+			
+			ArrayList<lo_key> list = dao.hotSpot3(con);
+			
+			close(con);
+			
+			return list;
+		}
+		
+		
+		//------------------------------------- 메인 썸네일 ver 1.0 ----------------------------------------//
+		/*
 		public HashMap<String, Object> spotDetail() {
 			con = getConnection();
 			HashMap<String, Object> map = new HashMap<>();
@@ -167,25 +181,32 @@ public class ThumbnailService {
 			
 			return map;
 		}
+		
+
 
 		
 		
-		
-		
 		//------------------------------------- 2. spot Detail ver 2.0 ----------------------------------------//
-//		public ArrayList<lo_key> spotDetail2(int l_no2) {
-//
-//			
-//				con = getConnection();
-//				ThumbnailDAO dao = new ThumbnailDAO();
-//				ArrayList<lo_key> lokey = new ArrayList<>();
-//				
-//				ArrayList<lo_key> lokey = dao.spotDetail2(con, l_no2);
-//				
-//				close(con);
-//				
-//				return lokey;
-//			}
+		public ArrayList<lo_key> spotDetail2(int l_no2) {
+
+			
+				con = getConnection();
+				ThumbnailDAO dao = new ThumbnailDAO();
+				ArrayList<lo_key> lokey = new ArrayList<>();
+				
+				ArrayList<lo_key> lokey = dao.spotDetail2(con, l_no2);
+				
+				close(con);
+				
+				return lokey;
+			}
+		
+		
+		
+*/
+
+
+		
 		}
 
 

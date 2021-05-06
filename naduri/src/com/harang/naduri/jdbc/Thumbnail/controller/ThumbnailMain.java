@@ -34,33 +34,48 @@ public class ThumbnailMain extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 객체 준비
-		HashMap<String, Object> map = new HashMap<>();
-		ArrayList<lo_key> lokey = new ArrayList<>();
+//		// 객체 준비
+//		HashMap<String, Object> map = new HashMap<>();
+//		ArrayList<lo_key> lokey = new ArrayList<>();
+//		
+//		// 서비스 준비
+//		ThumbnailService spotService = new ThumbnailService();
+//		
+//		// 결과를 list 객체에 저장
+//		map = spotService.spotDetail();
+//		
+//		System.out.println("controller map : "+map);
+//		
+//		if ( map != null) {
+//
+//		
+//		// request에 list 객체 담아서 보냄
+//		request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
+//		request.setAttribute("spotlo", map.get("spotlo"));
+//		request.setAttribute("map", map);
+//		
+//		System.out.println("controller : " + map.get("keyword"));
+//		System.out.println("controller : " + map.get("spotlo"));
+//	
+//			request.getRequestDispatcher("index.jsp")
+//	       .forward(request, response);
+//
+//	}
 		
-		// 서비스 준비
+		ArrayList<lo_key> list = new ArrayList<>();
+		
 		ThumbnailService spotService = new ThumbnailService();
 		
-		// 결과를 list 객체에 저장
-		map = spotService.spotDetail();
+		list = spotService.hotSpot3();
 		
-		System.out.println("controller map : "+map);
 		
-		if ( map != null) {
-
-		
-		// request에 list 객체 담아서 보냄
-		request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
-		request.setAttribute("spotlo", map.get("spotlo"));
-		request.setAttribute("map", map);
-		
-		System.out.println("controller : " + map.get("keyword"));
-		System.out.println("controller : " + map.get("spotlo"));
-	
-			request.getRequestDispatcher("index.jsp")
-	       .forward(request, response);
-
-	}
+		if ( list != null) {
+			request.setAttribute("list", list);  // 나머지
+			
+			
+			
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
 		
 
 	}

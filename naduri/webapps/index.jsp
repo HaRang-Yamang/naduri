@@ -135,7 +135,6 @@
             <div class="small-container">
             
 <% for(int i=0 ; i < list.size(); i++) { %>
-            <div class="row">
                 <div class="hotSpot <%= list.get(i).getLs_code() %>" id="<%= list.get(i).getLocal_name() %>" name="spotName">
                    <img src="/naduri/resources/thumb/<%= list.get(i).getA_name() %>"/>
 
@@ -149,11 +148,11 @@
                     </div>
                     
                 </div>
-       </div>
-              
+
+  <% } %> <!-- for문 end -->            
 </div>
 
-<% } %> <!-- for문 end -->
+
 
 </div>
 <!--  featured images end -->

@@ -206,11 +206,16 @@ header .search .fa-search {
 .areaList{
 	padding-bottom : 150px;
 }
+.featured{
+	width : 1000px;
+}
 .small-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows : repeat(3, 1fr);
     align-items: center;
     flex-wrap: wrap; 
-    justify-content: space-around;    
+    justify-content: space-around;   
 }
 
 /* 찜 icon */

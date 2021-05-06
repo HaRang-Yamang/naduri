@@ -1,11 +1,7 @@
 @charset "UTF-8";
-
-.detailArea_heritage{
-    padding-top : 150px;
-    padding-bottom : 150px;
+section{
+	width : 1000px;
 }
-
-
 /* infoArea 상단 정보 영역 */
 .infoArea{
     padding-top : 115px;

@@ -1,3 +1,9 @@
+section{
+	padding : 0;
+	padding-top : 65px;
+	padding-bottom : 150px;
+}
+
 /* tag  �뵒�옄�씤 */
 .tag li {
     list-style: none;
@@ -56,11 +62,6 @@
     height: 40px;
 }
 
-.search i{ 
-	cursor:pointer;
-	z-index:1;
-}
-
 .search input{
     position: absolute;
     top: 0;
@@ -84,7 +85,7 @@
     position: absolute;
     color: var(--white-color);
     background-color: var(--main-color);
-    padding: 8px;
+    padding: 12px;
     transform: translateY(3px);
 }
 

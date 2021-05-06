@@ -49,7 +49,7 @@ public class BookmarkInsert extends HttpServlet {
 			RequestDispatcher view = 
 					request.getRequestDispatcher("views/common/errorPage.jsp");
 			
-			request.setAttribute("error-msg", "회원 가입 실패");
+			request.setAttribute("error-msg", "찜 실패");
 			
 			view.forward(request, response);
 		}

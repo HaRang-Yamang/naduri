@@ -29,15 +29,11 @@
    display: flex;  
    bottom: 10px;
    right: 10px;
-   color: red;
+   color: var(--main-color);
    cursor: pointer;
    float: right;
 }
-.markIcon i:active{
-   -webkit-text-fill-color: transparent;
-   -webkit-text-stroke-width: 2px;
-   -webkit-text-stroke-color: red;
-}
+
 
 /* 키워드 */
 .keyword{

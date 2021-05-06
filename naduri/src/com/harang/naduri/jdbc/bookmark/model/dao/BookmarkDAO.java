@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -57,6 +58,62 @@ public class BookmarkDAO {
 		
 		
 		
+	}
+
+	public Bookmark selectBookmark(Connection con, Bookmark b) {
+
+		String sql = prop.getProperty("selectBookmark");
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, b.getL_no());
+			ps.setInt(2, b.getM_no());
+			rs = ps.executeQuery();
+			
+			b.setL_no(rs.getInt("l_no"));
+			b.setM_no(rs.getInt("m_no"));
+			b.setMark_id(rs.getInt("Mark_id"));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return b;
+		
+		
+		
+	}
+
+	public int deleteBookmark(Connection con, Bookmark b) {
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteBookmark");
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, b.getL_no());
+			ps.setInt(2, b.getM_no());
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			close(ps);
+		}
+				
+		return result;
 	}
 
 }

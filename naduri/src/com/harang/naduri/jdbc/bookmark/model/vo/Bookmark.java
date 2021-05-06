@@ -22,6 +22,13 @@ public class Bookmark implements Serializable {
 		this.m_no = m_no;
 		this.rno = rno;
 	}
+	public Bookmark(int mark_id, int l_no, int m_no) {
+		super();
+		this.mark_id = mark_id;
+		this.l_no = l_no;
+		this.m_no = m_no;
+	}
+
 
 	public Bookmark(int l_no, int m_no) {
 		super();

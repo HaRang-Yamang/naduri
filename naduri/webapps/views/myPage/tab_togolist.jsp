@@ -32,7 +32,7 @@
 	                
 	                
 	                $('.hotSpot<%=i%>').on('click', function(){
-	                    location.href='/naduri/CallApiDetailSelectOneCollection.do?l_no=<%=list.get(i).getL_no()%>';
+	                    location.href='/naduri/CallApiDetail.do?l_no=<%=list.get(i).getL_no()%>';
 	               });
 	                </script>
 	               <% } %>

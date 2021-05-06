@@ -115,7 +115,6 @@
         
         <!-- 만약 검색 결과가 없을 때 나오는 else 구문 -->
         <% } else { %>
-        	
         	<div class='not_found'>
         	<p class='not_found_message'> 
         		   나드리 데이터베이스에서 검색 결과를 찾을 수 없습니다.<br>
@@ -155,7 +154,7 @@
 			
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 			    mapOption = { 
-			        center: new kakao.maps.LatLng(<%= hlist.get(0).getH_lat() +", " + hlist.get(0).getH_lng()%>), // 지도의 중심좌표
+			        center: new kakao.maps.LatLng(<%= hlist.get(1).getH_lat() %>, <%= hlist.get(1).getH_lng()%>), // 지도의 중심좌표
 			        level: 4 // 지도의 확대 레벨
 			        
 			    };
@@ -267,25 +266,39 @@
 									lngArr[i] < nelng)	
 									{	
 									console.log(idArr[i]);
+									var imgSelector = '';
 									
 								   	if(idArr[i] < 500){
+								   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
+								   	} else if(idArr[i] <1000){
+								   		imgSelector = '<img src="/naduri/resources/thumb/5.jpg">';
+								   	} else {
+								   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
+								   	}
 									$('#thumbloop').html( $('#thumbloop').html() +
-											'<div class="row">'+ 
-											   '<div class="hotSpot heritage">'+
-											   	'<img src="/naduri/assets/images/main/featured_img_1.jpg"'+'onclick="location.href='+"'/naduri/CallApiDetailSelectOneCollection.do?l_no="+idArr[i]+"';>"+
-											   	'<div class="spotInfo">'+
-									            		 '<h4>'+nameArr[i]+'</h4>'+
-									            		 '<p>#문화재</p> <p>#데이트</p> <p>#데이트</p>'+
-								            		 '</div>'+
-								           		'</div>'+
-								            '</div>'
-										);
+										<!--	'<div style="height:300; width:300;">'+ -->
+												'<div class="row">'+ 
+												   '<div class="hotSpot heritage" id="'+idArr[i]+'">'+
+												    imgSelector +
+												   	'<div class="spotInfo">'+
+										            		 '<h4>'+nameArr[i]+'</h4>'+
+										            		 '<p>#문화재</p> <p>#데이트</p> <p>#데이트</p>'+
+									            		 '</div>'+
+									           		'</div>'+
+									            '</div>'
+									       <!--    '</div>' -->
+									            );
+								          
+								            
+								               
+								     <!-- onclick="location.href=\'/naduri/CallApiDetailSelectOneCollection.do?l_no=' + idArr[i] + '\'--> 
+										
 
 						   	} else if(idArr[i] < 1000){
 						   		$('#thumbloop').html( $('#thumbloop').html() +
 										'<div class="row">'+ 
-										   '<div class="hotSpot food">'+
-										   	'<img src="/naduri/assets/images/main/featured_img_2.jpg">'+
+										   '<div class="hotSpot food" id="'+idArr[i]+'">'+
+										   	'<img src="/naduri/resources/thumb/5.jpg">'+
 							            		 '<div class="spotInfo">'+
 								            		 '<h4>'+nameArr[i]+'</h4>'+
 								            		 '<p>#맛집</p> <p>#데이트</p> <p>#데이트</p>'+
@@ -297,10 +310,10 @@
 						   	} else{ 
 						   		$('#thumbloop').html( $('#thumbloop').html() +
 										'<div class="row">'+ 
-										   '<div class="hotSpot spot">'+
-										   	'<img src="/naduri/assets/images/main/featured_img_3.jpg">'+
+										   '<div class="hotSpot spot" id="'+idArr[i]+'">'+
+										   	'<img src="/naduri/resources/thumb/3.jpg">'+
 							            		 '<div class="spotInfo">'+
-								            		 '<h4>'+nameArr[i]+ idArr[i]+'</h4>'+
+								            		 '<h4>'+nameArr[i]+'</h4>'+
 								            		 '<p>#여행지</p> <p>#데이트</p> <p>#데이트</p>'+
 							            		 '</div>'+
 							           		'</div>'+
@@ -308,7 +321,11 @@
 							            );
 						     	}
 									}
-								};
+								}
+							$('.hotSpot').each(function(){
+								var daniel_no = $(this).attr('id');
+								location.href='/naduri/CallApiDetailSelectOneCollection.do?l_no='+daniel_no;
+							});
 			    	},
 					    error : function(error){alert("전송 실패");}
 				    });
@@ -335,7 +352,7 @@
         });
     });
     
-    
+
 
 	</script>
 

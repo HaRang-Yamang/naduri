@@ -216,12 +216,15 @@ header .search .fa-search {
     color: #ffffff;
     text-align: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-   
+    
+
     /* float: left;
     margin-left: 30px;  
     transform: translateX(-50px);   */
 
 }
+
+
 
 
 .lmark{
@@ -296,6 +299,12 @@ header .search .fa-search {
         width: 100%;
 
         transform: translate(-30px, 80px);
+        
+       display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+	row-gap: 10px;
+	column-gap: 5px; 
+   
     }
 
 }

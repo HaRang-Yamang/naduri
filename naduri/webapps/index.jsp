@@ -15,10 +15,7 @@
    HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
    Heritage heri = new Heritage();
 
-
 	ArrayList<lo_key> list = (ArrayList<lo_key>)request.getAttribute("list"); //키워드
-
-
    
 %>
 
@@ -144,14 +141,15 @@
 
                     <div class="spotInfo">
                     <h4><%= list.get(i).getLocal_name() %></h4>
-                    
+
 					 <% for(String k : list.get(i).getKeyword()) { %>
 					 <p>#<%= k %> </p>
 	                 <% } %>
+
                     </div>
                     
                 </div>
-       
+       </div>
               
 </div>
 
@@ -174,17 +172,17 @@
 	 * **/
 	 
 
-	 $(document).ready(function() {
-	        $(".search_val").keydown(function(key) {
-	        	
-	            if (event.keyCode == 13) {
-	            	var spotName = $(this).val();
-	            	/* alert($(".search_val").val()); */
-	            	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
-	            	
-	            }
+	    $(document).ready(function() {
+	           $(".search_val").keydown(function(key) {
+	              
+	               if (event.keyCode == 13) {
+	                  var spotName = $(this).val();
+	                  /* alert($(".search_val").val()); */
+	                   location.href = "/naduri/goresult.sr?spotName=" + spotName;
+	                  
+	               }
+	           });
 	        });
-	     });
 	    
 	    
 	    // selectOne
@@ -196,7 +194,7 @@
 
 
 	function join(){
-		location.href="/naduri/joinMember.jsp"
+		location.href="/naduri/views/member/joinMember.jsp"
 	}
 	function login(){
 		location.href = '/naduri/views/login.jsp';
@@ -214,7 +212,6 @@
 		location.href = '/naduri/memberList.ad';
 
 	}
-
 
     </script>
    

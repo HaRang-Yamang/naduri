@@ -80,7 +80,7 @@ ArrayList<Location> lo_key = (ArrayList<Location>) request.getAttribute("lo_key"
 			%>
 			<script>
 				function join(){
-					location.href="/naduri/joinMember.jsp"
+					location.href="/naduri/views/member/joinMember.jsp"
 				}
 				function login(){
 					location.href = '/naduri/views/login.jsp';

@@ -92,40 +92,29 @@ public class GoToSearchResult extends HttpServlet {
 		
 		
 		// Spot 목록 처리하는 변수 
-				ArrayList<Spot> slist = new ArrayList<>();		
-				SpotService sservice = new SpotService();
-						
-				slist = sservice.selectList();
-				
-				System.out.println("slist : " + slist);
-				
-				request.setAttribute("slist", slist);
-				
-				
-				
-				
-				// Heritage 목록 처리하는 변수
-				ArrayList<Heritage> hlist = new ArrayList<>();
-				HeritageService hservice = new HeritageService();
-				
-				hlist = hservice.selectHerList();
-				
-				System.out.println("hlist : " + hlist);
-				
+			ArrayList<Spot> slist = new ArrayList<>();		
+			SpotService sservice = new SpotService();
+					
+			slist = sservice.selectList();
 			
-				request.setAttribute("hlist", hlist);
+			System.out.println("slist : " + slist);
+			
+			request.setAttribute("slist", slist);
+			
+			
+			
+			
+			// Heritage 목록 처리하는 변수
+			ArrayList<Heritage> hlist = new ArrayList<>();
+			HeritageService hservice = new HeritageService();
+			
+			hlist = hservice.selectHerList();
+			
+			System.out.println("hlist : " + hlist);
+			
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			request.setAttribute("hlist", hlist);
+			
 		
 			// 파라미터 선언 및 초기화
 			int pageIndex = 1;	// 페이지 초기값 
@@ -136,9 +125,10 @@ public class GoToSearchResult extends HttpServlet {
 			String ccbaCtcd = ""; // 시도코드
 			
 			// SelectOne을 위한 사용자 선택 값 
-			// int l_no = Integer.parseInt(request.getParameter("l_no"));
+			
+			int l_no = 0;
 			// 장소 정보 객체 list
-			ArrayList<Location> list = new ArrayList();
+			ArrayList<Location> list = new ArrayList<>();
 						
 
 			//------------------------------------- 1. selectLocationCode ----------------------------------------//
@@ -171,8 +161,14 @@ public class GoToSearchResult extends HttpServlet {
 			ThumbnailService service = new ThumbnailService();
 
 			// 1-3단계 게시글 조회 서비스 시작 --> 서비스 Go!
-			list = service.selectLocationCode(spotName);
-			
+			if( spotName == null ) {				
+				l_no = Integer.parseInt(request.getParameter("l_no"));
+				list = service.selectLocationCode(l_no);
+				spotName = list.get(0).getS_name();
+			} else {
+				list = service.selectLocationCode(spotName);
+				l_no = list.get(0).getL_no();
+			}
 			
 			//Debug
 			System.out.println("결과 확인 : " + list);
@@ -209,40 +205,43 @@ public class GoToSearchResult extends HttpServlet {
 			 * 
 			 * **/
 			
-
-				// 장소테이블 조회하러 출발
-				if ( ls_code == 2 ) {
-					
-					// 객체 준비
-					HashMap<String, Object> map = new HashMap<>();
-					ArrayList<lo_key> lokey = new ArrayList<>();
-					
-					// 서비스 준비
-					ThumbnailService spotService = new ThumbnailService();
-					
-					// 결과를 list 객체에 저장
-					map = spotService.spotDetail(l_no2);
-					
-					System.out.println("controller map : "+map);
-					
-					if ( map != null) {
-
-					
-					// request에 list 객체 담아서 보냄
-					request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
-					request.setAttribute("spotlo", map.get("spotlo"));
-					request.setAttribute("map", map);
-					
-					System.out.println("controller : " + map.get("keyword"));
-					System.out.println("controller : " + map.get("spotlo"));
+			
+			// 장소테이블 조회하러 출발
+			if ( ls_code == 2 ) {
 				
-						request.getRequestDispatcher("views/search/search.jsp")
-				       .forward(request, response);
+				// 객체 준비
+				HashMap<String, Object> map = new HashMap<>();
+				ArrayList<lo_key> lokey = new ArrayList<>();
+				
+				
+				// 서비스 준비
+				ThumbnailService spotService = new ThumbnailService();
+				
+				// 결과를 list 객체에 저장
+				map = spotService.spotDetail(l_no2);
+				
+				System.out.println("controller map : "+map);
+				
+				if ( map != null) {
 
-				}
-					
+				
+				// request에 list 객체 담아서 보냄
+				request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
+				request.setAttribute("spotlo", map.get("spotlo"));
+				request.setAttribute("map", map);
+				
+				
+				System.out.println("map : " + map);
+			//	System.out.println("controller : " + map.get("keyword"));
+		//		System.out.println("controller : " + map.get("spotlo"));
+			
+					request.getRequestDispatcher("views/search/search.jsp")
+			       .forward(request, response);
 
-				}
+			}
+				
+
+			}
 			
 			//------------------------------------- 3. select Name (Heritage) ----------------------------------------//
 			// 이 부분의 코드는 Heritage mvc 폴더에 있습니다. ^^ 
@@ -272,7 +271,6 @@ public class GoToSearchResult extends HttpServlet {
 				// 1-3단계 게시글 조회 서비스 시작 --> 서비스 Go!
 				listHeri = serviceHeri.selectName(spotName);
 				
-				
 			for(Heritage h : listHeri) {
 				
 				ccbaKdcd = h.getH_events(); // 종목코드
@@ -295,7 +293,7 @@ public class GoToSearchResult extends HttpServlet {
 							while(true){
 								// parsing할 url 지정(API 키 포함해서)
 								// String callList = "http://www.cha.go.kr/cha/SearchKindOpenapiList.do?pageIndex="+pageIndex;
-								 String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiDt.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName;
+								 String callDetail = "http://www.cha.go.kr/cha/SearchKindOpenapiDt.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName.replace(" ", "%20");
 								 // + "&ccbaMnm1=" + spotName
 								// String callImage = "http://www.cha.go.kr/cha/SearchImageOpenapi.do?ccbaKdcd=" + ccbaKdcd + "&ccbaAsno=" + ccbaAsno + "&ccbaCtcd=" + ccbaCtcd + "&ccbaMnm1=" + spotName ;
 								
@@ -337,10 +335,9 @@ public class GoToSearchResult extends HttpServlet {
 										
 										// heritage vo를 저장할 객체 
 										// ArrayList<Heritage> list3 = new ArrayList<>();
-										 Heritage heri = new Heritage();
+										 Heritage heri = listHeri.get(0);
 
 										// api로 받은 정보 저장
-										 	
 											heri.setH_events(getTagValue("ccbaKdcd", eElement)); // 종목코드
 											heri.setH_serial(getTagValue("ccbaAsno", eElement)); // 지정번호
 											heri.setH_zipcode(getTagValue("ccbaCtcd", eElement)); // 시도코드
@@ -365,9 +362,10 @@ public class GoToSearchResult extends HttpServlet {
 
 
 									// 객체 바구니에 저장
-											listHeri.add(heri);
+											// listHeri.add(heri);
+											
 									
-									 System.out.println(listHeri);
+
 
 										
 									}	// for end
@@ -391,7 +389,7 @@ public class GoToSearchResult extends HttpServlet {
 						
 						request.setAttribute("listHeri", listHeri);
 						
-						System.out.println(listHeri);
+						 System.out.println("listHeri : " + listHeri);
 						
 						RequestDispatcher view =
 								request.getRequestDispatcher("views/search/search.jsp");

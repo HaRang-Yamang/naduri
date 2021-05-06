@@ -7,6 +7,7 @@ public class Qna implements Serializable {
 	private static final long serialVersionUID = 1011L;
 	
 private  int qno;
+private	int l_no;
 private 	int m_no;
 private String q_title;
 private 	String q_content;
@@ -19,8 +20,12 @@ public Qna() {
 	super();
 }
 
-public Qna(int m_no, String q_title, String q_content) {
+
+
+
+public Qna(int l_no, int m_no, String q_title, String q_content) {
 	super();
+	this.l_no = l_no;
 	this.m_no = m_no;
 	this.q_title = q_title;
 	this.q_content = q_content;
@@ -38,12 +43,19 @@ public Qna(int qno, int m_no, String q_content, Date q_date, Date q_update) {
 
 @Override
 public String toString() {
-	return "Qna [qno=" + qno + ", m_no=" + m_no + ", q_content=" + q_content + ", q_date=" + q_date + ", q_update="
-			+ q_update + "]";
+	return "Qna [qno=" + qno + ", l_no=" + l_no + ", m_no=" + m_no + ", q_title=" + q_title + ", q_content=" + q_content
+			+ ", q_date=" + q_date + ", q_update=" + q_update + ", m_id=" + m_id + "]";
 }
 
 public int getQno() {
 	return qno;
+}
+public int getL_no() {
+	return l_no;
+}
+
+public void setL_no(int l_no) {
+	this.l_no = l_no;
 }
 
 public void setQno(int qno) {

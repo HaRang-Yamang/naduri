@@ -8,87 +8,8 @@
  %>
   <!-- 리뷰 영역 -->
     <div id="tab_review" class="tab-content current">
-        <!-- 리뷰 필터 영역 -->
-        <div class="filter">
-            <div class="review_table">
-                <table>
-                    <tr>
-                        <th>평가</th>
-                        <th>방문유형</th>
-                        <th>방문시기</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="excellent"   name="excellent">
-                            <label for="excellent">아주 좋음</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="family"   name="family">
-                            <label for="family">가족</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="spring"   name="spring">
-                            <label for="spring">봄</label>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="good" name="good">
-                            <label for="good">좋음</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="couple"   name="couple">
-                            <label for="couple">커플</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="summer"   name="summer">
-                            <label for="summer">여름</label>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="normal"   name="normal">
-                            <label for="normal">보통</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="alone"   name="alone">
-                            <label for="alone">혼자</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="autumn"   name="autumn">
-                            <label for="autumn">가을</label>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="soso"   name="soso">
-                            <label for="soso">별로</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="friend"   name="friend">
-                            <label for="friend">친구</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="winter"   name="winter">
-                            <label for="winter">겨울</label>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="worst"   name="worst">
-                            <label for="worst">최악</label>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+    
+        
 	
         <!-- 전체 리뷰 -->
         <div class="content mouse">
@@ -155,7 +76,7 @@
                     <div class="review_img_area">
                     <%for(Attach a : r.getAttList()) {%>
                         <div class="review_img">
-                        <img src="/naduri/assets/images/review/<%= a.getA_name()%>">
+                        <img src="/naduri/assets/images/review/<%= a.getA_name()%>" style="width : 120px; height : 120px;">
                         <a href="/naduri/assets/images/review/"<%=a.getA_name()%>></a>
                         </div>
                     <% } %>
@@ -299,23 +220,7 @@
         </div>
         
         <!-- 넘버링 -->
-        <div class="numArea">
-            <ul>
-                <li><span class="arrLeft"></span></li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li><span class="arrRight"></span></li>
-                <li><span class="arrDouble"></span></li>
-            </ul>
-        </div>
+     
 	
     </div>
     

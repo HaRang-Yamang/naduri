@@ -31,6 +31,7 @@ ArrayList<lo_key> lokey = (ArrayList<lo_key>) request.getAttribute("lokey");
 		<div class="writeFrm">
 			<form id="insertForm" action="/naduri/insert.qn" method="post">
 				<h2>QnA 작성</h2>
+				<input type="hidden" name="l_no" value="<%= request.getParameter("l_no")%>">
 				<div class="container">
 					<table>
 						<tr>
@@ -44,8 +45,7 @@ ArrayList<lo_key> lokey = (ArrayList<lo_key>) request.getAttribute("lokey");
 						</tr>
 						<tr>
 							<td class="review_title">질문 내용</td>
-							<td><textarea id="qna_textArea" name="q_content" cols="70" rows="15"></textarea></td>
-						</tr>
+							<td><textarea id="qna_textArea" name="q_content" cols="70" rows="15"></textarea></td>						</tr>
 
 					</table>
 				</div>

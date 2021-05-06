@@ -32,13 +32,15 @@ public class SelectQnaList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Qna>list = new ArrayList<Qna>();
+		ArrayList<Qna>list = null;
 		QnaService service = new QnaService();
+		int lno = Integer.parseInt(request.getParameter("l_no"));
 		
-		list = service.selectQnaList();
+		list = service.selectQnaList(lno);
 		if(list !=null) {
 			request.setAttribute("list", list);
 			System.out.println(list);
+			
 			request.getRequestDispatcher("views/detail/tab_qna.jsp").forward(request, response);
 		}else {
 			

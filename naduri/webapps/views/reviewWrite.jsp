@@ -29,6 +29,7 @@ ArrayList<lo_key> lokey = (ArrayList<lo_key>) request.getAttribute("lokey");
 	<%@ include file="common/header.jsp"%>
 
 	<section>
+
 		<div class="writeFrm">
 			<form id="insertForm" action="/naduri/insert.re" method="post"
 				enctype="multipart/form-data">

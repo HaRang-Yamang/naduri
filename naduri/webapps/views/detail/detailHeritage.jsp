@@ -312,13 +312,14 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	        <!-- 근처 장소 영역 -->
 	        <%@ include file="nearArea.jsp" %>
 	        
-	        <!-- 탭 -->
+	        
 	        <div class="write_btn">
                 <a href="/naduri/views/reviewWrite.jsp?l_no=<%= sendL_no %>&"><input type="button" value = "리뷰 쓰기" id="insertreview"></a>
             </div>
                <div class="write_btn">
                 <a href="/naduri/views/qnaWrite.jsp?l_no=<%= sendL_no %>"><input type="button" value = "QNA 쓰기" id="insertqna"></a>
             </div>
+            
 <div id = "container">
 	
     <!-- 상단 tab 영역 -->
@@ -351,12 +352,13 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
       urlPath = '/naduri/selectList.qn';
    }
  
-   	reviewLoad(urlPath);
+   reviewLoad(urlPath);
      });
      
-     reviewLoad('/naduri/selectList.re');
+reviewLoad('/naduri/selectList.re');
+  
  });
- 
+
  function reviewLoad(urlPath){
 	 $.ajax({
          type : 'GET',                 //get방식으로 통신

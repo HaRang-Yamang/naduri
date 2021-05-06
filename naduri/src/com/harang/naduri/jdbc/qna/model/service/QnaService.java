@@ -20,9 +20,9 @@ public class QnaService {
 		close(con);
 		return result;
 	}
-	public ArrayList<Qna> selectQnaList() {
+	public ArrayList<Qna> selectQnaList(int l_no) {
 		con = getConnection();
-		ArrayList<Qna>list= dao.SelectQnaList(con);
+		ArrayList<Qna>list= dao.SelectQnaList(con, l_no);
 		close(con);
 		return list;
 	}

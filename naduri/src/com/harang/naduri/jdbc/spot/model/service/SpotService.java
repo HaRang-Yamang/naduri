@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.spot.model.dao.SpotDAO;
 import com.harang.naduri.jdbc.spot.model.vo.Spot;
 
@@ -117,5 +118,7 @@ public class SpotService {
 		
 		return result;
 	}
+
+
 	
 }

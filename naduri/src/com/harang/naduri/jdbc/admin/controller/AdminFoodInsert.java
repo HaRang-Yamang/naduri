@@ -48,7 +48,7 @@ public class AdminFoodInsert extends HttpServlet {
 				// 멀티파트 준비 부분입니다.
 		
 				// 1. 경로
-				String savePath = request.getServletContext().getRealPath("/assets/images/review");
+				String savePath = request.getServletContext().getRealPath("/assets/images/admin");
 				
 				// 2. 저장용량
 				int maxSize = 1024*1024*10;
@@ -126,7 +126,7 @@ public class AdminFoodInsert extends HttpServlet {
 		response.sendRedirect("foodList.ad");
 
 
-}
+		}
 				
 
 	

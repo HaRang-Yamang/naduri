@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.harang.naduri.jdbc.attach.model.vo.Attach;
 import com.harang.naduri.jdbc.spot.model.vo.Spot;
 
 public class SpotDAO {
@@ -262,5 +263,6 @@ public class SpotDAO {
 		
 		return result;
 	}
+	
 
 }

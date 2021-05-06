@@ -58,7 +58,8 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	
 	        <h2 class="hidden">상세페이지</h2>
 	        
-<% if( spotlo != null ) { %>	         
+<% if( spotlo != null ) { %>	  
+ <% sendL_no = spotlo.get(0).getL_no(); %>       
  <% for(lo_key l : spotlo) { %>
 	                    	
 	 <div class="slider-images">
@@ -178,7 +179,8 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                    </div>
 	                </div>       
  <% } %>	        
- <% } else if( listHeri != null ) { %>	        
+ <% } else if( listHeri != null ) { %>	
+ <% sendL_no = heri.getL_no(); %>        
 <div class="slider-images">
 	            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 1000px;">
 	                <div class="carousel-indicators" style="margin-left: 10px;" >
@@ -311,6 +313,12 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	        <%@ include file="nearArea.jsp" %>
 	        
 	        <!-- 탭 -->
+	        <div class="write_btn">
+                <a href="/naduri/views/reviewWrite.jsp?l_no=<%= sendL_no %>&"><input type="button" value = "리뷰 쓰기" id="insertreview"></a>
+            </div>
+               <div class="write_btn">
+                <a href="/naduri/views/qnaWrite.jsp?l_no=<%= sendL_no %>"><input type="button" value = "QNA 쓰기" id="insertqna"></a>
+            </div>
 <div id = "container">
 	
     <!-- 상단 tab 영역 -->
@@ -343,22 +351,28 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
       urlPath = '/naduri/selectList.qn';
    }
  
-      $.ajax({
-           type : 'GET',                 //get방식으로 통신
-           url : urlPath,    //탭의 data-tab속성의 값으로 된 html파일로 통신
-           dataType : "html",//html형식으로 값 읽기 
-           data: { m_no : '' } ,
-           error : function() {          //통신 실패시
-            alert('통신실패!');
-           },
-           success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
-              
-              $("#tab-content").html(data);
-              console.log( "통신성공");
-           }
-      });
+   	reviewLoad(urlPath);
      });
+     
+     reviewLoad('/naduri/selectList.re');
  });
+ 
+ function reviewLoad(urlPath){
+	 $.ajax({
+         type : 'GET',                 //get방식으로 통신
+         url : urlPath,    //탭의 data-tab속성의 값으로 된 html파일로 통신
+         dataType : "html",//html형식으로 값 읽기 
+         data: { l_no : '<%= sendL_no %>' } ,
+         error : function() {          //통신 실패시
+          alert('통신실패!');
+         },
+         success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+            
+            $("#tab-content").html(data);
+            console.log( "통신성공");
+         }
+    });
+ }
  </script>
 	
 </div> 

@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ page import="com.harang.naduri.jdbc.heritage.model.vo.*, java.util.*,
-com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
-<%
-		ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +22,7 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	<section>
 	<form id="insertForm" action="/naduri/insert.re" method="post"
 						enctype="multipart/form-data">
+						<input type="hidden" name="l_no" value="<%= request.getParameter("l_no")%>">
 		        <div class="reviewWriteArea">
             <h2>리뷰 작성</h2>
 

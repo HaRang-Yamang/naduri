@@ -97,7 +97,8 @@ public class CallApiDetail extends HttpServlet {
 			String ccbaCtcd = ""; // 시도코드
 			
 			// SelectOne을 위한 사용자 선택 값 
-			// int l_no = Integer.parseInt(request.getParameter("l_no"));
+			
+			int l_no = 0;
 			// 장소 정보 객체 list
 			ArrayList<Location> list = new ArrayList<>();
 						
@@ -132,8 +133,14 @@ public class CallApiDetail extends HttpServlet {
 			ThumbnailService service = new ThumbnailService();
 
 			// 1-3단계 게시글 조회 서비스 시작 --> 서비스 Go!
-			list = service.selectLocationCode(spotName);
-			
+			if( spotName == null ) {				
+				l_no = Integer.parseInt(request.getParameter("l_no"));
+				list = service.selectLocationCode(l_no);
+				spotName = list.get(0).getS_name();
+			} else {
+				list = service.selectLocationCode(spotName);
+				l_no = list.get(0).getL_no();
+			}
 			
 			//Debug
 			System.out.println("결과 확인 : " + list);

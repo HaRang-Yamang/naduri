@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
     <%@ page import="com.harang.naduri.jdbc.heritage.model.vo.*, java.util.*,
-com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
+com.harang.naduri.jdbc.Thumbnail.model.vo.*,
+com.harang.naduri.jdbc.attach.model.vo.*" %>
 <%
-		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri");
-		ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword");
-		ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo");
+		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri"); // 문화재 정보 저장 객체
+		ArrayList<lo_key> keyword = (ArrayList<lo_key>)request.getAttribute("keyword"); // 키워드가 여러개일 경우를 위한 객체
+		ArrayList<lo_key> spotlo = (ArrayList<lo_key>)request.getAttribute("spotlo"); // location and keyword 썸네일 필요한 부분만을 위한 통합 vo
+		
+		ArrayList<Thumbnail> list = (ArrayList<Thumbnail>)request.getAttribute("list"); // 맛집과 여행지 정보 저장 객체
+		ArrayList<Attach> list2 = (ArrayList<Attach>)request.getAttribute("list2"); // 첨부파일 저장 객체
+		ArrayList<lo_key> lokey = (ArrayList<lo_key>)request.getAttribute("lokey"); // 장소와 키워드 정보 저장 객체
+		
 		
 		HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
 		Heritage heri = new Heritage();
@@ -117,43 +123,17 @@ com.harang.naduri.jdbc.Thumbnail.model.vo.*" %>
 	                    <table>
 	                        <tr>
 	                            <td >소재지</td>
-	                            <td><%=l.getLocal_name() %> %></td>
+	                            <td><%= l.getS_address() %> %></td>
 	                        </tr>   
 	                        <tr>
 	                            <td>전화번호</td>
-	                            <td>000-0000</td>
+	                            <td><%= l.getS_tel() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>운영시간</td>
 	                            <td>9 a.m - 5.pm</td>
 	                        </tr>
-	                        <tr>
-	                            <td>지정번호</td>
-	                            <td>000-0000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>지정일</td>
-	                            <td>000-0000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>분류</td>
-	                           <td>000-0000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>시대</td>
-	                           <td>000-0000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>면적</td>
-	                            <td>93,843.1㎡</td>
-	                        </tr>
-	                        <tr>
-	                            <td>소유자</td>
-	                           <td>000-0000</td>
-	                        </tr>
-	                        <tr>
-	                            <td>관리자</td>
-	                            <td>000-0000</td>
+
 	                        </tr>
 	                    </table>
 	                </div>

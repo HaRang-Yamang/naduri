@@ -26,29 +26,10 @@ public class ReviewCommentInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 작성자, 게시글 번호, 댓글 내용, 참조하는 댓글 번호, 댓글레벨
-		String writer = request.getParameter("writer");
-		int bno = Integer.parseInt(request.getParameter("bno"));
-		String content = request.getParameter("replyContent");
-		int refcno = Integer.parseInt(request.getParameter("refcno"));
-		int clevel = Integer.parseInt(  request.getParameter("clevel"));
-		int btype = Integer.parseInt(request.getParameter("btype"));
 		
-		BoardComment comment = new BoardComment(bno, content, writer, refcno, clevel);
 		
-		BoardCommentService service = new BoardCommentService();
 		
-		int result = service.insertComment(comment);
 		
-		if( result > 0 ) {
-			if(btype == 1) response.sendRedirect("selectOne.bo?bno="+bno);
-			else response.sendRedirect("selectOne.tn?bno="+bno);
-		} else {
-			request.setAttribute("error-msg", "댓글 작성 중 에러 발생");
-			
-			request.getRequestDispatcher("views/common/errorPage.jsp")
-			       .forward(request, response);
-		}		
 	}
 
 	/**

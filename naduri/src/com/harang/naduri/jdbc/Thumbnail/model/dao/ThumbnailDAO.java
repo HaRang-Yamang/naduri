@@ -368,6 +368,11 @@ public class ThumbnailDAO {
 				l.setN_no(rs.getInt("n_no"));
 				l.setS_id(rs.getInt("s_id"));
 				l.setFlevel(rs.getInt("flevel"));
+				
+//				l.setS_tel(rs.getString("s_tel"));
+//				l.setS_address(rs.getString("s_address"));
+//				l.setS_lat(rs.getString("s_lat"));
+//				l.setS_lng(rs.getString("s_lng"));
 
 			
 				spotlo.add(l);
@@ -482,4 +487,90 @@ public HashMap<String, Object> spotDetail(Connection con) {
 
 return map;
 }
+
+// ------------------------------------------------------------------------ //
+//public ArrayList<lo_key> spotDetail2(Connection con, int l_no2) {
+//	
+//		// 맛집과 여행지 정보 저장 객체
+//		HashMap<String, Object> map = new HashMap<>();
+//		ArrayList<lo_key> lokey = new ArrayList<>();
+//		ArrayList<Spot> spot = new ArrayList<>();
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		
+//		String sql = prop.getProperty("spotDetail");
+//		
+//		try {
+//			ps = con.prepareStatement(sql);
+//			
+//			ps.setInt(1, l_no2);
+//			
+//			rs = ps.executeQuery();
+//			
+//			
+//			ArrayList<lo_key> keyword = new ArrayList<>(); // keyword저장
+//			ArrayList<lo_key> spotlo = new ArrayList<>(); // 장소 정보 저장
+//			
+//			while(rs.next()) {
+//
+//				
+//				// 1. location keyword 저장
+//				
+//				lo_key a = new lo_key();
+//				
+//				a.setL_no(rs.getInt("l_no"));
+//				a.setKeyword(rs.getString("keyword"));
+//				a.setA_name(rs.getString("a_name"));
+//				a.setLocal_name(rs.getString("local_name"));
+//
+//				keyword.add(a);
+//
+//				if(a.getKeyword() != rs.getString("keyword")) {
+//				
+//				// 2. 장소 정보 저장
+//				
+//				lo_key l = new lo_key();
+//				
+//				l.setL_no(rs.getInt("l_no"));
+//				l.setLs_code(rs.getInt("ls_code"));
+//				l.setLocal_name(rs.getString("local_name"));
+//				l.setCount_all(rs.getInt("count_all"));
+//				l.setKeyword(rs.getString("keyword"));
+//				
+//				l.setA_no(rs.getInt("a_no"));
+//				l.setA_name(rs.getString("a_name"));
+//				l.setA_status(rs.getString("a_status"));
+//				l.setR_no(rs.getInt("r_no"));
+//				l.setM_no(rs.getInt("m_no"));
+//				l.setN_no(rs.getInt("n_no"));
+//				l.setS_id(rs.getInt("s_id"));
+//				l.setFlevel(rs.getInt("flevel"));
+//				
+//				l.setS_tel(rs.getString("s_tel"));
+//				l.setS_address(rs.getString("s_address"));
+//				l.setS_lat(rs.getString("s_lat"));
+//				l.setS_lng(rs.getString("s_lng"));
+//
+//			
+//				spotlo.add(l);
+//			}
+//		}
+//				map.put("keyword", keyword);
+//				map.put("spotlo", spotlo);
+//				
+//				System.out.println(keyword);
+//				System.out.println(spotlo);
+//							
+//		
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	} finally {
+//		close(rs);
+//		close(ps);
+//	}
+//	
+//	return map;
+//}
+//
 }

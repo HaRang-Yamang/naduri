@@ -105,7 +105,7 @@
 
             <input class="search_val"type="text" placeholder="가고 싶은 곳을 검색하세요">
             <div id='searchResult'></div>
-            <i class="fas fa-search" aria-hidden="true" onclick="goSearch();"></i>
+            <i class="fas fa-search" aria-hidden="true"></i>
 
         </div>
 
@@ -173,17 +173,17 @@
 	 * 
 	 * **/
 	 
-    $(document).ready(function() {
+     $(document).ready(function() {
         $(".search_val").keydown(function(key) {
-        	var spotName = $(this).$(".search_val").val();
         	
             if (key.keyCode == 13) {
+            	var spotName = $(this).$(".search_val").val();
             	/* alert($(".search_val").val()); */
             	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
             	
             }
         });
-    });
+     });
     
     
     // selectOne

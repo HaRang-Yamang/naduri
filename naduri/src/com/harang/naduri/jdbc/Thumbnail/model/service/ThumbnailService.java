@@ -140,21 +140,6 @@ public class ThumbnailService {
 		}
 
 	
-	//-------------------------------- 통합 검색 ------------------------------//
-	// select One...
-//	public HashMap<String, Object> selectThumnailOne(int l_no2) {
-//		con = getConnection();
-//		
-//		HashMap<String, Object> map = dao.selectThumnailOne(con, l_no2);
-//		
-//		close(con);
-//		
-//		return map;
-//	}
-	
-		
-		
-		
 	
 		//------------------------------------- 메인페이지 썸네일 ----------------------------------------//
 
@@ -183,8 +168,26 @@ public class ThumbnailService {
 			return map;
 		}
 
+		
+		
+		
+		
+		//------------------------------------- 2. spot Detail ver 2.0 ----------------------------------------//
+//		public ArrayList<lo_key> spotDetail2(int l_no2) {
+//
+//			
+//				con = getConnection();
+//				ThumbnailDAO dao = new ThumbnailDAO();
+//				ArrayList<lo_key> lokey = new ArrayList<>();
+//				
+//				ArrayList<lo_key> lokey = dao.spotDetail2(con, l_no2);
+//				
+//				close(con);
+//				
+//				return lokey;
+//			}
+		}
+
 
 	
 	
-
-}

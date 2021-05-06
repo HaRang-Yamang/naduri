@@ -39,24 +39,31 @@ public class ReviewCommentDAO {
 		
 	}
 
+	// 댓글 작성
 	public int insertComment(Connection con, ReviewComment comment) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
 		String sql = prop.getProperty("insertComment");
 		
+		
+		
 		try {
+			
 			pstmt = con.prepareStatement(sql);
 		
 			pstmt.setInt(1, comment.getReplyno());
 			pstmt.setInt(2, comment.getMno());
 			
+			
+			// 리뷰가 있다면, 리뷰에 번호 set
 			if(comment.getRno() > 0 ) {
 				pstmt.setInt(3, comment.getRno());
 			} else {
 				pstmt.setNull(3, java.sql.Types.NULL);
 			}
 			
+			// 질문이 있디면..
 			if(comment.getQno() > 0 ) {
 				pstmt.setInt(4, comment.getQno());
 			} else {
@@ -88,7 +95,12 @@ public class ReviewCommentDAO {
 		return result;
 	}
 
-	public ArrayList<ReviewComment> selectList(Connection con, int bno) {
+	
+	
+	
+	
+	// 질문 목록
+	public ArrayList<ReviewComment> selectList(Connection con, int rno) {
 		ArrayList<ReviewComment> clist = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -98,7 +110,7 @@ public class ReviewCommentDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, bno);
+			ps.setInt(1, rno);
 
 			rs = ps.executeQuery();
 			
@@ -129,7 +141,9 @@ public class ReviewCommentDAO {
 		return clist;
 	}
 
-	public int updateComment(Connection con, ReviewComment bco) {
+	
+	// comment update
+	public int updateComment(Connection con, ReviewComment comment) {
 		int result = 0;
 		PreparedStatement ps = null;
 		
@@ -138,8 +152,8 @@ public class ReviewCommentDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, bco.getMno());
-			ps.setInt(2, bco.getReplyno());
+			ps.setInt(1, comment.getMno());
+			ps.setInt(2, comment.getReplyno());
 			
 			result = ps.executeUpdate();
 			
@@ -153,7 +167,10 @@ public class ReviewCommentDAO {
 				
 		return result;
 	}
-
+	
+	
+	
+	// comment 삭제
 	public int deleteComment(Connection con, int cno) {
 		int result = 0;
 		PreparedStatement ps = null;

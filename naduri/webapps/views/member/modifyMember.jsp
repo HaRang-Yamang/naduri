@@ -21,7 +21,7 @@
 	<%@ include file="../common/header.jsp" %>
 	
 	<section>
-	<% for(Member me : listM){ %>
+
         <div class="joinArea">
 
             <!-- 회원 정보 수정 타이틀 영역-->
@@ -46,7 +46,7 @@
                                             <h4><span class="red visiNone">*</span>아이디</h4>
                                             </td>
                                         <td>
-                                        	<%= me.getM_id() %>
+                                        	<%= m.getM_id() %>
                                         </td>
                                     </tr>
                                 <!-- PASSWORD -->
@@ -74,7 +74,7 @@
                                         <h4><span class="red">*</span>이름</h4>
                                     </td>
                                     <td>
-                                    	<%= me.getM_name() %>
+                                    	<%= m.getM_name() %>
                                    	</td>
                                 </tr>
                                 <!-- GENDER -->
@@ -93,7 +93,7 @@
                                         <h4><span class="red">*</span>생년월일</h4>
                                     </td>
                                     <td class="join_birth">
-                                        <%= me.getM_birth() %>
+                                        <%= m.getM_birth() %>
                                     </td>
                                 </tr>
                                 <!-- PHONE -->
@@ -149,7 +149,7 @@
                                         <h4><span class="red visiNone">*</span>주소</h4>
                                     </td>
                                     <td>
-                                    	<%= me.getM_address() %>
+                                    	<%= m.getM_address() %>
                                     </td>
                                 </tr>
                                 <tr>
@@ -325,7 +325,7 @@
 	// 성별 값 받아오기
 	$('input:radio').each(function(){
 
-		if($(this).val() == '<%= me.getM_gender() %>' ) {
+		if($(this).val() == '<%= m.getM_gender() %>' ) {
 			$(this).prop('checked', true);
 		} else {
 			$(this).prop('checked', false);
@@ -335,7 +335,7 @@
 
 	
 	</script>
-	<% } %>
+
 
 </body>
 </html>

@@ -153,7 +153,7 @@
 	                </table>
 	                <div class="modify_Area">
 	                <div class="profileImg_modify"><button type="submit">프로필 사진 등록</button></div>
-	                <div class="profile_modify"><a href="../member/joinMember.jsp">프로필 수정하기</a></div>
+	                <div class="profile_modify"><a href="/naduri/views/member/modifyMember.jsp">프로필 수정하기</a></div>
 	                </div>
 	            </div>
 

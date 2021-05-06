@@ -5,9 +5,9 @@
 	import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*, com.harang.naduri.jdbc.heritage.model.vo.*"%>
 
 <%
-		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri"); // 문화재 정보 저장 객체
-		ArrayList<Spot> slist = (ArrayList<Spot>)request.getAttribute("slist");
-		ArrayList<Heritage> hlist = (ArrayList<Heritage>)request.getAttribute("hlist");
+ArrayList<Heritage> listHeri = (ArrayList<Heritage>) request.getAttribute("listHeri"); // 문화재 정보 저장 객체
+ArrayList<Spot> slist = (ArrayList<Spot>) request.getAttribute("slist");
+ArrayList<Heritage> hlist = (ArrayList<Heritage>) request.getAttribute("hlist");
 %>
 
 <!DOCTYPE html>
@@ -64,7 +64,9 @@
 
 
 			<!-- 검색 결과에서 받아올 값에 따라 결과창에 결과 표시 or 검색 결과 없음 표시하기위한 if 조건문 시작 -->
-			<% if( listHeri.get(0).getL_no() > 0 ) { %>
+			<%
+			if (listHeri.get(0).getL_no() > 0) {
+			%>
 			<div id="map"></div>
 
 		</div>
@@ -107,15 +109,20 @@
 			</div>
 		</div>
 
-			<!-- 만약 검색 결과가 없을 때 나오는 else 구문 -->
-        <% } else { %>
-        	<div class='not_found'>
-        	<p class='not_found_message'> 
-        		   나드리 데이터베이스에서 검색 결과를 찾을 수 없습니다.<br>
-        		   문화재, 음식점, 여행지 이름으로 다시 검색해 주세요.</p>
-        	</div>
-        	
-        <% } %>
+		<!-- 만약 검색 결과가 없을 때 나오는 else 구문 -->
+		<%
+		} else {
+		%>
+		<div class='not_found'>
+			<p class='not_found_message'>
+				나드리 데이터베이스에서 검색 결과를 찾을 수 없습니다.<br> 문화재, 음식점, 여행지 이름으로 다시 검색해
+				주세요.
+			</p>
+		</div>
+
+		<%
+		}
+		%>
 
 	</section>
 
@@ -135,7 +142,10 @@
 		    
 		    
 			$(function(){
-				// 자바 배열을 이용하여 positions 배열을 만드는 반복문
+				
+				
+				
+				// DB데이터에 담긴 좌표를 마커를 표시해 주는 positions 배열에 담아주는 반복문
 				var positions = [
 						<%for (Heritage h : hlist) {
 	out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' + h.getL_no() + '"' + "style="
@@ -155,6 +165,8 @@ for (Spot s : slist) {
 					];
 				
 				console.log(positions); // 배열에 전부 담기 성공.
+				
+				
 				
 			
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
@@ -198,6 +210,7 @@ for (Spot s : slist) {
 				        infowindow.close();
 				    };
 				}
+				
 				var myFunc = function(){
 			
 					var center = map.getCenter(); 
@@ -205,15 +218,9 @@ for (Spot s : slist) {
 				    var swLatLng = bounds.getSouthWest();
 				    var neLatLng = bounds.getNorthEast();
 				    var boundsStr = bounds.toString();
-				    			    
-				    var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
-				    message += '경도 ' + center.getLng() + ' 이고 <br>';
-				    message += '남서쪽 좌표 ' + swLatLng.getLat() + ', ' + swLatLng.getLng() + '///';
-				    message += '북동쪽 좌표 ' + neLatLng.getLat() + ', ' + neLatLng.getLng();
-				    
-				    console.log(message);
-				    
-				    $.ajax({
+					
+				   // Ajax를 통해 지도가 움직일 때마다 현재 보이는 지도 영역 정보를 받음 
+				   $.ajax({
 				    	url : "/naduri/currlatlng.lo",
 						type : "get",
 						data : { 
@@ -232,12 +239,9 @@ for (Spot s : slist) {
 						
 						
 						console.log(swlat +',' +swlng+',' +nelat+',' +nelng);
-						
-						
-							<!-- 장소 개수만큼 장소 정보 썸네일(div) 생성하는 반복문  -->
-							
-							
-							
+			
+						<!-- 장소 개수만큼 장소 정보 썸네일(div) 생성하는 반복문  -->
+								
 							var idArr = [];
 							var latArr = [];
 							var lngArr = [];
@@ -259,45 +263,65 @@ for (Spot s : slist) {
 							nameArr.push('<%=s.getS_name()%>');
 							<%}%>	
 							
-							
-							
-							
 							$('#thumbloop').html('');
 							for(var i in nameArr, latArr, lngArr, idArr){
 								
+								// DB의 장소들을 지도 API를 통해 받은 영역 정보 내의 장소 정보만
+								// 반복문을 통해 페이지에 출력
 								if( latArr[i] > swlat &&	
 									latArr[i] < nelat &&
 									lngArr[i] > swlng &&
-									lngArr[i] < nelng)	
-									{	
+									lngArr[i] < nelng) {
+									
 									console.log(idArr[i]);
 									
-									var imgSelector = '';
-									
-								   	if(idArr[i] < 500){
-								   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
-								   		$('.hotSpot').addClass("heritage")
-								   	} else if(idArr[i] <1000){
-								   		imgSelector = '<img src="/naduri/resources/thumb/5.jpg">';
-								   		$('.hotSpot').addClass("food");
-								   	} else {
-								   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
-								   		$('.hotSpot').addClass("spot");
-								   	}
-					
+//								   	if(idArr[i] < 500){
+//								   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
+//								   	} else if(idArr[i] <1000){
+//								   		imgSelector = '<img src="/naduri/resources/thumb/5.jpg">';
+//								   		$('.hotSpot').addClass("food");
+//								   	} else {
+//								   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
+//								   		$('.hotSpot').addClass("spot");
+//								   	}
 								   	
-								
+								   	if(idArr[i] < 500){
+									// $('.hotSpot').addClass("heritage");
 									
+								   		$('#thumbloop').html( $('#thumbloop').html() +
+												   '<div class="hotSpot heritage">'+
+												   '<img src="/naduri/resources/thumb/1.jpg">'+							
+												   	'<div class="spotInfo">'+
+										            		 '<h4>'+nameArr[i]+'</h4>'+
+										            		'</div>'+
+									           		'</div>'
+									       );
+								   	} else if(500< idArr[i] <1000){
+								   	// $('.hotSpot').addClass("food");
+								   		$('#thumbloop').html( $('#thumbloop').html() +
+												   '<div class="hotSpot food">'+
+												   '<img src="/naduri/resources/thumb/5.jpg">'+							
+												   	'<div class="spotInfo">'+
+										            		 '<h4>'+nameArr[i]+'</h4>'+
+										            		'</div>'+
+									           		'</div>'
+									       );
+								   	} else if(1000 < idArr[i]) {
+								   	//	$('.hotSpot').addClass("spot");
+								   		$('#thumbloop').html( $('#thumbloop').html() +
+												   '<div class="hotSpot spot">'+
+												   '<img src="/naduri/resources/thumb/3.jpg">'+							
+												   	'<div class="spotInfo">'+
+										            		 '<h4>'+nameArr[i]+'</h4>'+
+										            		'</div>'+
+									           		'</div>'
+									       );
+								   	}
+								   	
 								   // 썸네일 표시
-									$('#thumbloop').html( $('#thumbloop').html() +
-											   '<div class="hotSpot" id="'+idArr[i]+'">'+
-												   imgSelector +
-							
-											   	'<div class="spotInfo">'+
-									            		 '<h4>'+nameArr[i]+'</h4>'+
-									            		'</div>'+
-								           		'</div>'
-								       );
+									
+								   
+									
 								
 								   
 								}

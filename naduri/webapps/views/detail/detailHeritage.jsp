@@ -268,6 +268,7 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                </ul>
 	            </div>
 
+<<<<<<< HEAD
 	            <div class="infoDetailArea">
 	                <!-- 테이블-->
 	                <div class="infoTable">
@@ -332,8 +333,6 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                        </details>      
 	                    </div>
 	                </div>
-
-	       
 	       	            </div>
 	        </div>
 	        <% } %>

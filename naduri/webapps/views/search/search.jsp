@@ -254,7 +254,7 @@
 							nameArr.push('<%= s.getS_name() %>');
 							<% } %>	
 							
-							
+							// ??
 							
 							
 							$('#thumbloop').html('');

@@ -4,7 +4,6 @@
    <%
  	Member m = (Member)session.getAttribute("member");
   ArrayList<Qna>list = (ArrayList<Qna>)request.getAttribute("list");
-  ArrayList<Location> lo_key = (ArrayList<Location>)request.getAttribute("lo_key");
  %>
 <div id = "tab_qna" class="tab-content">
         <!-- QnA 질문하기 버튼 -->
@@ -222,23 +221,6 @@
                             </div>
         </div>
 	
-        <!-- 넘버링 -->
-        <div class="numArea">
-            <ul>
-                <li><span class="arrLeft"></span></li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li><span class="arrRight"></span></li>
-                <li><span class="arrDouble"></span></li>
-            </ul>
-        </div>
+
 	
     </div>

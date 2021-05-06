@@ -31,16 +31,17 @@ public class QnaInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int m_no = Integer.parseInt(request.getParameter("m_no"));
+		int l_no = Integer.parseInt(request.getParameter("l_no"));
 		String q_title = request.getParameter("q_title");
 		String q_content =request.getParameter("q_content");
 		System.out.println(q_title+","+q_content);
-		Qna qn = new Qna(m_no, q_title, q_content);
+		Qna qn = new Qna(l_no,m_no, q_title, q_content);
 		
 		QnaService qna = new QnaService();
 		int qResult =qna.insertQna(qn);
 		
 		if(qResult>0) {
-			response.sendRedirect("selectList.qn");
+			response.sendRedirect("CallApiDetail.do?l_no="+l_no);
 		}else {
 			request.setAttribute("error-msg", "게시글 작성 실패.");
 			request.getRequestDispatcher("views/common/errorPage.jsp")

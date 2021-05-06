@@ -349,6 +349,7 @@ summary::-webkit-details-marker {
     width : 550px;
     float : right;
     vertical-align : top;
+    
 }
 .review_img{
     width : 120px;
@@ -358,6 +359,7 @@ summary::-webkit-details-marker {
     margin-right : 10px;
     background : var(--gray-color);
     cursor : pointer;
+    object-fit : cover;
 }
 .review_img:last-child{
     margin-right : none;

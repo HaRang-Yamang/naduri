@@ -34,15 +34,12 @@ ArrayList<lo_key> lokey = (ArrayList<lo_key>) request.getAttribute("lokey");
 				enctype="multipart/form-data">
 				<div class="reviewWriteArea">
 					<h2>리뷰 작성</h2>
-
-					<div class="img_main">
-						<img src="../assets/images/review/review_main.png" width="50%">
-					</div>
-
+<input type="hidden" name="l_no" value="<%= request.getParameter("l_no")%>">
 					<hr class="gray_bar">
 					<div class="container">
 						<table>
 							<tr>
+							
 								<td colspan="2"><input type="hidden" name="m_no"
 									value="<%=m.getM_no()%>" /></td>
 							</tr>

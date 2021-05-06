@@ -36,6 +36,7 @@ public QnaDAO() {
 			ps.setInt(1, qn.getM_no());
 			ps.setString(2, qn.getQ_content());
 			ps.setString(3, qn.getQ_title());
+			ps.setInt(4, qn.getL_no());
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -45,7 +46,7 @@ public QnaDAO() {
 		}
 		return result;
 	}
-	public ArrayList<Qna> SelectQnaList(Connection con) {
+	public ArrayList<Qna> SelectQnaList(Connection con, int l_no) {
 		ArrayList<Qna>list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -54,7 +55,7 @@ public QnaDAO() {
 		
 		try {
 			ps= con.prepareStatement(sql);
-			
+			ps.setInt(1, l_no);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Qna q = new Qna();
@@ -63,7 +64,6 @@ public QnaDAO() {
 				q.setQ_date(rs.getDate("q_date"));
 				q.setM_id(rs.getString("m_id"));
 				list.add(q);
-				System.out.println(list);
 			}
 	
 			
@@ -82,13 +82,11 @@ public QnaDAO() {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("selectMyQnaList");
+		String sql = prop.getProperty("selectQnaList");
 		
 		try {
 			ps= con.prepareStatement(sql);
-			
-			ps.setInt(1, m.getM_no());
-	
+			ps.setInt(1, m_no);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Qna q = new Qna();

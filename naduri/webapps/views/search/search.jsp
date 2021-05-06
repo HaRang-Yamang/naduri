@@ -4,9 +4,14 @@
 <%@ page import="com.harang.naduri.jdbc.spot.model.vo.*, java.util.*, com.harang.naduri.jdbc.heritage.model.vo.*" %>
 
 <%
+		
+		
+		ArrayList<Heritage> listHeri = (ArrayList<Heritage>)request.getAttribute("listHeri"); // 문화재 정보 저장 객체
 		ArrayList<Spot> slist = (ArrayList<Spot>)request.getAttribute("slist");
 		ArrayList<Heritage> hlist = (ArrayList<Heritage>)request.getAttribute("hlist");
-		Heritage heri = new Heritage();
+		
+		HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
+
 %>
 
 <!DOCTYPE html>
@@ -45,11 +50,11 @@
 
 </head>
 <body>
-	<%@ include file="../common/header.jsp" %>    
+	<%@ include file="../common/header.jsp" %>
 	
     <div class="search_area">
         <div class="search">
-            <input type="text" placeholder="가고 싶은 곳을 검색하세요">
+            <input class="search_val"type="text" placeholder="가고 싶은 곳을 검색하세요">
             <i class="fas fa-search" aria-hidden="true"></i>
         </div>
     </div>
@@ -71,11 +76,11 @@
             	<h2>검색 결과</h2>
                <div id="s_result"> <!--  검색 결과 불러오는 div -->
        	          	<div class="row">    
-		            	<div class="hotSpot heritage food spot"> <!-- 클래스명 수정 필 -->
-		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">  <!-- 검색한 장소 이미지 불러와야  -->
+		            	<div class="hotSpot heritage food spot" id=""> <!-- 클래스명 수정 필 -->
+		          		  	 <img src="<%= listHeri.get(0).getImageUrl()%>">  <!-- 검색한 장소 이미지 불러와야  -->
 		            		 <div class="spotInfo">
-			            		 <h4><%= heri.getH_name() %></h4>  <!--  검색 장소 이름  -->
-			            	 </div>
+			            		 <h4><%= listHeri.get(0).getH_name() %></h4>  <!--  검색 장소 이름  -->
+			            	</div>
 		           		</div>
 		            </div>       
                 </div>
@@ -95,26 +100,13 @@
         <!-- featured images -->
         <div class="featured">
             <div class="small-container" id="thumbloop">
-            
-          	<!-- 장소 개수만큼 장소 정보 썸네일(div) 생성하는 반복문  -->
-		<!-- 	<% for(Spot p : slist) { %>
-			        <div class="row">    
-		            	<div class="hotSpot date">
-		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">
-		            		 <div class="spotInfo">
-			            		 <h4><%= p.getS_name() %></h4>
-			            		 <p>#데이트</p> <p>#데이트</p> <p>#데이트</p>
-		            		 </div>
-		           		</div>
-		            </div>         			
-          	<% } %>
-		 -->
-            
+
             </div>
         </div>
         
         <!-- 만약 검색 결과가 없을 때 나오는 else 구문 -->
         <% } else { %>
+        	
         	<div class='not_found'>
         	<p class='not_found_message'> 
         		   나드리 데이터베이스에서 검색 결과를 찾을 수 없습니다.<br>
@@ -126,6 +118,19 @@
        
        		
 		<script>
+		 $(document).ready(function() {
+	         $(".search_val").keydown(function(key) {
+	            
+	             if (event.keyCode == 13) {
+	                var spotName = $(this).val();
+	                /* alert($(".search_val").val()); */
+	                 location.href = "/naduri/goresult.sr?spotName=" + spotName;
+	                
+	             }
+	         });
+	      });
+		    
+		    
 			$(function(){
 				// 자바 배열을 이용하여 positions 배열을 만드는 반복문
 				var positions = [
@@ -154,7 +159,7 @@
 			
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 			    mapOption = { 
-			        center: new kakao.maps.LatLng(<%= heri.getLatitude()+", "+ heri.getLongitude() %> ), // 지도의 중심좌표
+			        center: new kakao.maps.LatLng(<%= listHeri.get(0).getLatitude() +", " + listHeri.get(0).getLongitude()%>), // 지도의 중심좌표
 			        level: 4 // 지도의 확대 레벨
 			        
 			    };
@@ -266,84 +271,52 @@
 									lngArr[i] < nelng)	
 									{	
 									console.log(idArr[i]);
-							//		var imgSelector = '';
 									
-						//		   	if(idArr[i] < 500){
-							//	   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
-								//   	} else if(idArr[i] <1000){
+									var imgSelector = '';
+									
+								   	if(idArr[i] < 500){
+								   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
+								   		$('.hotSpot').addClass("heritage")
+								   	} else if(idArr[i] <1000){
 								   		imgSelector = '<img src="/naduri/resources/thumb/5.jpg">';
-							//	   	} else {
-							//	   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
-							//	   	}
+								   		$('.hotSpot').addClass("food");
+								   	} else {
+								   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
+								   		$('.hotSpot').addClass("spot");
+								   	}
+					
+								   	
 								
-									if(idArr[i] < 500){
-										$('#thumbloop').html( $('#thumbloop').html() +
-										<!--	'<div style="height:300; width:300;">'+ -->
-												'<div class="row">'+ 
-												   '<div class="hotSpot heritage" id="'+idArr[i]+'">'+
-												    imgSelector +
-												   	'<div class="spotInfo">'+
-										            		 '<h4>'+nameArr[i]+'</h4>'+
-										            		 '<p>#문화재</p> <p>#데이트</p> <p>#데이트</p>'+
-									            		 '</div>'+
-									           		'</div>'+
-									            '</div>'
-									       <!--    '</div>' -->
-									            );
-									} else if(idArr[i] < 1000)
-								            
-								               
-								     <!-- onclick="location.href=\'/naduri/CallApiDetailSelectOneCollection.do?l_no=' + idArr[i] + '\'--> 
-										
-								    	
-								    else if(idArr[i] < 1000){
-						   		$('#thumbloop').html( $('#thumbloop').html() +
-										'<div class="row">'+ 
-										   '<div class="hotSpot food" id="'+idArr[i]+'">'+
-										   	'<img src="/naduri/resources/thumb/5.jpg">'+
-							            		 '<div class="spotInfo">'+
-								            		 '<h4>'+nameArr[i]+'</h4>'+
-								            		 '<p>#맛집</p> <p>#데이트</p> <p>#데이트</p>'+
-							            		 '</div>'+
-							           		'</div>'+
-							            '</div>'
-							            );
-						     		
-						   	} else { 
-						   		$('#thumbloop').html( $('#thumbloop').html() +
-										'<div class="row">'+ 
-										   '<div class="hotSpot spot" id="'+idArr[i]+'">'+
-										   	'<img src="/naduri/resources/thumb/3.jpg">'+
-							            		 '<div class="spotInfo">'+
-								            		 '<h4>'+nameArr[i]+'</h4>'+
-								            		 '<p>#여행지</p> <p>#데이트</p> <p>#데이트</p>'+
-							            		 '</div>'+
-							           		'</div>'+
-							            '</div>'
-							            );
-						     	} -->
-								
-									} // if close
-							$('.hotSpot').each(function(){
-								var daniel_no = $(this).attr('id');
-								location.href='/naduri/CallApiDetail.do?spotName='+daniel_no;
-								});  // function close
+									
+								   // 썸네일 표시
+									$('#thumbloop').html( $('#thumbloop').html() +
+											   '<div class="hotSpot" id="'+idArr[i]+'">'+
+												   imgSelector +
 							
-							} // for close
-				   	}, // success close(Ajax)
-				    function(error){alert("전송 실패");}
-					    } //error close
-				    }); // Ajax close
+											   	'<div class="spotInfo">'+
+									            		 '<h4>'+nameArr[i]+'</h4>'+
+									            		'</div>'+
+								           		'</div>'
+								       
+										);
+								
+								   
+								}
+								$('.hotSpot').click(function(){
+									var daniel_no = $(this).attr('id');
+									location.href='/naduri/CallApiDetail.do?l_no='+daniel_no;
+								});
+
+								};
+			    	},
+					    error : function(error){alert("전송 실패");}
+				    });
 				};
-				
-				
-				
 				$('#map').on('mouseup mousewheel mouseleave', myFunc);
 				myFunc();
-								// myFunc()은 페이지 바로 시작과 on 이벤트를 모두 실행하고자 하여 변수로 선언한 것
-			
-								
-			}); //function close
+				
+				// myFunc()은 페이지 바로 시작과 on 이벤트를 모두 실행하고자 하여 변수로 선언한 것
+			}); 
 			
 			    
 		
@@ -352,7 +325,9 @@
 	<aside><div id="topBtn" href="#">TOP</div></aside>			
 
 	<script>
-    $(function() {          
+    $(function() {
+       
+        
         $("#topBtn").click(function() {
             $('html, body').animate({
                 scrollTop : 0
@@ -361,7 +336,7 @@
         });
     });
     
-
+    
 
 	</script>
 

@@ -166,7 +166,7 @@
     </section>
     <script>
     
-<<<<<<< HEAD
+
 	/**
 	 * author : dababy
 	 * e-mail : pieta2529@gmail.com
@@ -177,17 +177,17 @@
 	 * **/
 	 
 
-	 $(document).ready(function() {
-	        $(".search_val").keydown(function(key) {
-	        	
-	            if (event.keyCode == 13) {
-	            	var spotName = $(this).val();
-	            	/* alert($(".search_val").val()); */
-	            	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
-	            	
-	            }
-	        });
-	     });
+     $(document).ready(function() {
+         $(".search_val").keydown(function(key) {
+            
+             if (event.keyCode == 13) {
+                var spotName = $(this).val();
+                /* alert($(".search_val").val()); */
+                 location.href = "/naduri/goresult.sr?spotName=" + spotName;
+                
+             }
+         });
+      });
 	    
 	    
 	    // selectOne
@@ -197,31 +197,8 @@
 			location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
 		});
 
+    
 
-=======
-   /**
-    * author : dababy
-    * e-mail : pieta2529@gmail.com
-    * last-update : 2021-05-06 p.m. 12:37
-    * comment : 사용자가 검색하는 장소명을 검색 페이지로 넘깁니다. 이 때, submit 이벤트는 Enter 값으로 인식합니다.
-    * 
-    * 
-    * **/
-    
-     $(document).ready(function() {
-        $(".search_val").keydown(function(key) {
-           
-            if (event.keyCode == 13) {
-               var spotName = $(this).val();
-               /* alert($(".search_val").val()); */
-                location.href = "/naduri/goresult.sr?spotName=" + spotName;
-               
-            }
-        });
-     });
->>>>>>> refs/remotes/origin/Hwangseok
-    
-<<<<<<< HEAD
 	function join(){
 		location.href="/naduri/joinMember.jsp"
 	}
@@ -240,21 +217,7 @@
 	function adminPage() {
 		location.href = '/naduri/memberList.ad';
 	}
-=======
-    
-    // selectOne
-    $('.hotSpot').on('click', function(){
-       var spotName = $(this).attr('id');
-      
-      location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
-   });
-    
-    
-    
-    function adminPage(){
-        location.href='/naduri/memberList.ad';
-     }
->>>>>>> refs/remotes/origin/Hwangseok
+
 
     </script>
    

@@ -74,8 +74,7 @@
 		          		  	 <img src="/naduri/assets/images/main/featured_img_1.jpg">  <!-- 검색한 장소 이미지 불러와야  -->
 		            		 <div class="spotInfo">
 			            		 <h4>검색결과</h4>  <!--  검색 장소 이름  -->
-			            		 <p>#데이트</p> <p>#데이트</p> <p>#데이트</p>  <!-- 검색 장소 연관 키워드 3개 -->
-		            		 </div>
+			            	 </div>
 		           		</div>
 		            </div>       
                 </div>
@@ -254,7 +253,7 @@
 							nameArr.push('<%= s.getS_name() %>');
 							<% } %>	
 							
-							// ??
+							
 							
 							
 							$('#thumbloop').html('');
@@ -293,7 +292,7 @@
 								               
 								     <!-- onclick="location.href=\'/naduri/CallApiDetailSelectOneCollection.do?l_no=' + idArr[i] + '\'--> 
 										
-
+								    	 <!--
 						   	} else if(idArr[i] < 1000){
 						   		$('#thumbloop').html( $('#thumbloop').html() +
 										'<div class="row">'+ 
@@ -319,22 +318,25 @@
 							           		'</div>'+
 							            '</div>'
 							            );
-						     	}
-									}
-								}
+						     	} 
+								-->
+									} // if close
 							$('.hotSpot').each(function(){
 								var daniel_no = $(this).attr('id');
-								location.href='/naduri/CallApiDetailSelectOneCollection.do?l_no='+daniel_no;
-							});
-			    	},
+								location.href='/naduri/CallApiDetail.do?l_no='+daniel_no;
+								});  // function close
+							
+							} // for close
+				   	}, // success close(Ajax)
 					    error : function(error){alert("전송 실패");}
-				    });
+				    }); // Ajax close
 				};
 				$('#map').on('mouseup mousewheel mouseleave', myFunc);
 				myFunc();
-				
-				// myFunc()은 페이지 바로 시작과 on 이벤트를 모두 실행하고자 하여 변수로 선언한 것
-			}); 
+								// myFunc()은 페이지 바로 시작과 on 이벤트를 모두 실행하고자 하여 변수로 선언한 것
+			
+								
+			}); //function close
 			
 			    
 		

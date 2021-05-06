@@ -40,7 +40,7 @@ public class CommentDAO {
 	}
 
 	// 리뷰 댓글 작성
-	public int insertComment(Connection con, Comment Rcomment) {
+	public int insertRComment(Connection con, Comment Rcomment) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -54,6 +54,7 @@ public class CommentDAO {
 		
 			pstmt.setInt(1, Rcomment.getReplyno());
 			pstmt.setInt(2, Rcomment.getMno());
+
 			
 			
 			// 리뷰가 있다면, 리뷰에 번호 set
@@ -72,9 +73,7 @@ public class CommentDAO {
 			
 			pstmt.setString(5, Rcomment.getReply_content());
 			
-			pstmt.setDate(6, Rcomment.getReply_date());
-			
-			pstmt.setDate(7, Rcomment.getReply_update());
+			pstmt.setInt(6, Rcomment.getRef_no());
 			
 			
 			if(Rcomment.getRef_no() > 0 ) {

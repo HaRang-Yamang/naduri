@@ -173,25 +173,27 @@
 	 * 
 	 * **/
 	 
-     $(document).ready(function() {
-        $(".search_val").keydown(function(key) {
-        	
-            if (event.keyCode == 13) {
-            	var spotName = $(this).val();
-            	/* alert($(".search_val").val()); */
-            	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
-            	
-            }
-        });
-     });
-    
-    
-    // selectOne
-    $('.hotSpot').on('click', function(){
-    	var spotName = $(this).attr('id');
-		
-		location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
-	});
+
+	 $(document).ready(function() {
+	        $(".search_val").keydown(function(key) {
+	        	
+	            if (event.keyCode == 13) {
+	            	var spotName = $(this).val();
+	            	/* alert($(".search_val").val()); */
+	            	 location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+	            	
+	            }
+	        });
+	     });
+	    
+	    
+	    // selectOne
+	    $('.hotSpot').on('click', function(){
+	    	var spotName = $(this).attr('id');
+			
+			location.href = "/naduri/CallApiDetail.do?spotName=" + spotName;
+		});
+
     
     
     

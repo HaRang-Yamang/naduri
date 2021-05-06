@@ -111,31 +111,6 @@ private Properties prop;
 	}
 	
 	
-//	// 맛집 정보 등록 
-//	public int	AdminFoodLocation (Connection con, int l_no, Spot s) {
-//		
-//		int result =0;
-//		
-//		PreparedStatement ps = null;
-//		
-//		String sql = prop.getProperty("AdminFoodLocation");
-//		
-//		try {
-//			ps = con.prepareStatement(sql);
-//			
-//			result = ps.executeUpdate();
-//					
-//		} catch (SQLException e) {
-//
-//			e.printStackTrace();
-//		}finally {
-//			close(ps);
-//		}
-//		return result;
-//	}
-	
-	
-	
 	// 2. 최신 장소 정보 가져오기
 	public int getCurrentLno(Connection con) {
 		int result = 0;
@@ -161,87 +136,119 @@ private Properties prop;
 	}
 	
 
-// 1. 글 정보 insert
-public int AdminFoodInsert(Connection con, int l_no, Spot s) {
-	
-	int result =0;
-	
-	PreparedStatement ps = null;
-	
-	String sql = prop.getProperty("AdminFoodInsert");
-	
-	try {
-		ps = con.prepareStatement(sql);
+	// 1. 글 정보 insert
+	public int AdminFoodInsert(Connection con, int l_no, Spot s) {
 		
-		ps.setInt(1, l_no);
-		ps.setString(2, s.getS_name());
-		ps.setString(3, s.getS_tel());
-		ps.setString(4, s.getS_time());
-		ps.setString(5, s.getS_address());
-		ps.setString(6, s.getS_lat());
-		ps.setString(7, s.getS_lng());
-
-
-		result = ps.executeUpdate();
-				
-	} catch (SQLException e) {
-
-		e.printStackTrace();
-	}finally {
-		close(ps);
-	}
-	return result;
-}
-
-
-// 2. 최신 장소 정보 가져오기
-public int getCurrentSid(Connection con) {
-	int result = 0;
-	PreparedStatement ps = null;
-	ResultSet rs = null;
-	String sql = prop.getProperty("getCurrentSid");
-	try {
-		ps=con.prepareStatement(sql);
+		int result =0;
 		
-		rs=ps.executeQuery();
-		if(rs.next()) {
-			result = rs.getInt(1);
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("AdminFoodInsert");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, l_no);
+			ps.setString(2, s.getS_name());
+			ps.setString(3, s.getS_tel());
+			ps.setString(4, s.getS_time());
+			ps.setString(5, s.getS_address());
+			ps.setString(6, s.getS_lat());
+			ps.setString(7, s.getS_lng());
+	
+	
+			result = ps.executeUpdate();
+					
+		} catch (SQLException e) {
+	
+			e.printStackTrace();
+		}finally {
+			close(ps);
 		}
-	} catch (SQLException e) {
-
-		e.printStackTrace();
-	}finally {
-		close(rs);
-		close(ps);
+		return result;
 	}
-
-	return result;
-}
-
-
-// 3. 첨부파일 정보 저장하기
-public int insertAttach(Connection con, Attach attach) {
-	int result =0;
-	PreparedStatement ps = null;
-	String sql = prop.getProperty("insertAttach");
 	
-	try {
-		ps= con.prepareStatement(sql);
-		ps.setString(1, attach.getA_name());
-		ps.setInt(2,attach.getM_no() );
-		ps.setInt(3, attach.getL_no());
-	 result =ps.executeUpdate();
-				} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}finally {
-		close(ps);
+	
+	// 2. 최신 장소 정보 가져오기
+	public int getCurrentSid(Connection con) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("getCurrentSid");
+		try {
+			ps=con.prepareStatement(sql);
+			
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+	
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
+		}
+	
+		return result;
 	}
-	return result;
-}
+	
+	
+	// 3. 첨부파일 정보 저장하기
+	public int insertAttach(Connection con, Attach attach) {
+		int result =0;
+		PreparedStatement ps = null;
+		String sql = prop.getProperty("insertAttach");
+		
+		try {
+			ps= con.prepareStatement(sql);
+			ps.setString(1, attach.getA_name());
+			ps.setInt(2,attach.getM_no() );
+			ps.setInt(3, attach.getL_no());
+		 result =ps.executeUpdate();
+					} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(ps);
+		}
+		return result;
+	}
 
-
-
+	// 관리자 여행지 데이터 등록 부분
+	public int AdminSpotInsert(Connection con, int l_no, Spot s) {
+	
+	int result =0;
+		
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("AdminFoodInsert");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, l_no);
+			ps.setString(2, s.getS_name());
+			ps.setString(3, s.getS_tel());
+			ps.setString(4, s.getS_time());
+			ps.setString(5, s.getS_address());
+			ps.setString(6, s.getS_lat());
+			ps.setString(7, s.getS_lng());
+	
+	
+			result = ps.executeUpdate();
+					
+		} catch (SQLException e) {
+	
+			e.printStackTrace();
+		}finally {
+			close(ps);
+		}
+		return result;
+		
+		
+		
+	}
 
 
 

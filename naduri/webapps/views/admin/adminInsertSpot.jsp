@@ -29,7 +29,7 @@
                 <hr class="green_bar">
             </div>
             <div class="dtable_area">
-            	<form action="/naduri/AdminFoodInsert.do" method = "post" enctype="multipart/form-data" id="dababy">
+            	<form action="/naduri/spotInsert.ad" method = "post" enctype="multipart/form-data" id="dababy">
                  <table class="d_table">
                     <!-- PASSWORD -->
                     <tr>

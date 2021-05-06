@@ -12,16 +12,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.harang.naduri.jdbc.comment.model.vo.ReviewComment;
+import com.harang.naduri.jdbc.comment.model.vo.Comment;
 
 
-public class ReviewCommentDAO {
+public class CommentDAO {
 	private Properties prop;
 	
-	public ReviewCommentDAO() {
+	public CommentDAO() {
 		prop = new Properties();
 		
-		String filePath = ReviewCommentDAO.class
+		String filePath = CommentDAO.class
 				          .getResource("/config/comment.properties")
 				          .getPath();
 		
@@ -39,12 +39,12 @@ public class ReviewCommentDAO {
 		
 	}
 
-	// 댓글 작성
-	public int insertComment(Connection con, ReviewComment comment) {
+	// 리뷰 댓글 작성
+	public int insertComment(Connection con, Comment Rcomment) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String sql = prop.getProperty("insertComment");
+		String sql = prop.getProperty("insertRivewComment");
 		
 		
 		
@@ -52,33 +52,33 @@ public class ReviewCommentDAO {
 			
 			pstmt = con.prepareStatement(sql);
 		
-			pstmt.setInt(1, comment.getReplyno());
-			pstmt.setInt(2, comment.getMno());
+			pstmt.setInt(1, Rcomment.getReplyno());
+			pstmt.setInt(2, Rcomment.getMno());
 			
 			
 			// 리뷰가 있다면, 리뷰에 번호 set
-			if(comment.getRno() > 0 ) {
-				pstmt.setInt(3, comment.getRno());
+			if(Rcomment.getRno() > 0 ) {
+				pstmt.setInt(3, Rcomment.getRno());
 			} else {
 				pstmt.setNull(3, java.sql.Types.NULL);
 			}
 			
 			// 질문이 있디면..
-			if(comment.getQno() > 0 ) {
-				pstmt.setInt(4, comment.getQno());
+			if(Rcomment.getQno() > 0 ) {
+				pstmt.setInt(4, Rcomment.getQno());
 			} else {
 				pstmt.setNull(4, java.sql.Types.NULL);
 			}
 			
-			pstmt.setString(5, comment.getReply_content());
+			pstmt.setString(5, Rcomment.getReply_content());
 			
-			pstmt.setDate(6, comment.getReply_date());
+			pstmt.setDate(6, Rcomment.getReply_date());
 			
-			pstmt.setDate(7, comment.getReply_update());
+			pstmt.setDate(7, Rcomment.getReply_update());
 			
 			
-			if(comment.getRef_no() > 0 ) {
-				pstmt.setInt(4, comment.getRef_no());
+			if(Rcomment.getRef_no() > 0 ) {
+				pstmt.setInt(4, Rcomment.getRef_no());
 			} else {
 				pstmt.setNull(4, java.sql.Types.NULL);
 			}
@@ -100,8 +100,8 @@ public class ReviewCommentDAO {
 	
 	
 	// 질문 목록
-	public ArrayList<ReviewComment> selectList(Connection con, int rno) {
-		ArrayList<ReviewComment> clist = new ArrayList<>();
+	public ArrayList<Comment> selectList(Connection con, int rno) {
+		ArrayList<Comment> clist = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -115,7 +115,7 @@ public class ReviewCommentDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				ReviewComment bco = new ReviewComment();
+				Comment bco = new Comment();
 				
 				bco.setReplyno(   rs.getInt(1) );
 				bco.setMno(   rs.getInt(2) );
@@ -143,7 +143,7 @@ public class ReviewCommentDAO {
 
 	
 	// comment update
-	public int updateComment(Connection con, ReviewComment comment) {
+	public int updateComment(Connection con, Comment comment) {
 		int result = 0;
 		PreparedStatement ps = null;
 		
@@ -200,6 +200,7 @@ public class ReviewCommentDAO {
 	
 	
 	
+	// ------------------------------------------- QNA 부분입니다. ---------------------------------------------------//
 	
 	
 	

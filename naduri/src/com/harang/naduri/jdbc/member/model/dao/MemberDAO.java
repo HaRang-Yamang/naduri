@@ -153,10 +153,9 @@ public class MemberDAO {
 		int result = 0;
 		PreparedStatement ps = null;
 		
-		String sql = prop.getProperty("updateMember");
-		
+		String sql = prop.getProperty("updateMemberInfo");
+		System.out.println(sql );
 		try {
-			
 			ps = con.prepareStatement(sql);	
 			
 			ps.setString(1, updateMember.getM_pwd());

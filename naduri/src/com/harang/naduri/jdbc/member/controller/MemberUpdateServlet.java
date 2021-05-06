@@ -76,6 +76,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		// 변경할 키워드 정보 처리
 		//System.out.println("member 변경 정보 : " + updateMember);
+		System.out.println("member 변경 정보 : " + updateMember);
 		System.out.println("keyword 변경 정보 arr : " + Arrays.toString(keyword_id));
 
 		

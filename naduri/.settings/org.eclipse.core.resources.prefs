@@ -2,7 +2,6 @@ eclipse.preferences.version=1
 encoding//src/com/harang/naduri/jdbc/Thumbnail/controller/ThumbnailSelectList.java=UTF-8
 encoding//src/com/harang/naduri/jdbc/comment/model/dao/ReviewCommentDAO.java=UTF-8
 encoding//src/com/harang/naduri/jdbc/comment/model/service/ReviewCommentService.java=UTF-8
-encoding//src/config/admin.properties=UTF-8
 encoding//src/config/board.properties=UTF-8
 encoding//src/config/comment.properties=UTF-8
 encoding//src/config/heritage.properties=UTF-8

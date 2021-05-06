@@ -33,12 +33,11 @@ public class Tab_ToGoList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int m_no = Integer.parseInt(request.getParameter("m_no"));
-		HashMap<String, Object> map = new ToGoListService().togoList(m_no);
+		ArrayList<lo_key> list = new ToGoListService().togoList(m_no);
 		
 		
-		if ( map != null) {
-			request.setAttribute("map", map.get("list"));  //키워드
-			request.setAttribute("map", map.get("list2"));  // 나머지
+		if ( list != null) {
+			request.setAttribute("list", list);  // 나머지
 			
 			
 			

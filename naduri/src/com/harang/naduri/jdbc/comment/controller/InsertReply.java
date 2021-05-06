@@ -67,7 +67,7 @@ public class InsertReply extends HttpServlet {
 				int resultR = Rservice.insertRComment(Rcomment);
 				
 				if( resultR > 0 ) {
-					response.sendRedirect("selectOne.bo?bno="+rno);
+					response.sendRedirect(".do?l_no="+ l_no);
 	
 				} else {
 					request.setAttribute("error-msg", "댓글 작성 중 에러 발생");
@@ -85,7 +85,7 @@ public class InsertReply extends HttpServlet {
 				int resultQ = Qservice.insertQComment(Qcomment);
 				
 				if( resultQ > 0 ) {
-					response.sendRedirect("selectOne.bo?bno="+rno);
+					response.sendRedirect("selectQcommentOne.do?rno="+rno);
 	
 				} else {
 					request.setAttribute("error-msg", "댓글 작성 중 에러 발생");

@@ -24,7 +24,7 @@ private Connection con;
 	public int insertRComment(Comment Rcomment) {
 		con = getConnection();
 		
-		int result = dao.insertComment(con, Rcomment);
+		int result = dao.insertRComment(con, Rcomment);
 		
 		if(result > 0) commit(con);
 		else rollback(con);

@@ -5,13 +5,13 @@
         <div class="admin_menu_area">
             <ul>
                 <li><img src="/naduri/assets/images/icon/admin_img.png" alt=""></li>
-                <li id="menu_title">관리자<br>페이지</li>
+                <li id="menu_title"><h2>관리자<br>페이지</h2></li>
 
                 <li>
                     <hr id="menu_hr">
                     <ul id="menu_detail">
                         <li><button class="adminMember_btn" onclick="adminMemberLsit();">회원관리</button><li>
-                        <li><a>데이터 등록</a></li>
+                        <li><h3>데이터 등록</h3></li>
                         <li><button class="adminHeritage_btn" onclick="adminHeritageLsit();">문화재</button><li>
                         <li><button class="adminHeritage_btn" onclick="adminFoodLsit();">맛집</button><li>
                         <li><button class="adminHeritage_btn" onclick="adminSpotLsit();">여행지</button><li>

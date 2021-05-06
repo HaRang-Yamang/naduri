@@ -42,6 +42,16 @@
     	align-items: inherit;
     	padding-top: 0px;
 	}
+	header .navbar .user_menu{
+		width : 150px;
+		height : 240px;
+	}
+	header .navbar .user_menu li{
+		position : relative;
+		left : -38px;
+		width : 110px;
+		text-align : center;
+	}
 	header .profile {
 	 	margin : 0;
 	}
@@ -152,8 +162,8 @@
 	                    </tbody>
 	                </table>
 	                <div class="modify_Area">
-	                <div class="profileImg_modify"><button type="submit">프로필 사진 등록</button></div>
-	                <div class="profile_modify"><a href="/naduri/views/member/modifyMember.jsp">프로필 수정하기</a></div>
+	                	<button type="submit" class="profileImg_modify">프로필 사진 등록</button>
+	                	<button type="button" class="profile_modify" onclick="memberUpdate()">프로필 수정하기</button>
 	                </div>
 	            </div>
 
@@ -256,6 +266,9 @@
             return false;
         });
     });
+    
+	function memberUpdate(){
+		location.href = '/naduri/views/member/modifyMember.jsp';
 	</script>
 	
 	<%@ include file="../common/footer.jsp" %>

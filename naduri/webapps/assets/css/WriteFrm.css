@@ -5,106 +5,103 @@
 작성자 : 박수영
 작성목적 : Team_나드리 세미프로젝트
  */
-
-/* 임시 */
-.writeFrm table,
-.writeFrm tr,
-.writeFrm td{
-	border : 1px solid black;
-}
-
-
-.writeFrm h2{
-	text-align : center;
-}
-
-/* 상단 이미지 영역 */
-.img_main{
-	margin-top : 50px;
-	margin-bottom : 50px;
-    text-align: center;
-}
-
-.gray_bar {
-    background-color: gray;
-    height: 2px;
-    width: 60%;
+.writeFrm h2 {
+	text-align: center;
+	margin-bottom: 43px;
 }
 
 /* 작성 영역 */
-.container{
-	margin-top : 50px;
-	margin-bottom : 50px;
+.container {
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
-.writeFrm table{
-    text-align: left;
-    font-size: 14px;
+
+.writeFrm table {
+	width: 580px; text-align : left;
+	font-size: 14px;
+	text-align: left;
 }
-.writeFrm table tr:nth-child(2n){
-	padding : 50px 0;
+
+.writeFrm table tr:first-child td {
+	padding: 0;
+}
+
+.writeFrm table td:nth-child(n+2) {
+	padding: 20px 0 0 15px;
 }
 /* 입력 창 설정 */
-.writeFrm input{
-	padding : 0 3px;
-    border : 1px solid #636363;
-    text-align : left;
-}
-.writeFrm input::-webkit-input-placeholder{
-	text-align : left;
-}
-.writeFrm label{
-	color : var(--gray-color);
+.writeFrm input {
+	border: 1px solid #636363;
+	text-align: left;
 }
 
+.writeFrm input[type=text] {
+	padding: 0 3px;
+}
 
+.writeFrm input::-webkit-input-placeholder {
+	text-align: left;
+}
+/* 점수 표시 바 */
+.slider {
+	width: 280px;
+	vertical-align: middle;
+}
 
+.slider_txt {
+	margin-left: 20px;
+	width: 50px;
+	height: 10px;
+	vertical-align: middle;
+}
 
+.slider_txt span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+}
+
+/* 타이틀, 작성 영역 상단 정렬 css */
+.place {
+	vertical-align: top;
+	padding-top: 20px;
+}
+/* 긴 글 작성 영역 */
+#review_textArea, #qna_textArea {
+	vertical-align: top;
+	padding: 0 3px;
+	resize: none;
+}
+/* 리뷰 작성 - 라벨 색상 */
+.writeFrm label {
+	color: var(--gray-color);
+	font-size: 12px;
+	padding-left: 15px;
+}
+/* 리뷰 작성 - 사진 업로드 영역 */
+.photo_table div:nth-child(n+2) {
+	margin-left: 10px;
+}
+
+[id*=ImgArea] {
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+}
+
+[id*=ImgArea]:hover {
+	cursor: pointer;
+}
 
 /* 작성 버튼 */
-#submit_btn{
-	display : block;
+#submit_btn {
+	display: block;
 	width: 450px;
-    height: 50px;
+	height: 50px;
 	color: var(--white-color);
-	background : var(--main-color);
-    font-size: 21px;
+	background: var(--main-color);
+	font-size: 21px;
 	text-align: center;
 	border-radius: 5px;
 	cursor: pointer;
 }
-
-
-
-/* 점수 표시 바 */
-.slider{
-    width: 280px;
-    vertical-align : middle;
-}
-.slider_txt{
-	margin-left : 20px;
-	width : 50px;
-	height : 10px;
-	vertical-align : middle;
-	border : 1px solid black;
-}
-.slider_txt span{
-	display : inline-block;
-	width : 10px;
-	height : 10px;
-	border : 1px solid black;
-}
-/* 리뷰 작성 - 사진 업로드 영역 */
-.photo_table div:nth-child(2n){
-	margin-left : 10px;
-}
-[id*=ImgArea]{
-	display : inline-block;
-	width : 90px;
-	height : 90px;
-}
-[id*=ImgArea]:hover {
-		cursor: pointer;
-	}
-	
-
-

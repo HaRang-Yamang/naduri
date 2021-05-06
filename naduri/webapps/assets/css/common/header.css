@@ -39,8 +39,8 @@ header .navbar .profile img{
 header .navbar .user_menu {
 	width: 150px;
     position: relative;
-    top: 80px;
-    right: -10px;
+    top: 26px;
+	left : -98px;
     padding: 10px 20px;
     background: var(--white-color);
     box-shadow: 0 5px 25px rgba(0,0,0, 0.1);

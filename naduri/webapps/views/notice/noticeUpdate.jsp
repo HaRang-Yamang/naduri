@@ -83,8 +83,10 @@
                         </td>
                     </tr>
                 </table>
+                <div class="submit_btn_area">
 	                <button class="submit_btn" type="submit" style="cursor: pointer;">작성완료</button>
-	                <button class="submit_btn" type="button" style="cursor: pointer;" onclick="deleteNotice()">게시글 삭제</button>
+	                <button class="delete_btn" type="button" style="cursor: pointer;" onclick="deleteNotice()">게시글 삭제</button>
+            	</div>
             </div>
         </form>
         </div>

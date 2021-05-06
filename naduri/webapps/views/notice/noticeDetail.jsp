@@ -62,12 +62,12 @@
                     </tr>
                 </table>
                 
-				<div class="btn_area">
-	                <button class="gotoList_btn" onclick="goSelectLsit();">목록으로 돌아가기</button>
+				<div class="submit_btn_area">
+	                <button class="goback_btn" onclick="goSelectLsit();">목록으로 돌아가기</button>
 
 	                <!-- 관리자만 볼 수 있는 버튼을 만들고 싶어요... -->
 	                <% if (m != null && m.getM_auth() == 0) { %>
-	                	<button class="goupdate_btn" onclick="goUpdatePage();">수정하기</button>
+	                	<button class="reset_btn" onclick="goUpdatePage();">수정하기</button>
                 	<% }%>
                 </div>
                 

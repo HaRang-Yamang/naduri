@@ -74,12 +74,15 @@
                         </td>
                     </tr>
                 </table>
+                <div class="submit_btn_area">
 	                <button class="submit_btn" type="submit" style="cursor: pointer;">작성하기</button>
+	            </div>
 	              
             </div>
         </form>
         	<%-- form태그 밖에 목록으로 돌아가는 버튼 생성 --%>
-        	<button class="gotoList_btn" onclick="goSelectLsit();">작성취소</button>
+        	<button class="reset_btn" onclick="goSelectLsit();">작성취소</button>
+        
         	<script>
 					function goSelectLsit(){
 						location.href = '/naduri/selectList.no';

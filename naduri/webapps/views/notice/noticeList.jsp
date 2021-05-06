@@ -31,20 +31,6 @@
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
 <title>공지사항 목록</title>
-<style>
-	#p_btn {
-		background-color : #A5B874;
-		border-radius: 5px;
-    	border: none;
-		cursor : pointer;
-		width : 25px;
-
-	}
-	.pagingArea {
-		text-align : center;
-		margin-top : 70px;
-	}
-</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -84,43 +70,45 @@
                
                 </table>
                 
+                <div class="submit_btn_area">
                 <% if( m != null && m.getM_auth() == 0 ) { %>
-                <button class="write_btn" type="submit" style="cursor: pointer;" onclick="location.href='views/notice/noticeWrite.jsp'">작성하기</button>
+                <button class="submit_btn" type="submit" style="cursor: pointer;" onclick="location.href='views/notice/noticeWrite.jsp'">작성하기</button>
                
                 <% } %>
                 
-                <%-- 페이지네이션 버튼 --%>
-                <div class="pagingArea">
-		        	<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=1'">
-		        		&lt;&lt;
-		        	</button>
-		        	
-		        	<% if (cur <= 1) { %>
-						<button id="p_btn" disabled> &lt; </button>
-					<% } else { %>
-						<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= cur - 1 %>'"> &lt;</button>
-					<% } %>
-		        	
-		        	<% for(int p = st ; p <= ed ; p ++) { %>
-		        	
-			        	<% if( p == cur) { %>
-			        		<button id="p_btn" disabled> <%= p %> </button>
-			        	<% } else { %>
-			        		<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= p %>'"> <%= p %> </button>
+	                <%-- 페이지네이션 버튼 --%>
+	                <div class="pagingArea">
+			        	<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=1'">
+			        		&lt;&lt;
+			        	</button>
+			        	
+			        	<% if (cur <= 1) { %>
+							<button id="p_btn" disabled> &lt; </button>
+						<% } else { %>
+							<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= cur - 1 %>'"> &lt;</button>
+						<% } %>
+			        	
+			        	<% for(int p = st ; p <= ed ; p ++) { %>
+			        	
+				        	<% if( p == cur) { %>
+				        		<button id="p_btn" disabled> <%= p %> </button>
+				        	<% } else { %>
+				        		<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= p %>'"> <%= p %> </button>
+				        	<% } %>
+			        	
 			        	<% } %>
-		        	
-		        	<% } %>
-		        	
-		        	<% if (cur >= mx) { %>
-						<button id="p_btn" disabled> &gt; </button>
-					<% } else { %>
-						<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= cur + 1 %>'"> &gt;</button>
-					<% } %>
-					
-		        	<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= mx %>'">
-		        		&gt;&gt;
-		        	</button>
-		        	
+			        	
+			        	<% if (cur >= mx) { %>
+							<button id="p_btn" disabled> &gt; </button>
+						<% } else { %>
+							<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= cur + 1 %>'"> &gt;</button>
+						<% } %>
+						
+			        	<button id="p_btn" onclick="location.href='/naduri/selectList.no?currentPage=<%= mx %>'">
+			        		&gt;&gt;
+			        	</button>
+			        	
+			        </div>
 		        </div>
       				
       			<%-- ------------------- --%>	

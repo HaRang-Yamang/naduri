@@ -29,32 +29,6 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<style>
-	#m_btn_ban {
-		width : 100px;
-	}
-	.table_area {
-    width: 850px;
-    height: auto;
-	}
-	#m_btn_ban{
-	cursor : pointer;
-	}
-
-	#p_btn {
-		background-color : #A5B874;
-		border-radius: 5px;
-    	border: none;
-		cursor : pointer;
-		width : 25px;
-
-	}
-	.pagingArea {
-		text-align : center;
-		margin-top : 70px;
-	}
-
-</style>
 <title>나드리</title>
 </head>
 <body>
@@ -63,11 +37,9 @@
 	<%@ include file="../common/adminAside.jsp" %>
 	
 	<section>
-	
+
 	        <div class="adminArea">
-            <div class="head_area">
-                <h2 class="notice_head">회원 관리</h2>
-            </div>
+            <h2 class="notice_head">회원 관리</h2>
             <div class="table_area">
                 <table class="m_table">
                     <tr>
@@ -77,9 +49,7 @@
                         <th>연락처</th>
                         <th>이메일</th>
                         <th>상태</th>
-                        <th></th>
-                        <th colspan='3'>관리</th>
-                        <th></th>
+                        <th colspan='3' style='width:120px;'>관리</th>
                         
                     </tr>
 					
@@ -93,13 +63,11 @@
                         <td id="m_status"><%= mm.getM_status() %></td>
                    
                         <td colspan='2'>
-                            <div class="btn_area">
                             <% if( mm.getM_status().equals("Y")) { %>
                                 <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= mm.getM_no() %>,'<%= mm.getM_status() %>')">이용권한 정지</button>
                             <% } else { %>
                                 <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= mm.getM_no() %>,'<%= mm.getM_status() %>')">정지 해제</button>
                             <% } %>
-                            </div>
                         </td>
                     </tr>
                		<% } %>

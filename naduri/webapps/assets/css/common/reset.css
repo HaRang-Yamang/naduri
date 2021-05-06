@@ -73,6 +73,7 @@ section {
     width : 1000px;
     position : relative;
     padding : 150px 0;
+    width : 100%;
 }
 
 /* 폰트 사이즈 지정 */

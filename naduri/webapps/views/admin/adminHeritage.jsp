@@ -30,32 +30,6 @@
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
 <title>나드리</title>
-<style>
-	#m_btn_ban {
-		width : 100px;
-	}
-	.table_area {
-    width: 850px;
-    height: auto;
-	}
-	#m_btn_ban{
-	cursor : pointer;
-	}
-
-	#p_btn {
-		background-color : #A5B874;
-		border-radius: 5px;
-    	border: none;
-		cursor : pointer;
-		width : 25px;
-
-	}
-	.pagingArea {
-		text-align : center;
-		margin-top : 70px;
-	}
-
-</style>
 </head>
 <body>
 	<%@ include file="../common/header.jsp" %>
@@ -84,15 +58,15 @@
                         <td id="her_status"><%= hh.getH_status() %></td>
              			<td id="her_table_btn">
                             <div class="her_btn_area">
-                                <button id="m_btn_ban">데이터 수정</button>
+                                <button id="m_btn">데이터 수정</button>
                             </div>
                         </td>
                         <td>
                             <div class="btn_area">
                             <% if( hh.getH_status().equals("Y")) { %>
-                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= hh.getH_id() %>,'<%= hh.getH_status() %>')">데이터삭제</button>
+                                <button class="m_btn" id="m_btn" onclick="banMember(<%= hh.getH_id() %>,'<%= hh.getH_status() %>')">데이터삭제</button>
                             <% } else { %>
-                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= hh.getH_id() %>,'<%= hh.getH_status() %>')">삭제취소</button>
+                                <button class="m_btn" id="m_btn" onclick="banMember(<%= hh.getH_id() %>,'<%= hh.getH_status() %>')">삭제취소</button>
                             <% } %>
                             </div>
                         </td>
@@ -107,8 +81,8 @@
                 </script>
                 
                 
-                <div class="her_btn_area">
-				<button id="her_insert_btn" onclick="location.href='/naduri/views/admin/adminInsertHeritage.jsp'">문화재 등록</button>
+                <div class="insert_btn_area">
+				<button id="insert_btn" onclick="location.href='/naduri/views/admin/adminInsertHeritage.jsp'">문화재 등록</button>
 				
 				<%-- 페이지네이션 버튼 --%>
                 <div class="pagingArea">

@@ -262,8 +262,7 @@ com.harang.naduri.jdbc.bookmark.model.vo.*" %>
 							<button style="border: none; background: transparent;">
 								<img src="/naduri/assets/images/icon/homebutton.PNG" id="home">
 							</button>
-								
-
+									       
 	       	            </div>
 	        </div>
 	        <% } %>

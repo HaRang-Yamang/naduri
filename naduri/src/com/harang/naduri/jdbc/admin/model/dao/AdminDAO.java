@@ -20,7 +20,6 @@ import java.util.Properties;
 import com.harang.naduri.jdbc.Thumbnail.model.vo.Thumbnail;
 import com.harang.naduri.jdbc.Thumbnail.model.vo.lo_key;
 import com.harang.naduri.jdbc.attach.model.vo.Attach;
-import com.harang.naduri.jdbc.comment.model.dao.ReviewCommentDAO;
 import com.harang.naduri.jdbc.heritage.model.vo.Heritage;
 import com.harang.naduri.jdbc.location.model.vo.Location;
 import com.harang.naduri.jdbc.review.model.dao.ReviewDAO;
@@ -38,7 +37,7 @@ private Properties prop;
 		
 	prop = new Properties();
 	
-	String filePath = ReviewCommentDAO.class
+	String filePath = AdminDAO.class
 			          .getResource("/config/admin.properties")
 			          .getPath();
 	

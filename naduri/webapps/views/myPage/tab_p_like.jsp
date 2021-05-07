@@ -159,12 +159,12 @@
             			for( var i in data.attList){
             				if(i == 0){
             					var divImg = '<div class="carousel-item active">' +
-                                             '<img src="/naduri/assets/images/review/' + data.attList[i].a_name + '" width="920px" height="536px"' +
+                                             '<img src="/naduri/resources/review/' + data.attList[i].a_name + '" width="920px" height="536px"' +
                                              'class="d-block w-100" alt="..."></div>'; 
             					$('#review_img').prepend(divImg);
             				} else {
             					var divImg = '<div class="carousel-item">' +
-                                    '<img src="/naduri/assets/images/review/' + data.attList[i].a_name + '" width="920px" height="536px"' +
+                                    '<img src="/naduri/resources/review/' + data.attList[i].a_name + '" width="920px" height="536px"' +
                                     'class="d-block w-100" alt="..."></div>'; 
    								$('#review_img>.carousel-item').after(divImg);
             				}

@@ -1,4 +1,4 @@
--<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, com.harang.naduri.jdbc.review.model.vo.*, com.harang.naduri.jdbc.attach.model.vo.*,
      com.harang.naduri.jdbc.member.model.vo.*,com.harang.naduri.jdbc.Thumbnail.model.vo.*"%>
    <%
@@ -9,8 +9,6 @@
   <!-- 리뷰 영역 -->
     <div id="tab_review" class="tab-content current">
     
-        
-	
         <!-- 전체 리뷰 -->
         <div class="content mouse">
 	
@@ -76,8 +74,8 @@
                     <div class="review_img_area">
                     <%for(Attach a : r.getAttList()) {%>
                         <div class="review_img">
-                        <img src="/naduri/assets/images/review/<%= a.getA_name()%>" style="width : 120px; height : 120px;">
-                        <a href="/naduri/assets/images/review/"<%=a.getA_name()%>></a>
+                        <img src="/naduri/resources/review/<%= a.getA_name()%>" style="width : 120px; height : 120px;">
+                        <a href="/naduri/resources/review/"<%=a.getA_name()%>></a>
                         </div>
                     <% } %>
                     </div>

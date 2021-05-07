@@ -93,6 +93,7 @@ ArrayList<Location> lo_key = (ArrayList<Location>) request.getAttribute("lo_key"
 				}
 				function logout() {
 					location.href = '/naduri/logout.do';
+
 				}
 				function adminPage() {
 					location.href = '/naduri/memberList.ad';

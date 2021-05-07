@@ -142,27 +142,25 @@ ArrayList<Heritage> hlist = (ArrayList<Heritage>) request.getAttribute("hlist");
 		    
 		    
 			$(function(){
-				
-				
-				
 				// DB데이터에 담긴 좌표를 마커를 표시해 주는 positions 배열에 담아주는 반복문
 				var positions = [
 						<%for (Heritage h : hlist) {
-					out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' + h.getL_no() + '"' + "style="
-							+ '"' + "text-align:center; width:150px;" + '"' +
-				
-							">" + h.getH_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" + h.getH_lat() + ", " + h.getH_lng()
-							+ ") }, ");
-				}
+					out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' 
+							+ h.getL_no() + '"' + "style="
+							+ '"' + "text-align:center; width:150px;" + '"' 
+							+ ">" + h.getH_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" 
+							+ h.getH_lat() + ", " + h.getH_lng()
+							+ ") }, ");}
 				
 				for (Spot s : slist) {
-					out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' + s.getL_no() + '"' + "style="
-							+ '"' + "text-align:center; width:150px;" + '"' +
-				
-							">" + s.getS_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" + s.getS_lat() + ", " + s.getS_lng()
+					out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' 
+							+ s.getL_no() + '"' + "style="
+							+ '"' + "text-align:center; width:150px;" + '"' 
+							+ ">" + s.getS_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" 
+							+ s.getS_lat() + ", " + s.getS_lng()
 							+ ") }, ");
-				}%>
-									];
+					}%>
+				];
 				
 				console.log(positions); // 배열에 전부 담기 성공.
 				
@@ -274,17 +272,6 @@ ArrayList<Heritage> hlist = (ArrayList<Heritage>) request.getAttribute("hlist");
 									lngArr[i] < nelng) {
 									
 									console.log(idArr[i]);
-									
-//								   	if(idArr[i] < 500){
-//								   		imgSelector = '<img src="/naduri/resources/thumb/1.jpg">';
-//								   	} else if(idArr[i] <1000){
-//								   		imgSelector = '<img src="/naduri/resources/thumb/5.jpg">';
-//								   		$('.hotSpot').addClass("food");
-//								   	} else {
-//								   		imgSelector = '<img src="/naduri/resources/thumb/3.jpg">';
-//								   		$('.hotSpot').addClass("spot");
-//								   	}
-								   	
 								   	if(idArr[i] < 500){
 									// $('.hotSpot').addClass("heritage");
 									
@@ -319,15 +306,14 @@ ArrayList<Heritage> hlist = (ArrayList<Heritage>) request.getAttribute("hlist");
 								   	}
 								   	
 								   // 썸네일 표시
-									
-								   
-									
-								
-								   
 								}
 								$('.hotSpot').click(function(){
 									var daniel_no = $(this).attr('id');
 									location.href='/naduri/CallApiDetail.do?l_no='+daniel_no;
+								});
+								
+								$('.hotSpot').hover(function(){
+									$(this).css('cursor', 'pointer');
 								});
 
 								};

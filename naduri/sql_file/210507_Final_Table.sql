@@ -1,6 +1,20 @@
 --------------------------------------------------------
 --  파일이 생성됨 - 금요일-5월-07-2021   
 --------------------------------------------------------
+DROP TABLE "NADURI"."ATTACH";
+DROP TABLE "NADURI"."BOOKMARK";
+DROP TABLE "NADURI"."HERITAGE";
+DROP TABLE "NADURI"."KEYWORD";
+DROP TABLE "NADURI"."LOCATION";
+DROP TABLE "NADURI"."LOCATION_KEYWORD";
+DROP TABLE "NADURI"."LOCATION_SORT";
+DROP TABLE "NADURI"."MCHOICE";
+DROP TABLE "NADURI"."MEMBER";
+DROP TABLE "NADURI"."NOTICE";
+DROP TABLE "NADURI"."QNA";
+DROP TABLE "NADURI"."REPLY";
+DROP TABLE "NADURI"."REVIEW";
+DROP TABLE "NADURI"."SPOT";
 --------------------------------------------------------
 --  DDL for Table ATTACH
 --------------------------------------------------------
@@ -344,24 +358,187 @@
 REM INSERTING into NADURI.ATTACH
 SET DEFINE OFF;
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (4,'1.jpg','Y',null,null,1,null,null,null);
-Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (1,'1.jpg','Y',null,null,501,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (1,'1.jpg','Y',null,null,68,null,null,null);
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (2,'1.jpg','Y',null,null,502,null,null,null);
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (3,'1.jpg','Y',null,null,504,null,null,null);
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (5,'1.jpg','Y',null,null,2,null,null,null);
-Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (6,'6.jpg','Y',null,null,3,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (6,'6.jpg','Y',null,null,52,null,null,null);
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (7,'4.jpg','Y',null,null,4,null,null,null);
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (8,'1.jpg','Y',null,null,5,null,null,null);
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (9,'1.jpg','Y',null,null,6,null,null,null);
 Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (10,'6.jpg','Y',null,null,503,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (343,'20210507_112015_9535.jpg','Y',null,12,null,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (201,'1.jpg','Y',1,12,1,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (202,'1.jpg','Y',null,null,1,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (203,'1.jpg','Y',null,null,2,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (204,'1.jpg','Y',null,null,3,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (205,'1.jpg','Y',null,null,4,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (206,'1.jpg','Y',null,null,5,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (207,'1.jpg','Y',null,null,6,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (208,'1.jpg','Y',null,null,7,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (209,'1.jpg','Y',null,null,8,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (210,'1.jpg','Y',null,null,9,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (211,'1.jpg','Y',null,null,10,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (212,'2.jpg','Y',null,null,501,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (213,'2.jpg','Y',null,null,502,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (214,'2.jpg','Y',null,null,503,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (215,'2.jpg','Y',null,null,504,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (216,'2.jpg','Y',null,null,505,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (217,'2.jpg','Y',null,null,506,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (218,'2.jpg','Y',null,null,507,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (219,'2.jpg','Y',null,null,508,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (220,'2.jpg','Y',null,null,509,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (221,'2.jpg','Y',null,null,510,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (223,'2.jpg','Y',1,12,1,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (224,'3.jpg','Y',1,12,1,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (225,'4.jpg','Y',1,12,1,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (226,'1.jpg','Y',2,12,2,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (227,'2.jpg','Y',2,12,2,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (228,'3.jpg','Y',2,12,2,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (229,'4.jpg','Y',2,12,2,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (230,'1.jpg','Y',3,12,3,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (231,'2.jpg','Y',3,12,3,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (232,'3.jpg','Y',3,12,3,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (233,'4.jpg','Y',3,12,3,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (234,'1.jpg','Y',4,12,4,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (235,'2.jpg','Y',4,12,4,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (236,'3.jpg','Y',4,12,4,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (237,'4.jpg','Y',4,12,4,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (238,'1.jpg','Y',5,12,5,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (239,'2.jpg','Y',5,12,5,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (240,'3.jpg','Y',5,12,5,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (241,'4.jpg','Y',5,12,5,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (242,'1.jpg','Y',6,12,6,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (243,'2.jpg','Y',6,12,6,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (244,'3.jpg','Y',6,12,6,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (245,'4.jpg','Y',6,12,6,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (246,'1.jpg','Y',7,12,7,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (247,'2.jpg','Y',7,12,7,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (248,'3.jpg','Y',7,12,7,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (249,'4.jpg','Y',7,12,7,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (250,'1.jpg','Y',8,12,8,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (251,'2.jpg','Y',8,12,8,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (252,'3.jpg','Y',8,12,8,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (253,'4.jpg','Y',8,12,8,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (254,'1.jpg','Y',9,12,9,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (255,'2.jpg','Y',9,12,9,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (256,'3.jpg','Y',9,12,9,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (257,'4.jpg','Y',9,12,9,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (258,'1.jpg','Y',10,12,10,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (259,'2.jpg','Y',10,12,10,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (260,'3.jpg','Y',10,12,10,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (261,'4.jpg','Y',10,12,10,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (262,'1.jpg','Y',11,12,11,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (263,'2.jpg','Y',11,12,11,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (264,'3.jpg','Y',11,12,11,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (265,'4.jpg','Y',11,12,11,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (266,'1.jpg','Y',12,12,12,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (267,'2.jpg','Y',12,12,12,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (268,'3.jpg','Y',12,12,12,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (269,'4.jpg','Y',12,12,12,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (270,'1.jpg','Y',13,12,13,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (271,'2.jpg','Y',13,12,13,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (272,'3.jpg','Y',13,12,13,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (273,'4.jpg','Y',13,12,13,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (274,'1.jpg','Y',14,12,14,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (275,'2.jpg','Y',14,12,14,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (276,'3.jpg','Y',14,12,14,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (277,'4.jpg','Y',14,12,14,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (278,'1.jpg','Y',15,12,15,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (279,'2.jpg','Y',15,12,15,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (280,'3.jpg','Y',15,12,15,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (281,'4.jpg','Y',15,12,15,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (282,'1.jpg','Y',16,12,16,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (283,'2.jpg','Y',16,12,16,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (284,'3.jpg','Y',16,12,16,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (285,'4.jpg','Y',16,12,16,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (286,'1.jpg','Y',17,12,17,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (287,'2.jpg','Y',17,12,17,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (288,'3.jpg','Y',17,12,17,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (289,'4.jpg','Y',17,12,17,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (290,'1.jpg','Y',18,12,18,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (291,'2.jpg','Y',18,12,18,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (292,'3.jpg','Y',18,12,18,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (293,'4.jpg','Y',18,12,18,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (294,'1.jpg','Y',19,12,19,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (295,'2.jpg','Y',19,12,19,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (296,'3.jpg','Y',19,12,19,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (297,'4.jpg','Y',19,12,19,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (298,'1.jpg','Y',20,12,20,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (299,'2.jpg','Y',20,12,20,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (300,'3.jpg','Y',20,12,20,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (301,'4.jpg','Y',20,12,20,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (302,'1.jpg','Y',21,12,21,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (303,'2.jpg','Y',21,12,21,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (304,'3.jpg','Y',21,12,21,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (305,'4.jpg','Y',21,12,21,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (306,'1.jpg','Y',22,12,22,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (307,'2.jpg','Y',22,12,22,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (308,'3.jpg','Y',22,12,22,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (309,'4.jpg','Y',22,12,22,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (310,'1.jpg','Y',23,12,23,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (311,'2.jpg','Y',23,12,23,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (312,'3.jpg','Y',23,12,23,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (313,'4.jpg','Y',23,12,23,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (314,'1.jpg','Y',24,12,24,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (315,'2.jpg','Y',24,12,24,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (316,'3.jpg','Y',24,12,24,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (317,'4.jpg','Y',24,12,24,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (318,'1.jpg','Y',25,12,25,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (319,'2.jpg','Y',25,12,25,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (320,'3.jpg','Y',25,12,25,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (321,'4.jpg','Y',25,12,25,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (322,'1.jpg','Y',26,12,26,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (323,'2.jpg','Y',26,12,26,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (324,'3.jpg','Y',26,12,26,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (325,'4.jpg','Y',26,12,26,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (326,'1.jpg','Y',27,12,27,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (327,'2.jpg','Y',27,12,27,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (328,'3.jpg','Y',27,12,27,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (329,'4.jpg','Y',27,12,27,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (330,'1.jpg','Y',28,12,28,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (331,'2.jpg','Y',28,12,28,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (332,'3.jpg','Y',28,12,28,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (333,'4.jpg','Y',28,12,28,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (334,'1.jpg','Y',29,12,29,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (335,'2.jpg','Y',29,12,29,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (336,'3.jpg','Y',29,12,29,null,null,null);
+Insert into NADURI.ATTACH (A_NO,A_NAME,A_STATUS,R_NO,M_NO,L_NO,N_NO,S_ID,FLEVEL) values (337,'4.jpg','Y',29,12,29,null,null,null);
 REM INSERTING into NADURI.BOOKMARK
 SET DEFINE OFF;
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (1,1,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (2,2,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (3,3,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (4,4,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (5,5,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (6,6,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (7,501,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (8,502,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (9,503,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (10,504,12,null);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (11,null,12,1);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (12,null,12,2);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (13,null,12,3);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (14,null,12,4);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (15,null,12,5);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (16,null,12,6);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (17,null,12,7);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (18,null,12,8);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (19,null,12,9);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (20,null,12,10);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (21,null,12,11);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (22,null,12,12);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (23,null,12,13);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (24,null,12,14);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (25,null,12,15);
+Insert into NADURI.BOOKMARK (MARK_ID,L_NO,M_NO,R_NO) values (26,null,12,16);
 REM INSERTING into NADURI.HERITAGE
 SET DEFINE OFF;
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (70,70,'마라도 천연보호구역','16','Y',null,'04230000','50','33.12149891','126.2670345');
-Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (1,1,'경복궁 근정전','11','Y',null,'02230000','11','37.57857107','126.9770187');
-Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (2,2,'창경궁 명전전','13','Y',null,'01230000','11','37.57941654','126.9951999');
-Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (3,3,'덕수궁','13','Y',null,'01240000','11','37.56556387','126.9748948');
-Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (4,4,'창덕궁 인정전','11','Y',null,'02250000','11','37.57945234','126.9910927');
+Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (1,1,'경복궁','11','Y',0,'02230000','11','37.57857107','126.9770187');
+Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (2,2,'창경궁 명전전','13','Y',0,'01230000','11','37.57941654','126.9951999');
+Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (3,3,'덕수궁','13','Y',0,'01240000','11','37.56556387','126.9748948');
+Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (4,4,'창덕궁 인정전','11','Y',0,'02250000','11','37.57945234','126.9910927');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (5,5,'숭례문','11','Y',null,'00010000','11','37.56000301','126.9753131');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (6,6,'창의문','12','Y',null,'18810000','11','37.59263125','126.9665112');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (7,7,'흥인지문','12','Y',null,'00010000','11','37.57114151','127.009572');
@@ -409,7 +586,7 @@ Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (49,49,'해남 대흥사','13','Y',null,'05080000','36','34.47610139','126.6168437');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (50,50,'장성 필암서원','13','Y',null,'02420000','36','35.31032795','126.7517326');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (51,51,'영주 부석사 무량수전','11','Y',null,'00180000','37','36.99896171','128.6875036');
-Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (52,52,'경주 첨성대','11','Y',null,'00310000','37','35.83471805','129.2190202');
+Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (52,52,'경주 첨성대','11','Y',200,'00310000','37','35.83471805','129.2190202');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (53,53,'안동 도산서원','11','Y',null,'01700000','37','36.72706869','128.8433587');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (54,54,'군위 아미타여래삼존 석굴','11','Y',null,'01090000','37','36.04791014','128.6406216');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (55,55,'대구 계산동성당','13','Y',null,'02900000','22','35.86795788','128.5878135');
@@ -425,7 +602,7 @@ Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (65,65,'제주목 관아','13','Y',null,'03800000','50','33.51420236','126.5220035');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (66,66,'서귀포 김정희 유배지','13','Y',null,'04870000','50','33.25039442','126.2782153');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (67,67,'한라산 백록담','15','Y',null,'00900000','50','33.3624195','126.5333432');
-Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (68,68,'제주 서귀포 정방폭포','15','Y',null,'00430000','50','33.24499661','126.5716053');
+Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (68,68,'제주 서귀포 정방폭포','15','Y',100,'00430000','50','33.24499661','126.5716053');
 Insert into NADURI.HERITAGE (H_ID,L_NO,H_NAME,H_EVENTS,H_STATUS,H_COUNT,H_SERIAL,H_ZIPCODE,H_LAT,H_LNG) values (69,69,'제주 서귀포 산방산','15','Y',null,'00770000','50','33.24130404','126.3134253');
 REM INSERTING into NADURI.KEYWORD
 SET DEFINE OFF;
@@ -2957,7 +3134,6 @@ Insert into NADURI.LOCATION_SORT (LS_CODE,LS_NAME) values (1,'문화재');
 Insert into NADURI.LOCATION_SORT (LS_CODE,LS_NAME) values (2,'맛집/여행지');
 REM INSERTING into NADURI.MCHOICE
 SET DEFINE OFF;
-Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (2,2);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (2,18);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (2,19);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (2,35);
@@ -2987,8 +3163,6 @@ Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (6,16);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (6,27);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (6,33);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (6,48);
-Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (7,1);
-Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (7,2);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (8,31);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (8,28);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (8,8);
@@ -3061,6 +3235,21 @@ Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (19,5);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (19,8);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (19,11);
 Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (19,19);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,1);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (2,2);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,3);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,7);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,14);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,15);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,18);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,20);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,24);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,26);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,30);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,34);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,36);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,40);
+Insert into NADURI.MCHOICE (M_NO,KEYWORD_ID) values (12,44);
 REM INSERTING into NADURI.MEMBER
 SET DEFINE OFF;
 Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (1,'admin1','0','admin1','관리자','M','서울특별시 강남구','admin1@example.com','010-9999-9999','Y','1998-09-08');
@@ -3069,7 +3258,7 @@ Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EM
 Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (4,'honggildong','1','1234','홍길동','M','13473 경기 성남시 분당구 경부고속도로 409 (삼평동) 상세주소','gildong.hong@example.com','010-2345-6578','Y','1998-09-11');
 Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (5,'daldal_kim','1','1234','김달달','F','30140 세종특별자치시 집현동 915','test3@example.com','010-1234-1234','Y','1995-12-21');
 Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (6,'moonseok80','1','moonseok80','강문석','F','01891 서울특별시 노원구 광운로2길 22(월계동, 세움2차) 000동 101호','test4@example.com','016-1515-6545','Y','1980-08-21');
-Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (7,'PARIS','1','PARIS','김황석','M','01816 서울특별시 노원구 방방로3길 21 111동 11호','hwangseok89@gmail.com','010-1234-1234','Y','1989-10-30');
+Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (7,'PARIS','1','4897','김황석','M','06035 서울 강남구 가로수길 5 (신사동) 111','hihi@hihi.com','010-7777-4444','Y','1989-10-30');
 Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (8,'test6','1','pass6','노다비','F','대전 서구 갈마동 48','test6@example.com','010-9999-8754','Y','1993-06-11');
 Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (9,'test7','1','pass7','세홍홍','F','01234 부산시 수영구','test7@example.com','010-7865-1256','Y','2001-01-01');
 Insert into NADURI.MEMBER (M_NO,M_ID,M_AUTH,M_PWD,M_NAME,M_GENDER,M_ADDRESS,M_EMAIL,M_PHONE,M_STATUS,M_BIRTH) values (10,'test8','1','pass8','박수영','F','경기도고양시솜이구','test8@example.com','010-8452-4454','Y','2003-05-16');
@@ -3285,12 +3474,104 @@ Insert into NADURI.NOTICE (N_NO,N_TITLE,N_CONTENT,N_DATE,M_NO,N_FILE) values (19
 Insert into NADURI.NOTICE (N_NO,N_TITLE,N_CONTENT,N_DATE,M_NO,N_FILE) values (198,'게시글 TEST198','TEST 데이터198',to_date('21/05/05','RR/MM/DD'),1,null);
 Insert into NADURI.NOTICE (N_NO,N_TITLE,N_CONTENT,N_DATE,M_NO,N_FILE) values (199,'게시글 TEST199','TEST 데이터199',to_date('21/05/05','RR/MM/DD'),1,null);
 Insert into NADURI.NOTICE (N_NO,N_TITLE,N_CONTENT,N_DATE,M_NO,N_FILE) values (200,'게시글 TEST200','TEST 데이터200',to_date('21/05/05','RR/MM/DD'),1,null);
+Insert into NADURI.NOTICE (N_NO,N_TITLE,N_CONTENT,N_DATE,M_NO,N_FILE) values (201,'로롤로로로로로롤로롤','로로로로로로로롤롤',to_date('21/05/07','RR/MM/DD'),1,null);
 REM INSERTING into NADURI.QNA
 SET DEFINE OFF;
+Insert into NADURI.QNA (Q_NO,M_NO,Q_CONTENT,Q_DATE,Q_UPDATE,Q_TITLE,L_NO) values (3,12,'질문 내용입니다',to_date('21/05/06','RR/MM/DD'),to_date('21/05/06','RR/MM/DD'),'질문 제목입니다',1);
+Insert into NADURI.QNA (Q_NO,M_NO,Q_CONTENT,Q_DATE,Q_UPDATE,Q_TITLE,L_NO) values (4,12,'경복궁 갔는데 맛집이 김밥천국밖에 없나요
+',to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),'경복궁 맛집 추천 좀...',1);
+Insert into NADURI.QNA (Q_NO,M_NO,Q_CONTENT,Q_DATE,Q_UPDATE,Q_TITLE,L_NO) values (5,12,'저번에 경복궁 주변 갔는데 주변에 맛집이 없어서 김밥천국 갔습니다. 이번에 경복궁 또 가는데 맛집 추천해주세요.',to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),'경복궁 맛집 추천좀..',1);
 REM INSERTING into NADURI.REPLY
 SET DEFINE OFF;
 REM INSERTING into NADURI.REVIEW
 SET DEFINE OFF;
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (1,1,13,4,'테스트 1 입니다','중앙선거관리위원회는 법령의 범위안에서 선거관리·국민투표관리 또는 정당사무에 관한 규칙을 제정할 수 있으며, 법률에 저촉되지 아니하는 범위안에서 내부규율에 관한 규칙을 제정할 수 있다. 모든 국민은 법률이 정하는 바에 의하여 공무담임권을 가진다. 지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다. 대법원장의 임기는 6년으로 하며, 중임할 수 없다. 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다. 대통령은 취임에 즈음하여 다음의 선서를 한다.
+
+국회의원은 국회에서 직무상 행한 발언과 표결에 관하여 국회외에서 책임을 지지 아니한다. 국회는 국민의 보통·평등·직접·비밀선거에 의하여 선출된 국회의원으로 구성한다. 대통령은 국무회의의 의장이 되고, 국무총리는 부의장이 된다. 헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 헌법재판소의 장은 국회의 동의를 얻어 재판관중에서 대통령이 임명한다. 민주평화통일자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 국회는 법률에 저촉되지 아니하는 범위안에서 의사와 내부규율에 관한 규칙을 제정할 수 있다. 국가원로자문회의의 의장은 직전대통령이 된다. 다만, 직전대통령이 없을 때에는 대통령이 지명한다.','2021-04-09',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (2,2,13,5,'테스트 2 입니다','국가안전보장회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 평화통일정책의 수립에 관한 대통령의 자문에 응하기 위하여 민주평화통일자문회의를 둘 수 있다. 저작자·발명가·과학기술자와 예술가의 권리는 법률로써 보호한다. 국무총리는 국무위원의 해임을 대통령에게 건의할 수 있다. 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다. 대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한 중요정책을 국민투표에 붙일 수 있다. 대통령은 조국의 평화적 통일을 위한 성실한 의무를 진다.
+
+모든 국민은 법률이 정하는 바에 의하여 공무담임권을 가진다. 행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 국토와 자원은 국가의 보호를 받으며, 국가는 그 균형있는 개발과 이용을 위하여 필요한 계획을 수립한다. 대통령은 국가의 독립·영토의 보전·국가의 계속성과 헌법을 수호할 책무를 진다. 대한민국은 민주공화국이다. 모든 국민은 법률이 정하는 바에 의하여 납세의 의무를 진다. 대법원은 법률에 저촉되지 아니하는 범위안에서 소송에 관한 절차, 법원의 내부규율과 사무처리에 관한 규칙을 제정할 수 있다. 정당은 그 목적·조직과 활동이 민주적이어야 하며, 국민의 정치적 의사형성에 참여하는데 필요한 조직을 가져야 한다.','2021-03-22',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (3,3,14,3,'테스트 3 입니다','대통령은 법률에서 구체적으로 범위를 정하여 위임받은 사항과 법률을 집행하기 위하여 필요한 사항에 관하여 대통령령을 발할 수 있다. 재판의 심리와 판결은 공개한다. 다만, 심리는 국가의 안전보장 또는 안녕질서를 방해하거나 선량한 풍속을 해할 염려가 있을 때에는 법원의 결정으로 공개하지 아니할 수 있다. 각급 선거관리위원회는 선거인명부의 작성등 선거사무와 국민투표사무에 관하여 관계 행정기관에 필요한 지시를 할 수 있다. 대통령은 헌법과 법률이 정하는 바에 의하여 국군을 통수한다. 국회의원의 수는 법률로 정하되, 200인 이상으로 한다. 모든 국민은 근로의 의무를 진다. 국가는 근로의 의무의 내용과 조건을 민주주의원칙에 따라 법률로 정한다.
+
+대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 선거한다. 정당의 설립은 자유이며, 복수정당제는 보장된다. 모든 국민은 헌법과 법률이 정한 법관에 의하여 법률에 의한 재판을 받을 권리를 가진다. 정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다. 대법원장과 대법관이 아닌 법관의 임기는 10년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다. 모든 국민은 법률이 정하는 바에 의하여 국가기관에 문서로 청원할 권리를 가진다. 중앙선거관리위원회는 법령의 범위안에서 선거관리·국민투표관리 또는 정당사무에 관한 규칙을 제정할 수 있으며, 법률에 저촉되지 아니하는 범위안에서 내부규율에 관한 규칙을 제정할 수 있다.','2021-02-19',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (4,4,15,4,'테스트 4 입니다','대법원은 법률에 저촉되지 아니하는 범위안에서 소송에 관한 절차, 법원의 내부규율과 사무처리에 관한 규칙을 제정할 수 있다. 국회의원은 국가이익을 우선하여 양심에 따라 직무를 행한다. 국가안전보장에 관련되는 대외정책·군사정책과 국내정책의 수립에 관하여 국무회의의 심의에 앞서 대통령의 자문에 응하기 위하여 국가안전보장회의를 둔다. 대통령의 선거에 관한 사항은 법률로 정한다. 헌법개정안은 국회가 의결한 후 30일 이내에 국민투표에 붙여 국회의원선거권자 과반수의 투표와 투표자 과반수의 찬성을 얻어야 한다. 정당의 설립은 자유이며, 복수정당제는 보장된다. 모든 국민은 직업선택의 자유를 가진다.
+
+저작자·발명가·과학기술자와 예술가의 권리는 법률로써 보호한다. 대통령은 국가의 독립·영토의 보전·국가의 계속성과 헌법을 수호할 책무를 진다. 국회는 의원의 자격을 심사하며, 의원을 징계할 수 있다. 제안된 헌법개정안은 대통령이 20일 이상의 기간 이를 공고하여야 한다. 이 헌법시행 당시의 대법원장과 대법원판사가 아닌 법관은 제1항 단서의 규정에 불구하고 이 헌법에 의하여 임명된 것으로 본다. 법관은 헌법과 법률에 의하여 그 양심에 따라 독립하여 심판한다. 모든 국민의 재산권은 보장된다. 그 내용과 한계는 법률로 정한다. 누구든지 체포 또는 구속을 당한 때에는 적부의 심사를 법원에 청구할 권리를 가진다.','2021-03-28',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (5,5,13,5,'테스트 5 입니다','헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은 확정되며, 대통령은 즉시 이를 공포하여야 한다. 감사위원은 원장의 제청으로 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다. 국가는 농·어민과 중소기업의 자조조직을 육성하여야 하며, 그 자율적 활동과 발전을 보장한다. 환경권의 내용과 행사에 관하여는 법률로 정한다. 국가유공자·상이군경 및 전몰군경의 유가족은 법률이 정하는 바에 의하여 우선적으로 근로의 기회를 부여받는다.
+
+누구든지 체포 또는 구속의 이유와 변호인의 조력을 받을 권리가 있음을 고지받지 아니하고는 체포 또는 구속을 당하지 아니한다. 체포 또는 구속을 당한 자의 가족등 법률이 정하는 자에게는 그 이유와 일시·장소가 지체없이 통지되어야 한다. 대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로부터 나온다. 형사피의자 또는 형사피고인으로서 구금되었던 자가 법률이 정하는 불기소처분을 받거나 무죄판결을 받은 때에는 법률이 정하는 바에 의하여 국가에 정당한 보상을 청구할 수 있다. 대한민국의 국민이 되는 요건은 법률로 정한다. 국정감사 및 조사에 관한 절차 기타 필요한 사항은 법률로 정한다.','2021-03-30',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (6,6,14,5,'테스트 6 입니다','피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다. 대통령은 국무회의의 의장이 되고, 국무총리는 부의장이 된다. 모든 국민은 소급입법에 의하여 참정권의 제한을 받거나 재산권을 박탈당하지 아니한다. 국민경제의 발전을 위한 중요정책의 수립에 관하여 대통령의 자문에 응하기 위하여 국민경제자문회의를 둘 수 있다. 제2항과 제3항의 처분에 대하여는 법원에 제소할 수 없다. 국가는 주택개발정책등을 통하여 모든 국민이 쾌적한 주거생활을 할 수 있도록 노력하여야 한다.
+
+국무회의는 대통령·국무총리와 15인 이상 30인 이하의 국무위원으로 구성한다. 대통령은 헌법과 법률이 정하는 바에 의하여 국군을 통수한다. 모든 국민은 보건에 관하여 국가의 보호를 받는다. 대통령은 법률이 정하는 바에 의하여 사면·감형 또는 복권을 명할 수 있다. 모든 국민은 직업선택의 자유를 가진다. 모든 국민은 언론·출판의 자유와 집회·결사의 자유를 가진다. 중앙선거관리위원회는 법령의 범위안에서 선거관리·국민투표관리 또는 정당사무에 관한 규칙을 제정할 수 있으며, 법률에 저촉되지 아니하는 범위안에서 내부규율에 관한 규칙을 제정할 수 있다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.','2021-01-14',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (7,7,15,4,'테스트 7 입니다','모든 국민은 종교의 자유를 가진다. 대통령은 제1항과 제2항의 처분 또는 명령을 한 때에는 지체없이 국회에 보고하여 그 승인을 얻어야 한다. 대통령은 국무회의의 의장이 되고, 국무총리는 부의장이 된다. 국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 국회의원은 국가이익을 우선하여 양심에 따라 직무를 행한다. 모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다. 사면·감형 및 복권에 관한 사항은 법률로 정한다. 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 재직중 형사상의 소추를 받지 아니한다. 감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타 필요한 사항은 법률로 정한다.
+
+국무총리 또는 행정각부의 장은 소관사무에 관하여 법률이나 대통령령의 위임 또는 직권으로 총리령 또는 부령을 발할 수 있다. 근로자는 근로조건의 향상을 위하여 자주적인 단결권·단체교섭권 및 단체행동권을 가진다. 모든 국민은 보건에 관하여 국가의 보호를 받는다. 재의의 요구가 있을 때에는 국회는 재의에 붙이고, 재적의원과반수의 출석과 출석의원 3분의 2 이상의 찬성으로 전과 같은 의결을 하면 그 법률안은 법률로서 확정된다. 평화통일정책의 수립에 관한 대통령의 자문에 응하기 위하여 민주평화통일자문회의를 둘 수 있다. 누구든지 체포 또는 구속의 이유와 변호인의 조력을 받을 권리가 있음을 고지받지 아니하고는 체포 또는 구속을 당하지 아니한다. 체포 또는 구속을 당한 자의 가족등 법률이 정하는 자에게는 그 이유와 일시·장소가 지체없이 통지되어야 한다.','2021-01-28',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (8,8,13,4,'테스트 8 입니다','국민경제자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 감사원은 세입·세출의 결산을 매년 검사하여 대통령과 차년도국회에 그 결과를 보고하여야 한다. 모든 국민은 통신의 비밀을 침해받지 아니한다. 국회의원의 선거구와 비례대표제 기타 선거에 관한 사항은 법률로 정한다. 국회는 상호원조 또는 안전보장에 관한 조약, 중요한 국제조직에 관한 조약, 우호통상항해조약, 주권의 제약에 관한 조약, 강화조약, 국가나 국민에게 중대한 재정적 부담을 지우는 조약 또는 입법사항에 관한 조약의 체결·비준에 대한 동의권을 가진다. 국정의 중요한 사항에 관한 대통령의 자문에 응하기 위하여 국가원로로 구성되는 국가원로자문회의를 둘 수 있다.
+
+대통령은 내우·외환·천재·지변 또는 중대한 재정·경제상의 위기에 있어서 국가의 안전보장 또는 공공의 안녕질서를 유지하기 위하여 긴급한 조치가 필요하고 국회의 집회를 기다릴 여유가 없을 때에 한하여 최소한으로 필요한 재정·경제상의 처분을 하거나 이에 관하여 법률의 효력을 가지는 명령을 발할 수 있다. 국회의 정기회는 법률이 정하는 바에 의하여 매년 1회 집회되며, 국회의 임시회는 대통령 또는 국회재적의원 4분의 1 이상의 요구에 의하여 집회된다. 대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로부터 나온다. 헌법에 의하여 체결·공포된 조약과 일반적으로 승인된 국제법규는 국내법과 같은 효력을 가진다.','2021-04-29',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (9,9,13,3,'테스트 9 입니다','대통령은 국회에 출석하여 발언하거나 서한으로 의견을 표시할 수 있다. 국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 국가안전보장에 관련되는 대외정책·군사정책과 국내정책의 수립에 관하여 국무회의의 심의에 앞서 대통령의 자문에 응하기 위하여 국가안전보장회의를 둔다. 모든 국민은 보건에 관하여 국가의 보호를 받는다. 국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다. 법률이 정하는 주요방위산업체에 종사하는 근로자의 단체행동권은 법률이 정하는 바에 의하여 이를 제한하거나 인정하지 아니할 수 있다. 모든 국민은 법 앞에 평등하다. 누구든지 성별·종교 또는 사회적 신분에 의하여 정치적·경제적·사회적·문화적 생활의 모든 영역에 있어서 차별을 받지 아니한다.
+
+계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 국회는 의장 1인과 부의장 2인을 선출한다. 명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다. 국가는 지역간의 균형있는 발전을 위하여 지역경제를 육성할 의무를 진다. 대한민국의 영토는 한반도와 그 부속도서로 한다. 모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 국가는 개인이 가지는 불가침의 기본적 인권을 확인하고 이를 보장할 의무를 진다.','2021-05-05',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (10,10,14,1,'테스트 10 입니다','국회의원의 수는 법률로 정하되, 200인 이상으로 한다. 정당의 설립은 자유이며, 복수정당제는 보장된다. 제1항의 지시를 받은 당해 행정기관은 이에 응하여야 한다. 헌법재판소 재판관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다. 이 헌법시행 당시의 법령과 조약은 이 헌법에 위배되지 아니하는 한 그 효력을 지속한다. 전직대통령의 신분과 예우에 관하여는 법률로 정한다. 의원을 제명하려면 국회재적의원 3분의 2 이상의 찬성이 있어야 한다. 탄핵소추의 의결을 받은 자는 탄핵심판이 있을 때까지 그 권한행사가 정지된다. 모든 국민은 학문과 예술의 자유를 가진다. 대통령이 제1항의 기간내에 공포나 재의의 요구를 하지 아니한 때에도 그 법률안은 법률로서 확정된다.
+
+지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다. 국가안전보장회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 선거에 있어서 최고득표자가 2인 이상인 때에는 국회의 재적의원 과반수가 출석한 공개회의에서 다수표를 얻은 자를 당선자로 한다. 체포·구속·압수 또는 수색을 할 때에는 적법한 절차에 따라 검사의 신청에 의하여 법관이 발부한 영장을 제시하여야 한다. 다만, 현행범인인 경우와 장기 3년 이상의 형에 해당하는 죄를 범하고 도피 또는 증거인멸의 염려가 있을 때에는 사후에 영장을 청구할 수 있다.','2021-03-20',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (11,11,14,5,'테스트 11 입니다','감사원은 원장을 포함한 5인 이상 11인 이하의 감사위원으로 구성한다. 대통령은 국무회의의 의장이 되고, 국무총리는 부의장이 된다. 환경권의 내용과 행사에 관하여는 법률로 정한다. 헌법재판소는 법관의 자격을 가진 9인의 재판관으로 구성하며, 재판관은 대통령이 임명한다. 행정각부의 설치·조직과 직무범위는 법률로 정한다. 국회의 회의는 공개한다. 다만, 출석의원 과반수의 찬성이 있거나 의장이 국가의 안전보장을 위하여 필요하다고 인정할 때에는 공개하지 아니할 수 있다. 광물 기타 중요한 지하자원·수산자원·수력과 경제상 이용할 수 있는 자연력은 법률이 정하는 바에 의하여 일정한 기간 그 채취·개발 또는 이용을 특허할 수 있다.
+
+대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다. 모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다. 명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 모든 국민은 신체의 자유를 가진다. 누구든지 법률에 의하지 아니하고는 체포·구속·압수·수색 또는 심문을 받지 아니하며, 법률과 적법한 절차에 의하지 아니하고는 처벌·보안처분 또는 강제노역을 받지 아니한다. 정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다. 정기회의 회기는 100일을, 임시회의 회기는 30일을 초과할 수 없다.','2021-04-11',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (12,12,15,4,'테스트 12 입니다','행정각부의 설치·조직과 직무범위는 법률로 정한다. 대통령은 국회에 출석하여 발언하거나 서한으로 의견을 표시할 수 있다. 이 헌법에 의한 최초의 대통령의 임기는 이 헌법시행일로부터 개시한다. 국가유공자·상이군경 및 전몰군경의 유가족은 법률이 정하는 바에 의하여 우선적으로 근로의 기회를 부여받는다. 누구든지 체포 또는 구속을 당한 때에는 적부의 심사를 법원에 청구할 권리를 가진다. 대통령은 제1항과 제2항의 처분 또는 명령을 한 때에는 지체없이 국회에 보고하여 그 승인을 얻어야 한다. 농업생산성의 제고와 농지의 합리적인 이용을 위하거나 불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는 바에 의하여 인정된다.
+
+이 헌법은 1988년 2월 25일부터 시행한다. 다만, 이 헌법을 시행하기 위하여 필요한 법률의 제정·개정과 이 헌법에 의한 대통령 및 국회의원의 선거 기타 이 헌법시행에 관한 준비는 이 헌법시행 전에 할 수 있다. 지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다. 국무회의는 대통령·국무총리와 15인 이상 30인 이하의 국무위원으로 구성한다. 국회는 국가의 예산안을 심의·확정한다. 평화통일정책의 수립에 관한 대통령의 자문에 응하기 위하여 민주평화통일자문회의를 둘 수 있다. 헌법재판소는 법률에 저촉되지 아니하는 범위안에서 심판에 관한 절차, 내부규율과 사무처리에 관한 규칙을 제정할 수 있다.','2021-02-01',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (13,13,15,3,'테스트 13 입니다','국무총리는 국무위원의 해임을 대통령에게 건의할 수 있다. 군사재판을 관할하기 위하여 특별법원으로서 군사법원을 둘 수 있다. 국회의 정기회는 법률이 정하는 바에 의하여 매년 1회 집회되며, 국회의 임시회는 대통령 또는 국회재적의원 4분의 1 이상의 요구에 의하여 집회된다. 모든 국민은 법 앞에 평등하다. 누구든지 성별·종교 또는 사회적 신분에 의하여 정치적·경제적·사회적·문화적 생활의 모든 영역에 있어서 차별을 받지 아니한다. 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다.
+
+혼인과 가족생활은 개인의 존엄과 양성의 평등을 기초로 성립되고 유지되어야 하며, 국가는 이를 보장한다. 군사법원의 조직·권한 및 재판관의 자격은 법률로 정한다. 국회는 의장 1인과 부의장 2인을 선출한다. 감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타 필요한 사항은 법률로 정한다. 국가는 여자의 복지와 권익의 향상을 위하여 노력하여야 한다. 대통령은 조약을 체결·비준하고, 외교사절을 신임·접수 또는 파견하며, 선전포고와 강화를 한다. 정기회의 회기는 100일을, 임시회의 회기는 30일을 초과할 수 없다. 국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.','2021-02-09',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (14,14,13,2,'테스트 14 입니다','누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다. 국회는 의원의 자격을 심사하며, 의원을 징계할 수 있다. 여자의 근로는 특별한 보호를 받으며, 고용·임금 및 근로조건에 있어서 부당한 차별을 받지 아니한다. 중앙선거관리위원회는 대통령이 임명하는 3인, 국회에서 선출하는 3인과 대법원장이 지명하는 3인의 위원으로 구성한다. 위원장은 위원중에서 호선한다. 국가는 건전한 소비행위를 계도하고 생산품의 품질향상을 촉구하기 위한 소비자보호운동을 법률이 정하는 바에 의하여 보장한다.
+
+법률이 헌법에 위반되는 여부가 재판의 전제가 된 경우에는 법원은 헌법재판소에 제청하여 그 심판에 의하여 재판한다. 대통령의 임기는 5년으로 하며, 중임할 수 없다. 정당은 그 목적·조직과 활동이 민주적이어야 하며, 국민의 정치적 의사형성에 참여하는데 필요한 조직을 가져야 한다. 대통령은 국회에 출석하여 발언하거나 서한으로 의견을 표시할 수 있다. 국회의원과 정부는 법률안을 제출할 수 있다. 정기회의 회기는 100일을, 임시회의 회기는 30일을 초과할 수 없다. 헌법재판소는 법관의 자격을 가진 9인의 재판관으로 구성하며, 재판관은 대통령이 임명한다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다.','2021-05-03',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (15,15,14,5,'테스트 15 입니다','국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다. 국회는 헌법 또는 법률에 특별한 규정이 없는 한 재적의원 과반수의 출석과 출석의원 과반수의 찬성으로 의결한다. 가부동수인 때에는 부결된 것으로 본다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다. 국회의원의 수는 법률로 정하되, 200인 이상으로 한다. 공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. 대통령은 국회에 출석하여 발언하거나 서한으로 의견을 표시할 수 있다. 대통령이 임시회의 집회를 요구할 때에는 기간과 집회요구의 이유를 명시하여야 한다.
+
+대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한 중요정책을 국민투표에 붙일 수 있다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다. 계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다. 환경권의 내용과 행사에 관하여는 법률로 정한다. 정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에 제출할 수 있다. 모든 국민은 학문과 예술의 자유를 가진다. 명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다.','2021-04-09',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (16,16,15,4,'테스트 16 입니다','국회는 국정을 감사하거나 특정한 국정사안에 대하여 조사할 수 있으며, 이에 필요한 서류의 제출 또는 증인의 출석과 증언이나 의견의 진술을 요구할 수 있다. 공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 국가안전보장회의는 대통령이 주재한다. 근로자는 근로조건의 향상을 위하여 자주적인 단결권·단체교섭권 및 단체행동권을 가진다. 대통령은 조국의 평화적 통일을 위한 성실한 의무를 진다. 대법원장과 대법관이 아닌 법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 모든 국민은 소급입법에 의하여 참정권의 제한을 받거나 재산권을 박탈당하지 아니한다. 일반사면을 명하려면 국회의 동의를 얻어야 한다.
+
+국군은 국가의 안전보장과 국토방위의 신성한 의무를 수행함을 사명으로 하며, 그 정치적 중립성은 준수된다. 국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서 국정을 심의한다. 국가는 농지에 관하여 경자유전의 원칙이 달성될 수 있도록 노력하여야 하며, 농지의 소작제도는 금지된다. 대통령이 임시회의 집회를 요구할 때에는 기간과 집회요구의 이유를 명시하여야 한다. 탄핵소추의 의결을 받은 자는 탄핵심판이 있을 때까지 그 권한행사가 정지된다. 선거운동은 각급 선거관리위원회의 관리하에 법률이 정하는 범위안에서 하되, 균등한 기회가 보장되어야 한다. 대법원장과 대법관이 아닌 법관의 임기는 10년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다.','2021-04-15',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (17,17,12,3,'테스트 17 입니다','국회의원은 국회에서 직무상 행한 발언과 표결에 관하여 국회외에서 책임을 지지 아니한다. 대통령은 헌법과 법률이 정하는 바에 의하여 국군을 통수한다. 대법원장과 대법관이 아닌 법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 국회의원은 국가이익을 우선하여 양심에 따라 직무를 행한다. 국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 원장은 국회의 동의를 얻어 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 이 헌법에 의한 최초의 대통령의 임기는 이 헌법시행일로부터 개시한다. 중앙선거관리위원회는 대통령이 임명하는 3인, 국회에서 선출하는 3인과 대법원장이 지명하는 3인의 위원으로 구성한다. 위원장은 위원중에서 호선한다.
+
+국회는 정부의 동의없이 정부가 제출한 지출예산 각항의 금액을 증가하거나 새 비목을 설치할 수 없다. 모든 국민은 헌법과 법률이 정한 법관에 의하여 법률에 의한 재판을 받을 권리를 가진다. 제2항의 재판관중 3인은 국회에서 선출하는 자를, 3인은 대법원장이 지명하는 자를 임명한다. 대통령의 임기는 5년으로 하며, 중임할 수 없다. 국회는 의장 1인과 부의장 2인을 선출한다. 국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다. 국무총리 또는 행정각부의 장은 소관사무에 관하여 법률이나 대통령령의 위임 또는 직권으로 총리령 또는 부령을 발할 수 있다.','2021-04-25',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (18,18,12,4,'테스트 18 입니다','감사위원은 원장의 제청으로 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 국회의원의 선거구와 비례대표제 기타 선거에 관한 사항은 법률로 정한다. 국가는 농업 및 어업을 보호·육성하기 위하여 농·어촌종합개발과 그 지원등 필요한 계획을 수립·시행하여야 한다. 누구든지 병역의무의 이행으로 인하여 불이익한 처우를 받지 아니한다. 중앙선거관리위원회는 법령의 범위안에서 선거관리·국민투표관리 또는 정당사무에 관한 규칙을 제정할 수 있으며, 법률에 저촉되지 아니하는 범위안에서 내부규율에 관한 규칙을 제정할 수 있다. 나는 헌법을 준수하고 국가를 보위하며 조국의 평화적 통일과 국민의 자유와 복리의 증진 및 민족문화의 창달에 노력하여 대통령으로서의 직책을 성실히 수행할 것을 국민 앞에 엄숙히 선서합니다.
+
+원장은 국회의 동의를 얻어 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다. 근로자는 근로조건의 향상을 위하여 자주적인 단결권·단체교섭권 및 단체행동권을 가진다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다. 헌법재판소 재판관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니한다.','2021-03-04',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (19,19,12,4,'테스트 19 입니다','국회는 법률에 저촉되지 아니하는 범위안에서 의사와 내부규율에 관한 규칙을 제정할 수 있다. 공무원의 직무상 불법행위로 손해를 받은 국민은 법률이 정하는 바에 의하여 국가 또는 공공단체에 정당한 배상을 청구할 수 있다. 이 경우 공무원 자신의 책임은 면제되지 아니한다. 각급 선거관리위원회는 선거인명부의 작성등 선거사무와 국민투표사무에 관하여 관계 행정기관에 필요한 지시를 할 수 있다. 각급 선거관리위원회의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 모든 국민은 인간다운 생활을 할 권리를 가진다. 국회의원은 국가이익을 우선하여 양심에 따라 직무를 행한다. 대통령의 임기는 5년으로 하며, 중임할 수 없다.
+
+국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 선거와 국민투표의 공정한 관리 및 정당에 관한 사무를 처리하기 위하여 선거관리위원회를 둔다. 제2항의 재판관중 3인은 국회에서 선출하는 자를, 3인은 대법원장이 지명하는 자를 임명한다. 국민경제의 발전을 위한 중요정책의 수립에 관하여 대통령의 자문에 응하기 위하여 국민경제자문회의를 둘 수 있다. 국채를 모집하거나 예산외에 국가의 부담이 될 계약을 체결하려 할 때에는 정부는 미리 국회의 의결을 얻어야 한다. 대통령은 국민의 보통·평등·직접·비밀선거에 의하여 선출한다. 감사위원은 원장의 제청으로 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다.','2021-05-01',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (20,20,12,4,'테스트 20 입니다','신체장애자 및 질병·노령 기타의 사유로 생활능력이 없는 국민은 법률이 정하는 바에 의하여 국가의 보호를 받는다. 모든 국민은 인간다운 생활을 할 권리를 가진다. 이 헌법에 의한 최초의 대통령의 임기는 이 헌법시행일로부터 개시한다. 행정권은 대통령을 수반으로 하는 정부에 속한다. 재산권의 행사는 공공복리에 적합하도록 하여야 한다. 의원을 제명하려면 국회재적의원 3분의 2 이상의 찬성이 있어야 한다. 대통령이 제1항의 기간내에 공포나 재의의 요구를 하지 아니한 때에도 그 법률안은 법률로서 확정된다. 국정감사 및 조사에 관한 절차 기타 필요한 사항은 법률로 정한다. 누구든지 체포 또는 구속을 당한 때에는 적부의 심사를 법원에 청구할 권리를 가진다.
+
+연소자의 근로는 특별한 보호를 받는다. 국회는 국무총리 또는 국무위원의 해임을 대통령에게 건의할 수 있다. 모든 국민은 신체의 자유를 가진다. 누구든지 법률에 의하지 아니하고는 체포·구속·압수·수색 또는 심문을 받지 아니하며, 법률과 적법한 절차에 의하지 아니하고는 처벌·보안처분 또는 강제노역을 받지 아니한다. 대통령은 제3항과 제4항의 사유를 지체없이 공포하여야 한다. 국회의원은 국가이익을 우선하여 양심에 따라 직무를 행한다. 중앙선거관리위원회는 대통령이 임명하는 3인, 국회에서 선출하는 3인과 대법원장이 지명하는 3인의 위원으로 구성한다. 위원장은 위원중에서 호선한다.','2021-03-25',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (21,21,12,2,'테스트 21 입니다','평화통일정책의 수립에 관한 대통령의 자문에 응하기 위하여 민주평화통일자문회의를 둘 수 있다. 헌법재판소 재판관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니한다. 국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다. 정기회의 회기는 100일을, 임시회의 회기는 30일을 초과할 수 없다. 대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한 중요정책을 국민투표에 붙일 수 있다. 대통령은 전시·사변 또는 이에 준하는 국가비상사태에 있어서 병력으로써 군사상의 필요에 응하거나 공공의 안녕질서를 유지할 필요가 있을 때에는 법률이 정하는 바에 의하여 계엄을 선포할 수 있다.
+
+법관이 중대한 심신상의 장해로 직무를 수행할 수 없을 때에는 법률이 정하는 바에 의하여 퇴직하게 할 수 있다. 국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다. 국가는 균형있는 국민경제의 성장 및 안정과 적정한 소득의 분배를 유지하고, 시장의 지배와 경제력의 남용을 방지하며, 경제주체간의 조화를 통한 경제의 민주화를 위하여 경제에 관한 규제와 조정을 할 수 있다. 대통령은 법률이 정하는 바에 의하여 사면·감형 또는 복권을 명할 수 있다. 근로자는 근로조건의 향상을 위하여 자주적인 단결권·단체교섭권 및 단체행동권을 가진다.','2021-04-22',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (22,22,12,3,'테스트 22 입니다','공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. 대통령·국무총리·국무위원·행정각부의 장·헌법재판소 재판관·법관·중앙선거관리위원회 위원·감사원장·감사위원 기타 법률이 정한 공무원이 그 직무집행에 있어서 헌법이나 법률을 위배한 때에는 국회는 탄핵의 소추를 의결할 수 있다. 국회에서 의결된 법률안은 정부에 이송되어 15일 이내에 대통령이 공포한다. 대통령은 취임에 즈음하여 다음의 선서를 한다. 대통령은 조국의 평화적 통일을 위한 성실한 의무를 진다. 대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다.
+
+원장은 국회의 동의를 얻어 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 국민의 모든 자유와 권리는 국가안전보장·질서유지 또는 공공복리를 위하여 필요한 경우에 한하여 법률로써 제한할 수 있으며, 제한하는 경우에도 자유와 권리의 본질적인 내용을 침해할 수 없다. 국무위원은 국무총리의 제청으로 대통령이 임명한다. 형사피해자는 법률이 정하는 바에 의하여 당해 사건의 재판절차에서 진술할 수 있다. 대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다. 대통령은 조약을 체결·비준하고, 외교사절을 신임·접수 또는 파견하며, 선전포고와 강화를 한다.','2021-04-09',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (23,23,12,5,'테스트 23 입니다','대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를 존중함을 기본으로 한다. 대법원은 법률에 저촉되지 아니하는 범위안에서 소송에 관한 절차, 법원의 내부규율과 사무처리에 관한 규칙을 제정할 수 있다. 국회는 헌법개정안이 공고된 날로부터 60일 이내에 의결하여야 하며, 국회의 의결은 재적의원 3분의 2 이상의 찬성을 얻어야 한다. 국회의원은 법률이 정하는 직을 겸할 수 없다. 대법원장의 임기는 6년으로 하며, 중임할 수 없다. 공무원의 신분과 정치적 중립성은 법률이 정하는 바에 의하여 보장된다. 학교교육 및 평생교육을 포함한 교육제도와 그 운영, 교육재정 및 교원의 지위에 관한 기본적인 사항은 법률로 정한다.
+
+이 헌법은 1988년 2월 25일부터 시행한다. 다만, 이 헌법을 시행하기 위하여 필요한 법률의 제정·개정과 이 헌법에 의한 대통령 및 국회의원의 선거 기타 이 헌법시행에 관한 준비는 이 헌법시행 전에 할 수 있다. 모든 국민은 고문을 받지 아니하며, 형사상 자기에게 불리한 진술을 강요당하지 아니한다. 국무총리·국무위원 또는 정부위원은 국회나 그 위원회에 출석하여 국정처리상황을 보고하거나 의견을 진술하고 질문에 응답할 수 있다. 피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다.','2021-01-05',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (24,24,12,4,'테스트 24 입니다','국회의 정기회는 법률이 정하는 바에 의하여 매년 1회 집회되며, 국회의 임시회는 대통령 또는 국회재적의원 4분의 1 이상의 요구에 의하여 집회된다. 모든 국민의 재산권은 보장된다. 그 내용과 한계는 법률로 정한다. 대통령은 국무회의의 의장이 되고, 국무총리는 부의장이 된다. 대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한 중요정책을 국민투표에 붙일 수 있다. 각급 선거관리위원회의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 대법원에 대법관을 둔다. 다만, 법률이 정하는 바에 의하여 대법관이 아닌 법관을 둘 수 있다. 형사피해자는 법률이 정하는 바에 의하여 당해 사건의 재판절차에서 진술할 수 있다.
+
+대통령이 궐위되거나 사고로 인하여 직무를 수행할 수 없을 때에는 국무총리, 법률이 정한 국무위원의 순서로 그 권한을 대행한다. 외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 모든 국민은 법률이 정하는 바에 의하여 국방의 의무를 진다. 행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 국민의 자유와 권리는 헌법에 열거되지 아니한 이유로 경시되지 아니한다. 국가는 농지에 관하여 경자유전의 원칙이 달성될 수 있도록 노력하여야 하며, 농지의 소작제도는 금지된다. 국가는 노인과 청소년의 복지향상을 위한 정책을 실시할 의무를 진다. 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 재직중 형사상의 소추를 받지 아니한다.','2021-05-03',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (25,25,12,5,'테스트 25 입니다','국회는 국정을 감사하거나 특정한 국정사안에 대하여 조사할 수 있으며, 이에 필요한 서류의 제출 또는 증인의 출석과 증언이나 의견의 진술을 요구할 수 있다. 국회는 의원의 자격을 심사하며, 의원을 징계할 수 있다. 대통령의 임기는 5년으로 하며, 중임할 수 없다. 행정각부의 설치·조직과 직무범위는 법률로 정한다. 체포·구속·압수 또는 수색을 할 때에는 적법한 절차에 따라 검사의 신청에 의하여 법관이 발부한 영장을 제시하여야 한다. 다만, 현행범인인 경우와 장기 3년 이상의 형에 해당하는 죄를 범하고 도피 또는 증거인멸의 염려가 있을 때에는 사후에 영장을 청구할 수 있다. 국무총리는 대통령을 보좌하며, 행정에 관하여 대통령의 명을 받아 행정각부를 통할한다.
+
+국회는 정부의 동의없이 정부가 제출한 지출예산 각항의 금액을 증가하거나 새 비목을 설치할 수 없다. 사회적 특수계급의 제도는 인정되지 아니하며, 어떠한 형태로도 이를 창설할 수 없다. 제안된 헌법개정안은 대통령이 20일 이상의 기간 이를 공고하여야 한다. 헌법개정안이 제2항의 찬성을 얻은 때에는 헌법개정은 확정되며, 대통령은 즉시 이를 공포하여야 한다. 국가안전보장회의는 대통령이 주재한다. 국무총리·국무위원 또는 정부위원은 국회나 그 위원회에 출석하여 국정처리상황을 보고하거나 의견을 진술하고 질문에 응답할 수 있다. 국회의원의 수는 법률로 정하되, 200인 이상으로 한다. 누구든지 체포 또는 구속의 이유와 변호인의 조력을 받을 권리가 있음을 고지받지 아니하고는 체포 또는 구속을 당하지 아니한다. 체포 또는 구속을 당한 자의 가족등 법률이 정하는 자에게는 그 이유와 일시·장소가 지체없이 통지되어야 한다.','2021-02-19',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (26,26,12,5,'테스트 26 입니다','국회에서 의결된 법률안은 정부에 이송되어 15일 이내에 대통령이 공포한다. 공무원은 국민전체에 대한 봉사자이며, 국민에 대하여 책임을 진다. 헌법재판소 재판관은 정당에 가입하거나 정치에 관여할 수 없다. 국회에 제출된 법률안 기타의 의안은 회기중에 의결되지 못한 이유로 폐기되지 아니한다. 다만, 국회의원의 임기가 만료된 때에는 그러하지 아니하다. 대통령은 국가의 안위에 관계되는 중대한 교전상태에 있어서 국가를 보위하기 위하여 긴급한 조치가 필요하고 국회의 집회가 불가능한 때에 한하여 법률의 효력을 가지는 명령을 발할 수 있다. 국가안전보장에 관련되는 대외정책·군사정책과 국내정책의 수립에 관하여 국무회의의 심의에 앞서 대통령의 자문에 응하기 위하여 국가안전보장회의를 둔다.
+
+이 헌법중 공무원의 임기 또는 중임제한에 관한 규정은 이 헌법에 의하여 그 공무원이 최초로 선출 또는 임명된 때로부터 적용한다. 국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다. 공공필요에 의한 재산권의 수용·사용 또는 제한 및 그에 대한 보상은 법률로써 하되, 정당한 보상을 지급하여야 한다. 군인 또는 군무원이 아닌 국민은 대한민국의 영역안에서는 중대한 군사상 기밀·초병·초소·유독음식물공급·포로·군용물에 관한 죄중 법률이 정한 경우와 비상계엄이 선포된 경우를 제외하고는 군사법원의 재판을 받지 아니한다. 정당은 그 목적·조직과 활동이 민주적이어야 하며, 국민의 정치적 의사형성에 참여하는데 필요한 조직을 가져야 한다.','2021-04-04',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (27,27,12,4,'테스트 27 입니다','여자의 근로는 특별한 보호를 받으며, 고용·임금 및 근로조건에 있어서 부당한 차별을 받지 아니한다. 이 헌법에 의한 최초의 대통령의 임기는 이 헌법시행일로부터 개시한다. 국회에 제출된 법률안 기타의 의안은 회기중에 의결되지 못한 이유로 폐기되지 아니한다. 다만, 국회의원의 임기가 만료된 때에는 그러하지 아니하다. 국회는 상호원조 또는 안전보장에 관한 조약, 중요한 국제조직에 관한 조약, 우호통상항해조약, 주권의 제약에 관한 조약, 강화조약, 국가나 국민에게 중대한 재정적 부담을 지우는 조약 또는 입법사항에 관한 조약의 체결·비준에 대한 동의권을 가진다. 누구든지 체포 또는 구속의 이유와 변호인의 조력을 받을 권리가 있음을 고지받지 아니하고는 체포 또는 구속을 당하지 아니한다. 체포 또는 구속을 당한 자의 가족등 법률이 정하는 자에게는 그 이유와 일시·장소가 지체없이 통지되어야 한다.
+
+대통령은 제4항과 제5항의 규정에 의하여 확정된 법률을 지체없이 공포하여야 한다. 제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다. 대통령은 내우·외환·천재·지변 또는 중대한 재정·경제상의 위기에 있어서 국가의 안전보장 또는 공공의 안녕질서를 유지하기 위하여 긴급한 조치가 필요하고 국회의 집회를 기다릴 여유가 없을 때에 한하여 최소한으로 필요한 재정·경제상의 처분을 하거나 이에 관하여 법률의 효력을 가지는 명령을 발할 수 있다. 재의의 요구가 있을 때에는 국회는 재의에 붙이고, 재적의원과반수의 출석과 출석의원 3분의 2 이상의 찬성으로 전과 같은 의결을 하면 그 법률안은 법률로서 확정된다.','2021-03-03',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (28,28,12,3,'테스트 28 입니다','이 헌법시행 당시의 법령과 조약은 이 헌법에 위배되지 아니하는 한 그 효력을 지속한다. 통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다. 헌법개정안은 국회가 의결한 후 30일 이내에 국민투표에 붙여 국회의원선거권자 과반수의 투표와 투표자 과반수의 찬성을 얻어야 한다. 이 헌법중 공무원의 임기 또는 중임제한에 관한 규정은 이 헌법에 의하여 그 공무원이 최초로 선출 또는 임명된 때로부터 적용한다. 명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다. 사회적 특수계급의 제도는 인정되지 아니하며, 어떠한 형태로도 이를 창설할 수 없다.
+
+국무총리는 국무위원의 해임을 대통령에게 건의할 수 있다. 대법원장의 임기는 6년으로 하며, 중임할 수 없다. 대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다. 피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다. 국회가 재적의원 과반수의 찬성으로 계엄의 해제를 요구한 때에는 대통령은 이를 해제하여야 한다. 대통령은 내우·외환·천재·지변 또는 중대한 재정·경제상의 위기에 있어서 국가의 안전보장 또는 공공의 안녕질서를 유지하기 위하여 긴급한 조치가 필요하고 국회의 집회를 기다릴 여유가 없을 때에 한하여 최소한으로 필요한 재정·경제상의 처분을 하거나 이에 관하여 법률의 효력을 가지는 명령을 발할 수 있다.','2021-03-21',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
+Insert into NADURI.REVIEW (R_NO,L_NO,M_NO,R_RANK,R_TITLE,R_CONTENT,R_PERIOD,R_WITH,R_DATE,R_UPDATE,R_LIKE,R_COUNT,R_STATUS) values (29,29,12,5,'테스트 29 입니다','법관은 헌법과 법률에 의하여 그 양심에 따라 독립하여 심판한다. 각급 선거관리위원회는 선거인명부의 작성등 선거사무와 국민투표사무에 관하여 관계 행정기관에 필요한 지시를 할 수 있다. 국회의원은 국가이익을 우선하여 양심에 따라 직무를 행한다. 국가의 세입·세출의 결산, 국가 및 법률이 정한 단체의 회계검사와 행정기관 및 공무원의 직무에 관한 감찰을 하기 위하여 대통령 소속하에 감사원을 둔다. 언론·출판은 타인의 명예나 권리 또는 공중도덕이나 사회윤리를 침해하여서는 아니된다. 언론·출판이 타인의 명예나 권리를 침해한 때에는 피해자는 이에 대한 피해의 배상을 청구할 수 있다.
+
+국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서 국정을 심의한다. 군인은 현역을 면한 후가 아니면 국무총리로 임명될 수 없다. 감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타 필요한 사항은 법률로 정한다. 모든 국민은 법률이 정하는 바에 의하여 납세의 의무를 진다. 제2항과 제3항의 처분에 대하여는 법원에 제소할 수 없다. 원장은 국회의 동의를 얻어 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 모든 국민은 근로의 권리를 가진다. 국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며, 법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.','2021-04-20',2,to_date('21/05/07','RR/MM/DD'),to_date('21/05/07','RR/MM/DD'),0,0,'Y');
 REM INSERTING into NADURI.SPOT
 SET DEFINE OFF;
 Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (1,501,'제주 관덕정분식','1','064-757-0503','11:00 ~ 22:00','제주특별자치도 제주시 일도1동 1448',33.51257038,126.5243201,'Y',to_date('21/05/04','RR/MM/DD'),0);
@@ -3588,7 +3869,7 @@ Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_
 Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (293,793,'암각화사진속으로','1','052-264-6457','11:00 ~ 22:00','울산 울주군 언양읍 대곡리 861-5',35.60850866,129.1755279,'Y',to_date('21/05/04','RR/MM/DD'),0);
 Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (294,794,'대산한우촌','1','063-635-9253','11:00 ~ 22:00','전북 남원시 대산면 신계리 산 95-3',35.41880853,127.3047145,'Y',to_date('21/05/04','RR/MM/DD'),0);
 Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (732,1232,'올레길 11코스(모슬포-무릉 올레)','2',null,'11:00 ~ 22:00','제주특별자치도 서귀포시 대정읍 동일리',33.2530758,126.2582191,'Y',to_date('21/05/06','RR/MM/DD'),0);
-Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (733,1233,'단산','2',null,'11:00 ~ 22:00','제주특별자치도 서귀포시 안덕면 사계리 3123-1',33.2426972,126.2885859,'Y',to_date('21/05/06','RR/MM/DD'),0);
+Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (733,1233,'단산','2',null,'11:00 ~ 22:00','제주특별자치도 서귀포시 안덕면 사계리 3123-1',33.2426972,126.2885859,'N',to_date('21/05/06','RR/MM/DD'),0);
 Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (734,1234,'제주유배길 추사유배길 집념의길','2',null,'11:00 ~ 22:00','제주특별자치도 서귀포시 대정읍 인성리',33.2496623,126.2787518,'Y',to_date('21/05/06','RR/MM/DD'),0);
 Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (735,1235,'윗세오름','2',null,'11:00 ~ 22:00','제주특별자치도 서귀포시 서호동',33.3607353,126.521022,'Y',to_date('21/05/06','RR/MM/DD'),0);
 Insert into NADURI.SPOT (S_ID,L_NO,S_NAME,S_TYPE,S_TEL,S_TIME,S_ADDRESS,S_LAT,S_LNG,S_STATUS,S_DATE,S_COUNT) values (736,1236,'한라산 장구목','2',null,'11:00 ~ 22:00','제주특별자치도 제주시 애월읍 광령리 산 183-6',33.3662832,126.5250876,'Y',to_date('21/05/06','RR/MM/DD'),0);

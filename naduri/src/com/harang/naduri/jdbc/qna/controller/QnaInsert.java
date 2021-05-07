@@ -30,6 +30,8 @@ public class QnaInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		int m_no = Integer.parseInt(request.getParameter("m_no"));
 		int l_no = Integer.parseInt(request.getParameter("l_no"));
 		String q_title = request.getParameter("q_title");

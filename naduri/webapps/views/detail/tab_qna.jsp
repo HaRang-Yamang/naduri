@@ -209,7 +209,7 @@
                                 </div>
                             </div>
                             <!-- 댓글 작성 내용 -->
-                            <div class="write_comment_area">
+                            <%-- <div class="write_comment_area">
                                 <form action="" class="write_comment" method="post">
                                 <input type="hidden" name="writer" value="<%=m.getMno()%>"/>
 								<input type="hidden" name="refcno" value="<%= bco.getCno() %>" />
@@ -222,7 +222,7 @@
                                         <input type="reset" value="취소하기">
                                     </div>
                                 </form>
-                            </div>
+                            </div> --%>
                             </div>
         </div>
 	
@@ -234,12 +234,12 @@
     			<script>
 
 			// 게시글 번호 가져오기
-			var rno = '<%= r.getRno() %>';
+			<%-- var rno = '<%= r.getRno() %>';
 
 				// 댓글 번호 가져오기
 				var cno = $(obj).siblings('input').val();
 				
 	
 				
-			}
+			} --%>
 		</script>

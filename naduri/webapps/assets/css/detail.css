@@ -198,7 +198,7 @@ p, summary{
     visibility: visible;
 }
 .tab-content{
-    display : none;
+   /*  display : none; */
 }
 .tab-content.current{
     display : inherit;

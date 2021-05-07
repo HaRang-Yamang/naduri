@@ -36,6 +36,7 @@ ArrayList<lo_key> lokey = (ArrayList<lo_key>) request.getAttribute("lokey");
 		<div class="writeFrm">
 			<form id="insertForm" action="/naduri/insert.re" method="post"
 				enctype="multipart/form-data">
+				<input type="hidden" name="l_no" value="<%= request.getParameter("l_no")%>">
 				<h2>리뷰 작성</h2>
 				<div class="container">
 					<table>

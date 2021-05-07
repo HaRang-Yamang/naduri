@@ -3,7 +3,7 @@
 
 <div class="nearArea">
 	            <!-- 지도 -->
-	            <div class="mapArea"></div>
+	            <div class="map_box"></div>
 	
 	            <div class="nearPlace">
 	                <div class="nearPlace_title">
@@ -53,3 +53,6 @@
 	                </div>
 	            </div>
 	        </div>
+	        
+	        
+	     

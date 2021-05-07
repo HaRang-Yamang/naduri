@@ -79,7 +79,7 @@ ArrayList<Heritage> hlist = (ArrayList<Heritage>) request.getAttribute("hlist");
 				<div id="s_result">
 					<!--  검색 결과 불러오는 div -->
 					<div class="row">
-						<div class="hotSpot heritage food spot" id="">
+						<div class="hotSpot heritage food spot" id="<%= listHeri.get(0).getL_no() %>">
 							<!-- 클래스명 수정 필 -->
 							<img src="<%=listHeri.get(0).getImageUrl()%>">
 							<!-- 검색한 장소 이미지 불러와야  -->
@@ -148,21 +148,21 @@ ArrayList<Heritage> hlist = (ArrayList<Heritage>) request.getAttribute("hlist");
 				// DB데이터에 담긴 좌표를 마커를 표시해 주는 positions 배열에 담아주는 반복문
 				var positions = [
 						<%for (Heritage h : hlist) {
-	out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' + h.getL_no() + '"' + "style="
-			+ '"' + "text-align:center; width:150px;" + '"' +
-
-			">" + h.getH_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" + h.getH_lat() + ", " + h.getH_lng()
-			+ ") }, ");
-}
-
-for (Spot s : slist) {
-	out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' + s.getL_no() + '"' + "style="
-			+ '"' + "text-align:center; width:150px;" + '"' +
-
-			">" + s.getS_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" + s.getS_lat() + ", " + s.getS_lng()
-			+ ") }, ");
-}%>
-					];
+					out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' + h.getL_no() + '"' + "style="
+							+ '"' + "text-align:center; width:150px;" + '"' +
+				
+							">" + h.getH_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" + h.getH_lat() + ", " + h.getH_lng()
+							+ ") }, ");
+				}
+				
+				for (Spot s : slist) {
+					out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"' + s.getL_no() + '"' + "style="
+							+ '"' + "text-align:center; width:150px;" + '"' +
+				
+							">" + s.getS_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" + s.getS_lat() + ", " + s.getS_lng()
+							+ ") }, ");
+				}%>
+									];
 				
 				console.log(positions); // 배열에 전부 담기 성공.
 				
@@ -289,27 +289,27 @@ for (Spot s : slist) {
 									// $('.hotSpot').addClass("heritage");
 									
 								   		$('#thumbloop').html( $('#thumbloop').html() +
-												   '<div class="hotSpot heritage">'+
+												   '<div class="hotSpot heritage" id="'+idArr[i]+'">'+ 
 												   '<img src="/naduri/resources/thumb/1.jpg">'+							
 												   	'<div class="spotInfo">'+
 										            		 '<h4>'+nameArr[i]+'</h4>'+
 										            		'</div>'+
 									           		'</div>'
 									       );
-								   	} else if(500< idArr[i] <1000){
+								   	} else if(idArr[i] <1000){
 								   	// $('.hotSpot').addClass("food");
 								   		$('#thumbloop').html( $('#thumbloop').html() +
-												   '<div class="hotSpot food">'+
+												   '<div class="hotSpot food id="'+idArr[i]+'">'+
 												   '<img src="/naduri/resources/thumb/5.jpg">'+							
 												   	'<div class="spotInfo">'+
 										            		 '<h4>'+nameArr[i]+'</h4>'+
 										            		'</div>'+
 									           		'</div>'
 									       );
-								   	} else if(1000 < idArr[i]) {
+								   	} else {
 								   	//	$('.hotSpot').addClass("spot");
 								   		$('#thumbloop').html( $('#thumbloop').html() +
-												   '<div class="hotSpot spot">'+
+												   '<div class="hotSpot spot id="'+idArr[i]+'">'+
 												   '<img src="/naduri/resources/thumb/3.jpg">'+							
 												   	'<div class="spotInfo">'+
 										            		 '<h4>'+nameArr[i]+'</h4>'+

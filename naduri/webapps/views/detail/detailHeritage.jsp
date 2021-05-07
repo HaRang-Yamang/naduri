@@ -268,7 +268,7 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	                </ul>
 	            </div>
 
-<<<<<<< HEAD
+
 	            <div class="infoDetailArea">
 	                <!-- 테이블-->
 	                <div class="infoTable">
@@ -339,6 +339,26 @@ com.harang.naduri.jdbc.attach.model.vo.*" %>
 	
 	        <!-- 근처 장소 영역 -->
 	        <%@ include file="nearArea.jsp" %>
+	        
+	        
+	        <script>
+	        $(function(){
+	        var lat = <%= listHeri.get(0).getLatitude()%>; 
+	       	var lng = <%= listHeri.get(0).getLongitude() %>;
+	       	var hh = <%= listHeri.get(0).getH_name() %>;
+	        
+	        var positions = [
+	        	out.println("{ content : '" + "<div class=" + '"' + "lmark" + '"' + " id=" + '"hi"' + "style="
+						+ '"' + "text-align:center; width:150px;" + '"' +
+			
+						">" + h.getH_name() + "</div>', " + " latlng: new kakao.maps.LatLng(" + h.getH_lat() + ", " + h.getH_lng()
+						+ ") }, ");
+					}
+	        	];       
+	        
+			console.log(positions); // 배열에 전부 담기 성공.
+			});
+	        </script>
 	        
 	        <!-- 탭 -->
 	        <div class="write_btn">

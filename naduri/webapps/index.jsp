@@ -102,10 +102,10 @@
 
         <div class="search">
 
-            <input type="text" placeholder="가고 싶은 곳을 검색하세요" id="sLoc">
+            <input type="text" placeholder="가고 싶은 곳을 검색하세요(경복궁, 독립문, 흥인지문)" id="sLoc">
             <i class="fas fa-search" aria-hidden="true"></i>
 
-            <input class="search_val"type="text" placeholder="가고 싶은 곳을 검색하세요">
+            <input class="search_val"type="text" placeholder="가고 싶은 곳을 검색하세요(예. 경복궁, 독립문, 흥인지문)">
             <div id='searchResult'></div>
             <i class="fas fa-search" aria-hidden="true"></i>
 

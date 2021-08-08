@@ -207,48 +207,50 @@ public class GoToSearchResult extends HttpServlet {
 			
 			
 			// 장소테이블 조회하러 출발
-			if ( ls_code == 2 ) {
-				
-				// 객체 준비
-				HashMap<String, Object> map = new HashMap<>();
-				ArrayList<lo_key> lokey = new ArrayList<>();
+//			if ( ls_code == 2 ) {
 				
 				
-				// 서비스 준비
-				ThumbnailService spotService = new ThumbnailService();
-				
-				// 결과를 list 객체에 저장
-				map = spotService.spotDetail(l_no2);
-				
-				System.out.println("controller map : "+map);
-				
-				if ( map != null) {
-
-				
-				// request에 list 객체 담아서 보냄
-				request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
-				request.setAttribute("spotlo", map.get("spotlo"));
-				request.setAttribute("map", map);
-				
-				
-				System.out.println("map : " + map);
-			//	System.out.println("controller : " + map.get("keyword"));
-		//		System.out.println("controller : " + map.get("spotlo"));
-			
-					request.getRequestDispatcher("views/search/search.jsp")
-			       .forward(request, response);
-
-			}
-				
-
-			}
+//				
+//				// 객체 준비
+//				HashMap<String, Object> map = new HashMap<>();
+//				ArrayList<lo_key> lokey = new ArrayList<>();
+//				
+//				
+//				// 서비스 준비
+//				ThumbnailService spotService = new ThumbnailService();
+//				
+//				// 결과를 list 객체에 저장
+//				map = spotService.spotDetail(l_no2);
+//				
+//				System.out.println("controller map : "+map);
+//				
+//				if ( map != null) {
+//
+//				
+//				// request에 list 객체 담아서 보냄
+//				request.setAttribute("keyword", map.get("keyword")); // 맛집/여행지 정보 ( spot )
+//				request.setAttribute("spotlo", map.get("spotlo"));
+//				request.setAttribute("map", map);
+//				
+//				
+//				System.out.println("map : " + map);
+//			
+//				
+//				RequestDispatcher view = request.getRequestDispatcher("views/search/search.jsp");
+//				
+//				view.forward(request, response);
+//
+//			}
+//				
+//
+//			}
 			
 			//------------------------------------- 3. select Name (Heritage) ----------------------------------------//
 			// 이 부분의 코드는 Heritage mvc 폴더에 있습니다. ^^ 
 				
 			//------------------------------------ 문화재인 경우 API 호출 -----------------------------------------//
 			// ls_code가 1(문화재)인 경우에만 아래 로직 수행
-			else if ( ls_code == 1 ) {
+				if ( ls_code == 1 ) {
 			
 				// 서버에서 문화재 정보 검색하러 출발
 				
@@ -395,8 +397,14 @@ public class GoToSearchResult extends HttpServlet {
 								request.getRequestDispatcher("views/search/search.jsp");
 						
 						view.forward(request, response);
-			}
-					}	// main end
+				} else {
+					RequestDispatcher view = request.getRequestDispatcher("views/search/errorPage.jsp");
+					view.forward(request, response);
+					
+				}
+				
+				
+			}	// main end
 	
 	}
 

@@ -54,71 +54,70 @@ ArrayList<Heritage> hlist = (ArrayList<Heritage>) request.getAttribute("hlist");
 	<section>
 		<div class="search_area">
 			<div class="search">
-				<input class="search_val" type="text" placeholder="가고 싶은 곳을 검색하세요">
+				<input class="search_val" type="text" placeholder="가고 싶은 곳을 검색하세요(예. 경복궁, 독립문, 흥인지문)">
 				<i class="fas fa-search" aria-hidden="true"></i>
 			</div>
 		</div>
 
-		<div class="map_box">
-			<!-- 지도를 표시할 div 입니다 -->
+		
 
 
 			<!-- 검색 결과에서 받아올 값에 따라 결과창에 결과 표시 or 검색 결과 없음 표시하기위한 if 조건문 시작 -->
-			<%
-			if (listHeri.get(0).getL_no() > 0) {
-			%>
-			<div id="map"></div>
+			<% if(listHeri.size() > 0) { %>
+			<div class="map_box">
+				<!-- 지도를 표시할 div 입니다 -->
+				<div id="map"></div>
 
-		</div>
-
-		<!-- hot keword -->
-		<div class="main_body">
-
-			<div class="hot_keword">
-				<h2>검색 결과</h2>
-				<div id="s_result">
-					<!--  검색 결과 불러오는 div -->
-					<div class="row">
-						<div class="hotSpot heritage food spot" id="<%= listHeri.get(0).getL_no() %>">
-							<!-- 클래스명 수정 필 -->
-							<img src="<%=listHeri.get(0).getImageUrl()%>">
-							<!-- 검색한 장소 이미지 불러와야  -->
-							<div class="spotInfo">
-								<h4><%=listHeri.get(0).getH_name()%></h4>
-								<!--  검색 장소 이름  -->
+			</div>
+	
+			<!-- hot keword -->
+			<div class="main_body">
+	
+				<div class="hot_keword">
+					<h2>검색 결과</h2>
+					<div id="s_result">
+						<!--  검색 결과 불러오는 div -->
+						<div class="row">
+							<div class="hotSpot heritage food spot" id="<%= listHeri.get(0).getL_no() %>">
+								<!-- 클래스명 수정 필 -->
+								<img src="<%=listHeri.get(0).getImageUrl()%>">
+								<!-- 검색한 장소 이미지 불러와야  -->
+								<div class="spotInfo">
+									<h4><%=listHeri.get(0).getH_name()%></h4>
+									<!--  검색 장소 이름  -->
+								</div>
 							</div>
 						</div>
 					</div>
+					<h2>주변명소 골라보기</h2>
+					<ul class="tag">
+						<li class="list active" data-filter="All">전체보기</li>
+						<li class="list" data-filter="heritage">#문화재</li>
+						<li class="list" data-filter="food">#맛집</li>
+						<li class="list" data-filter="spot">#여행지</li>
+					</ul>
+	
 				</div>
-				<h2>주변명소 골라보기</h2>
-				<ul class="tag">
-					<li class="list active" data-filter="All">전체보기</li>
-					<li class="list" data-filter="heritage">#문화재</li>
-					<li class="list" data-filter="food">#맛집</li>
-					<li class="list" data-filter="spot">#여행지</li>
-				</ul>
-
+	
 			</div>
-
-		</div>
-
-		<div>
-			<!-- featured images -->
-			<div class="featured">
-				<div class="small-container" id="thumbloop"></div>
+	
+			<div>
+				<!-- featured images -->
+				<div class="featured">
+					<div class="small-container" id="thumbloop"></div>
+				</div>
 			</div>
-		</div>
 
 		<!-- 만약 검색 결과가 없을 때 나오는 else 구문 -->
 		<%
-		} else {
+			} else {
 		%>
-		<div class='not_found'>
-			<p class='not_found_message'>
-				나드리 데이터베이스에서 검색 결과를 찾을 수 없습니다.<br> 문화재, 음식점, 여행지 이름으로 다시 검색해
-				주세요.
-			</p>
-		</div>
+			<div class='not_found'>
+				<p class='not_found_message'>
+					나드리 데이터베이스에서 검색 결과를 찾을 수 없습니다.<br> 문화재, 음식점, 여행지 이름으로 다시 검색해
+					주세요.
+				</p>
+			</div>
 
 		<%
 		}

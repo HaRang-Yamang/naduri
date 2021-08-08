@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 footer{
-    left: 0; 
+	position : absolute;
     bottom: 0; 
     width: 100%;
     height: 36px;
@@ -15,6 +15,7 @@ footer{
 .footerInfo{
     color: white;
     font-size: 10pt;
+    margin-top:10px;
 }
 .footerArea > a{
     color: white;

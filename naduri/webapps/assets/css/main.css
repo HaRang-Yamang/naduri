@@ -1,10 +1,9 @@
 @charset "UTF-8";
 
-
 /* index.jsp header 태그 css */
 /* header */
 header{
-    background-image: url("../images/header/main_img.jpg");
+    background-image: url("/naduri/assets/images/header/main_img.jpg");
     width: 100%;
     height: 370px;
 }
@@ -157,7 +156,7 @@ header .search .fa-search {
     position: absolute;
     color: var(--white-color);
     background-color: var(--main-color);
-    padding: 14px;
+    padding: 16px;
     transform: translateY(3px);
 }
 
@@ -169,7 +168,7 @@ header .search .fa-search {
  .main_body {
     display: inline-block;
     width: 100%;
-    padding : 30px 0 30px 0;
+    padding-bottom : 30px;
 }
 
 .hot_keword {
@@ -177,7 +176,7 @@ header .search .fa-search {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 30px 0;
+    margin-bottom: 30px;
     transform: translateX(-20px);
  }
 
@@ -207,11 +206,16 @@ header .search .fa-search {
 .areaList{
 	padding-bottom : 150px;
 }
+.featured{
+	width : 1000px;
+}
 .small-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows : repeat(3, 1fr);
     align-items: center;
     flex-wrap: wrap; 
-    justify-content: space-around;    
+    justify-content: space-around;   
 }
 
 /* 찜 icon */

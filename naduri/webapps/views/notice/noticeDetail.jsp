@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@
+	page import="com.harang.naduri.jdbc.notice.model.vo.*, java.util.*"
+ %>
+    <!-- 서블릿이 넘긴 n의 정보를 받아오기 -->
+<%
+	Notice n = (Notice)request.getAttribute("notice");	// 서블릿이 보낸 "notice"받아오기
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link href="/naduri/assets/images/naduri.ico" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="../../assets/css/common/reset.css" />
-<link rel="stylesheet" href="../../assets/css/common/header.css" />
-<link rel="stylesheet" href="../../assets/css/notice.css" />
-<link rel="stylesheet" href="../../assets/css/common/footer.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/reset.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/header.css" />
+<link rel="stylesheet" href="/naduri/assets/css/notice.css" />
+<link rel="stylesheet" href="/naduri/assets/css/common/footer.css" />
 
 <script src="/naduri/assets/js/jquery-3.6.0.min.js"></script>
 
@@ -27,50 +34,53 @@
             <div class="table_area">
                 <table class="notice_table">
                     <tr>
-                        <th id="notice_no">1</th>
-                        <th id='notice_title'>2021년 공휴일 휴무 안내</th>
+                        <th id="notice_no"><%= n.getN_no() %></th>
+                        <th id='notice_title' name="n_title"><%= n.getN_title() %></th>
                         <th id='notice_writer'>관리자</th>
-                        <th id='notice_date'>2021.4.19</th>
+                        <th id='notice_date'><%= n.getN_date() %></th>
                     </tr>
                     <tr>
                         <td></td>
                         <td colspan="3">
-                            <img class="att_icon" src="../../assets/images/icon/attachment.png" alt="첨부파일 아이콘">
-                            <span class="notice_att">첨부파일</span>
+                        	<%-- 파일이 있을때만 보여주도록 함 --%>
+                        	<% if( n.getN_file() != null && n.getN_file().length() > 0 ) { %>
+                            <img class="att_icon" src="../../assets/images/icon/attachment.png">
+                            <span class="notice_att"><a href="/naduri/resources/noticeFiles/<%= n.getN_file() %>">첨부파일 : <%= n.getN_file() %></a></span>
+                            <a href="/naduri/resources/noticeFiles/<%= n.getN_file() %>" download>파일 다운로드</a>
+                            <% } %>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">
                             <div id="textArea">
                                 <p class="textArea">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis expedita eum impedit
-                                    nostrum harum nisi exercitationem quod, ad dolores, iure reprehenderit quidem voluptatum
-                                    qui consequuntur totam nulla ducimus eveniet ratione.
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur praesentium
-                                    tempora non unde ducimus libero modi laboriosam repudiandae delectus. Itaque placeat
-                                    pariatur odio quam reiciendis. Reprehenderit voluptates iste itaque beatae?
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed inventore aliquid esse,
-                                    dolore, corrupti sequi error iste eaque ducimus sapiente, harum ad dolorum dolores. In a
-                                    delectus harum consequatur vero!Lorem
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis expedita eum impedit
-                                    nostrum harum nisi exercitationem quod, ad dolores, iure reprehenderit quidem voluptatum
-                                    qui consequuntur totam nulla ducimus eveniet ratione.
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur praesentium
-                                    tempora non unde ducimus libero modi laboriosam repudiandae delectus. Itaque placeat
-                                    pariatur odio quam reiciendis. Reprehenderit voluptates iste itaque beatae?
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed inventore aliquid esse,
-                                    dolore, corrupti sequi error iste eaque ducimus sapiente, harum ad dolorum dolores. In a
-                                    delectus harum consequatur vero!LoremLorem ipsum dolor sit amet consectetur adipisicing
-                                    elit. Corporis expedita eum impedit
+                                    <%= n.getN_content() %>
 
                                 </p>
                             </div>
                         </td>
                     </tr>
                 </table>
+                
+				<div class="submit_btn_area">
+	                <button class="goback_btn" onclick="goSelectLsit();">목록으로 돌아가기</button>
 
-                <button class="gotoList_btn" type="submit"><a href="noticeList.jsp">목록으로 돌아가기</a></button>
+	                <!-- 관리자만 볼 수 있는 버튼을 만들고 싶어요... -->
+	                <% if (m != null && m.getM_auth() == 0) { %>
+	                	<button class="reset_btn" onclick="goUpdatePage();">수정하기</button>
+                	<% }%>
+                </div>
+                
 
+			<script>
+				function goSelectLsit(){
+					location.href = '/naduri/selectList.no';
+				}
+	
+				function goUpdatePage(){
+					location.href = '/naduri/noticeUpdate.no?n_no=' + <%= n.getN_no() %>;
+				}
+			</script>
 
 
             </div>

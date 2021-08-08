@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import = "com.harang.naduri.jdbc.attach.model.vo.*, java.util.*" %>
+    <% Attach a = (Attach)request.getAttribute("a"); 
+    ArrayList<Keyword> listk = (ArrayList<Keyword>)request.getAttribute("listk");
+    %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +20,7 @@
 
 <script src="https://kit.fontawesome.com/2004329f9f.js" crossorigin="anonymous"></script>
 <script defer src="/naduri/assets/js/header.js"></script>
-<script src="/naduri/assets/js/tab.js"></script>
-<script src="/naduri/assets/js/modal.js"></script>
+
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -29,7 +33,37 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
     integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
 </script>
-    
+
+<style>
+	/* 헤더 살리기 프로젝트 ver 2.0 */
+	header .navbar {
+    	display: flex;
+    	justify-content: space-between;
+    	align-items: inherit;
+    	padding-top: 0px;
+	}
+	header .navbar .user_menu{
+		width : 150px;
+		height : 240px;
+	}
+	header .navbar .user_menu li{
+		position : relative;
+		left : -38px;
+		width : 110px;
+		text-align : center;
+	}
+	header .profile {
+	 	margin : 0;
+	}
+	header .headerArea {
+		margin : 0;
+	}
+	
+	img, svg {
+    	vertical-align: baseline;
+	}
+
+</style>
 <title>나드리</title>
 </head>
 <body>
@@ -40,8 +74,39 @@
 	        <h2 class="hidden">프로필 페이지</h2>
 	        
 	        <!-- 프로필 영역 -->
-	        <div class="top_area">
-	            <div class="profile_img"></div>
+
+	        <form class="top_area" action = "/naduri/profileImgInsert.do" method="post" enctype="multipart/form-data">
+	        	<input type="hidden" name="m_no" value="<%= m.getM_no() %>"/>
+	            <div class="profile_img">
+	           <% if ( a == null) { %>
+	            	<img src="/naduri/assets/images/no-img.png" id="profileImg" width="350px" height="295px" alt="프로필사진" />
+	            	<% } else { %>
+	            	<img src="/naduri/resources/profileImg/<%= a.getA_name() %>" id="profileImg" width="350px" height="295px" alt="프로필사진" />
+	            	<% } %>
+	            </div>
+	            <input type="file" class="hidden" accept="image/*" name="profileImg" id="profileImg1" onchange="readURL(input)" />
+	          
+	        <script>
+	        	$('.profile_img').on('click', function(){
+	        		$('#profileImg1').click();
+	        	})
+	        	
+	         // 사진 미리보기 구현
+	        	 function readURL(input) {
+      				  if (input.files && input.files[0]) {
+         				  var reader = new FileReader();
+          				  reader.onload = function(e) {
+        	     		   $('#profileImg').attr('src', e.target.result);
+          			  }
+         		   reader.readAsDataURL(input.files[0]);
+      			  }
+   					 }
+
+    				$("#profileImg1").change(function() {
+       				 readURL(this);
+   				 });
+
+	        </script>
 	            <div class="profile_area">
 	                <div>
 	                    <span class="green_title"></span>
@@ -51,19 +116,21 @@
 	                    <tbody>
 	                        <tr>
 	                            <td class="profile_first">이름</td>
-	                            <td>홍길동</td>
+	                            <td><%= m.getM_name() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>생년월일</td>
-	                            <td>1995년 2월 19일</td>
+	                            <td><%= m.getM_birth() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td>좋아하는 여행 테마</td>
 	                            <td>
 	                                <ol class="keword">
-	                                    <li>문화재</li>
-	                                    <li>문화재</li>
-	                                    <li>문화재</li>
+	                                    <% for(Keyword ke : listk) { %>
+	                                    <% if( ke.getKeyword_id() <= 14){ %>
+	                                    <li><%= ke.getKeyword() %></li>
+	                                     <% } %>
+	                                    <% } %>
 	                                </ol>
 	                            </td>
 	                        </tr>
@@ -71,7 +138,11 @@
 	                            <td>선호하는 계절</td>
 	                            <td>
 	                                <ol class="keword">
-	                                    <li>봄</li>
+	                                    <% for(Keyword ke : listk) { %>
+	                                    <% if( ke.getKeyword_id() > 14 && ke.getKeyword_id() <= 18){ %>
+	                                    <li><%= ke.getKeyword() %></li>
+	                                     <% } %>
+	                                    <% } %>
 	                                </ol>
 	                            </td>
 	                        </tr>
@@ -79,23 +150,24 @@
 	                            <td>선호 키워드</td>
 	                            <td>
 	                                <ol class="keword">
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
-	                                    <li>궁월</li>
+	                                 <% for(Keyword ke : listk) { %>
+	                                    <% if( ke.getKeyword_id() > 18){ %>
+	                                    <li><%= ke.getKeyword() %></li>
+	                                     <% } %>
+	                                    <% } %>
+	
 	                                </ol>
 	                            </td>
 	                        </tr>
 	                    </tbody>
 	                </table>
-	                <div class="profile_modify"><a href="../member/joinMember.jsp">프로필 수정하기</a></div>
+	                <div class="modify_Area">
+	                	<button type="submit" class="profileImg_modify">프로필 사진 등록</button>
+	                	<button type="button" class="profile_modify" onclick="memberUpdate()">프로필 수정하기</button>
+	                </div>
 	            </div>
-	        </div>
 
+ </form> 
 			<!-- 탭 영역 -->	
 	        <div class="tabs_area">
 	            <ul class="tabs">
@@ -117,20 +189,87 @@
 	                </li>
 	            </ul>
 	        </div>
+	          <script>
+            $(function() {
+              // tab operation
+              $('.tab-link').click(function() {
+            	  var tab_id = $(this).attr("data-tab");
+
+                  $(".tabs li").removeClass("current");
+                  $(".tab-content").removeClass("current");
+
+                  $(this).addClass("current");
+                  $("#"+tab_id).addClass("current");
+				var urlPath = "";
+				
+				if ( tab_id == 'tab_p_like' ) {
+					urlPath = '/naduri/tab_p_like.do';
+				} else if( tab_id == 'tab_p_qna') {
+					urlPath = '/naduri/tab_p_qna.do';
+				} else if( tab_id == 'tab_p_reviews') {
+					urlPath = '/naduri/tab_p_reviews.do';
+				} else if( tab_id == 'tab_togolist') {
+					urlPath = '/naduri/tab_togolist.do';
+				}
+			 
+	            $.ajax({
+	                 type : 'GET',                 //get방식으로 통신
+	                 url : urlPath,    //탭의 data-tab속성의 값으로 된 html파일로 통신
+	                 dataType : "html",//html형식으로 값 읽기 
+	                 data: { m_no : '<%= m.getM_no() %>' } ,
+	                 error : function(error, status) {           //통신 실패시
+	                  alert('통신실패!');
+	                  console.log('--------------------');
+	                  console.log(error);
+	                  console.log(status);
+	                  console.log('--------------------');
+	                 },
+	                 success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+	                 	
+	                	 $("#tab-content").html(data);
+	                 	console.log( "통신성공");
+	                 }
+	            });
+				/* 
+               $.ajax({
+                 type : 'GET',                 //get방식으로 통신
+                 url : tab_id + ".jsp",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                 dataType : "html",//html형식으로 값 읽기 
+                 data: ,
+                 error : function() {          //통신 실패시
+                  alert('통신실패!');
+                 },
+                 success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+                  $("#tab-content").html(data);
+                 console.log( "통신성공");
+                 }
+               }); */
+              });
+              
+              $('.tab-link.current').click();
+            });
+         </script>
 	
-	        <!--투고리스트-->
-	        <%@ include file="toGoList.jsp" %>
-	
-	        <!--기행록-->
-	        <%@ include file="journal.jsp" %>
-	
-	        <!--좋아요 누른 리뷰-->
-			<%@ include file="likeReview.jsp" %>
-	
-	        <!--내가 작성한 문의-->
-	        <%@ include file="myQnA.jsp" %>
+	       <div id="tab-content"></div>
 	    </div>
 	</section>		
+	<div id="topBtn" href="#">TOP</div>
+
+	<script>
+    $(function() {
+       
+        
+        $("#topBtn").click(function() {
+            $('html, body').animate({
+                scrollTop : 0
+            }, 400);
+            return false;
+        });
+    });
+    
+	function memberUpdate(){
+		location.href = '/naduri/views/member/modifyMember.jsp';
+	</script>
 	
 	<%@ include file="../common/footer.jsp" %>
 </body>

@@ -1,106 +1,16 @@
 @charset "UTF-8";
 
-aside, .adminArea{
-    padding-top : 150px;
-    padding-bottom : 150px;
-}
+/* 관리자 전용 nav */
 aside{
 	position : relative;
     float: left;
-    margin-top: 55px;
-    margin-right: 20px;
-    margin-left: 5%;
-}
-.adminArea input{
-    border : 1px solid var(--black-color);
-}
-.notice_head {
-    text-align: center;
-    margin-top: 60px;
-    margin-bottom: 50px;
-    font-weight: 500;
-}
-
-.table_area {
-    width: 850px;
-    height: auto;
-}
-.m_table {
-    border: none;
-    border-bottom: var(--main-color) solid 3px;
-}
-.adminArea  th {
-    text-align: center;
-    border-top: var(--main-color) solid 3px;
-    border-bottom: var(--main-color) solid 3px;
-    background-color: rgba(178, 191, 80, 0.1);
-    font-size: 13pt;
-}
-.adminArea  td {
-    text-align: center;
-    position: relative;
-    font-size: 11pt;
-    font-weight: 400;
-}
-.adminArea  tr {
-    line-height: 35px;
-    border-bottom: var(--main-color) solid 1px;
-}
-.adminArea  th:nth-child(1) {
-    width: 55px;
-}
-.adminArea  th:nth-child(2) {
-    width: 90px;
-}
-.adminArea  th:nth-child(3) {
-    width: 80px;
-}
-.adminArea  th:nth-child(4) {
-    width: 120px;
-}
-.adminArea  th:nth-child(5) {
-    width: 180px;
-}
-.adminArea  th:nth-child(6) {
-    width: 100px;
-}
-.adminArea  th:nth-child(7),
-.adminArea  th:nth-child(8),
-.adminArea  th:nth-child(9) {
-    width: 60px;
-}
-.btn_area {
-    position: relative;
-    width: 50px;
-    height: 32px;
-}
-[id*=m_btn] {
-    border-radius: 5px;
-    border: none;
-    background-color: var(--main-color);
-    width: 40px;
-    line-height: 25px;
-    font-size: 14px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-#her_update,
-#her_delete {
-    border-radius: 5px;
-    border: none;
-    background-color: var(--main-color);
-    width: 90px;
-    line-height: 25px;
-    font-size: 14px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+    top : 300px;
+    left : 5%;
+    z-index : 100;
 }
 .admin_menu_area {
-    position: relative;
     width: 115px;
-    height: 300px;
+    height: 287px;
     background: var(--light-gray);
     box-shadow: 5px 5px 5px 0.2px rgba(0, 0, 0, 0.1);
 
@@ -113,31 +23,94 @@ aside img {
     margin-right: auto;
     display: block;
 }
-#menu_title {
-    font-size: 16pt;
-    margin: 10px auto 10px auto;
+#menu_title h2 {
+    margin: 15px 0;
     text-align: center;
-    position: block;
 }
 #menu_hr {
     height: 2px;
-    width: 80%;
+    width: 100%;
     background: var(--gray-color);
     position: block;
-    margin: 15px auto 3px auto;
 }
-#menu_detail>li {
-    width: 100%;
-    line-height: 32px;
-    font-size: 14pt;
-    text-align: center;
+#menu_detail h3{
+	text-align : center;
+	padding : 5px 0;
+	background : var(--gray-color);
+    color : white;
 }
-#menu_detail>li:hover {
+#menu_detail li>button{
+	width : 100%;
+	padding : 5px 0;
+	background : transparent;
+	font-size : 14px;
+	text-align : center;
+	cursor : pointer;
+
+}
+#menu_detail>li>button:hover {
     background: var(--gray-color);
-    cursor: pointer;
     color: white;
     transition: 0.1s;
 }
+/* 관리자 전용 nav 끝 */
+
+
+/* 관리자 전용 페이지 시작 */
+.adminArea h2{
+	position : relative;
+	left : -50px;
+	text-align : center;
+}
+
+.adminArea input{
+    border : 1px solid var(--gray-color);
+}
+
+/* 테이블 css */
+.table_area {
+	width : 1000px;
+	margin-top : 50px;
+    height: auto;
+}
+.m_table {
+	width : 850px;
+    border-bottom: var(--main-color) solid 3px;
+}
+.m_table th {
+    text-align: center;
+    border-top: var(--main-color) solid 3px;
+    border-bottom: var(--main-color) solid 3px;
+    background-color: rgba(178, 191, 80, 0.1);
+    font-size: 13pt;
+}
+.m_table td {
+	padding : 5px 0;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 400;
+}
+.m_table tr {
+	text-align : center;
+    line-height: 35px;
+    border-bottom: var(--main-color) solid 1px;
+}
+/* 표 내부 버튼 공통 css */
+#m_btn, #m_btn_ban{
+	display : block;
+	width : 100px;
+	height : 35px;
+	border-radius: 5px;
+	background-color: var(--main-color);
+	font-size: 14px;
+    color : white;
+    text-align : center;
+	cursor : pointer;
+}
+#m_btn{
+	margin : 0 15px;
+}
+
 #section_hr {
     height: 2px;
     width: 80%;
@@ -172,20 +145,37 @@ aside img {
     width: 160px;
 }
 
-.her_btn_area{
-    height: 32px;
+
+/* 등록 버튼 */
+.insert_btn_area{
+	margin-top : 50px;
+}
+#insert_btn{
+	display: block;
+    width: 250px;
+    height : 50px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    font-size: 21px;
+	text-align : center;
+	color : white;
 }
 
 
-#her_insert_btn{
-	    border-radius: 5px;
-    border: none;
-    background-color: var(--main-color);
-    width: 90px;
-    line-height: 25px;
-    font-size: 14px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top:20px;
+/* 하단 페이지 네이션 영역 */
+.pagingArea {
+	text-align : center;
+	margin-top : 50px;
+}
+/* 페이지네이션 버튼 */
+#p_btn {
+	background-color : var(--main-color);
+	color : white;
+	border-radius: 5px;
+	border: none;
+	cursor : pointer;
+	width : 25px;
+	height : 25px;
+	text-align : center;
+
 }

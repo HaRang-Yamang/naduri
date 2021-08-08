@@ -1,0 +1,228 @@
+section{
+	padding : 0;
+	padding-top : 65px;
+	padding-bottom : 150px;
+}
+
+/* tag  �뵒�옄�씤 */
+.tag li {
+    list-style: none;
+    display : inline-block;
+    border-radius : 5px;
+    background: var(--main-color);
+    cursor: pointer;
+    
+    vertical-align : middle;
+    margin : 10px 5px 5px 0;
+    padding : 2px 5px 0 5px;
+
+    font-size: 14px;
+    color: var(--black-color);
+    text-align: center;
+}
+
+/* �룊�젏 踰꾪듉 �뵒�옄�씤 */
+
+.rank {
+    list-style: none;
+    display : inline-block;
+    border-radius : 5px;
+    background: var(--blue-color);
+    cursor: pointer;
+    
+    vertical-align : middle;
+    margin : 10px 5px 5px 0;
+    padding : 2px 5px 0 5px;
+    color: var(--black-color);
+    font-size: 12px;
+    text-align: center;
+
+}
+
+
+
+/* search page �쟾�슜 search_bar */
+.search_area {
+    width: 100%;
+    height: 160px;
+
+    background-color: var(--blue-color);
+
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 30px;
+}
+
+/* search_bar*/
+.search {
+    position: relative;
+    width: 40%;
+    height: 40px;
+}
+
+.search input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--black-color);
+    background: var(--white-color);
+    outline: none;
+    border: 5px solid var(--main-color);
+    padding: 0 16px 0 55px;
+    font-size: 16px;
+
+}
+
+.search input::placeholder{
+    color: var(--gray-color);
+    font-size: 16px;
+}
+.search .fa-search {
+    position: absolute;
+    color: var(--white-color);
+    background-color: var(--main-color);
+    padding: 12px;
+    transform: translateY(3px);
+}
+
+/* map */
+#map {
+    width: 1000px;
+    height: 500px;
+}
+
+#map2 img{
+    width: 100%;
+    height: 500px;
+}
+
+/* not_found Page */
+.not_found {
+	width: 80%;
+	height: 500px;
+	margin-top: 220px;
+}
+
+.not_found_message {
+	font-size: 30px;
+	text-align: center;
+	line-height: 50px;
+}
+
+
+
+/* info */
+.info {
+    margin-top: 30px;
+}
+.info div {
+    float: left;
+}
+
+.info .title {
+    margin-left: 20px;
+}
+
+.info #list_title {
+    font-size: 18px;
+    border-left: solid 5px var(--main-color);
+    padding-left: 5px;
+    /* border: 3px var(--main-color); */
+
+    margin: 3px 0;
+}
+
+.info .data #list_title {
+    opacity: 0;
+}
+
+.info ul li {
+    font-size: 12px;
+    
+}
+
+.info .title #list_title {
+    text-align:left;
+    letter-spacing: normal;
+    color: var(--black-color);
+}
+
+.info .title ul li {
+    letter-spacing: 1em;
+    color: var(--main-color);
+}
+
+.info .title ul li:nth-child(2) {
+    letter-spacing: 4.8em;
+}
+
+/* 二쇰� �몮�윭蹂닿린 */
+.other_spot {
+    width: 350px;
+}
+
+.spot_image {
+    width: 150px;
+    height: 150px;
+}
+.spot_image img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.map_box {
+    justify-content: center;
+    align-items: center;
+}
+
+/* other class*/
+
+
+.spot_container {
+     margin-top: 8px;
+}
+.other {
+    margin-left: 30px;
+}
+/* �옣�냼 �젙�젹 */
+.other_spot {
+    justify-content: space-between;
+}
+/* �쐞移� �젙蹂댁� 二쇰� �몮�윭蹂닿린 �궗�씠 留덉쭊 */
+.otehr_info {
+    margin-left: 10px;
+}
+/* �옣�냼 �씠由� */
+.other #list_title {
+    font-size: 18px;
+    font-weight: 400;
+}
+/* 嫄몄뼱�꽌 ? 遺� */
+.otehr_info p:nth-child(4) {
+    font-size: 12px;
+    margin-top: 5px;
+    color: var(--gray-color);
+}
+
+@media screen and (max-width : 986px) { 
+
+    .other_spot {
+        position:absolute;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        width: 100%;
+
+        transform: translate(-30px, 80px);
+    }
+}

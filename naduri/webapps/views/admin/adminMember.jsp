@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="com.harang.naduri.jdbc.notice.model.vo.*, java.util.*"%>    
+ 
+<%
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	PageNation pn = (PageNation)request.getAttribute("pn");
+	
+	int st = pn.getStartPage();
+	int ed = pn.getEndPage();
+	int mx = pn.getMaxPage();
+	int limit = pn.getLimit();
+	int listCount = pn.getListCount();
+	int cur = pn.getCurrentPage();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +37,9 @@
 	<%@ include file="../common/adminAside.jsp" %>
 	
 	<section>
-	
+
 	        <div class="adminArea">
-            <div class="head_area">
-                <h2 class="notice_head">회원 관리</h2>
-            </div>
+            <h2 class="notice_head">회원 관리</h2>
             <div class="table_area">
                 <table class="m_table">
                     <tr>
@@ -35,246 +48,78 @@
                         <th>이름</th>
                         <th>연락처</th>
                         <th>이메일</th>
-                        <th>가입일</th>
-                        <th>리뷰</th>
-                        <th>댓글</th>
-                        <th>관리</th>
+                        <th>상태</th>
+                        <th colspan='3' style='width:120px;'>관리</th>
+                        
                     </tr>
+					
+					<% for(Member mm : list ) { %> 
                     <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
+                        <td id="m_no"><%= mm.getM_no() %></td>
+                        <td id="m_id"><%= mm.getM_id() %></td>
+                        <td id="m_name"><%= mm.getM_name() %></td>
+                        <td id="m_phone"><%= mm.getM_phone() %></td>
+                        <td id="m_email"><%= mm.getM_email() %></td>
+                        <td id="m_status"><%= mm.getM_status() %></td>
+                   
+                        <td colspan='2'>
+                            <% if( mm.getM_status().equals("Y")) { %>
+                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= mm.getM_no() %>,'<%= mm.getM_status() %>')">이용권한 정지</button>
+                            <% } else { %>
+                                <button class="m_btn_ban" id="m_btn_ban" onclick="banMember(<%= mm.getM_no() %>,'<%= mm.getM_status() %>')">정지 해제</button>
+                            <% } %>
                         </td>
                     </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="m_no">1</td>
-                        <td id="m_id">나드리</td>
-                        <td id="m_name">하랑</td>
-                        <td id="m_phone">010-1234-1234</td>
-                        <td id="m_email">exampe@exaple.com</td>
-                        <td id="m_join_date">2021-04-20</td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_review">리뷰</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_reply">댓글</button>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn_area">
-                                <button id="m_btn_ban">탈퇴</button>
-                            </div>
-                        </td>
-                    </tr>
-
+               		<% } %>
+               	
                 </table>
-
+                <script>
+                	function banMember(m_no, m_status) {
+                		location.href = '/naduri/memberUpdate.ad?m_no='+ m_no + '&m_status=' + m_status;
+                	}
+                </script>
+				
+				<%-- 페이지네이션 버튼 --%>
+                <div class="pagingArea">
+		        	<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=1'">
+		        		&lt;&lt;
+		        	</button>
+		        	
+		        	<% if (cur <= 1) { %>
+						<button id="p_btn" disabled> &lt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= cur - 1 %>'"> &lt;</button>
+					<% } %>
+		        	
+		        	<% for(int p = st ; p <= ed ; p ++) { %>
+		        	
+			        	<% if( p == cur) { %>
+			        		<button id="p_btn" disabled> <%= p %> </button>
+			        	<% } else { %>
+			        		<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= p %>'"> <%= p %> </button>
+			        	<% } %>
+		        	
+		        	<% } %>
+		        	
+		        	<% if (cur >= mx) { %>
+						<button id="p_btn" disabled> &gt; </button>
+					<% } else { %>
+						<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= cur + 1 %>'"> &gt;</button>
+					<% } %>
+					
+		        	<button id="p_btn" onclick="location.href='/naduri/memberList.ad?currentPage=<%= mx %>'">
+		        		&gt;&gt;
+		        	</button>
+		        	
+		        </div>
+      				
+      			<%-- ------------------- --%>	
+				
+				
+				
             </div>
         </div>
+       
 	
 	</section>
 
